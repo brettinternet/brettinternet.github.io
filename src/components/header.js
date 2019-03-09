@@ -1,35 +1,34 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import PropTypes from "prop-types"
+import { Link } from "gatsby"
+import styled from "styled-components"
+
+import { appWidth, headerHeight } from "utils/mixins"
 
 const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+  <StyledHeader>
+    <Wrapper>
+      <H1>
+        <Link to="/">{siteTitle}</Link>
+      </H1>
+    </Wrapper>
+  </StyledHeader>
 )
+
+const StyledHeader = styled.header`
+  ${headerHeight}
+`
+
+const Wrapper = styled.div`
+  ${appWidth}
+  padding-top: 15px;
+  padding-bottom: 15px;
+`
+
+const H1 = styled.h1`
+  margin: 0;
+  font-size: 16px;
+`
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

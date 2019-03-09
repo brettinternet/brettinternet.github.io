@@ -1,8 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `brett + internet`,
+    description: `Programming and thoughts`,
+    author: `@brettinternet`,
+    siteUrl: "https://brettinternet.com",
+    // https://fonts.google.com/?selection.family=Open+Sans:300,400,400i,700|Patua+One&query=fira
+    googleFontLink:
+      "https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700|Patua+One",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -24,11 +28,32 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline',
+    {
+      resolve: "gatsby-plugin-root-import",
+      options: {
+        src: `${__dirname}/src`,
+        pages: `${__dirname}/src/pages`,
+        components: `${__dirname}/src/components`,
+        images: `${__dirname}/src/images`,
+        utils: `${__dirname}/src/utils`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /icons/,
+        },
+      },
+    },
   ],
 }

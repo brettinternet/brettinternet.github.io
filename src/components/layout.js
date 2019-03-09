@@ -97,6 +97,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     background: ${props => props.theme.white};
     color: ${props => props.theme.neutralDark};
+    transition: color 200ms, background 200ms;
   }
 
   ${reset}

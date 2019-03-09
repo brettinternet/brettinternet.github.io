@@ -7,7 +7,10 @@ import { footerHeight } from "utils/mixins"
 const Footer = ({ siteUrl }) => (
   <StyledFooter>
     <span>
-      Made with <Heart>❤</Heart> by <a href={siteUrl}>@brettinternet</a>
+      Made with <Heart>❤</Heart> by{" "}
+      <a href={siteUrl} target="_blank" rel="noopener noreferrer">
+        @brettinternet
+      </a>
     </span>
   </StyledFooter>
 )

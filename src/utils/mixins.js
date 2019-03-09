@@ -17,6 +17,10 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
   return acc
 }, {})
 
+/**
+ * @todo: fonts not working...
+ */
+
 export const openSansFont = css`
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
@@ -35,9 +39,15 @@ export const reset = css`
 
   a {
     text-decoration: none;
+    color: ${props => props.theme.themePrimary};
 
     &:hover {
       text-decoration: underline;
+      color: ${props => props.theme.themeDarkAlt};
+    }
+
+    &:visited {
+      color: inherit;
     }
   }
 

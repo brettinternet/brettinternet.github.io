@@ -23,6 +23,7 @@ export default _Link
 const anchorStyles = css`
   text-decoration: none;
   color: ${props => props.theme.themePrimary};
+  transition: color 200ms;
 
   &:hover {
     text-decoration: underline;

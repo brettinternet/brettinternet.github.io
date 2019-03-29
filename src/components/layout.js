@@ -1,10 +1,3 @@
-/**
- * Layout component that queries for data
- * with Gatsby's StaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
@@ -15,13 +8,30 @@ import Header from "components/Header"
 import Footer from "./Footer"
 import styled, { createGlobalStyle } from "styled-components"
 import { reset } from "utils/mixins"
+import { setDarkMode, getDarkMode } from "utils/localStorage"
 
-class Layout extends React.Component {
+class Layout extends React.PureComponent {
   state = {
-    inverted: false,
+    themeInverted: false,
   }
 
-  toggleInvertedColors = () => this.setState({ inverted: !this.state.inverted })
+  componentDidMount() {
+    this.setState({ themeInverted: getDarkMode() })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { themeInverted } = this.state
+    if (prevState.themeInverted !== themeInverted) {
+      if (themeInverted) setDarkMode(true)
+      else setDarkMode()
+    }
+  }
+
+  toggleThemeInversion = () => {
+    this.setState({
+      themeInverted: !this.state.themeInverted,
+    })
+  }
 
   render() {
     const { children, location, headProps, flex } = this.props
@@ -44,13 +54,14 @@ class Layout extends React.Component {
             <StyledTheme>
               <StyledApp>
                 <Head {...headProps} />
-                <ThemeInverted inverted={this.state.inverted}>
+                <ThemeInverted inverted={this.state.themeInverted}>
                   <>
                     <GlobalStyle />
                     <Header
                       siteTitle={title}
                       location={location}
-                      onChangeTheme={this.toggleInvertedColors}
+                      onChangeTheme={this.toggleThemeInversion}
+                      themeInverted={this.state.themeInverted}
                     />
                     <Main flex={flex}>{children}</Main>
                     <Footer siteUrl={siteUrl} author={author} />

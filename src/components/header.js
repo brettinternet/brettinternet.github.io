@@ -1,24 +1,32 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import { Link as A } from "gatsby"
 import styled from "styled-components"
 
 import { appWidth, headerHeight } from "utils/mixins"
+import Switch from "components/Switch"
 
-const Header = ({ siteTitle, onChangeTheme }) => (
+const Header = ({ siteTitle, onChangeTheme, themeInverted }) => (
   <StyledHeader>
     <Nav>
       <Brand>
-        <Link to="/">{siteTitle}</Link>
+        <A to="/">{siteTitle}</A>
       </Brand>
 
       <Menu>
         <UL>
           <LI>
-            <StyledLink>About</StyledLink>
+            <StyledA to="/about">About</StyledA>
           </LI>
           <LI>
-            <input type="checkbox" onChange={onChangeTheme} />
+            <StyledSwitch
+              innerLabel={"off"}
+              innerLabelChecked={"on"}
+              label={themeInverted ? "" : "💡"}
+              alignRight
+              onChange={onChangeTheme}
+              checked={!themeInverted}
+            />
           </LI>
         </UL>
       </Menu>
@@ -76,7 +84,7 @@ const LI = styled.li`
   margin-left: 0.5rem;
 `
 
-const StyledLink = styled(Link)`
+const StyledA = styled(A)`
   cursor: pointer;
   padding: 0.5rem;
   text-decoration: none;
@@ -88,4 +96,8 @@ const StyledLink = styled(Link)`
     text-decoration: none;
     background: ${props => props.theme.themeLighter};
   }
+`
+
+const StyledSwitch = styled(Switch)`
+  font-size: 0.7em;
 `

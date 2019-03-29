@@ -1,15 +1,10 @@
 import { css } from "styled-components"
 import normalize from "utils/normalize"
+import { breakpoints } from "utils/constants"
 
-const sizes = {
-  desktop: 992,
-  tablet: 768,
-  phone: 576,
-}
-
-export const media = Object.keys(sizes).reduce((acc, label) => {
+export const media = Object.keys(breakpoints).reduce((acc, label) => {
   acc[label] = (...args) => css`
-    @media (max-width: ${sizes[label] / 16}em) {
+    @media (min-width: ${breakpoints[label] / 16}em) {
       ${css(...args)}
     }
   `
@@ -37,18 +32,10 @@ export const reset = css`
     ${openSansFont}
   }
 
-  a {
+  a,
+  a:hover,
+  a:visited {
     text-decoration: none;
-    color: ${props => props.theme.themePrimary};
-
-    &:hover {
-      text-decoration: underline;
-      color: ${props => props.theme.themeDarkAlt};
-    }
-
-    &:visited {
-      color: inherit;
-    }
   }
 
   ${normalize}

@@ -29,13 +29,22 @@ const Switch = ({
         ]
       : null
   return (
-    <Label className={className} style={style} alignRight={alignRight}>
+    <Label
+      className={className}
+      style={style}
+      alignRight={alignRight}
+      label={label}
+    >
       <Input type="checkbox" {...inputProps} />
       <Indicator>{switchLabels}</Indicator>
       {label}
       {children}
     </Label>
   )
+}
+
+Switch.defaultProps = {
+  label: "",
 }
 
 Switch.propTypes = {
@@ -54,7 +63,7 @@ const Indicator = styled.span`
   border: none;
   border-radius: 1.75em;
   box-shadow: none !important;
-  background: rgba(167, 182, 194, 0.5);
+  background-color: rgba(167, 182, 194, 0.5);
   width: auto;
   min-width: 1.75em;
   transition: background-color 0.1s cubic-bezier(0.4, 1, 0.75, 0.9);
@@ -75,7 +84,7 @@ const Indicator = styled.span`
     margin: 2px;
     border-radius: 50%;
     box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.2), 0 1px 1px rgba(16, 22, 26, 0.2);
-    background: ${props => props.theme.white};
+    background-color: ${props => props.theme.white};
     background-clip: padding-box;
     width: calc(1em - 4px);
     height: calc(1em - 4px);
@@ -109,19 +118,19 @@ const Label = styled.label`
   /* margin-bottom: 10px; */
 
   &:hover input ~ ${Indicator} {
-    background: rgba(115, 134, 148, 0.5);
+    background-color: rgba(115, 134, 148, 0.5);
   }
 
   &:hover input:checked ~ ${Indicator} {
-    background: ${props => props.theme.themeDarkAlt};
+    background-color: ${props => props.theme.themeTertiary};
   }
 
   padding-right: ${props => (props.alignRight ? 38 : 0)}px;
   padding-left: ${props => (props.alignRight ? 0 : 38)}px;
 
   ${Indicator} {
-    margin-right: ${props => (props.alignRight ? -38 : 5)}px;
-    margin-left: ${props => (props.alignRight ? 5 : -38)}px;
+    margin-right: ${props => (props.alignRight ? -38 : props.label ? 5 : 0)}px;
+    margin-left: ${props => (props.alignRight ? (props.label ? 5 : 0) : -38)}px;
     margin-top: ${props => (props.alignRight ? 1 : 0)}px;
     float: ${props => (props.alignRight ? "right" : "none")};
   }
@@ -136,7 +145,7 @@ const Input = styled.input`
   padding: 0;
 
   & ~ ${Indicator} {
-    background: rgba(167, 182, 194, 0.5);
+    background-color: rgba(167, 182, 194, 0.5);
   }
 
   &:checked ~ ${Indicator} ${IndicatorChild} {
@@ -153,7 +162,7 @@ const Input = styled.input`
 
   &:checked ~ ${Indicator} {
     box-shadow: none;
-    background-color: ${props => props.theme.themeTertiary};
+    background-color: ${props => props.theme.themeLight};
 
     &:before {
       left: calc(100% - 1em);
@@ -161,21 +170,21 @@ const Input = styled.input`
   }
 
   &:checked:disabled ~ ${Indicator} {
-    background: rgba(19, 124, 189, 0.5);
+    background-color: rgba(19, 124, 189, 0.5);
   }
 
   &:checked:not(:disabled):active ~ ${Indicator} {
-    background: ${props => props.theme.themeDark};
+    background-color: ${props => props.theme.themeDark};
   }
 
   &:disabled {
     & ~ ${Indicator} {
-      background: rgba(206, 217, 224, 0.5);
+      background-color: rgba(206, 217, 224, 0.5);
     }
   }
 
   &:not(:disabled):active ~ ${Indicator} {
-    background: rgba(92, 112, 128, 0.5);
+    background-color: rgba(92, 112, 128, 0.5);
   }
 `
 

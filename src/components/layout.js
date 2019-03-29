@@ -13,13 +13,19 @@ import { setDarkMode, getDarkMode } from "utils/localStorage"
 class Layout extends React.PureComponent {
   state = {
     themeInverted: false,
+    transitionBody: false,
+    windowWidth: undefined,
+    noBodyScroll: false,
+    mobileMenuActive: false,
   }
 
   componentDidMount() {
-    this.setState({ themeInverted: getDarkMode() })
+    this.setState({ themeInverted: getDarkMode(), transitionBody: false })
   }
 
   componentDidUpdate(prevProps, prevState) {
+    window.addEventListener("resize", this.handleResize)
+
     const { themeInverted } = this.state
     if (prevState.themeInverted !== themeInverted) {
       if (themeInverted) setDarkMode(true)
@@ -27,11 +33,24 @@ class Layout extends React.PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize)
+  }
+
+  handleResize = () => this.setState({ windowWidth: window.innerWidth })
+
+  preventBodyScroll = () => this.setState({ noBodyScroll: true })
+  resetBodyScroll = () => this.setState({ noBodyScroll: false })
+
   toggleThemeInversion = () => {
     this.setState({
       themeInverted: !this.state.themeInverted,
+      transitionBody: true,
     })
   }
+
+  openMobileMenu = () => this.setState({ mobileMenuActive: true })
+  closeMobileMenu = () => this.setState({ mobileMenuActive: false })
 
   render() {
     const { children, location, headProps, flex } = this.props
@@ -56,12 +75,21 @@ class Layout extends React.PureComponent {
                 <Head {...headProps} />
                 <ThemeInverted inverted={this.state.themeInverted}>
                   <>
-                    <GlobalStyle />
+                    <GlobalStyle
+                      transitionBody={this.state.transitionBody}
+                      noBodyScroll={this.state.noBodyScroll}
+                    />
                     <Header
                       siteTitle={title}
                       location={location}
                       onChangeTheme={this.toggleThemeInversion}
                       themeInverted={this.state.themeInverted}
+                      windowWidth={this.state.windowWidth}
+                      preventBodyScroll={this.preventBodyScroll}
+                      resetBodyScroll={this.resetBodyScroll}
+                      mobileMenuActive={this.state.mobileMenuActive}
+                      openMobileMenu={this.openMobileMenu}
+                      closeMobileMenu={this.closeMobileMenu}
                     />
                     <Main flex={flex}>{children}</Main>
                     <Footer siteUrl={siteUrl} author={author} />
@@ -108,7 +136,9 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     background: ${props => props.theme.white};
     color: ${props => props.theme.neutralDark};
-    transition: color 200ms, background 200ms;
+    transition: all ${props =>
+      props.transitionBody ? "400ms" : "0s"} ease-out;
+    overflow-y: ${props => (props.noBodyScroll ? "hidden" : "visible")};
   }
 
   ${reset}

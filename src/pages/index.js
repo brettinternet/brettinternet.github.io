@@ -1,7 +1,7 @@
 import React from "react"
 
 import Layout from "components/layout"
-import Section from "components/Section"
+// import Section from "components/Section"
 
 const IndexPage = ({ location }) => (
   <Layout
@@ -11,7 +11,7 @@ const IndexPage = ({ location }) => (
     }}
     location={location}
   >
-    <Section>hi</Section>
+    <div style={{ height: "1000px" }}>hi</div>
   </Layout>
 )
 

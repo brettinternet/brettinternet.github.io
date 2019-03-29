@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import A from "components/Link"
 
 import { footerHeight } from "utils/mixins"
 
@@ -8,9 +9,9 @@ const Footer = ({ siteUrl }) => (
   <StyledFooter>
     <span>
       Made with <Heart>❤</Heart> by{" "}
-      <a href={siteUrl} target="_blank" rel="noopener noreferrer">
+      <A href={siteUrl} target="_blank" rel="noopener noreferrer">
         @brettinternet
-      </a>
+      </A>
     </span>
   </StyledFooter>
 )

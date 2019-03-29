@@ -1,7 +1,7 @@
 import React from "react"
 
 import Layout from "components/layout"
-// import Section from "components/Section"
+import Section from "components/Section"
 
 const AboutPage = ({ location }) => (
   <Layout
@@ -11,7 +11,7 @@ const AboutPage = ({ location }) => (
     }}
     location={location}
   >
-    <div style={{ height: "1000px" }}>about!</div>
+    <Section>about!</Section>
   </Layout>
 )
 

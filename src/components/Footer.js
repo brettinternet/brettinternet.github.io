@@ -5,8 +5,8 @@ import A from "components/Link"
 
 import { footerHeight } from "utils/mixins"
 
-const Footer = ({ siteUrl }) => (
-  <StyledFooter>
+const Footer = ({ siteUrl, className }) => (
+  <StyledFooter className={className}>
     <span>
       Made with <Heart>❤</Heart> by{" "}
       <A href={siteUrl} target="_blank" rel="noopener noreferrer">
@@ -18,6 +18,7 @@ const Footer = ({ siteUrl }) => (
 
 Footer.propTypes = {
   siteUrl: PropTypes.string,
+  className: PropTypes.string,
 }
 
 export default Footer

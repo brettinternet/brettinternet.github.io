@@ -1,0 +1,85 @@
+==================================================================
+https://keybase.io/brettinternet
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://brettinternet.com
+  * I am brettinternet (https://keybase.io/brettinternet) on keybase.
+  * I have a public key with fingerprint 4836 109F 6EAE 10A4 201D  DC18 21FF F74B 9B1B 795A
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101a70f52774139cb35d1bb968710ab44239da1f62af814cf49e39cad67a3b10acf0a",
+      "fingerprint": "4836109f6eae10a4201ddc1821fff74b9b1b795a",
+      "host": "keybase.io",
+      "key_id": "21fff74b9b1b795a",
+      "kid": "0101a70f52774139cb35d1bb968710ab44239da1f62af814cf49e39cad67a3b10acf0a",
+      "uid": "70153c2740577ccb0f1fe21524d38819",
+      "username": "brettinternet"
+    },
+    "merkle_root": {
+      "ctime": 1503272650,
+      "hash_meta": "ed612440bcf139db8166958469ac231cfa69ceed39b431630e85f327aac334d8",
+      "seqno": 1338481
+    },
+    "revoke": {
+      "sig_ids": [
+        "9de1448d2f7ff8c29cf612c29918f1e9dda937bfde4e6427bb643b77254ee3990f"
+      ]
+    },
+    "service": {
+      "hostname": "www.brettinternet.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1503272653,
+  "expire_in": 157680000,
+  "prev": "91eafc3a42ec1cb78345a0decc15477eb38807582e29b15bd8e45411f74c5216",
+  "seqno": 24,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtU21QFVUYvlzpQxJJJ0YU/NqpmVAG9uye3bN7++EwaQqWJTqhKN32nD0LO5d7
+93LvAilSBmZ+D6mMZeCkw1AqTSBjpqjZB5gokE3pIPGZXSQdC8Xgh2nnMjZNTT87
+f86cM8/7PM/7nPeUR49zREXMvj+y+P34NVkR5wexY+XeGd3FHLb0NZyrmPPQsY3m
+6TRouz2mzrk4HvBAQ7whCQhBIKoEi5IOMFZlBQFewxAKoqprwJAFzVAAJAZUKYNp
+uow0ETMIMXiNS+IM05dDA/6A6bMZLVREGfCqIVONMgwUeKDrBCgCMAwDQaxigJEq
+hQtzrWC4gpnDWpAmmxa7Ywf3mL3/wP/PvgvG6BAPJJEICPISQoRg3gAGFYAkQF1U
+FKCGgUEa8GleytA4QG2bNcouqM2VJHFeGvDkUXfAsuxwwsQ2wzgg8aKABFniWZda
+MNftpbbGyqkuAwFCHhODOdexAmRZlRQoqxoRREAMTVYJpbqoYigCWeSpIhmMSdOI
+KEJdYWaCNN9nMQVRVKACmIMALbQ8NCweNHNYdkHOterMW5yqUwChogsGMgyFCCox
+mDbbVaAYgKq6rqkiwoZOIZWhgDCWoYgREiRIWVwqb3DZJWG5QKFJxujDz/UghqKi
+ouR/RJFMLC8z5w9YtkWsPAbJtW1/0BWOyF7jH6uh2P2AzY1Nn86mhlUU0kDQtHys
+IYb8d3piEkdf85sB6jbDCAnJCs9WWIcWMkoVUM0gIhsySgDBSBGhpPE6JQRIECGK
+2QvySFIEKrAxkrCuUChBANhcEUkA8t9xCpD51HIYJwvRp9kFAcqVRG12JkQ6IqIc
+Dz/kDP8nR9T4x//6ZNemxtwTUVcOIlcmpcm9WW+PW78oFL+zACqvbn4h9buKBb3V
+b1wGwz0Zx9N+ahLJqnHLeuY60lMn7+47fACrnSXJ59WNytoNn7qWN0fNrfx9wqkr
+ffOVKM/FX44PLm6eqDdw6pwlNs1cvqliWlX/R/Nvbjji2ZaecOPEPqtLiEw9umM0
+vj3U4osvGZ1ekbu1qi3160duNO8fvu4cuLW1OnXTKtOVlvjbrsSFLe2dC7pnZV2N
+9lbOOrdz/Cbp9fRn1yXX+nu/5x91dfQ7InIyWy+1nDN6W8tejO1OmLklsTX/0sLi
+9pr3RlNAaMkN+dvCkfspTTOTGjtDL219rEzjGg+OL1idXn2BSp+duhrM3a6Xdi1q
+O3n5wv7MSXFT3hlyotNn/yjfM+9EZt3iEHen29N6TM3OjFYa8oXn65r9R0buZctf
+7vWeHr41GMpOnf7DEwN917zrV69b8uvAvpi0mHfzj33yY0TCwaX1+/qf+iD+ZF5N
+fMyTEj28Z1sbp5QerfA0g+rOgdryq7VOs37O3JKnG6SRojP1KxOmfHg2JfZ6Rf03
+Uw/3OBvXeoqbYlsOdh3akx4xNDtU98rk43eDb/ZkxF34eBr4ecOgk8TVRX9R1cf5
+npu0JbE/o2bp3Rnbb088XbarrnZ0oqchYWh4952vato+33uupnPZvPkXKzue6V65
+onxj5IQVHUtfPpBVqh26eftP
+=70S+
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/brettinternet
+
+==================================================================

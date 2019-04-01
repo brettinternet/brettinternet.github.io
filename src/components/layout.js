@@ -63,12 +63,16 @@ class Layout extends React.PureComponent {
                 title
                 author
                 siteUrl
+                routes {
+                  name
+                  to
+                }
               }
             }
           }
         `}
         render={data => {
-          const { title, siteUrl, author } = data.site.siteMetadata
+          const { title, siteUrl, author, routes } = data.site.siteMetadata
           return (
             <StyledTheme>
               <StyledApp>
@@ -81,6 +85,7 @@ class Layout extends React.PureComponent {
                     />
                     <Header
                       siteTitle={title}
+                      routes={routes}
                       location={location}
                       onChangeTheme={this.toggleThemeInversion}
                       themeInverted={this.state.themeInverted}

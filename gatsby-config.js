@@ -1,14 +1,63 @@
+const theme = {
+  themePrimary: "#1890ff",
+  neutralPrimary: "#333333",
+}
+
+const siteMetadata = {
+  title: `brettinternet`,
+  description: `Solving problems with software, and other thoughts`,
+  author: `@brettinternet`,
+  siteUrl: "https://brettinternet.com",
+  homeCity: "Salt Lake City",
+  // https://fonts.google.com/?selection.family=Patua+One|Source+Sans+Pro:300,400,400i,700
+  googleFontLink:
+    "https://fonts.googleapis.com/css?family=Patua+One|Source+Sans+Pro:300,400,400i,700",
+  routes: [
+    { name: "blog", to: "/blog" },
+    { name: "projects", to: "/projects" },
+  ],
+  socialLinks: [
+    { name: "linkedin", href: "https://linkedin.com/in/brettinternet" },
+    { name: "github", href: "https://github.com/brettinternet" },
+    { name: "twitter", href: "https://twitter.com/brettinternet" },
+    { name: "instagram", href: "https://instagram.com/brettinternet" },
+    { name: "keybase", href: "https://keybase.io/brettinternet" },
+  ],
+}
+
 module.exports = {
-  siteMetadata: {
-    title: `brettinternet`,
-    description: `Programming and thoughts`,
-    author: `@brettinternet`,
-    siteUrl: "https://brettinternet.com",
-    // https://fonts.google.com/?selection.family=Open+Sans:300,400,400i,700|Patua+One&query=fira
-    googleFontLink:
-      "https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700|Patua+One",
-  },
+  siteMetadata,
   plugins: [
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        gfm: true,
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590, // 960
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+        ],
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -22,13 +71,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: siteMetadata.title,
+        short_name: siteMetadata.title,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: theme.neutralPrimary,
+        theme_color: theme.themePrimary,
         display: `minimal-ui`,
-        icon: `src/images/favicon.png`,
+        icon: `${__dirname}/static/favicon.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
@@ -42,6 +91,7 @@ module.exports = {
         components: `${__dirname}/src/components`,
         images: `${__dirname}/src/images`,
         utils: `${__dirname}/src/utils`,
+        templates: `${__dirname}/src/templates`,
       },
     },
     {
@@ -55,5 +105,68 @@ module.exports = {
         },
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-feed`,
+    //   options: {
+    //     // this base query will be merged with any queries in each feed
+    //     query: `
+    //     {
+    //       site {
+    //         siteMetadata {
+    //           title
+    //           description
+    //           siteUrl
+    //           site_url: siteUrl
+    //         }
+    //       }
+    //     }
+    //   `,
+    //     feeds: [
+    //       {
+    //         serialize: ({ query: { site, allMarkdownRemark } }) => {
+    //           return allMarkdownRemark.edges.map(edge => {
+    //             return Object.assign({}, edge.node.frontmatter, {
+    //               description: edge.node.excerpt,
+    //               date: edge.node.frontmatter.date,
+    //               url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+    //               guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+    //               custom_elements: [{ "content:encoded": edge.node.html }],
+    //             })
+    //           })
+    //         },
+    //         query: `
+    //         {
+    //           allMarkdownRemark(
+    //             limit: 1000,
+    //             sort: { order: DESC, fields: [frontmatter___date] },
+    //             filter: {frontmatter: { draft: { ne: true } }}
+    //           ) {
+    //             edges {
+    //               node {
+    //                 excerpt
+    //                 html
+    //                 fields { slug }
+    //                 frontmatter {
+    //                   title
+    //                   date
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       `,
+    //         output: "/rss.xml",
+    //         title: "Gatsby RSS Feed",
+    //       },
+    //     ],
+    //   },
+    // },
+
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     //trackingId: `ADD YOUR TRACKING ID HERE`,
+    //   },
+    // },
   ],
 }

@@ -9,12 +9,7 @@ import Switch from "components/Switch"
 import MenuSvg from "images/icons/menu.svg"
 import CloseSvg from "images/icons/close.svg"
 
-const items = [
-  { name: "blog", to: "/" },
-  { name: "projects", to: "/" },
-  { name: "about", to: "/about" },
-]
-
+const activeClassName = "active"
 class Header extends React.PureComponent {
   componentDidUpdate(prevProps, prevState) {
     /**
@@ -55,13 +50,14 @@ class Header extends React.PureComponent {
   closeMobileMenu = () => this.props.closeMobileMenu()
 
   render() {
-    const { siteTitle, onChangeTheme, themeInverted } = this.props
+    const { siteTitle, routes, onChangeTheme, themeInverted } = this.props
     return (
       <StyledHeader>
         <Nav>
           <Brand>
-            <A to="/">
-              {siteTitle.split("").map((letter, index, arr) => {
+            <BrandA to="/" activeClassName={activeClassName}>
+              {siteTitle}
+              {/* {siteTitle.split("").map((letter, index, arr) => {
                 const coefficient = themeInverted ? arr.length - index : index
                 return (
                   <span
@@ -71,8 +67,8 @@ class Header extends React.PureComponent {
                     {letter}
                   </span>
                 )
-              })}
-            </A>
+              })} */}
+            </BrandA>
           </Brand>
 
           <MobileMenuButton onClick={this.openMobileMenu}>
@@ -90,17 +86,31 @@ class Header extends React.PureComponent {
               <span>Close</span>
             </MobileCloseButton>
             <Ul>
-              {items.map(({ name, to }, index) => (
+              {routes.map(({ name, to }, index) => (
                 <Li key={index}>
                   <StyledA
                     to={to}
+                    activeClassName={activeClassName}
                     // transitionMultiplier={(index + 1) * 500}
                   >
                     {name}
                   </StyledA>
                 </Li>
               ))}
-              <Li>
+              <Li
+              // style={{ position: "relative" }}
+              >
+                {/* <span
+                style={{
+                  position: "absolute",
+                  fontSize: "8px",
+                  top: -10,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                }}
+                >
+                  lights
+                </span> */}
                 <StyledSwitch
                   innerLabel={"off"}
                   innerLabelChecked={"on"}
@@ -158,20 +168,37 @@ const Brand = styled.div`
   font-size: 1.25rem;
   z-index: ${brandZIndex};
 
-  a {
-    text-decoration: none;
-    padding: 0.25rem 0;
-    color: ${props => props.theme.neutralDark};
-
-    &:hover {
-      text-decoration: none;
-      color: ${props => props.theme.themePrimary};
-    }
-  }
-
   ${tabletQuery`
     margin-right: 1rem;
   `}
+`
+
+const BrandA = styled(A).attrs({
+  activeClassName,
+})`
+  text-decoration: none;
+  padding: 0.25rem 0;
+  color: ${props => props.theme.neutralDark};
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 200ms, color 200ms;
+
+  &:hover {
+    text-decoration: none;
+    background-color: ${props => props.theme.themeLighter};
+  }
+
+  &:active {
+    background-color: ${props => props.theme.themeTertiary};
+  }
+
+  &.${activeClassName} {
+    background-color: ${props => props.theme.neutralLight};
+  }
+
+  & > span {
+    color: inherit;
+  }
 `
 
 const Menu = styled.menu`
@@ -229,18 +256,28 @@ const Li = styled.li`
   `}
 `
 
-const StyledA = styled(A)`
+const StyledA = styled(A).attrs({
+  activeClassName,
+})`
   cursor: pointer;
   display: block;
   text-decoration: none;
   color: ${props => props.theme.neutralDark};
-  transition: background 200ms;
+  transition: background-color 200ms;
   /* color ${props => props.transitionMultiplier}ms; */
   padding: 1rem 0.5rem;
 
   &:hover {
     text-decoration: none;
-    background: ${props => props.theme.themeLight};
+    background-color: ${props => props.theme.themeLight};
+  }
+
+  &:active {
+    background-color: ${props => props.theme.themeTertiary};        
+  }
+
+  &.${activeClassName} {
+    background-color: ${props => props.theme.neutralLight};    
   }
 
   ${tabletQuery`

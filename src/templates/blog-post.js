@@ -52,7 +52,7 @@ class BlogPostTemplate extends React.Component {
 
           <PostActions>
             <Dot>></Dot>
-            <A href={`${siteRepo}/edit/master/content/blog${slug}index.md`}>
+            <A href={`${siteRepo}/edit/source/content/blog${slug}index.md`}>
               Edit on GitHub
             </A>
 

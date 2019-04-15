@@ -42,7 +42,7 @@ class BlogPostTemplate extends React.Component {
               tags.length &&
               tags.map((tag, index) => (
                 <A to={`/tags/${kebabCase(tag)}`}>
-                  <Tag key={index} textMuted mRight="0.5rem">
+                  <Tag key={index} themed mRight="0.5rem">
                     {tag}
                   </Tag>
                 </A>
@@ -70,7 +70,9 @@ class BlogPostTemplate extends React.Component {
             <li>
               {previous && (
                 <A to={(postBasePath || "") + previous.fields.slug} rel="prev">
-                  <Arrow>⬅</Arrow>
+                  <Arrow role="img" aria-label="back arrow">
+                    ⬅
+                  </Arrow>
                   <NavLinkText>{previous.frontmatter.title}</NavLinkText>
                 </A>
               )}
@@ -79,7 +81,9 @@ class BlogPostTemplate extends React.Component {
               {next && (
                 <A to={(postBasePath || "") + next.fields.slug} rel="next">
                   <NavLinkText>{next.frontmatter.title}</NavLinkText>
-                  <Arrow>➡</Arrow>
+                  <Arrow role="img" aria-label="forward arrow">
+                    ➡
+                  </Arrow>
                 </A>
               )}
             </li>

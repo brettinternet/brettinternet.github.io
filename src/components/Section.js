@@ -8,9 +8,9 @@ const Section = styled.section`
   padding-top: 1em;
   padding-bottom: 1em;
   ${appWidth}
-  ${props => props.flex && flexStyles}
-  ${props => props.thin && thinStyles}
-  ${props => props.skinny && skinnyStyles}
+  ${({ flex }) => flex && flexStyles}
+  ${({ thin }) => thin && thinStyles}
+  ${({ skinny }) => skinny && skinnyStyles}
 `
 
 Section.propTypes = {

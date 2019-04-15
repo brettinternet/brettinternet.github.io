@@ -8,6 +8,7 @@ export const theme = {
   themeDarkAlt: "#1581e6",
   themeDark: "#116dc2",
   themeDarker: "#0d508f",
+
   neutralLighterAlt: "#f8f8f8",
   neutralLighter: "#f4f4f4",
   neutralLight: "#eaeaea",
@@ -19,8 +20,15 @@ export const theme = {
   neutralPrimaryAlt: "#4b4b4b",
   neutralPrimary: "#333333",
   neutralDark: "#272727",
+
   black: "#1d1d1d",
   white: "#ffffff",
+
+  red: "#e81123",
+  redDark: "#a80000",
+
+  green: "#bad80a",
+  greenDark: "#107c10",
 }
 
 export const themeInverted = ({
@@ -46,6 +54,10 @@ export const themeInverted = ({
   neutralDark,
   black,
   white,
+  red,
+  redDark,
+  green,
+  greenDark,
 }) => ({
   themeLighterAlt: themeDarker,
   themeLighter: themeDark,
@@ -69,4 +81,8 @@ export const themeInverted = ({
   neutralDark: neutralLighterAlt,
   black: white,
   white: black,
+  red: redDark,
+  redDark: red,
+  green: greenDark,
+  greenDark: green,
 })

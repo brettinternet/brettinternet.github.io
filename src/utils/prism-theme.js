@@ -3,7 +3,7 @@ import { css } from "styled-components"
 export default css`
   code[class*="language-"],
   pre[class*="language-"] {
-    color: #393a34;
+    color: ${({ theme }) => theme.neutralDark};
     font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier,
       monospace;
     direction: ltr;
@@ -25,26 +25,26 @@ export default css`
     hyphens: none;
   }
 
-  pre[class*="language-"]::-moz-selection,
+  /* pre[class*="language-"]::-moz-selection,
   pre[class*="language-"] ::-moz-selection,
   code[class*="language-"]::-moz-selection,
   code[class*="language-"] ::-moz-selection {
-    background: #c1def1;
+    background: ${({ theme }) => theme.themeLight};
   }
 
   pre[class*="language-"]::selection,
   pre[class*="language-"] ::selection,
   code[class*="language-"]::selection,
   code[class*="language-"] ::selection {
-    background: #c1def1;
-  }
+    background: ${({ theme }) => theme.themeLight};
+  } */
 
   /* Code blocks */
   pre[class*="language-"] {
     padding: 1em;
     margin: 0.5em 0;
     overflow: auto;
-    background-color: white;
+    background-color: ${({ theme }) => theme.neutralLighterAlt};
   }
 
   /* Inline code */
@@ -52,14 +52,14 @@ export default css`
     padding: 0.2em;
     padding-top: 1px;
     padding-bottom: 1px;
-    background: #f8f8f8;
+    background-color: ${({ theme }) => theme.neutralLighterAlt};
   }
 
   .token.comment,
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: #008000;
+    color: ${({ theme }) => theme.neutralTertiary};
     font-style: italic;
   }
 
@@ -68,12 +68,12 @@ export default css`
   }
 
   .token.string {
-    color: #a31515;
+    color: ${({ theme }) => theme.greenDark};
   }
 
   .token.punctuation,
   .token.operator {
-    color: #393a34; /* no highlight */
+    color: ${({ theme }) => theme.neutralDark}; /* no highlight */
   }
 
   .token.url,
@@ -83,7 +83,7 @@ export default css`
   .token.variable,
   .token.constant,
   .token.inserted {
-    color: #36acaa;
+    color: ${({ theme }) => theme.redDark};
   }
 
   .token.atrule,
@@ -93,11 +93,11 @@ export default css`
   .language-json .token.boolean,
   .language-json .token.number,
   code[class*="language-css"] {
-    color: #0000ff;
+    color: ${({ theme }) => theme.themeDarkAlt};
   }
 
   .token.function {
-    color: #393a34;
+    color: ${({ theme }) => theme.neutralDark};
   }
   .token.deleted,
   .language-autohotkey .token.tag {
@@ -136,19 +136,19 @@ export default css`
   }
 
   .token.directive.tag .tag {
-    background: #ffff00;
-    color: #393a34;
+    background-color: ${({ theme }) => theme.neutralLight};
+    color: ${({ theme }) => theme.neutralDark};
   }
 
   /* overrides color-values for the Line Numbers plugin
  * http://prismjs.com/plugins/line-numbers/
  */
   .line-numbers .line-numbers-rows {
-    border-right-color: #a5a5a5;
+    border-right-color: ${({ theme }) => theme.neutralLight};
   }
 
   .line-numbers-rows > span:before {
-    color: #2b91af;
+    color: ${({ theme }) => theme.neutralTertiaryAlt};
   }
 
   /* overrides color-values for the Line Highlight plugin

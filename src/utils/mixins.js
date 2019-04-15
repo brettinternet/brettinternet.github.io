@@ -1,7 +1,7 @@
 import { css } from "styled-components"
 import normalize from "utils/normalize"
 import { breakpoints } from "utils/constants"
-import prismTheme from "./prism-custom"
+import prismTheme from "./prism-theme"
 
 export const media = Object.keys(breakpoints).reduce((acc, label) => {
   acc[label] = (...args) => css`
@@ -45,7 +45,7 @@ export const headerFont = css`
 `
 
 export const sansSerifFont = css`
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Helvetica, Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 400;
 `
 
@@ -83,14 +83,9 @@ export const reset = css`
     text-decoration: none;
   }
 
-  code {
-    background-color: ${({ theme }) => theme.neutralLighterAlt};
-  }
-
   blockquote {
-    display: inline-block;
     padding: 1rem;
-    background-color: ${({ theme }) => theme.neutralLighterAlt}!important;
+    background-color: ${({ theme }) => theme.neutralLighterAlt};
     font-size: 80%;
   }
 

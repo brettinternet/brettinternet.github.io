@@ -5,7 +5,6 @@ import styled from "styled-components"
 import Layout from "components/Layout"
 import Section from "components/Section"
 import A from "components/Link"
-import Tag from "components/Tag"
 import PostDetails from "components/PostDetails"
 
 class TagRoute extends React.Component {
@@ -44,7 +43,9 @@ class TagRoute extends React.Component {
             <Nav>
               <li>
                 <A to="/tags/">
-                  <Arrow>⬅</Arrow>
+                  <Arrow role="img" aria-label="back arrow">
+                    ⬅
+                  </Arrow>
                   <NavLinkText>Browse all tags</NavLinkText>
                 </A>
               </li>

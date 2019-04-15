@@ -22,7 +22,7 @@ class TagsPageRoute extends React.Component {
                 key={tag.fieldValue}
                 to={`/tags/${kebabCase(tag.fieldValue)}/`}
               >
-                <Tag textMuted mRight="0.75em" mBottom="0.5em">
+                <Tag themed mRight="0.75em" mBottom="0.5em">
                   {tag.fieldValue}
                   {tag.totalCount > 1 && <span> ({tag.totalCount})</span>}
                 </Tag>
@@ -35,7 +35,9 @@ class TagsPageRoute extends React.Component {
           <Nav>
             <li>
               <A to="/blog/">
-                <Arrow>⬅</Arrow>
+                <Arrow role="img" aria-label="back arrow">
+                  ⬅
+                </Arrow>
                 <NavLinkText>Browse all posts</NavLinkText>
               </A>
             </li>

@@ -1,7 +1,7 @@
 ---
 title: Elbakyan is a heroine for modern science
 comments: false
-date: "2019-02-09 00:00:00 -0600"
+date: "2018-02-09 00:00:00 -0600"
 description: ""
 draft: false
 tags:

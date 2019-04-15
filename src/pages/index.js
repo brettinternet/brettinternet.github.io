@@ -6,6 +6,7 @@ import Layout from "components/Layout"
 import Section from "components/Section"
 import A from "components/Link"
 import Card from "components/Card"
+import NavButton from "components/NavButton"
 
 import { media } from "utils/mixins"
 import GithubSvg from "images/icons/github.svg"
@@ -13,12 +14,6 @@ import InstagramSvg from "images/icons/instagram.svg"
 import TwitterSvg from "images/icons/twitter.svg"
 import KeybaseSvg from "images/icons/keybase.svg"
 import LinkedinSvg from "images/icons/linkedin.svg"
-
-const cards = [
-  { title: "resume", description: "this is my resume" },
-  { title: "resume", description: "this is my resume" },
-  { title: "resume", description: "this is my resume" },
-]
 
 const icons = {
   linkedin: LinkedinSvg,
@@ -29,8 +24,7 @@ const icons = {
 }
 
 const IndexPage = ({ data, location }) => {
-  const socialLinks = data.site.siteMetadata.socialLinks
-  const { postBasePath } = data.site.siteMetadata
+  const { postBasePath, projects, socialLinks } = data.site.siteMetadata
   const posts = data.allMarkdownRemark.edges.slice(0, 2)
 
   return (
@@ -42,7 +36,11 @@ const IndexPage = ({ data, location }) => {
       location={location}
     >
       <Section thin>
-        <h1>
+        <h1
+          css={`
+            margin-top: 0;
+          `}
+        >
           Hi! I'm Brett{" "}
           <span role="img" aria-label="hand wave">
             👋
@@ -91,12 +89,17 @@ const IndexPage = ({ data, location }) => {
         `}
       >
         <Cards>
-          {cards.slice(0, 2).map((card, index) => (
+          {projects.slice(0, 2).map((card, index) => (
             <div key={index}>
               <Card {...card} />
             </div>
           ))}
         </Cards>
+        <CTAWrapper>
+          <NavButton dir="forward" to="/projects">
+            Browse
+          </NavButton>
+        </CTAWrapper>
       </Section>
 
       <Section
@@ -111,14 +114,13 @@ const IndexPage = ({ data, location }) => {
       <Section
         css={`
           padding-top: 0;
-          padding-bottom: 0;
         `}
       >
         <Cards>
           {posts.map(({ node }) => {
             const link = (postBasePath || "") + node.fields.slug
             return (
-              <div key={link}>
+              <div key={node.fields.slug}>
                 <Card
                   to={link}
                   title={node.frontmatter.title || node.fields.slug}
@@ -130,6 +132,11 @@ const IndexPage = ({ data, location }) => {
             )
           })}
         </Cards>
+        <CTAWrapper>
+          <NavButton dir="forward" to="/blog">
+            View more
+          </NavButton>
+        </CTAWrapper>
       </Section>
     </Layout>
   )
@@ -144,6 +151,12 @@ export const pageQuery = graphql`
         postBasePath
         socialLinks {
           name
+          href
+        }
+        projects {
+          title
+          description
+          details
           href
         }
       }
@@ -231,4 +244,9 @@ const Cards = styled.div`
       margin: 1em;
     }
   `}
+`
+
+const CTAWrapper = styled.div`
+  text-align: center;
+  margin: 1em;
 `

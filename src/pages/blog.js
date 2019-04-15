@@ -23,7 +23,7 @@ const BlogPage = ({ data, location }) => {
               const link = (postBasePath || "") + node.fields.slug
               return (
                 <PostDetails
-                  key={link}
+                  key={node.fields.slug}
                   title={node.frontmatter.title || node.fields.slug}
                   date={node.frontmatter.date}
                   link={link}

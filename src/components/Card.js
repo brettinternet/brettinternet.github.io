@@ -64,6 +64,8 @@ const RootA = styled(A)`
 
   p {
     color: ${({ theme }) => theme.neutralSecondary};
+    font-size: 15px;
+    line-height: 1.3;
     margin: 0;
   }
 

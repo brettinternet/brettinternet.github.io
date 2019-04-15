@@ -7,6 +7,7 @@ import Section from "components/Section"
 import A from "components/Link"
 import Tag from "components/Tag"
 import TwitterSvg from "images/icons/twitter.svg"
+import NavButton from "components/NavButton"
 
 import { serifFont } from "utils/mixins"
 import { kebabCase } from "utils/string"
@@ -66,28 +67,28 @@ class BlogPostTemplate extends React.Component {
 
           <hr />
 
-          <Nav>
-            <li>
-              {previous && (
-                <A to={(postBasePath || "") + previous.fields.slug} rel="prev">
-                  <Arrow role="img" aria-label="back arrow">
-                    ⬅
-                  </Arrow>
-                  <NavLinkText>{previous.frontmatter.title}</NavLinkText>
-                </A>
-              )}
-            </li>
-            <li>
-              {next && (
-                <A to={(postBasePath || "") + next.fields.slug} rel="next">
-                  <NavLinkText>{next.frontmatter.title}</NavLinkText>
-                  <Arrow role="img" aria-label="forward arrow">
-                    ➡
-                  </Arrow>
-                </A>
-              )}
-            </li>
-          </Nav>
+          <NavButton
+            buttons={[
+              ...(previous
+                ? {
+                    dir: "backward",
+                    rel: "prev",
+                    to: (postBasePath || "") + previous.fields.slug,
+                    name: previous.frontmatter.title,
+                    css: `font-size: 13px;`,
+                  }
+                : []),
+              ...(next
+                ? {
+                    dir: "forward",
+                    rel: "next",
+                    to: (postBasePath || "") + next.fields.slug,
+                    name: next.frontmatter.title,
+                    css: `font-size: 13px;`,
+                  }
+                : []),
+            ]}
+          />
         </Section>
       </Layout>
     )
@@ -169,35 +170,6 @@ const PostActions = styled.div`
 
   a svg {
     fill: currentColor;
-  }
-`
-
-const Arrow = styled.span`
-  text-decoration: none;
-`
-
-const NavLinkText = styled.span`
-  margin: 0 0.25em;
-`
-const Nav = styled.ul`
-  font-size: 13px;
-  text-align: center;
-  list-style: none;
-  padding: 0;
-
-  a {
-    padding: 0.25em;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: none;
-
-      ${NavLinkText} {
-        margin: 0 0.75em;
-        transition: margin 0.2s;
-        text-decoration: underline;
-      }
-    }
   }
 `
 

@@ -5,7 +5,9 @@ import styled from "styled-components"
 import Layout from "components/Layout"
 import Section from "components/Section"
 import A from "components/Link"
+import NavButton from "components/NavButton"
 import Tag from "components/Tag"
+
 import { kebabCase } from "utils/string"
 
 class TagsPageRoute extends React.Component {
@@ -32,16 +34,15 @@ class TagsPageRoute extends React.Component {
 
           <hr />
 
-          <Nav>
-            <li>
-              <A to="/blog/">
-                <Arrow role="img" aria-label="back arrow">
-                  ⬅
-                </Arrow>
-                <NavLinkText>Browse all posts</NavLinkText>
-              </A>
-            </li>
-          </Nav>
+          <div
+            css={`
+              text-align: center;
+            `}
+          >
+            <NavButton dir="backward" rel="prev" to="/blog/">
+              Browse all posts
+            </NavButton>
+          </div>
         </Section>
       </Layout>
     )
@@ -67,35 +68,5 @@ export const pageQuery = graphql`
 const Tags = styled.div`
   a:hover {
     text-decoration: none;
-  }
-`
-
-const Arrow = styled.span`
-  text-decoration: none;
-`
-
-const NavLinkText = styled.span`
-  margin: 0 0.25em;
-`
-
-const Nav = styled.ul`
-  font-size: 13px;
-  text-align: center;
-  list-style: none;
-  padding: 0;
-
-  a {
-    padding: 0.25em;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: none;
-
-      ${NavLinkText} {
-        margin: 0 0.75em;
-        transition: margin 0.2s;
-        text-decoration: underline;
-      }
-    }
   }
 `

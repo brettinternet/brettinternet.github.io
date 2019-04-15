@@ -1,0 +1,1 @@
+{"data":{"site":{"siteMetadata":{"postBasePath":"/blog"}},"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"fields":{"slug":"/2017-02-06-managing-notes-with-markdown-and-git/"},"frontmatter":{"date":"February 06, 2017","title":"Manage Notes with Markdown and Git","tags":["markdown","git"]}}}]}},"pageContext":{"isCreatedByStatefulCreatePages":false,"tag":"git"}}

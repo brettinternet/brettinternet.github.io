@@ -56,13 +56,13 @@ class BlogPostTemplate extends React.Component {
               Edit on GitHub
             </A>
 
-            <Dot>·</Dot>
+            {/* <Dot>·</Dot>
             <A
               href={`https://twitter.com/home?status=${window.location.href}`}
               title="Tweet post"
             >
               <TwitterSvg height="12" />
-            </A>
+            </A> */}
           </PostActions>
 
           <hr />

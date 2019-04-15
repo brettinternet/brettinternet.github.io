@@ -1,56 +1,99 @@
-// import React from "react"
-// import Helmet from "react-helmet"
-// import { Link, graphql } from "gatsby"
-// import kebabCase from "lodash/kebabCase"
-// import Layout from "../layouts/index.js"
+import React from "react"
+import { graphql } from "gatsby"
+import styled from "styled-components"
 
-// class TagsPageRoute extends React.Component {
-//   render() {
-//     const title = this.props.data.site.siteMetadata.title
-//     const allTags = this.props.data.allMarkdownRemark.group
+import Layout from "components/Layout"
+import Section from "components/Section"
+import A from "components/Link"
+import Tag from "components/Tag"
+import { kebabCase } from "utils/string"
 
-//     return (
-//       <Layout location={this.props.location}>
-//         <Helmet title={title} />
-//         <div>
-//           <h1>Tags</h1>
-//           <ul>
-//             {allTags.map(tag => (
-//               <li key={tag.fieldValue}>
-//                 <Link
-//                   style={{
-//                     textDecoration: "none",
-//                   }}
-//                   to={`/tags/${kebabCase(tag.fieldValue)}/`}
-//                 >
-//                   {tag.fieldValue} ({tag.totalCount})
-//                 </Link>
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-//       </Layout>
-//     )
-//   }
-// }
+class TagsPageRoute extends React.Component {
+  render() {
+    const allTags = this.props.data.allMarkdownRemark.group
 
-// export default TagsPageRoute
+    return (
+      <Layout location={this.props.location}>
+        <Section skinny>
+          <h2>Tags</h2>
+          <Tags>
+            {allTags.map(tag => (
+              <A
+                key={tag.fieldValue}
+                to={`/tags/${kebabCase(tag.fieldValue)}/`}
+              >
+                <Tag textMuted mRight="0.75em" mBottom="0.5em">
+                  {tag.fieldValue}
+                  {tag.totalCount > 1 && <span> ({tag.totalCount})</span>}
+                </Tag>
+              </A>
+            ))}
+          </Tags>
 
-// export const pageQuery = graphql`
-//   query TagsQuery {
-//     site {
-//       siteMetadata {
-//         title
-//       }
-//     }
-//     allMarkdownRemark(
-//       limit: 2000
-//       filter: { frontmatter: { draft: { ne: true } } }
-//     ) {
-//       group(field: frontmatter___tags) {
-//         fieldValue
-//         totalCount
-//       }
-//     }
-//   }
-// `
+          <hr />
+
+          <Nav>
+            <li>
+              <A to="/blog/">
+                <Arrow>⬅</Arrow>
+                <NavLinkText>Browse all posts</NavLinkText>
+              </A>
+            </li>
+          </Nav>
+        </Section>
+      </Layout>
+    )
+  }
+}
+
+export default TagsPageRoute
+
+export const pageQuery = graphql`
+  query TagsQuery {
+    allMarkdownRemark(
+      limit: 2000
+      filter: { frontmatter: { draft: { ne: true } } }
+    ) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
+      }
+    }
+  }
+`
+
+const Tags = styled.div`
+  a:hover {
+    text-decoration: none;
+  }
+`
+
+const Arrow = styled.span`
+  text-decoration: none;
+`
+
+const NavLinkText = styled.span`
+  margin: 0 0.25em;
+`
+
+const Nav = styled.ul`
+  font-size: 13px;
+  text-align: center;
+  list-style: none;
+  padding: 0;
+
+  a {
+    padding: 0.25em;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+
+      ${NavLinkText} {
+        margin: 0 0.75em;
+        transition: margin 0.2s;
+        text-decoration: underline;
+      }
+    }
+  }
+`

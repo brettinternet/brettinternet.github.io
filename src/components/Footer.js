@@ -5,11 +5,11 @@ import A from "components/Link"
 
 import { footerHeight } from "utils/mixins"
 
-const Footer = ({ siteUrl, className }) => (
+const Footer = ({ className, authorLink }) => (
   <StyledFooter className={className}>
     <span>
       Made with <Heart>❤</Heart> by{" "}
-      <A href={siteUrl} target="_blank" rel="noopener noreferrer">
+      <A href={authorLink} target="_blank" rel="noopener noreferrer">
         @brettinternet
       </A>
     </span>

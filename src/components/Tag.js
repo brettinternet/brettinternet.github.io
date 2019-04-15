@@ -2,12 +2,22 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
-const Tag = ({ children, themed, noBackground, textMuted, mRight }) => (
+const Tag = ({
+  children,
+  themed,
+  noBackground,
+  textMuted,
+  mRight,
+  mBottom,
+  noPadding,
+}) => (
   <StyledTag
     themed={themed}
     noBackground={noBackground}
     textMuted={textMuted}
     mRight={mRight}
+    mBottom={mBottom}
+    noPadding={noPadding}
   >
     <span>{children}</span>
   </StyledTag>
@@ -18,12 +28,12 @@ Tag.propTypes = {
   noBackground: PropTypes.bool,
   textMuted: PropTypes.bool,
   mRight: PropTypes.string,
+  mBottom: PropTypes.string,
 }
 
 export default Tag
 
 const StyledTag = styled.span`
-  /* float: left; */
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -31,48 +41,43 @@ const StyledTag = styled.span`
   border: none;
   border-radius: 3px;
   box-shadow: none;
-  background-color: ${props =>
-    props.noBackground
-      ? "inherit"
-      : props.themed
-      ? props.theme.themeDarker
-      : props.theme.neutralLight};
+  background-color: ${({ noBackground, themed, theme }) =>
+    noBackground ? "inherit" : themed ? theme.themeDarker : theme.neutralLight};
   min-width: 20px;
   max-width: 100%;
   min-height: 20px;
-  padding: 2px 6px;
+  padding: ${({ noPadding }) => (noPadding ? 0 : "2px 6px")};
   line-height: 16px;
-  color: ${props =>
-    props.textMuted
-      ? props.theme.neutralSecondary
-      : props.themed
-      ? props.theme.white
-      : props.theme.black};
-  font-size: 10px;
+  color: ${({ textMuted, themed, theme }) =>
+    textMuted ? theme.neutralSecondary : themed ? theme.white : theme.black};
   white-space: nowrap;
-  margin-right: ${props => (props.mRight ? props.mRight : "0px")};
+  margin-right: ${({ mRight }) => (mRight ? mRight : "0px")};
+  margin-bottom: ${({ mBottom }) => (mBottom ? mBottom : "0px")};
+  font-size: 11px;
 
   & > span {
     flex-grow: 1;
     flex-shrink: 1;
   }
 
+  transition: background-color 150ms, color 150ms;
+
   &:hover {
-    background-color: ${props =>
-      props.noBackground
+    background-color: ${({ noBackground, themed, theme }) =>
+      noBackground
         ? "inherit"
-        : props.themed
-        ? props.theme.themeDark
-        : props.theme.neutralQuaternaryAlt};
+        : themed
+        ? theme.themeDark
+        : theme.neutralQuaternaryAlt};
     text-decoration: none;
   }
 
   &:active {
-    background-color: ${props =>
-      props.noBackground
+    background-color: ${({ noBackground, themed, theme }) =>
+      noBackground
         ? "inherit"
-        : props.themed
-        ? props.theme.themeDarkAlt
-        : props.theme.neutralQuaternary};
+        : themed
+        ? theme.themeDarkAlt
+        : theme.neutralQuaternary};
   }
 `

@@ -1,6 +1,7 @@
 import { css } from "styled-components"
 import normalize from "utils/normalize"
 import { breakpoints } from "utils/constants"
+import prismTheme from "./prism-custom"
 
 export const media = Object.keys(breakpoints).reduce((acc, label) => {
   acc[label] = (...args) => css`
@@ -14,8 +15,10 @@ export const media = Object.keys(breakpoints).reduce((acc, label) => {
 
 export const appWidth = css`
   max-width: ${breakpoints.md}px;
-  padding: 0 15px;
-  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
 `
 
 const shelfHeight = css`
@@ -30,22 +33,39 @@ export const footerHeight = css`
   ${shelfHeight}
 `
 
-export const sourceSansFont = css`
-  font-family: "Source Sans Pro", sans-serif;
-  font-weight: 400;
+export const serifFont = css`
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
   font-style: normal;
 `
 
-export const patuaFont = css`
+export const headerFont = css`
   font-family: "Patua One", cursive;
   font-style: normal;
 `
 
+export const sansSerifFont = css`
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 400;
+`
+
 export const reset = css`
-  ${normalize}
+  ${normalize};
+  ${prismTheme};
+
+  html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *:after,
+  *:before {
+    box-sizing: inherit;
+  }
 
   body {
-    ${sourceSansFont}
+    ${sansSerifFont};
+    font-size: 18px;
   }
 
   h1,
@@ -54,7 +74,7 @@ export const reset = css`
   h4,
   h5,
   h6 {
-    ${patuaFont}
+    ${headerFont}
   }
 
   a,
@@ -64,14 +84,14 @@ export const reset = css`
   }
 
   code {
-    background-color: ${props => props.theme.neutralLighterAlt};
+    background-color: ${({ theme }) => theme.neutralLighterAlt};
   }
 
-  pre {
+  blockquote {
+    display: inline-block;
     padding: 1rem;
-    background-color: ${props => props.theme.neutralLighterAlt};
-    word-wrap: normal;
-    border-radius: 4px;
+    background-color: ${({ theme }) => theme.neutralLighterAlt}!important;
+    font-size: 80%;
   }
 
   pre code {
@@ -80,8 +100,8 @@ export const reset = css`
 
   hr {
     border: none;
-    border-bottom: 1px solid ${props => props.theme.neutralLight};
-    margin-block-start: 3em;
-    margin-block-end: 3em;
+    border-bottom: 1px solid ${({ theme }) => theme.neutralLight};
+    margin-block-start: 2em;
+    margin-block-end: 2em;
   }
 `

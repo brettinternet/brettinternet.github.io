@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { Link as A } from "gatsby"
 import styled, { css } from "styled-components"
 
-import { appWidth, headerHeight, media, patuaFont } from "utils/mixins"
+import { appWidth, headerHeight, media, headerFont } from "utils/mixins"
 import { breakpoints } from "utils/constants"
 import Switch from "components/Switch"
 import MenuSvg from "images/icons/menu.svg"
@@ -40,6 +40,8 @@ class Header extends React.PureComponent {
      */
     if (
       this.props.mobileMenuActive &&
+      prevProps.location &&
+      this.props.location &&
       prevProps.location.pathname !== this.props.location.pathname
     ) {
       this.closeMobileMenu()
@@ -85,7 +87,15 @@ class Header extends React.PureComponent {
               <CloseSvg height="20" />
               <span>Close</span>
             </MobileCloseButton>
+
             <Ul>
+              {this.props.mobileMenuActive && (
+                <Li>
+                  <StyledA to="/" activeClassName={activeClassName}>
+                    Home
+                  </StyledA>
+                </Li>
+              )}
               {routes.map(({ name, to }, index) => (
                 <Li key={index}>
                   <StyledA
@@ -144,7 +154,7 @@ const overlayZIndex = 15
 const switchZIndex = 20
 
 const StyledHeader = styled.header`
-  ${patuaFont};
+  ${headerFont};
   ${headerHeight};
 `
 

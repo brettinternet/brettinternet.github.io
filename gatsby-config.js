@@ -8,14 +8,16 @@ const siteMetadata = {
   description: `Solving problems with software, and other thoughts`,
   author: `@brettinternet`,
   siteUrl: "https://brettinternet.com",
+  siteRepo: "https://github.com/brettinternet/brettinternet.github.io",
   homeCity: "Salt Lake City",
-  // https://fonts.google.com/?selection.family=Patua+One|Source+Sans+Pro:300,400,400i,700
+  // https://fonts.google.com/?selection.family=Patua+One|Roboto+Slab:300,400,700
   googleFontLink:
-    "https://fonts.googleapis.com/css?family=Patua+One|Source+Sans+Pro:300,400,400i,700",
+    "https://fonts.googleapis.com/css?family=Patua+One|Roboto+Slab:300,400,700",
   routes: [
     { name: "blog", to: "/blog" },
     { name: "projects", to: "/projects" },
   ],
+  postBasePath: "/blog", // + :slug
   socialLinks: [
     { name: "linkedin", href: "https://linkedin.com/in/brettinternet" },
     { name: "github", href: "https://github.com/brettinternet" },

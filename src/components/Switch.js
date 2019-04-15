@@ -2,9 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
-/**
- * @source https://github.com/palantir/blueprint/blob/d724c5d38051fd7bb7d45f655f94dfb5964745e6/packages/core/src/components/forms/_controls.scss
- */
 const Switch = ({
   children,
   className,

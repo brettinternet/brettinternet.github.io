@@ -39,9 +39,9 @@ There are even some software options available for mobile devices that you might
 
 After you register your controller on the akaipro.com website, you can [download the software](http://www.akaipro.com/account/productreg/products). There aren't drivers that you'll need, but it's a good idea to upgrade the firmware.
 
-![upgrading the controller firmware](/images/akai-controller-firmware-1.png)
+![upgrading the controller firmware](./akai-controller-firmware-1.png)
 
-###### Follow the steps to upgrade the firmware
+<figcaption>Follow the steps to upgrade the firmware</figcaption>
 
 You might be tickling those ivories already, but you won't hear anything until we set up the software.
 
@@ -60,9 +60,11 @@ I've gone with Ableton Live since a few of my friends use it, and they have a gr
 For the most part, using a controller with Ableton is plug-and-play.
 Watch [_Setting Up a MIDI Controller_](https://www.ableton.com/en/live/learn-live/) which will briefly explain the key points to working with a controller in Ableton.
 
-![midi setup in ableton settings](/images/ableton-setup-1.png)
+![midi setup in ableton settings](./ableton-setup-1.png)
 
-###### Setup the controller input from Ableton preferences
+<figcaption>
+Setup the controller input from Ableton preferences
+</figcaption>
 
 #### Learn Ableton
 

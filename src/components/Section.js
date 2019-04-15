@@ -5,18 +5,18 @@ import { appWidth } from "utils/mixins"
 import { breakpoints } from "utils/constants"
 
 const Section = styled.section`
+  padding-top: 1em;
+  padding-bottom: 1em;
   ${appWidth}
   ${props => props.flex && flexStyles}
   ${props => props.thin && thinStyles}
   ${props => props.skinny && skinnyStyles}
-  ${props => props.mTop && mTopStyles}
 `
 
 Section.propTypes = {
   flex: PropTypes.bool,
   thin: PropTypes.bool,
   skinny: PropTypes.bool,
-  mTop: PropTypes.bool,
 }
 
 export default Section
@@ -32,8 +32,4 @@ const thinStyles = css`
 
 const skinnyStyles = css`
   max-width: ${breakpoints.xs}px;
-`
-
-const mTopStyles = css`
-  margin-top: 3rem;
 `

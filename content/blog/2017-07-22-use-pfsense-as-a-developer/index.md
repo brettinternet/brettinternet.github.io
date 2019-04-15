@@ -22,9 +22,9 @@ Some packages I use:
 - **pfBlockerNG**: reputation management and block lists like the [easylist](https://github.com/easylist/easylist)
 - **Status_Traffic_Totals**: a fancy graph and statistics measuring your traffic (pictured below)
 
-![censors](/images/pfsense4.png)
+![censors](./pfsense4.png)
 
-###### I use the internet a lot.
+<figcaption>I use the internet a lot</figcaption>
 
 Since pfSense runs on FreeBSD, anything that works with FreeBSD can be installed via the command line. There are other great packages that handle common networking tasks like `nmap` and `darkstat`.
 

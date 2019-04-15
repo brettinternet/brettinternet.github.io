@@ -62,7 +62,7 @@ class Layout extends React.PureComponent {
               siteMetadata {
                 title
                 author
-                siteUrl
+                siteRepo
                 routes {
                   name
                   to
@@ -72,7 +72,7 @@ class Layout extends React.PureComponent {
           }
         `}
         render={data => {
-          const { title, siteUrl, author, routes } = data.site.siteMetadata
+          const { title, author, routes, siteRepo } = data.site.siteMetadata
           return (
             <StyledTheme>
               <StyledApp>
@@ -97,7 +97,7 @@ class Layout extends React.PureComponent {
                       closeMobileMenu={this.closeMobileMenu}
                     />
                     <Main flex={flex}>{children}</Main>
-                    <Footer siteUrl={siteUrl} author={author} />
+                    <Footer authorLink={siteRepo} author={author} />
                   </>
                 </ThemeInverted>
               </StyledApp>
@@ -128,10 +128,6 @@ const StyledApp = styled.div`
 `
 
 const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-  }
-
   html, body {
     height: 100%;
   }

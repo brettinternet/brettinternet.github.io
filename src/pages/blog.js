@@ -3,13 +3,11 @@ import { graphql } from "gatsby"
 
 import Layout from "components/Layout"
 import Section from "components/Section"
-import A from "components/Link"
-import Tag from "components/Tag"
-import styled from "styled-components"
+import PostDetails from "components/PostDetails"
 
 const BlogPage = ({ data, location }) => {
+  const { postBasePath } = data.site.siteMetadata
   const posts = data.allMarkdownRemark.edges
-  console.log("posts: ", posts)
   return (
     <Layout
       headProps={{
@@ -18,46 +16,20 @@ const BlogPage = ({ data, location }) => {
       }}
       location={location}
     >
-      <Section thin mTop>
+      <Section thin>
         <table>
           <tbody>
             {posts.map(({ node }) => {
-              const title = node.frontmatter.title || node.fields.slug
-              const tags = node.frontmatter.tags
+              const link = (postBasePath || "") + node.fields.slug
               return (
-                <PostRow key={node.fields.slug}>
-                  <DateCell>
-                    <Tag noBackground textMuted mRight="1rem">
-                      {node.frontmatter.date}
-                    </Tag>
-                  </DateCell>
-
-                  <td>
-                    <Title>
-                      <A style={{ boxShadow: `none` }} to={node.fields.slug}>
-                        {title}
-                      </A>
-                    </Title>
-                    <Description>
-                      <small
-                        dangerouslySetInnerHTML={{
-                          __html: node.frontmatter.description || node.excerpt,
-                        }}
-                      />
-                    </Description>
-                    <Tags>
-                      {tags &&
-                        tags.length &&
-                        tags.map((tag, index) => (
-                          <A to={`/tags/${tag}`}>
-                            <Tag key={index} textMuted mRight="0.5rem">
-                              {tag}
-                            </Tag>
-                          </A>
-                        ))}
-                    </Tags>
-                  </td>
-                </PostRow>
+                <PostDetails
+                  key={link}
+                  title={node.frontmatter.title || node.fields.slug}
+                  date={node.frontmatter.date}
+                  link={link}
+                  description={node.frontmatter.description || node.excerpt}
+                  tags={node.frontmatter.tags}
+                />
               )
             })}
           </tbody>
@@ -71,7 +43,15 @@ export default BlogPage
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    site {
+      siteMetadata {
+        postBasePath
+      }
+    }
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { draft: { ne: true } } }
+    ) {
       edges {
         node {
           excerpt
@@ -81,36 +61,10 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            tags
           }
         }
       }
     }
   }
-`
-
-const PostRow = styled.tr`
-  & > td {
-    padding: 0.5rem 0;
-  }
-`
-
-const Title = styled.span`
-  font-size: 18px;
-  font-weight: bold;
-  display: inline-block;
-`
-
-const Description = styled.div`
-  margin: 0.5rem 0;
-`
-
-const Tags = styled.div`
-  a:hover {
-    text-decoration: none;
-  }
-`
-
-const DateCell = styled.td`
-  vertical-align: top;
-  text-align: right;
 `

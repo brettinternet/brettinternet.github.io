@@ -12,9 +12,10 @@ Using Windows comes at a very inconvenient cost with all the unexpected, forced 
 Just recently with the Creator's Update version 1703, the update prevented my remote login because it had restarted with that same initial settings options that Windows prompts you with when you first set up the OS.
 The primary benefit of running an app as a service is that services will start when the PC starts without having to login as a user first.
 
-![windows update](/images/windows1.png)
+![windows update](./windows1.png)
 
-###### Sneaky Windows updates at the worst times
+<figcaption>Sneaky Windows updates at the worst times</figcaption>
+
 
 There are a few options for setting up Plex as a service: [NSSM](https://nssm.cc/), [PMS as a service](https://forums.plex.tv/discussion/93994/pms-as-a-service)—written specifically for Plex—and [SRVSTART](http://www.rozanski.org.uk/services#srvstart). NSSM seems to be the de facto solution for lots of folks, and in my experience is has been a very trustworthy tool on PC. I use NSSM for a few other apps on my media server like PlexPy, Sonarr and Plex Requests.
 

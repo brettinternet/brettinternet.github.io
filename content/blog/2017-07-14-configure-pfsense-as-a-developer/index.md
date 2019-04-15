@@ -14,9 +14,9 @@ I used to work closely with a company's sysadmin in a previous job.
 Together with his help and some extensive research, I was able to harness a few of the wonderful open source tools that [pfSense](https://www.pfsense.org/) bundles together.
 The [community](https://forum.pfsense.org/) is full of intelligent professionals. As with all technical forums, entry-level participation can be intimidating. Networking is also a difficult subject to learn and harder to practice, but I use my own home network as a playground to implement some concepts. While pfSense is indeed enterprise-level software, this walkthrough is for hobbyists.
 
-![censors](/images/pfsense1.png)
+![censors](./pfsense1.png)
 
-###### I can monitor my hardware from my pfSense dashboard
+<figcaption>I can monitor the router hardware from the pfSense dashboard</figcaption>
 
 ## Hardware
 
@@ -38,9 +38,9 @@ The ultimate [pfSense installation guide](https://doc.pfsense.org/index.php/Inst
 
 Plug in your USB and boot up your machine. To enter the boot options menu, you usually press DEL, F8 or F12 as the BIOS splash screen appears depending on your hardware. You should then see the following screen:
 
-![setup](/images/pfsense2.jpg)
+![setup](./pfsense2.jpg)
 
-###### pfSense installation menu
+<figcaption>pfSense installation menu</figcaption>
 
 Select `1` to begin the installation.
 Then, press `i` to launch the installer. In the following screens let's go with the default configurations: `Accept these Settings`, then choose `Quick/Easy Install`.
@@ -56,7 +56,7 @@ Depending on your hardware, these interfaces can have different names--your inte
 You'll need to assign the correct interface to the WAN and the other to the LAN interface.
 Select the appropriate options and follow the prompts.
 
-![options](/images/pfsense3.jpg)
+![options](./pfsense3.jpg)
 
 After setting up your network interfaces, you'll now see an options menu on the CLI with numbers 1 through 14 or 15.
 If you set up the interfaces correctly, you'll see WAN and LAN IP addresses.

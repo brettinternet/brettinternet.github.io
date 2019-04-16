@@ -1,17 +1,21 @@
 language: node_js
+node_js:
+  - "9"
+dist: trusty
+sudo: false
 cache:
   directories:
     - ~/.npm
 notifications:
   email:
     recipients:
-      - chen@huchen.me
-    on_success: always
+      - brettinternet@gmail.com
     on_failure: always
-node_js:
-  - "9"
 git:
   depth: 3
+branches:
+  only:
+    - source
 script:
   - yarn build
 deploy:

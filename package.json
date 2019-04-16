@@ -5,13 +5,13 @@
   "version": "0.1.0",
   "author": "brettinternet",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "predeploy": "gatsby build --prefix-paths",
-    "deploy": "npm run predeploy && node deploy.js"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public -b master"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",

@@ -6,11 +6,6 @@ sudo: false
 cache:
   directories:
     - ~/.npm
-notifications:
-  email:
-    recipients:
-      - brettinternet@gmail.com
-    on_failure: always
 git:
   depth: 3
 branches:

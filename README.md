@@ -1,5 +1,7 @@
 # [brettinternet.com](https://brettinternet.com)
 
+[![Build Status](https://travis-ci.org/brettinternet/brettinternet.github.io.svg?branch=source)](https://travis-ci.org/brettinternet/brettinternet.github.io)
+
 This is the source for my personal site and blog [brettinternet.com](https://brettinternet.com).
 
 ## To do:

@@ -45,14 +45,14 @@ const siteMetadata = {
       description:
         "I wrote my CV with LaTeX. If you're an employer, check it out!",
       details: "brettinternet/cv",
-      href: "#",
+      href: "https://github.com/brettinternet/cv",
     },
     {
       title: "This blog",
       description:
         "This blog with React, CSS in JS, GraphQL and a static build for speed. 😎",
       details: "brettinternet/brettinternet.github.io",
-      href: "#",
+      href: "https://github.com/brettinternet/brettinternet.github.io",
     },
   ],
 }

@@ -30,7 +30,7 @@ const IndexPage = ({ data, location }) => {
   return (
     <Layout
       headProps={{
-        title: "",
+        title: "about",
         keywords: ["about", "brettinternet", "brettgardiner"],
       }}
       location={location}

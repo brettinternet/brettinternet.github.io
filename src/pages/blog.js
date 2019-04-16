@@ -12,7 +12,7 @@ const BlogPage = ({ data, location }) => {
     <Layout
       headProps={{
         title: "blog",
-        keywords: ["blog", "brettinternet", "brettgardiner"],
+        keywords: ["blog", "brettinternet"],
       }}
       location={location}
     >

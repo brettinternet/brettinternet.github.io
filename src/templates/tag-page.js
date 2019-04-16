@@ -12,12 +12,18 @@ class TagRoute extends React.Component {
     const { postBasePath } = this.props.data.site.siteMetadata
     const posts = this.props.data.allMarkdownRemark.edges
     const totalCount = this.props.data.allMarkdownRemark.totalCount
+    const tag = this.props.pageContext.tag
     return (
-      <Layout location={this.props.location}>
+      <Layout
+        headProps={{
+          title: tag,
+          keywords: [tag, "brettinternet"],
+        }}
+        location={this.props.location}
+      >
         <Section thin>
           <h3>
-            {totalCount} post{totalCount > 1 && "s"} tagged with “
-            {this.props.pageContext.tag}”
+            {totalCount} post{totalCount > 1 && "s"} tagged with “{tag}”
           </h3>
           <table>
             <tbody>

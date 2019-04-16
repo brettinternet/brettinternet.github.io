@@ -15,7 +15,13 @@ class TagsPageRoute extends React.Component {
     const allTags = this.props.data.allMarkdownRemark.group
 
     return (
-      <Layout location={this.props.location}>
+      <Layout
+        headProps={{
+          title: "tags",
+          keywords: ["tags", "brettinternet"],
+        }}
+        location={this.props.location}
+      >
         <Section skinny>
           <h2>Tags</h2>
           <Tags>

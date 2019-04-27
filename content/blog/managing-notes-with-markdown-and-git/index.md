@@ -7,10 +7,9 @@ tags:
   - git
 ---
 
-I'd love to tell you that since studying neuroscience in school, things come easy to me since I'm ✨so smart✨. However, this is simply not the case.
-To keep up with my peers, I took meticulous notes, read and reread assignments, and I constantly evaluated my priorities to stay on task.
+In school, to keep up with my peers, I took meticulous notes. I read and reread assignments, and I constantly evaluated my priorities to stay on task.
 I became obsessed with productivity. I was always looking out for the next shiny tool to help me get an edge in competitive learning.
-I've used apps like OmniFocus or Wunderlist to simpler tools like Apple Reminders.
+I've used feature-rich apps like OmniFocus or Wunderlist and simpler tools like Apple Reminders.
 
 For a while I used Evernote for note-taking, then I tried OneNote, Apple Notes and even Google Keep.
 I left Evernote because they'd seemed to have lost their way with gimmicky features.
@@ -18,9 +17,9 @@ I liked that OneNote didn't force-feed a premium option and it was just as acces
 Later, I thought that maybe Apple Notes would be just enough for me, but I eventually found that it wasn't better for anything other than lists or using the touch draw feature.
 
 Now as a developer, I use markdown in my IDE.
-This process for note-taking certainly isn't novel–you'll even find books on Github written with markdown.
+This process for note-taking certainly isn't novel – you'll even find books on GitHub written with markdown.
 Markdown offers the most formatting versatility, especially to display code excerpts with syntax highlighting and quickly reference links, create lists, and break notes out by sections.
-This is especially true since Github's flavoring and small enhancements have made markdown previewing so accessible. Even this blog is made using markdown.
+This is especially true since GitHub's flavoring and small enhancements have made markdown previewing so accessible. Even this blog is made using markdown.
 
 ### Markdown
 
@@ -32,7 +31,7 @@ My own blog posts are written in markdown and compiled with [Jekyll](https://git
 ### Git
 
 Right now I have a [BitBucket](https://bitbucket.org/brettinternet) for my private repos and notes and I use GitHub for my [public notes](https://github.com/brettinternet/public-notes).
-Eventually, I'll set up my own Gitlab to self-host my own repos.
+Eventually, I'll set up my own Gitab to self-host my own repos.
 
 My commit messages are short, but they're also meaningful so I can see my note history and refer back to find deleted excerpts. I also use [aliases](https://github.com/brettinternet/dotfiles/blob/master/.aliases) for git commands to make pushing to master very fast.
 
@@ -82,7 +81,6 @@ I also take notes to help out the students that I mentor. You can checkout my [p
 
 Apple Reminders still works for me with short term personal todos, and Trello for team projects.
 But for notes, I like good ol' fashioned git and markdown.
-I use a private BitBucket repo for my personal notes, and GitHub for my public notes.
-Eventually I'll self-host a git service like Gitlab.
+I use a private ~BitBucket~ GitHub repo for my personal notes, and a separate repo for my public notes.
 Perhaps you'll think I'm a monk or a Luddite for not choosing the prettiest new apps, but I believe this method is the strongest embrace of trustworthy technology.
 Git and markdown are two timeless tools that are sure to be around for a long time.

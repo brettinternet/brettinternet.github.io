@@ -309,7 +309,7 @@ This is the nature of _[Tagged template literals](https://www.ecma-international
 Will `1` or `2` be returned from the following expression?
 
 ```js
-;(() => {
+(() => {
   try {
     return 1
   } finally {

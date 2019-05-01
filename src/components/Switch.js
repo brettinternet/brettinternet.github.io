@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import { media } from "utils/mixins"
 
 const Switch = ({
   children,
@@ -54,6 +55,8 @@ Switch.propTypes = {
 }
 
 export default Switch
+
+const tabletQuery = media.sm
 
 const Indicator = styled.span`
   text-transform: none;
@@ -113,6 +116,12 @@ const Label = styled.label`
   text-transform: none;
   line-height: 1rem;
   /* margin-bottom: 10px; */
+
+  /* Larger on mobile */
+  transform: scale(1.3);
+  ${tabletQuery`
+    transform: scale(1);
+  `}
 
   &:hover input ~ ${Indicator} {
     background-color: rgba(115, 134, 148, 0.5);

@@ -58,7 +58,7 @@ const IndexPage = ({ data, location }) => {
         </P>
       </Section>
 
-      <Section skinny>
+      <Section skinny noPadding>
         <Ul>
           {socialLinks.map(({ href, name }, index) => {
             const Svg = icons[name]

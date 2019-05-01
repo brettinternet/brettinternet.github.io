@@ -14,22 +14,28 @@ import { kebabCase } from "utils/string"
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
-    const { siteRepo, postBasePath } = this.props.data.site.siteMetadata
+    const { location, data } = this.props
+    const post = data.markdownRemark
+    const { siteRepo, postBasePath } = data.site.siteMetadata
     const { previous, next, slug } = this.props.pageContext
     const { title, description, date, tags } = post.frontmatter
 
     return (
       <Layout
-        location={this.props.location}
+        location={location}
         headProps={{
           title,
           description: description || post.excerpt,
         }}
       >
-        <Section skinny>
+        <Section thin>
           <div>
-            <Tag noBackground textMuted mRight="1rem">
+            <Tag
+              noBackground
+              textMuted
+              mRight="1rem"
+              style={{ paddingLeft: 0 }}
+            >
               {date}
             </Tag>
           </div>
@@ -41,9 +47,9 @@ class BlogPostTemplate extends React.Component {
           <Tags>
             {tags &&
               tags.length &&
-              tags.map((tag, index) => (
-                <A to={`/tags/${kebabCase(tag)}`}>
-                  <Tag key={index} themed mRight="0.5rem">
+              tags.map(tag => (
+                <A key={tag} to={`/tags/${kebabCase(tag)}`}>
+                  <Tag themed mRight="0.5rem">
                     {tag}
                   </Tag>
                 </A>
@@ -56,13 +62,25 @@ class BlogPostTemplate extends React.Component {
               Edit on GitHub
             </A>
 
-            {/* <Dot>·</Dot>
+            <Dot>·</Dot>
+
             <A
-              href={`https://twitter.com/home?status=${window.location.href}`}
+              href={`${siteRepo}/issues/new?template=blog-comment.md&title=${encodeURI(
+                title
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Comment
+            </A>
+
+            <Dot>·</Dot>
+            <A
+              href={`https://twitter.com/home?status=${location.href}`}
               title="Tweet post"
             >
               <TwitterSvg height="12" />
-            </A> */}
+            </A>
           </PostActions>
 
           <hr />

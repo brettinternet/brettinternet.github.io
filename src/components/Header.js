@@ -9,7 +9,7 @@ import Switch from "components/Switch"
 import MenuSvg from "images/icons/menu.svg"
 import CloseSvg from "images/icons/close.svg"
 
-const activeClassName = "active"
+const isJavascriptEnabled = true
 class Header extends React.PureComponent {
   componentDidUpdate(prevProps, prevState) {
     /**
@@ -52,12 +52,21 @@ class Header extends React.PureComponent {
   closeMobileMenu = () => this.props.closeMobileMenu()
 
   render() {
-    const { siteTitle, routes, onChangeTheme, themeInverted } = this.props
+    const {
+      siteTitle,
+      routes,
+      onChangeTheme,
+      themeInverted,
+      location,
+    } = this.props
     return (
       <StyledHeader>
         <Nav>
           <Brand>
-            <BrandA to="/" activeClassName={activeClassName}>
+            <BrandA
+              to="/"
+              active={location.pathname === "/" ? "true" : undefined}
+            >
               {siteTitle}
               {/* {siteTitle.split("").map((letter, index, arr) => {
                 const coefficient = themeInverted ? arr.length - index : index
@@ -91,7 +100,10 @@ class Header extends React.PureComponent {
             <Ul>
               {this.props.mobileMenuActive && (
                 <Li>
-                  <StyledA to="/" activeClassName={activeClassName}>
+                  <StyledA
+                    to="/"
+                    active={location.pathname === "/" ? "true" : undefined}
+                  >
                     Home
                   </StyledA>
                 </Li>
@@ -100,17 +112,24 @@ class Header extends React.PureComponent {
                 <Li key={index}>
                   <StyledA
                     to={to}
-                    activeClassName={activeClassName}
+                    active={
+                      location.pathname
+                        .split("/")
+                        .indexOf(to.substring(1, to.length - 1)) > -1
+                        ? "active"
+                        : undefined
+                    }
                     // transitionMultiplier={(index + 1) * 500}
                   >
                     {name}
                   </StyledA>
                 </Li>
               ))}
-              <Li
-              // style={{ position: "relative" }}
-              >
-                {/* <span
+              {isJavascriptEnabled && (
+                <Li
+                // style={{ position: "relative" }}
+                >
+                  {/* <span
                 style={{
                   position: "absolute",
                   fontSize: "8px",
@@ -121,15 +140,16 @@ class Header extends React.PureComponent {
                 >
                   lights
                 </span> */}
-                <StyledSwitch
-                  innerLabel={"off"}
-                  innerLabelChecked={"on"}
-                  // label={themeInverted ? "" : "💡"}
-                  alignRight
-                  onChange={onChangeTheme}
-                  checked={!themeInverted}
-                />
-              </Li>
+                  <StyledSwitch
+                    innerLabel={"off"}
+                    innerLabelChecked={"on"}
+                    // label={themeInverted ? "" : "💡"}
+                    alignRight
+                    onChange={onChangeTheme}
+                    checked={!themeInverted}
+                  />
+                </Li>
+              )}
             </Ul>
           </Menu>
         </Nav>
@@ -160,6 +180,7 @@ const StyledHeader = styled.header`
 
 const Nav = styled.nav`
   ${appWidth}
+  max-width: ${breakpoints.sm}px;
   padding-top: 15px;
   padding-bottom: 15px;
   display: flex;
@@ -183,15 +204,15 @@ const Brand = styled.div`
   `}
 `
 
-const BrandA = styled(A).attrs({
-  activeClassName,
-})`
+const BrandA = styled(A)`
   text-decoration: none;
   padding: 0.25rem 0;
   color: ${props => props.theme.neutralDark};
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   transition: background-color 200ms, color 200ms;
+  /* Make up for padding-left offset for visual alignment */
+  margin-left: -0.5rem;
 
   &:hover {
     text-decoration: none;
@@ -202,9 +223,11 @@ const BrandA = styled(A).attrs({
     background-color: ${props => props.theme.themeTertiary};
   }
 
-  &.${activeClassName} {
-    background-color: ${props => props.theme.neutralLight};
-  }
+  ${({ active }) =>
+    active &&
+    css`
+      background-color: ${props => props.theme.neutralLight};
+    `}
 
   & > span {
     color: inherit;
@@ -266,9 +289,7 @@ const Li = styled.li`
   `}
 `
 
-const StyledA = styled(A).attrs({
-  activeClassName,
-})`
+const StyledA = styled(A)`
   cursor: pointer;
   display: block;
   text-decoration: none;
@@ -286,9 +307,11 @@ const StyledA = styled(A).attrs({
     background-color: ${props => props.theme.themeTertiary};        
   }
 
-  &.${activeClassName} {
-    background-color: ${props => props.theme.neutralLight};    
-  }
+  ${({ active }) =>
+    active &&
+    css`
+      background-color: ${props => props.theme.neutralLight};
+    `}
 
   ${tabletQuery`
     display: inline;

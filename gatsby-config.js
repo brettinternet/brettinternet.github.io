@@ -14,8 +14,8 @@ const siteMetadata = {
   googleFontLink:
     "https://fonts.googleapis.com/css?family=Patua+One|Roboto+Slab:300,400,700",
   routes: [
-    { name: "blog", to: "/blog" },
-    { name: "projects", to: "/projects" },
+    { name: "blog", to: "/blog/" },
+    { name: "projects", to: "/projects/" },
   ],
   postBasePath: "/blog", // + :slug
   socialLinks: [

@@ -16,8 +16,10 @@ const Card = ({ to, href, className, title, description, details, tags }) => (
         {details && <Details>{details}</Details>}
         {tags && (
           <Tags>
-            {tags.map((tag, index) => (
-              <Tag themed>{tag}</Tag>
+            {tags.map(tag => (
+              <Tag key={tag} themed>
+                {tag}
+              </Tag>
             ))}
           </Tags>
         )}
@@ -78,6 +80,10 @@ const RootA = styled(A)`
 
     h3 {
       text-decoration: underline;
+    }
+
+    p {
+      text-decoration: none;
     }
   }
 `

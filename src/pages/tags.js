@@ -22,7 +22,7 @@ class TagsPageRoute extends React.Component {
         }}
         location={this.props.location}
       >
-        <Section skinny>
+        <Section thin>
           <h2>Tags</h2>
           <Tags>
             {allTags.map(tag => (
@@ -38,17 +38,19 @@ class TagsPageRoute extends React.Component {
             ))}
           </Tags>
 
-          <hr />
+          <Section skinny noPadding>
+            <hr />
 
-          <div
-            css={`
-              text-align: center;
-            `}
-          >
-            <NavButton dir="backward" rel="prev" to="/blog/">
-              Browse all posts
-            </NavButton>
-          </div>
+            <div
+              css={`
+                text-align: center;
+              `}
+            >
+              <NavButton dir="backward" rel="prev" to="/blog/">
+                Browse all posts
+              </NavButton>
+            </div>
+          </Section>
         </Section>
       </Layout>
     )

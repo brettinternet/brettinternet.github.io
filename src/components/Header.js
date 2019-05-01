@@ -57,7 +57,7 @@ class Header extends React.PureComponent {
       routes,
       onChangeTheme,
       themeInverted,
-      location,
+      location = {},
     } = this.props
     return (
       <StyledHeader>
@@ -113,11 +113,12 @@ class Header extends React.PureComponent {
                   <StyledA
                     to={to}
                     active={
-                      location.pathname
-                        .split("/")
-                        .indexOf(to.substring(1, to.length - 1)) > -1
-                        ? "active"
-                        : undefined
+                      (location.pathname &&
+                        location.pathname
+                          .split("/")
+                          .indexOf(to.substring(1, to.length - 1)) > -1 &&
+                        "active") ||
+                      undefined
                     }
                     // transitionMultiplier={(index + 1) * 500}
                   >

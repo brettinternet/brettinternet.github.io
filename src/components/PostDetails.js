@@ -30,9 +30,9 @@ const PostDetails = ({ title, date, link, description, tags }) => (
 
       {tags && tags.length && (
         <Tags>
-          {tags.map((tag, index) => (
-            <A to={`/tags/${kebabCase(tag)}`}>
-              <Tag key={index} textMuted mRight="0.5rem">
+          {tags.map(tag => (
+            <A key={tag} to={`/tags/${kebabCase(tag)}`}>
+              <Tag textMuted mRight="0.5rem">
                 {tag}
               </Tag>
             </A>

@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 
 import Layout from "components/Layout"
 import Section from "components/Section"
-import A from "components/Link"
 import PostDetails from "components/PostDetails"
 import NavButton from "components/NavButton"
 
@@ -43,7 +42,7 @@ class TagRoute extends React.Component {
             </tbody>
           </table>
 
-          <Section skinny>
+          <Section skinny noPadding>
             <hr />
 
             <div

@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 
 const Tag = ({
+  className,
+  style,
   children,
   themed,
   noBackground,
@@ -12,6 +14,8 @@ const Tag = ({
   noPadding,
 }) => (
   <StyledTag
+    className={className}
+    style={style}
     themed={themed}
     noBackground={noBackground}
     textMuted={textMuted}
@@ -24,6 +28,7 @@ const Tag = ({
 )
 
 Tag.propTypes = {
+  style: PropTypes.object,
   themed: PropTypes.bool,
   noBackground: PropTypes.bool,
   textMuted: PropTypes.bool,

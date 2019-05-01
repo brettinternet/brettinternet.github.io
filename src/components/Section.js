@@ -11,6 +11,7 @@ const Section = styled.section`
   ${({ flex }) => flex && flexStyles}
   ${({ thin }) => thin && thinStyles}
   ${({ skinny }) => skinny && skinnyStyles}
+  ${({ noPadding }) => noPadding && noPaddingStyles}
 `
 
 Section.propTypes = {
@@ -32,4 +33,8 @@ const thinStyles = css`
 
 const skinnyStyles = css`
   max-width: ${breakpoints.xs}px;
+`
+
+const noPaddingStyles = css`
+  padding: 0;
 `

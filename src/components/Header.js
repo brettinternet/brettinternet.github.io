@@ -9,7 +9,6 @@ import Switch from "components/Switch"
 import MenuSvg from "images/icons/menu.svg"
 import CloseSvg from "images/icons/close.svg"
 
-const isJavascriptEnabled = true
 class Header extends React.PureComponent {
   componentDidUpdate(prevProps, prevState) {
     /**
@@ -59,6 +58,8 @@ class Header extends React.PureComponent {
       themeInverted,
       location = {},
     } = this.props
+    const isJavascriptEnabled = typeof window !== "undefined"
+
     return (
       <StyledHeader>
         <Nav>

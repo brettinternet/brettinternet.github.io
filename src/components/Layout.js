@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 
-import StyledTheme, { ThemeInverted } from "components/StyledTheme"
+import { ThemeProvider } from "components/ThemeContext"
 import Head, { HeadPropTypes } from "./Head"
 import Header from "components/Header"
 import Footer from "./Footer"
@@ -74,34 +74,32 @@ class Layout extends React.PureComponent {
         render={data => {
           const { title, author, routes, siteRepo } = data.site.siteMetadata
           return (
-            <StyledTheme>
+            <ThemeProvider inverted={this.state.themeInverted}>
               <StyledApp>
                 <Head {...headProps} />
-                <ThemeInverted inverted={this.state.themeInverted}>
-                  <>
-                    <GlobalStyle
-                      transitionBody={this.state.transitionBody}
-                      noBodyScroll={this.state.noBodyScroll}
-                    />
-                    <Header
-                      siteTitle={title}
-                      routes={routes}
-                      location={location}
-                      onChangeTheme={this.toggleThemeInversion}
-                      themeInverted={this.state.themeInverted}
-                      windowWidth={this.state.windowWidth}
-                      preventBodyScroll={this.preventBodyScroll}
-                      resetBodyScroll={this.resetBodyScroll}
-                      mobileMenuActive={this.state.mobileMenuActive}
-                      openMobileMenu={this.openMobileMenu}
-                      closeMobileMenu={this.closeMobileMenu}
-                    />
-                    <Main flex={flex}>{children}</Main>
-                    <Footer authorLink={siteRepo} author={author} />
-                  </>
-                </ThemeInverted>
+                <>
+                  <GlobalStyle
+                    transitionBody={this.state.transitionBody}
+                    noBodyScroll={this.state.noBodyScroll}
+                  />
+                  <Header
+                    siteTitle={title}
+                    routes={routes}
+                    location={location}
+                    onChangeTheme={this.toggleThemeInversion}
+                    themeInverted={this.state.themeInverted}
+                    windowWidth={this.state.windowWidth}
+                    preventBodyScroll={this.preventBodyScroll}
+                    resetBodyScroll={this.resetBodyScroll}
+                    mobileMenuActive={this.state.mobileMenuActive}
+                    openMobileMenu={this.openMobileMenu}
+                    closeMobileMenu={this.closeMobileMenu}
+                  />
+                  <Main flex={flex}>{children}</Main>
+                  <Footer authorLink={siteRepo} author={author} />
+                </>
               </StyledApp>
-            </StyledTheme>
+            </ThemeProvider>
           )
         }}
       />

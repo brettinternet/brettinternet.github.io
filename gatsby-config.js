@@ -9,6 +9,10 @@ const siteMetadata = {
   author: `@brettinternet`,
   siteUrl: "https://brettinternet.com",
   siteRepo: "https://github.com/brettinternet/brettinternet.github.io",
+  utterances: {
+    repo: "brettinternet/brettinternet.github.io",
+    label: "💬 Comments",
+  },
   homeCity: "Salt Lake City",
   // https://fonts.google.com/?selection.family=Patua+One|Roboto+Slab:300,400,700
   googleFontLink:

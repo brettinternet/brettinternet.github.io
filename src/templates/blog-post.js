@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
+import ThemeContext from "components/ThemeContext"
+import { media } from "utils/mixins"
 
 import Layout from "components/Layout"
 import Section from "components/Section"
@@ -8,6 +10,7 @@ import A from "components/Link"
 import Tag from "components/Tag"
 import TwitterSvg from "images/icons/twitter.svg"
 import NavButton from "components/NavButton"
+import Utterances from "components/Utterances"
 
 import { serifFont } from "utils/mixins"
 import { kebabCase } from "utils/string"
@@ -16,7 +19,7 @@ class BlogPostTemplate extends React.Component {
   render() {
     const { location, data } = this.props
     const post = data.markdownRemark
-    const { siteRepo, postBasePath } = data.site.siteMetadata
+    const { siteRepo, postBasePath, utterances } = data.site.siteMetadata
     const { previous, next, slug } = this.props.pageContext
     const { title, description, date, tags } = post.frontmatter
 
@@ -57,56 +60,67 @@ class BlogPostTemplate extends React.Component {
           </Tags>
 
           <PostActions>
-            <Dot>></Dot>
-            <A href={`${siteRepo}/edit/source/content/blog${slug}index.md`}>
-              Edit on GitHub
-            </A>
+            <div>
+              <Dot
+                css={`
+                  margin-left: 0;
+                `}
+              >
+                >
+              </Dot>
+              <A href={`${siteRepo}/edit/source/content/blog${slug}index.md`}>
+                Edit on GitHub
+              </A>
 
-            <Dot>·</Dot>
+              <Dot>·</Dot>
+              <A
+                href={`https://twitter.com/home?status=${location.href}`}
+                title="Tweet post"
+              >
+                <TwitterSvg height="12" />
+              </A>
+            </div>
 
-            <A
-              href={`${siteRepo}/issues/new?template=blog-comment.md&title=${encodeURI(
-                title
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Comment
-            </A>
-
-            <Dot>·</Dot>
-            <A
-              href={`https://twitter.com/home?status=${location.href}`}
-              title="Tweet post"
-            >
-              <TwitterSvg height="12" />
-            </A>
+            <NavButton
+              buttons={[
+                ...(previous
+                  ? {
+                      dir: "backward",
+                      rel: "prev",
+                      to: (postBasePath || "") + previous.fields.slug,
+                      name: previous.frontmatter.title,
+                      css: `font-size: 13px;`,
+                    }
+                  : []),
+                ...(next
+                  ? {
+                      dir: "forward",
+                      rel: "next",
+                      to: (postBasePath || "") + next.fields.slug,
+                      name: next.frontmatter.title,
+                      css: `font-size: 13px;`,
+                    }
+                  : []),
+              ]}
+            />
           </PostActions>
+        </Section>
 
-          <hr />
+        <hr />
 
-          <NavButton
-            buttons={[
-              ...(previous
-                ? {
-                    dir: "backward",
-                    rel: "prev",
-                    to: (postBasePath || "") + previous.fields.slug,
-                    name: previous.frontmatter.title,
-                    css: `font-size: 13px;`,
-                  }
-                : []),
-              ...(next
-                ? {
-                    dir: "forward",
-                    rel: "next",
-                    to: (postBasePath || "") + next.fields.slug,
-                    name: next.frontmatter.title,
-                    css: `font-size: 13px;`,
-                  }
-                : []),
-            ]}
-          />
+        <Section>
+          {utterances && (
+            <ThemeContext.Consumer>
+              {theme => (
+                <Utterances
+                  repo={utterances.repo}
+                  title={title}
+                  label={utterances.label}
+                  theme={theme}
+                />
+              )}
+            </ThemeContext.Consumer>
+          )}
         </Section>
       </Layout>
     )
@@ -121,6 +135,10 @@ export const pageQuery = graphql`
       siteMetadata {
         siteRepo
         postBasePath
+        utterances {
+          repo
+          label
+        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -182,12 +200,23 @@ const Tags = styled.div`
 `
 
 const PostActions = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
   margin-top: 3em;
-  text-align: left;
   font-size: 13px;
 
   a svg {
     fill: currentColor;
+  }
+
+  & > ul {
+    display: none;
+
+    ${media.xs`
+      display: block;
+    `}
   }
 `
 

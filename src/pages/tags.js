@@ -38,18 +38,19 @@ class TagsPageRoute extends React.Component {
             ))}
           </Tags>
 
-          <Section skinny noPadding>
-            <hr />
+          <hr />
 
-            <div
+          <Section skinny noPadding>
+            <NavButton
+              dir="backward"
+              rel="prev"
+              to="/blog/"
               css={`
-                text-align: center;
+                justify-content: center;
               `}
             >
-              <NavButton dir="backward" rel="prev" to="/blog/">
-                Browse all posts
-              </NavButton>
-            </div>
+              Browse all posts
+            </NavButton>
           </Section>
         </Section>
       </Layout>

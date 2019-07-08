@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 const src = "https://utteranc.es/client.js"
 const elementId = "utterances"
 
-const Utterances = ({ repo, theme, title, label }) => {
+const Utterances = ({ repo, theme, issueTerm, label }) => {
   const rootElm = useRef(null)
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const Utterances = ({ repo, theme, title, label }) => {
     const utterancesConfig = {
       src,
       repo,
-      "issue-term": "pathname",
+      "issue-term": issueTerm,
       theme: `github-${theme}`,
       label,
       crossorigin: "anonymous",

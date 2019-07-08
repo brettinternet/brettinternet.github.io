@@ -84,7 +84,12 @@ class Header extends React.PureComponent {
           </Brand>
 
           <MobileMenuButton onClick={this.openMobileMenu}>
-            <MenuSvg height="20" />
+            <MenuSvg
+              height="25"
+              css={`
+                margin-right: 5px;
+              `}
+            />
             <span>Menu</span>
           </MobileMenuButton>
 
@@ -94,7 +99,7 @@ class Header extends React.PureComponent {
             }
           >
             <MobileCloseButton onClick={this.closeMobileMenu}>
-              <CloseSvg height="20" />
+              <CloseSvg height="25" />
               <span>Close</span>
             </MobileCloseButton>
 
@@ -366,7 +371,7 @@ const MobileCloseButton = styled.button`
   position: absolute;
   top: 0;
   right: 0;
-  margin: 18px;
+  margin: 15px;
   color: ${props => props.theme.black};
   ${resetButton};
 `

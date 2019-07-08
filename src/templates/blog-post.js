@@ -114,7 +114,7 @@ class BlogPostTemplate extends React.Component {
               {theme => (
                 <Utterances
                   repo={utterances.repo}
-                  title={title}
+                  issueTerm="pathname"
                   label={utterances.label}
                   theme={theme}
                 />

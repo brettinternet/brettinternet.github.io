@@ -42,18 +42,19 @@ class TagRoute extends React.Component {
             </tbody>
           </table>
 
-          <Section skinny noPadding>
-            <hr />
+          <hr />
 
-            <div
+          <Section skinny noPadding>
+            <NavButton
+              dir="backward"
+              rel="prev"
+              to="/tags/"
               css={`
-                text-align: center;
+                justify-content: center;
               `}
             >
-              <NavButton dir="backward" rel="prev" to="/tags/">
-                Browse all tags
-              </NavButton>
-            </div>
+              Browse all tags
+            </NavButton>
           </Section>
         </Section>
       </Layout>

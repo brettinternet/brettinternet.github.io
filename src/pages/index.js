@@ -96,7 +96,13 @@ const IndexPage = ({ data, location }) => {
           ))}
         </Cards>
         <CTAWrapper>
-          <NavButton dir="forward" to="/projects">
+          <NavButton
+            dir="forward"
+            to="/projects"
+            css={`
+              justify-content: center;
+            `}
+          >
             Browse
           </NavButton>
         </CTAWrapper>
@@ -133,7 +139,13 @@ const IndexPage = ({ data, location }) => {
           })}
         </Cards>
         <CTAWrapper>
-          <NavButton dir="forward" to="/blog">
+          <NavButton
+            dir="forward"
+            to="/blog"
+            css={`
+              justify-content: center;
+            `}
+          >
             View more
           </NavButton>
         </CTAWrapper>

@@ -31,6 +31,13 @@ const siteMetadata = {
   ],
   projects: [
     {
+      title: "My Homelab",
+      description:
+        "Container orchestration, VPS bastion server deployment with Terraform and WireGuard VPN.",
+      details: "brettinternet/homelab",
+      href: "https://github.com/brettinternet/homelab",
+    },
+    {
       title: "Public Notes",
       description:
         "Watch what I'm currently learning, and other references I aggregate over time.",
@@ -67,7 +74,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
+        path: `${ __dirname }/content/blog`,
         name: `blog`,
       },
     },
@@ -99,7 +106,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${ __dirname }/src/images`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -113,7 +120,7 @@ module.exports = {
         background_color: theme.neutralPrimary,
         theme_color: theme.themePrimary,
         display: `minimal-ui`,
-        icon: `${__dirname}/static/favicon.png`,
+        icon: `${ __dirname }/static/favicon.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
@@ -122,12 +129,12 @@ module.exports = {
     {
       resolve: "gatsby-plugin-root-import",
       options: {
-        src: `${__dirname}/src`,
-        pages: `${__dirname}/src/pages`,
-        components: `${__dirname}/src/components`,
-        images: `${__dirname}/src/images`,
-        utils: `${__dirname}/src/utils`,
-        templates: `${__dirname}/src/templates`,
+        src: `${ __dirname }/src`,
+        pages: `${ __dirname }/src/pages`,
+        components: `${ __dirname }/src/components`,
+        images: `${ __dirname }/src/images`,
+        utils: `${ __dirname }/src/utils`,
+        templates: `${ __dirname }/src/templates`,
       },
     },
     {
@@ -141,68 +148,68 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-feed`,
-    //   options: {
-    //     // this base query will be merged with any queries in each feed
-    //     query: `
-    //     {
-    //       site {
-    //         siteMetadata {
-    //           title
-    //           description
-    //           siteUrl
-    //           site_url: siteUrl
-    //         }
-    //       }
-    //     }
-    //   `,
-    //     feeds: [
-    //       {
-    //         serialize: ({ query: { site, allMarkdownRemark } }) => {
-    //           return allMarkdownRemark.edges.map(edge => {
-    //             return Object.assign({}, edge.node.frontmatter, {
-    //               description: edge.node.excerpt,
-    //               date: edge.node.frontmatter.date,
-    //               url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-    //               guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-    //               custom_elements: [{ "content:encoded": edge.node.html }],
-    //             })
-    //           })
-    //         },
-    //         query: `
-    //         {
-    //           allMarkdownRemark(
-    //             limit: 1000,
-    //             sort: { order: DESC, fields: [frontmatter___date] },
-    //             filter: {frontmatter: { draft: { ne: true } }}
-    //           ) {
-    //             edges {
-    //               node {
-    //                 excerpt
-    //                 html
-    //                 fields { slug }
-    //                 frontmatter {
-    //                   title
-    //                   date
-    //                 }
-    //               }
-    //             }
-    //           }
-    //         }
-    //       `,
-    //         output: "/rss.xml",
-    //         title: "Gatsby RSS Feed",
-    //       },
-    //     ],
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        // this base query will be merged with any queries in each feed
+        query: `
+        {
+          site {
+            siteMetadata {
+              title
+              description
+              siteUrl
+              site_url: siteUrl
+            }
+          }
+        }
+      `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url: `${ site.siteMetadata.siteUrl }/blog/${ edge.node.fields.slug }`,
+                  guid: `${ site.siteMetadata.siteUrl }/blog/${ edge.node.fields.slug }`,
+                  custom_elements: [{ "content:encoded": edge.node.html }],
+                })
+              })
+            },
+            query: `
+            {
+              allMarkdownRemark(
+                limit: 1000,
+                sort: { order: DESC, fields: [frontmatter___date] },
+                filter: {frontmatter: { draft: { ne: true } }}
+              ) {
+                edges {
+                  node {
+                    excerpt
+                    html
+                    fields { slug }
+                    frontmatter {
+                      title
+                      date
+                    }
+                  }
+                }
+              }
+            }
+          `,
+            output: "/rss.xml",
+            title: "Blog RSS Feed",
+          },
+        ],
+      },
+    },
 
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     //trackingId: `ADD YOUR TRACKING ID HERE`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-91007995-3`,
+      },
+    },
   ],
 }

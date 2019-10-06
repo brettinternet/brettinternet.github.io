@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Blog RSS Feed]]></title><description><![CDATA[Solving problems with software, and other thoughts]]></description><link>https://brettinternet.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 06 Oct 2019 22:24:13 GMT</lastBuildDate><item><title><![CDATA[Elbakyan is a heroine for modern science]]></title><description><![CDATA[A popular article was recently published about the history of Alexandra Elbakyan’s Sci-Hub, a website that makes academic journal papers…]]></description><link>https://brettinternet.com/blog//elbakyan-is-a-heroine/</link><guid isPermaLink="false">https://brettinternet.com/blog//elbakyan-is-a-heroine/</guid><pubDate>Fri, 09 Feb 2018 06:00:00 GMT</pubDate><content:encoded>&lt;p&gt;A popular article was &lt;a href=&quot;https://www.theverge.com/2018/2/8/16985666/alexandra-elbakyan-sci-hub-open-access-science-papers-lawsuit&quot;&gt;recently published&lt;/a&gt; about the history of Alexandra Elbakyan’s Sci-Hub, a website that makes academic journal papers free to everyone. It’s a controversial topic following last year’s civil litigation by two major publishers, Elsevier and the American Chemical Society. Most recently, Cloudfare responded to the court’s injunction by &lt;a href=&quot;https://twitter.com/Sci_Hub/status/959702088543539200&quot;&gt;terminating service&lt;/a&gt; to Sci-Hub’s domains (&lt;a href=&quot;https://torrentfreak.com/cloudflare-terminates-service-to-sci-hub-domain-names-180205/&quot;&gt;this&lt;/a&gt; brings up additional ethical concern). Meanwhile, Sci-Hub dances away out of reach by staying available on other domain names inaccessible to the US without a VPN.&lt;/p&gt;
+&lt;p&gt;Alexandra has become somewhat of a Martin Luther of science. Except her &lt;em&gt;Ninety-five Theses&lt;/em&gt; is instead a database of 64 million academic papers in PDF. Her work makes science more accessible to the laity, instead of a submission to the interpretation and approval of academics from high-status institutions. My own Bachelor of Science makes me nervous about the implications of lay folk making decisions based on studies perused without understanding rigorous philosophies of science. However, this is an unavoidable aspect already being carried out by the shallow community of anti-science, FDA-approved pill pushers and social influencers with their online degrees and beauty blogs. But imagine a different scene of coffee shop discussions of fruit fly sleep cycles or dinner table deliberation over neuronal action potential.&lt;/p&gt;
+&lt;p&gt;Paywalls and walled gardens for publications with insurmountable price tags make learning an exclusive, invite-only process for elite institutions. The effects of Reverend Luther’s translations of the bible to the German vernacular had tremendous impact on both religious &lt;em&gt;and&lt;/em&gt; cultural contexts. With Sci-Hub making scientific studies more widely available, I wonder if these academic papers could receive the same widespread scrutiny that open source code receives from the developer community. Even rigorous disciplines receive contributions from amateur enthusiasts, like the hobbyist who recently &lt;a href=&quot;https://skyriddles.wordpress.com/2018/01/21/nasas-long-dead-image-satellite-is-alive/&quot;&gt;found NASA’s lost satellite&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I am convinced that this is not primarily an economic issue but a moral one. While we’re bombarded with an endless stream of media in this digital era (like a &lt;a href=&quot;http://nautil.us/issue/52/the-hive/modern-media-is-a-dos-attack-on-your-free-will&quot;&gt;DoS attack on our attention&lt;/a&gt;), what effect would open discussions of empirical sources have on the quality of our media consumption, and even the advancement of our society? This is all a bit idealistic, but imagine this: a new generation of young scientists with the democratization of evidence-based persuasion. Taxpayers should have access to the research they paid for. Publishers hoard and monetize public research, but hopefully not for long.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Fake Javascript: House of Horror]]></title><description><![CDATA[Happy October! Welcome to the JavaScript House of Horror. Here lies hacky, unconventional, or just uncommon JavaScript prose. This is post…]]></description><link>https://brettinternet.com/blog//fake-javascript/</link><guid isPermaLink="false">https://brettinternet.com/blog//fake-javascript/</guid><pubDate>Wed, 11 Oct 2017 06:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Happy October! Welcome to the JavaScript House of Horror. Here lies hacky, unconventional, or just uncommon JavaScript prose. This is post is not recommended for small children, the highly-opinionated or ill-tempered.&lt;/p&gt;
+&lt;h2&gt;Error handling&lt;/h2&gt;
+&lt;p&gt;Skip Google and get answers immediately.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;something&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  window&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;location&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;href &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&quot;https://stackoverflow.com/&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&quot;search?q=[js]+&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;
+    e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;message
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This &lt;em&gt;&lt;strong&gt;innovative&lt;/strong&gt;&lt;/em&gt; solution was first suggested &lt;a href=&quot;https://twitter.com/DivineOmega/status/695744177557106688&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Of course, the easy way out would be to handle errors like this globally:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;window&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function-variable function&quot;&gt;onerror&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt;
+  window&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;location&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;href &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&quot;https://stackoverflow.com/&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;
+    &lt;span class=&quot;token string&quot;&gt;&quot;search?q=[js]+&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;
+    e&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;message
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Also, don’t forget to use &lt;code class=&quot;language-text&quot;&gt;encodeURIComponent(e.message)&lt;/code&gt; before you implement this ✨&lt;em&gt;feature&lt;/em&gt;✨ in production.&lt;/p&gt;
+&lt;h2&gt;Bracket magic&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// returns &quot;10&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;See a thorough explanation &lt;a href=&quot;https://stackoverflow.com/a/7202287/6817437&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;JSF*ck&lt;/h2&gt;
+&lt;p&gt;Run the code &lt;a href=&quot;https://repl.it/Kiwu/0&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here are the basic building blocks for &lt;a href=&quot;http://www.jsfuck.com/&quot;&gt;JSF*ck&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;false&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;+[] === 0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So imagine that we can stringify JavaScript return values like ‘undefined’ and ‘true’. And with numeric values, we can extract specific index values from these words. &lt;a href=&quot;http://www.jazcash.com/a-javascript-journey-with-only-six-characters/&quot;&gt;This&lt;/a&gt; is a more thorough explanation.&lt;/p&gt;
+&lt;p&gt;Here’s a similar one: Emoticons or JavaScript?&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;ﾟωﾟﾉ&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;｀ｍ´）ﾉ &lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;┻━┻   &lt;span class=&quot;token comment&quot;&gt;//*´∇｀*/ [&apos;_&apos;]; o=(ﾟｰﾟ)  =_=3; c=(ﾟΘﾟ) =(ﾟｰﾟ)-(ﾟｰﾟ); (ﾟДﾟ) =(ﾟΘﾟ)= (o^_^o)/ (o^_^o);(ﾟДﾟ)={ﾟΘﾟ: &apos;_&apos; ,ﾟωﾟﾉ : ((ﾟωﾟﾉ==3) +&apos;_&apos;) [ﾟΘﾟ] ,ﾟｰﾟﾉ :(ﾟωﾟﾉ+ &apos;_&apos;)[o^_^o -(ﾟΘﾟ)] ,ﾟДﾟﾉ:((ﾟｰﾟ==3) +&apos;_&apos;)[ﾟｰﾟ] }; (ﾟДﾟ) [ﾟΘﾟ] =((ﾟωﾟﾉ==3) +&apos;_&apos;) [c^_^o];(ﾟДﾟ) [&apos;c&apos;] = ((ﾟДﾟ)+&apos;_&apos;) [ (ﾟｰﾟ)+(ﾟｰﾟ)-(ﾟΘﾟ) ];(ﾟДﾟ) [&apos;o&apos;] = ((ﾟДﾟ)+&apos;_&apos;) [ﾟΘﾟ];(ﾟoﾟ)=(ﾟДﾟ) [&apos;c&apos;]+(ﾟДﾟ) [&apos;o&apos;]+(ﾟωﾟﾉ +&apos;_&apos;)[ﾟΘﾟ]+ ((ﾟωﾟﾉ==3) +&apos;_&apos;) [ﾟｰﾟ] + ((ﾟДﾟ) +&apos;_&apos;) [(ﾟｰﾟ)+(ﾟｰﾟ)]+ ((ﾟｰﾟ==3) +&apos;_&apos;) [ﾟΘﾟ]+((ﾟｰﾟ==3) +&apos;_&apos;) [(ﾟｰﾟ) - (ﾟΘﾟ)]+(ﾟДﾟ) [&apos;c&apos;]+((ﾟДﾟ)+&apos;_&apos;) [(ﾟｰﾟ)+(ﾟｰﾟ)]+ (ﾟДﾟ) [&apos;o&apos;]+((ﾟｰﾟ==3) +&apos;_&apos;) [ﾟΘﾟ];(ﾟДﾟ) [&apos;_&apos;] =(o^_^o) [ﾟoﾟ] [ﾟoﾟ];(ﾟεﾟ)=((ﾟｰﾟ==3) +&apos;_&apos;) [ﾟΘﾟ]+ (ﾟДﾟ) .ﾟДﾟﾉ+((ﾟДﾟ)+&apos;_&apos;) [(ﾟｰﾟ) + (ﾟｰﾟ)]+((ﾟｰﾟ==3) +&apos;_&apos;) [o^_^o -ﾟΘﾟ]+((ﾟｰﾟ==3) +&apos;_&apos;) [ﾟΘﾟ]+ (ﾟωﾟﾉ +&apos;_&apos;) [ﾟΘﾟ]; (ﾟｰﾟ)+=(ﾟΘﾟ); (ﾟДﾟ)[ﾟεﾟ]=&apos;\\&apos;; (ﾟДﾟ).ﾟΘﾟﾉ=(ﾟДﾟ+ ﾟｰﾟ)[o^_^o -(ﾟΘﾟ)];(oﾟｰﾟo)=(ﾟωﾟﾉ +&apos;_&apos;)[c^_^o];(ﾟДﾟ) [ﾟoﾟ]=&apos;\&quot;&apos;;(ﾟДﾟ) [&apos;_&apos;] ( (ﾟДﾟ) [&apos;_&apos;] (ﾟεﾟ+(ﾟДﾟ)[ﾟoﾟ]+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+((ﾟｰﾟ) + (ﾟΘﾟ))+ (c^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟｰﾟ)+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟΘﾟ)+ (c^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ ((ﾟｰﾟ) + (o^_^o))+ (ﾟДﾟ)[ﾟεﾟ]+((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟｰﾟ)+ (c^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟΘﾟ)+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ ((o^_^o) +(o^_^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) - (ﾟΘﾟ))+ (o^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ (o^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ (c^_^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^_^o) +(o^_^o))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟｰﾟ)+ ((o^_^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟoﾟ]) (ﾟΘﾟ)) (&apos;_&apos;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Run the &lt;a href=&quot;https://repl.it/Kion/1&quot;&gt;code here&lt;/a&gt; or check out the &lt;a href=&quot;http://utf-8.jp/public/aaencode.html&quot;&gt;encoder&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;However, don’t fall in love with brackets just yet. Comparing array equality should break your spirits:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;   &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;    &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;   &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// false&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;      &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;       &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The ECMA spec describes this behavior in &lt;a href=&quot;https://www.ecma-international.org/ecma-262/#sec-abstract-equality-comparison&quot;&gt;Abstract Equality Comparison&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;JavaScript Labyrinth&lt;/h2&gt;
+&lt;p data-height=&quot;265&quot; data-theme-id=&quot;light&quot; data-slug-hash=&quot;JyVBQx&quot; data-default-tab=&quot;result&quot; data-user=&quot;brettinternet&quot; data-embed-version=&quot;2&quot; data-pen-title=&quot;JavaScript Labyrinth&quot; class=&quot;codepen&quot;&gt;See the Pen &lt;a href=&quot;https://codepen.io/brettinternet/pen/JyVBQx/&quot;&gt;JavaScript Labyrinth&lt;/a&gt; by Brett (&lt;a href=&quot;https://codepen.io/brettinternet&quot;&gt;@brettinternet&lt;/a&gt;) on &lt;a href=&quot;https://codepen.io&quot;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&quot;https://production-assets.codepen.io/assets/embed/ei.js&quot;&gt;&lt;/script&gt;
+&lt;h2&gt;isPrime()&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;isPrime&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;token regex&quot;&gt;/^.?$|^(..+?)\1+$/&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;1&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;repeat&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;n&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://iluxonchik.github.io/regular-expression-check-if-number-is-prime/&quot;&gt;Here&lt;/a&gt; is an explanation of a similar solution with a regular expression.&lt;/p&gt;
+&lt;h2&gt;Draw the box model on a webpage&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;$$&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  a&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;style&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;outline &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;1px solid #&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 38.83040935672514%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAABYlAAAWJQFJUiTwAAABqklEQVQoz1WRy27TQBiF/R5A2TSIFiTYwootK1Y8JIumkJQqoREPwYamiUgJysWXxPbYM+PxJR9/3IiWkY7O2DPzzfGx9/7DR446L3j67CVPjk95fHzS6qhz2r7f+yN57jx/xds37zg+eU33/Atl6fizDNjGKVmeEW02RFGE1zvr8flTl65o0P/G6GLElah3NuCie8mwN6Qvfnk+YPT1O8P+FYv5kiRVJConyzIKgZowk0tKPH+1YuMHREHAw+E0mNSxs+JxRjy/Ra0WUNZQNazna2a/50wnM4FtZZNtz3llIesOCgNhoAh8RSi3RWFOvLXyGRqVFDjTYPKSXJUYXaDSlKqqqOuG5hBit9vhaaulA4XKUm6mE36Or5ndztr5L/Hx5IYgDNBGo62hbhqqum59DziQ2nkLdIUlSWKUkh7kUGGtJA3wfR8rAJ3nspaQyh5zADZN8y/Rne6r8oxT2FLhKi2e4eqcosqxlZTcmFZOQFbAWZJQulIA98D/wZLQ90OWqzVJkOKvIzZRjNWWoiglocOaQv5qzOR6wfjHFJ3ty79LtXsY7TD+AgguQBcIXnThAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;box model from js input&quot;
+        title=&quot;box model from js input&quot;
+        src=&quot;/static/ced29555c9bdc2f92207f8a699bc6863/b9e4f/fakejs-1.png&quot;
+        srcset=&quot;/static/ced29555c9bdc2f92207f8a699bc6863/cf440/fakejs-1.png 148w,
+/static/ced29555c9bdc2f92207f8a699bc6863/d2d38/fakejs-1.png 295w,
+/static/ced29555c9bdc2f92207f8a699bc6863/b9e4f/fakejs-1.png 590w,
+/static/ced29555c9bdc2f92207f8a699bc6863/f9b6a/fakejs-1.png 885w,
+/static/ced29555c9bdc2f92207f8a699bc6863/2d849/fakejs-1.png 1180w,
+/static/ced29555c9bdc2f92207f8a699bc6863/13ed1/fakejs-1.png 1710w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The code above is essentially translated into:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token class-name&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;prototype&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+  document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;querySelectorAll&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token parameter&quot;&gt;dom&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;dom&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;style&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;outline &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;1px solid #&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+      Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Generate a random string&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// &quot;d37a43dda9777&quot;&lt;/span&gt;
+Math&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;36&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// &quot;plwldktp48&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Make a deep copy object&lt;/h2&gt;
+&lt;p&gt;Because objects are reference types, referencing an object to a new variable and changing the object referenced by that variable will still alter the original object. However, here’s an unorthodox way to deep copy that object to a new space in memory.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  a&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  b&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; c&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; d&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; b &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Implicit type conversions&lt;/h2&gt;
+&lt;p&gt;Here’s a good example of type conversion without using &lt;code class=&quot;language-text&quot;&gt;Number&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;parseInt&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;parseFloat&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; a &lt;span class=&quot;token comment&quot;&gt;// 1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token function&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0.0000004&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// &apos;1,2,34,5,6&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here the concatenation essentially works &lt;code class=&quot;language-text&quot;&gt;.toString()&lt;/code&gt; on each of the arrays including the values and the comma separators, and then works &lt;code class=&quot;language-text&quot;&gt;&amp;quot;1,2,3&amp;quot; + &amp;quot;4,5,6&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Concatenation has additional silly behavior with the &lt;code class=&quot;language-text&quot;&gt;+&lt;/code&gt; operator. While &lt;code class=&quot;language-text&quot;&gt;&amp;quot;3&amp;quot; - 1&lt;/code&gt; is 2, &lt;code class=&quot;language-text&quot;&gt;&amp;quot;3&amp;quot; + 1&lt;/code&gt; is &lt;code class=&quot;language-text&quot;&gt;&amp;quot;31&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// &quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// &quot;&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 0&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// &quot;[object Object]&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// &quot;[object Object][object Object]&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;So, concatenation depends on the types involved in the operation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Number + Number&lt;/code&gt; :arrow_right: addition&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Boolean + Number&lt;/code&gt; :arrow_right: addition&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Boolean + Boolean&lt;/code&gt; :arrow_right: addition&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Number + String&lt;/code&gt; :arrow_right: concatenation&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;String + Boolean&lt;/code&gt; :arrow_right: concatenation&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;String + String&lt;/code&gt; :arrow_right: concatenation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There’s &lt;a href=&quot;https://www.ecma-international.org/ecma-262/#sec-addition-operator-plus&quot;&gt;further reading&lt;/a&gt; from the ECMA spec.&lt;/p&gt;
+&lt;h2&gt;JavaScript floating point inaccuracies&lt;/h2&gt;
+&lt;p&gt;1 + 2 is 3, right? Not with floating point values…&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0.1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.2&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0.3&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here, &lt;code class=&quot;language-text&quot;&gt;0.1&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;0.2&lt;/code&gt;are not accurate floating point representations, instead they evaluate to &lt;code class=&quot;language-text&quot;&gt;0.30000000000000004&lt;/code&gt;. This is essentially where it’s advantageous to set a predefined precision value with &lt;code class=&quot;language-text&quot;&gt;Number.EPSILON&lt;/code&gt; (&lt;a href=&quot;https://stackoverflow.com/questions/5037839/avoiding-problems-with-javascripts-weird-decimal-calculations&quot;&gt;related&lt;/a&gt;). Check out &lt;a href=&quot;https://stackoverflow.com/questions/588004/is-floating-point-math-broken&quot;&gt;Is floating point math broken?&lt;/a&gt; and &lt;a href=&quot;http://0.30000000000000004.com/&quot;&gt;0.30000000000000004.com&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Terse conditional assignment&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;var a = b &amp;amp;&amp;amp; 1&lt;/code&gt; is the same as:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; b
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;var a = b || 1&lt;/code&gt; is the same as:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; b
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Types&lt;/h2&gt;
+&lt;h3&gt;Document.all, an undefined object?&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;all &lt;span class=&quot;token keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;typeof&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;all &lt;span class=&quot;token comment&quot;&gt;// undefined&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;However…&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;all &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/getify/You-Dont-Know-JS/blob/master/types%20&amp;#x26;%20grammar/ch4.md#falsy-objects&quot;&gt;Here’s&lt;/a&gt; an explanation of this obsolete feature, which used to be used to access DOM elements in older versions of IE.&lt;/p&gt;
+&lt;h3&gt;To be a number or not&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;NaN&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// number&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Strings aren’t Strings?&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;str&quot;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// &quot;string&quot;&lt;/span&gt;
+&lt;span class=&quot;token string&quot;&gt;&quot;str&quot;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;instanceof&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;true evaluated as 1&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;
+  &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// 2&lt;/span&gt;
+    &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;
+  &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;When &lt;code class=&quot;language-text&quot;&gt;true&lt;/code&gt; is coerced to a number (&lt;code class=&quot;language-text&quot;&gt;Number(true)&lt;/code&gt;), it’s evaluated to a truthy value as &lt;code class=&quot;language-text&quot;&gt;1&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The expression above is evaluated from left to right. Since &lt;code class=&quot;language-text&quot;&gt;1 &amp;lt; 2&lt;/code&gt; is true, and true =&gt; 1 and &lt;code class=&quot;language-text&quot;&gt;1 &amp;lt; 3&lt;/code&gt;, the first line is true. However, as true is evaluated in the second line, &lt;code class=&quot;language-text&quot;&gt;1 &amp;gt; 1&lt;/code&gt; is false (&lt;a href=&quot;https://www.ecma-international.org/ecma-262/#sec-relational-operators&quot;&gt;related&lt;/a&gt;).&lt;/p&gt;
+&lt;h2&gt;Functions invoked with backticks&lt;/h2&gt;
+&lt;p&gt;First, set up a function that returns our arguments such that &lt;code class=&quot;language-text&quot;&gt;fn(1, 2, 3)&lt;/code&gt; returns &lt;code class=&quot;language-text&quot;&gt;[1, 2, 3]&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;args&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; args
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;fn&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;first arg is an array &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt; separated by &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt; inserted values&lt;/span&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// [ [ &apos;first arg is an array &apos;, &apos; separated by &apos;, &apos; inserted values&apos; ],&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// true, 1]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is the nature of &lt;em&gt;&lt;a href=&quot;https://www.ecma-international.org/ecma-262/#sec-tagged-templates&quot;&gt;Tagged template literals&lt;/a&gt;&lt;/em&gt; and it’s the magic behind libraries like &lt;a href=&quot;https://github.com/styled-components/styled-components&quot;&gt;styled-components&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Try..catch&lt;/h2&gt;
+&lt;p&gt;Will &lt;code class=&quot;language-text&quot;&gt;1&lt;/code&gt; or &lt;code class=&quot;language-text&quot;&gt;2&lt;/code&gt; be returned from the following expression?&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;finally&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;2&lt;/code&gt; is returned. See &lt;code class=&quot;language-text&quot;&gt;finally&lt;/code&gt;’s role in the &lt;code class=&quot;language-text&quot;&gt;try..catch&lt;/code&gt; &lt;a href=&quot;https://www.ecma-international.org/ecma-262/#sec-try-statement&quot;&gt;in the spec&lt;/a&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;I hope you’re thoroughly frightened. Happy Halloween!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Use pfSense as a Developer - Part 2]]></title><description><![CDATA[I went over setting up pfSense earlier.
+I also discussed some reasons why a feature-packed firewall is relevant to developer operations. Now…]]></description><link>https://brettinternet.com/blog//use-pfsense-as-a-developer/</link><guid isPermaLink="false">https://brettinternet.com/blog//use-pfsense-as-a-developer/</guid><pubDate>Sat, 22 Jul 2017 06:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I went over &lt;a href=&quot;%7B%25%20post_url%202017-07-14-configure-pfsense-as-a-developer%20%25%7D&quot;&gt;setting up pfSense&lt;/a&gt; earlier.
+I also discussed some reasons why a feature-packed firewall is relevant to developer operations.&lt;/p&gt;
+&lt;p&gt;Now that you’ve finished the initial pfSense firewall setup, let’s checkout some useful packages and tools you can explore. From the menu you can access &lt;code class=&quot;language-text&quot;&gt;System&lt;/code&gt; &gt; &lt;code class=&quot;language-text&quot;&gt;Package Manager&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Some packages I use:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;acme&lt;/strong&gt;: Let’s Encrypt automated certificate renewal&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;haproxy&lt;/strong&gt;: reverse proxy and load balancer&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;iftop&lt;/strong&gt;: interface monitor&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;open-vpn-client-export&lt;/strong&gt;: makes preparing your openVPN config for devices very easy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;pfBlockerNG&lt;/strong&gt;: reputation management and block lists like the &lt;a href=&quot;https://github.com/easylist/easylist&quot;&gt;easylist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Status&lt;em&gt;Traffic&lt;/em&gt;Totals&lt;/strong&gt;: a fancy graph and statistics measuring your traffic (pictured below)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e5b27f9789c598fe85c845e28e1f8624/2a380/pfsense4.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 35.54040895813048%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAABYlAAAWJQFJUiTwAAABcklEQVQoz12STW/TQBCG/UP4B9x66iG217tr46+1m+Ck+WhUldpJGzUS51JxgBuqgD/AgV/6MGs1BXF4NOt3Zq2ZdzbI8xxPkiQYrdEvmH/iX92QakVa1rimpWmnXJQZrauYNjU2TQmKoqCqKimWHxormBEtZ/sST+dIpzw0Z7RZTGJSrDUjxkre+ruawDlHXpTESkuXSqJCS7dZMiESzahICFGihcryo3vDoXzLeWTH2jBOULHk40jqE4LVes2qa2jLlMet5mFTsZnXPA+avr/ieZ/yc28YLksu2orfh3N+HTXz5SX9ytFvO74fCr4OBV1bEsxmM6oiH71ZLtcs3osvTUU/3PHxw5z73cB+txs9ylLL05dvfP70ROcy5tOa64XjuL/l9nqLyy1BXdd4/EhKWo6FRBbgYxSfUKIZYhnr5viI664IJxO5o8f8JIwIo3j8Fg9l3LYZt2xfzTWvhp80j/d4ttjwTl6FX8D/ef8a/gC3qga5GU9npgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;censors&quot;
+        title=&quot;censors&quot;
+        src=&quot;/static/e5b27f9789c598fe85c845e28e1f8624/b9e4f/pfsense4.png&quot;
+        srcset=&quot;/static/e5b27f9789c598fe85c845e28e1f8624/cf440/pfsense4.png 148w,
+/static/e5b27f9789c598fe85c845e28e1f8624/d2d38/pfsense4.png 295w,
+/static/e5b27f9789c598fe85c845e28e1f8624/b9e4f/pfsense4.png 590w,
+/static/e5b27f9789c598fe85c845e28e1f8624/f9b6a/pfsense4.png 885w,
+/static/e5b27f9789c598fe85c845e28e1f8624/2d849/pfsense4.png 1180w,
+/static/e5b27f9789c598fe85c845e28e1f8624/2a380/pfsense4.png 2054w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;figcaption&gt;I use the internet a lot&lt;/figcaption&gt;
+&lt;p&gt;Since pfSense runs on FreeBSD, anything that works with FreeBSD can be installed via the command line. There are other great packages that handle common networking tasks like &lt;code class=&quot;language-text&quot;&gt;nmap&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;darkstat&lt;/code&gt;.&lt;/p&gt;
+&lt;h3&gt;Reverse Proxy&lt;/h3&gt;
+&lt;p&gt;There are couple packaged options available to run a reverse proxy to your servers. I run a few different websites out of my home network for private use.
+For example, I run a &lt;a href=&quot;https://github.com/tidusjar/Ombi&quot;&gt;Plex Request portal&lt;/a&gt; and a couple of portfolio projects.
+Google will only give me one public IP, so I use a reverse proxy on my firewall to route web traffic to the right server and port.
+You can also install nginx on FreeBSD via the CLI.&lt;/p&gt;
+&lt;p&gt;I first tried Squid Reverse Proxy but the setup wasn’t as straightforward as Haproxy. Both are excellent options but Haproxy’s load balancer is very mature.&lt;/p&gt;
+&lt;h3&gt;VPN&lt;/h3&gt;
+&lt;p&gt;The setup wizard for OpenVPN will walk you through creating a self-signed certificate. If there’s a router further up your firewall’s WAN, then you may need to forward port 1194.&lt;/p&gt;
+&lt;p&gt;OpenVPN defaults to use the SHA1 hashing algorithm. Side note: did you hear about the &lt;a href=&quot;https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html&quot;&gt;first anticipated collision&lt;/a&gt; with SHA1? This isn’t a big deal yet, but you may consider changing this to SHA3 or SHA5.&lt;/p&gt;
+&lt;h3&gt;Firewall&lt;/h3&gt;
+&lt;p&gt;Besides the easylists available on pfBlockerNG, you can find &lt;a href=&quot;https://www.iblocklist.com/lists&quot;&gt;other lists&lt;/a&gt; to block depending on the needs of your network.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;After a couple years of using pfSense, I’ve only scratched the surface.
+Many of these tools aren’t exclusive to pfSense, but the firewall sure does make it easy to setup with an attractive GUI.&lt;/p&gt;
+&lt;p&gt;Once you’re comfortable here, your next task is to set up &lt;a href=&quot;https://forum.pfsense.org/index.php?topic=95210.0&quot;&gt;2FA with pfSense&lt;/a&gt;, &lt;a href=&quot;https://doc.pfsense.org/index.php/Mobile_One-time_Passwords_with_FreeRADIUS&quot;&gt;mOTP&lt;/a&gt; or use the traffic shaper to optimize your VoIP’s bandwidth.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Configure pfSense as a Developer - Part 1]]></title><description><![CDATA[Firewall software might seem like a peculiar resource for a web developer to use, but I’ve found it to be an essential item on my developer…]]></description><link>https://brettinternet.com/blog//configure-pfsense-as-a-developer/</link><guid isPermaLink="false">https://brettinternet.com/blog//configure-pfsense-as-a-developer/</guid><pubDate>Fri, 14 Jul 2017 06:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Firewall software might seem like a peculiar resource for a web developer to use, but I’ve found it to be an essential item on my developer tool belt. Protecting your network interface is a critical section in this popular write-up &lt;a href=&quot;https://github.com/forter/security-101-for-saas-startups/blob/english/security.md#antivirusfirewall&quot;&gt;Security 101&lt;/a&gt;. OpenVPN, reverse proxy, traffic watch, and other addons make pfSense part of my personal DevOps.&lt;/p&gt;
+&lt;p&gt;I used to work closely with a company’s sysadmin in a previous job.
+Together with his help and some extensive research, I was able to harness a few of the wonderful open source tools that &lt;a href=&quot;https://www.pfsense.org/&quot;&gt;pfSense&lt;/a&gt; bundles together.
+The &lt;a href=&quot;https://forum.pfsense.org/&quot;&gt;community&lt;/a&gt; is full of intelligent professionals. As with all technical forums, entry-level participation can be intimidating. Networking is also a difficult subject to learn and harder to practice, but I use my own home network as a playground to implement some concepts. While pfSense is indeed enterprise-level software, this walkthrough is for hobbyists.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0f8f4f11f194e4294808fad6b4cf0d70/b9e4f/pfsense1.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 74.40677966101696%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsSAAALEgHS3X78AAACxElEQVQ4y32UaVMaQRCG989YQmFpcR8iyCX3sYiQJdxyLYoE5AaxyiqSgBzFp/zcNz2TYIyk8uGp2RmW7vft7llBrzegWq2iUqkgkUjA4XDASXiCAVz3O/A363DXSnDJZUjdL1ivVlh94PX1FbvdDrFYDMLp6Smi0ShtRAQCAZjNZo7j8hJpKY2A349LpxNGkwk6vR4mWo1G4wHsPyyWoNVqkcvliDwFjUKtVkOj1sBkMcMtxhBLS6jXZcRFEUFKGAqFEAwGD4hEItBTQkGr00GSJGSzWW7XQWpchJdeSrQauMql0X7sYDgcYjQa/RP222w2g5/cCEwRs8zssixMuo5UWy4u4C1kkK9V8dhu477ZxN3d3T9pNBpotVpckHB2dkYBY28BdTotr4We6iIW86g9PGBMKpq0JpNJpNNp7ugjmUwGFosFAitouVzmdby+jsNms8FutyNKwXebLXV1jc1mg+l0yu2Nx+MD2PkfyxoNb3c4HOEHLCDrpMfjQbfXQ6/X5zWSZRm1Wo0aVD+AnTPr3DKz5/P5eKfsFOzk5ATHx8ewnp+j1+1iPJlgMBig0+4gn89zCoXCX7Cz29tbWK1WCHqDgXc4m80hlUohTy+IND5WlxP3wz4W375jPp/j5eUFz8/PmPxOwFS/X5+enrgw3hT2wCy6nC64XC6eyUaDnaHMMs0gu0nFUgkNucGbwkrzfh73DvkcHh0d8WCRaBgBOoySOp/PS9ZVUCoV3L5CoeCwZ6VSCZVK9QYrEZsO1mm2F3RmDcqjz6hMMigOPiH7mIDUikGseZGQgxiM+2Rnxru8h9new/asHMvl8pdlm9uK6Y82+rt7dFZV+gBEkOqEke5FkOmJ+LqcY7Pe8I/Aer1+Y79n62KxwHa75UoFg8mISqOEYq0AKZeEL3KFq5Cb4yVidJ/j8ThEusv/4+bmho/bT7lFZLDSfuLgAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;censors&quot;
+        title=&quot;censors&quot;
+        src=&quot;/static/0f8f4f11f194e4294808fad6b4cf0d70/b9e4f/pfsense1.png&quot;
+        srcset=&quot;/static/0f8f4f11f194e4294808fad6b4cf0d70/cf440/pfsense1.png 148w,
+/static/0f8f4f11f194e4294808fad6b4cf0d70/d2d38/pfsense1.png 295w,
+/static/0f8f4f11f194e4294808fad6b4cf0d70/b9e4f/pfsense1.png 590w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;figcaption&gt;I can monitor the router hardware from the pfSense dashboard&lt;/figcaption&gt;
+&lt;h2&gt;Hardware&lt;/h2&gt;
+&lt;p&gt;I’m using a retired, old computer from a previous job, but a bottle of canned air knocked off a couple of years from the old bulky metal frame.
+This junker has two cores and 4GB of DDR3 RAM, but I’ve never had any issues with it on my gigabit network.
+It’s big for what it does, so an Intel NUC might be better if space is a concern. The hardware requirements are minimal, but pfSense does offer &lt;a href=&quot;https://www.pfsense.org/hardware/#requirements&quot;&gt;some recommendations&lt;/a&gt; and &lt;strong&gt;dual NICs are required&lt;/strong&gt;—you &lt;em&gt;must&lt;/em&gt; have two ethernet ports for LAN and WAN.&lt;/p&gt;
+&lt;p&gt;I’ve chosen to add an additional spindle disk for parity, but backing up your firewall config is very easy so this isn’t necessary.
+Together with this inexpensive &lt;a href=&quot;https://www.amazon.com/gp/product/B003CFATNI/ref=oh_aui_search_detailpage?ie=UTF8&amp;#x26;psc=1&quot;&gt;TP-Link NIC&lt;/a&gt; and a &lt;a href=&quot;https://www.amazon.com/NETGEAR-GS105NA-Ethernet-Replacement-Unmanaged/dp/B0000BVYT3/&quot;&gt;network switch&lt;/a&gt;, my old machine has been sufficient hardware for what I need.
+Eventually, when I can afford to graduate my servers to a server rack, I’ll upgrade my firewall to a small, 1U case.&lt;/p&gt;
+&lt;h2&gt;Software&lt;/h2&gt;
+&lt;p&gt;The pfSense software is free and open source. You can &lt;a href=&quot;https://pfsense.org/download/&quot;&gt;download it here&lt;/a&gt; for your specific build and the easiest install is with a USB. Use &lt;a href=&quot;https://rufus.akeo.ie/&quot;&gt;rufus&lt;/a&gt;, &lt;a href=&quot;https://github.com/resin-io/etcher/&quot;&gt;etcher&lt;/a&gt; or &lt;a href=&quot;http://unetbootin.github.io/&quot;&gt;unetbootin&lt;/a&gt; to write the image to your USB.&lt;/p&gt;
+&lt;h3&gt;Setup&lt;/h3&gt;
+&lt;p&gt;The ultimate &lt;a href=&quot;https://doc.pfsense.org/index.php/Installing_pfSense&quot;&gt;pfSense installation guide&lt;/a&gt; is by the creators themselves on their wiki. But I’ll walk through my process here.&lt;/p&gt;
+&lt;p&gt;Plug in your USB and boot up your machine. To enter the boot options menu, you usually press DEL, F8 or F12 as the BIOS splash screen appears depending on your hardware. You should then see the following screen:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/90880d937350012f1b2242c5f1cf416f/fb730/pfsense2.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 48.87323943661972%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAMBAgX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHCqxZAB//EABUQAQEAAAAAAAAAAAAAAAAAACAh/9oACAEBAAEFAov/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAYEAACAwAAAAAAAAAAAAAAAAABEBEgUf/aAAgBAQABPyGNUK//2gAMAwEAAgADAAAAEIMP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGxAAAgIDAQAAAAAAAAAAAAAAAREAIRAxQVH/2gAIAQEAAT8QqsWYQGmx7CuRBa5N8f/Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;setup&quot;
+        title=&quot;setup&quot;
+        src=&quot;/static/90880d937350012f1b2242c5f1cf416f/c739e/pfsense2.jpg&quot;
+        srcset=&quot;/static/90880d937350012f1b2242c5f1cf416f/8ee9c/pfsense2.jpg 148w,
+/static/90880d937350012f1b2242c5f1cf416f/ebbe7/pfsense2.jpg 295w,
+/static/90880d937350012f1b2242c5f1cf416f/c739e/pfsense2.jpg 590w,
+/static/90880d937350012f1b2242c5f1cf416f/fb730/pfsense2.jpg 710w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;figcaption&gt;pfSense installation menu&lt;/figcaption&gt;
+&lt;p&gt;Select &lt;code class=&quot;language-text&quot;&gt;1&lt;/code&gt; to begin the installation.
+Then, press &lt;code class=&quot;language-text&quot;&gt;i&lt;/code&gt; to launch the installer. In the following screens let’s go with the default configurations: &lt;code class=&quot;language-text&quot;&gt;Accept these Settings&lt;/code&gt;, then choose &lt;code class=&quot;language-text&quot;&gt;Quick/Easy Install&lt;/code&gt;.
+If you’re an advanced user, you’d use ‘Custom Install’ to choose which disk to install to and partitioning setup.
+Continue through the setup and confirm the request to format and write your disk.&lt;/p&gt;
+&lt;p&gt;Once the partitions are created and the kernel is installed, you’ll be prompted to reboot.
+You can now eject your USB installer. When your pfSense machine reboots, you’ll now be prompted to setup your network interfaces.
+The first option is for &lt;code class=&quot;language-text&quot;&gt;VLAN&lt;/code&gt; setup, but generally VLANs are for advanced networking and we don’t need it here.&lt;/p&gt;
+&lt;p&gt;Next, you’ll set your &lt;code class=&quot;language-text&quot;&gt;WAN&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;LAN&lt;/code&gt; interfaces.
+Depending on your hardware, these interfaces can have different names—your interfaces may look like &lt;code class=&quot;language-text&quot;&gt;em0&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;em1&lt;/code&gt; or &lt;code class=&quot;language-text&quot;&gt;bge0&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;ce0&lt;/code&gt;.
+You’ll need to assign the correct interface to the WAN and the other to the LAN interface.
+Select the appropriate options and follow the prompts.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 590px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/96df3c6291637f79eb48fe005bbdbcfa/41d60/pfsense3.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 23.159509202453986%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAFABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAABw4EB/8QAFxAAAwEAAAAAAAAAAAAAAAAAAAERMf/aAAgBAQABBQJiyH//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAQ/9oACAEBAAY/An//xAAXEAADAQAAAAAAAAAAAAAAAAAAARFB/9oACAEBAAE/IXSwjBB//9oADAMBAAIAAwAAABDzz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABcQAQEBAQAAAAAAAAAAAAAAAAERACH/2gAIAQEAAT8Qgkt1FS9yjzhv/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;options&quot;
+        title=&quot;options&quot;
+        src=&quot;/static/96df3c6291637f79eb48fe005bbdbcfa/c739e/pfsense3.jpg&quot;
+        srcset=&quot;/static/96df3c6291637f79eb48fe005bbdbcfa/8ee9c/pfsense3.jpg 148w,
+/static/96df3c6291637f79eb48fe005bbdbcfa/ebbe7/pfsense3.jpg 295w,
+/static/96df3c6291637f79eb48fe005bbdbcfa/c739e/pfsense3.jpg 590w,
+/static/96df3c6291637f79eb48fe005bbdbcfa/41d60/pfsense3.jpg 652w&quot;
+        sizes=&quot;(max-width: 590px) 100vw, 590px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;After setting up your network interfaces, you’ll now see an options menu on the CLI with numbers 1 through 14 or 15.
+If you set up the interfaces correctly, you’ll see WAN and LAN IP addresses.
+You should also see an &lt;code class=&quot;language-text&quot;&gt;http://&lt;/code&gt; IP address which you can access on the LAN network to view the pfSense GUI.
+The default username and password should be &lt;code class=&quot;language-text&quot;&gt;admin&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;pfsense&lt;/code&gt;. If not, &lt;a href=&quot;https://doc.pfsense.org/index.php/Installing_pfSense&quot;&gt;refer to the docs&lt;/a&gt; for the latest credentials.
+You should walk through the setup wizard to complete the installation.&lt;/p&gt;
+&lt;p&gt;I’ll go over usage and some extra packages that I use with pfSense in the &lt;a href=&quot;%7B%25%20post_url%202017-07-22-use-pfsense-as-a-developer%20%25%7D&quot;&gt;next post&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Building a Hackintosh]]></title><description><![CDATA[Apple’s overpriced offering is moving away from modular, upgradable hardware. Some recent unveils of the iMac, Mac Pro, and MacBook Pro…]]></description><link>https://brettinternet.com/blog//build-a-hackintosh/</link><guid isPermaLink="false">https://brettinternet.com/blog//build-a-hackintosh/</guid><pubDate>Sun, 23 Apr 2017 06:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 584px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2ccb466ceadbd34aa1db35573df04e66/3064a/system-info.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 59.93150684931506%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAACN0lEQVQoz11TW3PSQBjl7/qk7/okf6HFxzrliWprHWfsKAWdzogzVS6ScCmXkoQkhEtCuIVLYY/ftzFIy8w3u8tmz57vnLMxs3gLvZqDZphQlDKSySRSqRRUVYVhGNB1HZ1OB4YcNXS7Xdy372GaJjRNk9/wPs+5Ym7fwWjQw3A4RL/fh2VZsG1bzgeDAUajEcbjMXzfh+d5cu66I/l/tH9YsdV6jdV6g91uh8PfdrvFZrPBbDaVl+h6yLbX69FBF6vlEms+u1o9qlgQBFgsFqjWFBRLBZTLf3D76yfuO00JapldpL98RSaTRaGQR61WRa3eoMNLCcDnD4sAeWOBy4+fcXR8iZOTKxy/OUep9FsC+v6EWDlwnD7G1PJ8PifWM2p3iMlksgddEuMngGkcJdJIJD7h7ekPYpuHIBlYy0KemdVRrVZFRVGhKqq4u2sIvowARcSOQWMh8hyZbBbv3l/j/CKNiw/X5HiRGO6k8JVKBbqmo9FoksumcOwevLHHGooIaM+QKU+nU2LxHe12HoqaQy53hXq9jIeHrWSYJ4bNZks0G02hadIYQfERNpll6IY4bF2awouzs1PE4y/xOv4Kz188w83NN+m267rSXcobtegLZkIaCtJSsJmLIBBPNAwXHAUOKYez1WrJzPFFbIBDpliWDY/AKUaCY8TxcRznEdiBhoHMFLvKeRRCyAwyYKTPvxIHY2SGiDD2DKPiFpgZJ55bDV9G+EKiNb8Y1oxH1v4/u5DhX1IldnQ+gWdPAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;system-info&quot;
+        title=&quot;system-info&quot;
+        src=&quot;/static/2ccb466ceadbd34aa1db35573df04e66/3064a/system-info.png&quot;
+        srcset=&quot;/static/2ccb466ceadbd34aa1db35573df04e66/cf440/system-info.png 148w,
+/static/2ccb466ceadbd34aa1db35573df04e66/d2d38/system-info.png 295w,
+/static/2ccb466ceadbd34aa1db35573df04e66/3064a/system-info.png 584w&quot;
+        sizes=&quot;(max-width: 584px) 100vw, 584px&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Apple’s overpriced offering is moving away from modular, upgradable hardware. Some recent unveils of the iMac, Mac Pro, and MacBook Pro failed to meet the expectations of many professionals that demand improved computer specs. Using the more powerful hardware available with macOS can be the ultimate environment for a developer—Unix coupled with strong machinery. For example, at the time of writing this, I’m on my Kaby Lake build, but current Apple hardware doesn’t offer the newest Intel generation. This is currently experimental in the community, but more stable options do exist with Skylake hardware.&lt;/p&gt;
+&lt;p&gt;Of course, I’ve always owned a MacBook. There are aspects of Apple’s laptops that other hardware manufactures have not been able to match for me quite yet. But as for a desktop where form factor, sleek aluminum design, and the incredibly responsive trackpad are not concerns, then a Hackintosh is the way to go for tabletop computing.&lt;/p&gt;
+&lt;p&gt;Should you build a hackintosh? Probably not. It’s a breach of Apple’s macOS Terms and Conditions, but Apple has been kind and &lt;a href=&quot;https://www.reddit.com/r/hackintosh/comments/2ek35g/is_it_technically_illegal/&quot;&gt;hasn’t litigated individuals&lt;/a&gt;, but they &lt;a href=&quot;https://en.wikipedia.org/wiki/Psystar_Corporation&quot;&gt;have sued companies&lt;/a&gt; that attempt to turn a profit. Building a Hackintosh involves a &lt;em&gt;lot&lt;/em&gt; of troubleshooting and tinkering. But if you’re okay with all of this, then try it out! The first place to start is to begin lurking various communities (&lt;a href=&quot;https://reddit.com/r/hackintosh&quot;&gt;/r/hackintosh&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;I’ve posted a &lt;a href=&quot;https://github.com/brettinternet/hackintosh/blob/8788216554bf169d0f7eff2581ab372e14ce3b2b/docs/setup.md&quot;&gt;guide to my most recent build&lt;/a&gt; where I use the latest Kaby Lake Intel processor and the latest mobo. I use an NVMe SSD, bluetooth accessories, iMessage, and other necessary features. My passion for Hackintosh fluctuates with my availability, but you can see my builds, guides and troubleshooting research at &lt;a href=&quot;https://github.com/brettinternet/hackintosh&quot;&gt;brettinternet/hackintosh&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Play and Visualize Spotify Music in Terminal with Mopidy and Ncmpcpp]]></title><description><![CDATA[Like Winamp, ncmpcpp is timeless classic for music applications. As I’ve picked up my work and slowly moved into the command-line space, I…]]></description><link>https://brettinternet.com/blog//play-and-visual-spotify-music-in-terminal/</link><guid isPermaLink="false">https://brettinternet.com/blog//play-and-visual-spotify-music-in-terminal/</guid><pubDate>Thu, 02 Mar 2017 06:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Like Winamp, ncmpcpp is timeless classic for music applications. As I’ve picked up my work and slowly moved into the command-line space, I’ve found ncmpcpp very easy to use. &lt;a href=&quot;https://wiki.archlinux.org/index.php/ncmpcpp&quot;&gt;Ncmpcpp&lt;/a&gt; is an mpd client and coupled with Mopidy I can browse Spotify playlists, search for artists, and play top tracks.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;brew install ncmpcpp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;My latest endeavor with managing my music on the CLI has been to use a visualizer like &lt;a href=&quot;https://github.com/dpayne/cli-visualizer&quot;&gt;cli-visualizer&lt;/a&gt; or even ncmpcpp’s native visualization. It’s a fairly simple setup that’s been around for a while with a standard mpd and mpd client like ncmpcpp. However, to use an mpd client with a streaming service like Spotify or Soundcloud, you have to use a service like Mopidy.&lt;/p&gt;
+&lt;h2&gt;Without Spotify&lt;/h2&gt;
+&lt;p&gt;If you don’t stream music, you’re able to stick with a normal &lt;a href=&quot;https://wiki.archlinux.org/index.php/Music_Player_Daemon&quot;&gt;mpd&lt;/a&gt; setup.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;brew install mpd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Using a Music Player Daemon to serve audio has been around for a while, so I won’t get into this. The final config should look something like &lt;a href=&quot;https://github.com/brettinternet/dotfiles/blob/master/.mpd/mpd.conf&quot;&gt;this&lt;/a&gt;. Make sure you setup the entire config correctly, however, I’ll highlight a key element here: the two audio outputs. The visualizers both in ncmpcpp and in cli-visualizer need the &lt;code class=&quot;language-text&quot;&gt;fifo&lt;/code&gt; audio output to work:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;audio_output &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token builtin class-name&quot;&gt;type&lt;/span&gt;                  &lt;span class=&quot;token string&quot;&gt;&quot;fifo&quot;&lt;/span&gt;
+  name                  &lt;span class=&quot;token string&quot;&gt;&quot;my_fifo&quot;&lt;/span&gt;
+  path                  &lt;span class=&quot;token string&quot;&gt;&quot;/tmp/mpd.fifo&quot;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;format&lt;/span&gt;                &lt;span class=&quot;token string&quot;&gt;&quot;44100:16:2&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And macOS uses CoreAudio for it’s sound hardware output, so we’ll add another output:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;audio_output &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token builtin class-name&quot;&gt;type&lt;/span&gt;                  &lt;span class=&quot;token string&quot;&gt;&quot;osx&quot;&lt;/span&gt;
+  name                  &lt;span class=&quot;token string&quot;&gt;&quot;CoreAudio&quot;&lt;/span&gt;
+  mixer_type            &lt;span class=&quot;token string&quot;&gt;&quot;software&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;With Spotify&lt;/h2&gt;
+&lt;p&gt;Install &lt;a href=&quot;https://github.com/mopidy&quot;&gt;Mopidy&lt;/a&gt; and Mopidy-Spotify. They have additional plugins for other streaming services.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;brew install mopidy mopidy-spotify&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Run &lt;code class=&quot;language-text&quot;&gt;mopidy&lt;/code&gt; once so the default config files are created. On macOS the config is &lt;code class=&quot;language-text&quot;&gt;~/.config/mopidy/mopidy.conf&lt;/code&gt;. Check out &lt;a href=&quot;https://github.com/brettinternet/dotfiles/blob/master/.config/mopidy/mopidy.conf&quot;&gt;my config here&lt;/a&gt;. The key component I wrestled with here was the split audio output.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;audio&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+output &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;tee&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;t t. &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; queue &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; autoaudiosink t. &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; queue &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; audioresample &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; audioconvert &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; audio/x-raw,rate&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;44100&lt;/span&gt;,channels&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;,format&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;S16LE &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; wavenc &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; filesink &lt;span class=&quot;token assign-left variable&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/tmp/mpd.fifo&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Using a tee gstreamer element, we’re able to use two audio outputs. Check out Mopidy’s documentation for &lt;a href=&quot;https://docs.mopidy.com/en/latest/audio/&quot;&gt;advanced audio setups&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;You may have also noticed &lt;code class=&quot;language-text&quot;&gt;spotify_tunigo&lt;/code&gt; in the &lt;code class=&quot;language-text&quot;&gt;mopidy.conf&lt;/code&gt; below the Spotify options. &lt;a href=&quot;https://github.com/trygveaa/mopidy-spotify-tunigo&quot;&gt;Spotify Tunigo&lt;/a&gt; let’s you browser Spotify’s curated playlists and checkout new music.&lt;/p&gt;
+&lt;p&gt;Install Spotify Tunigo:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;pip install Mopidy-Spotify-Tunigo&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It’s also important to note the Spotify settings in &lt;code class=&quot;language-text&quot;&gt;mopidy.conf&lt;/code&gt;. Storing passwords in plaintext is bad. There’s a current work-around with python and &lt;a href=&quot;https://github.com/mopidy/mopidy/issues/116#issuecomment-18026012&quot;&gt;an open issue&lt;/a&gt; to improve this. Of course, it’s always best practice to use unique passwords for everything.&lt;/p&gt;
+&lt;p&gt;Now let’s run &lt;code class=&quot;language-text&quot;&gt;mopidy&lt;/code&gt; to make sure you don’t get any errors. When I set up mine on macOS, I had a python error about a missing libspotify framework in &lt;code class=&quot;language-text&quot;&gt;/Library/Frameworks&lt;/code&gt;. If you get this error, simply run &lt;code class=&quot;language-text&quot;&gt;brew info libspotify&lt;/code&gt; to see where homebrew has installed your libspotify package. Create a folder in &lt;code class=&quot;language-text&quot;&gt;/Library/Frameworks&lt;/code&gt; called &lt;code class=&quot;language-text&quot;&gt;libspotify.framework&lt;/code&gt;, then create a symlink in &lt;code class=&quot;language-text&quot;&gt;/Library/Frameworks/libspotify.framework&lt;/code&gt; with:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;ln -s /usr/local/Cellar/libspotify/12.1.51/lib/libspotify /Library/Frameworks/libspotify.framework/libspotify&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Once you’ve confirmed there aren’t any runtime errors, you can now run mopidy as a service.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;brew services start mopidy&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now let’s run &lt;code class=&quot;language-text&quot;&gt;ncmpcpp&lt;/code&gt;. Jump to the music browser with &lt;code class=&quot;language-text&quot;&gt;2&lt;/code&gt; and pick some Spotify tracks to play on the current playlist queue. &lt;code class=&quot;language-text&quot;&gt;8&lt;/code&gt; will take you to ncmpcpp’s visualizer. If you’ve install &lt;a href=&quot;https://github.com/dpayne/cli-visualizer&quot;&gt;cli-visualizer&lt;/a&gt; you can run it with &lt;code class=&quot;language-text&quot;&gt;vis&lt;/code&gt;. Here are some of my preferred settings in &lt;code class=&quot;language-text&quot;&gt;./config/vis/config&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;visualizer.spectrum.top.margin=0.30
+audio.stereo.enabled=false&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Some problems I’m working through with this setup: I noticed that when I change tracks or pause/stop and then resume playback in ncmpcpp, the cli-visualizer won’t resume animation.&lt;/p&gt;
+&lt;p&gt;My next task is to get the cli-visualizer output to work on my mac’s desktop as an &lt;a href=&quot;http://tracesof.net/uebersicht/&quot;&gt;Ubersicht&lt;/a&gt; widget.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Manage Notes with Markdown and Git]]></title><description><![CDATA[In school, to keep up with my peers, I took meticulous notes. I read and reread assignments, and I constantly evaluated my priorities to…]]></description><link>https://brettinternet.com/blog//managing-notes-with-markdown-and-git/</link><guid isPermaLink="false">https://brettinternet.com/blog//managing-notes-with-markdown-and-git/</guid><pubDate>Mon, 06 Feb 2017 06:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In school, to keep up with my peers, I took meticulous notes. I read and reread assignments, and I constantly evaluated my priorities to stay on task.
+I became obsessed with productivity. I was always looking out for the next shiny tool to help me get an edge in competitive learning.
+I’ve used feature-rich apps like OmniFocus or Wunderlist and simpler tools like Apple Reminders.&lt;/p&gt;
+&lt;p&gt;For a while I used Evernote for note-taking, then I tried OneNote, Apple Notes and even Google Keep.
+I left Evernote because they’d seemed to have lost their way with gimmicky features.
+I liked that OneNote didn’t force-feed a premium option and it was just as accessible as Evernote.
+Later, I thought that maybe Apple Notes would be just enough for me, but I eventually found that it wasn’t better for anything other than lists or using the touch draw feature.&lt;/p&gt;
+&lt;p&gt;Now as a developer, I use markdown in my IDE.
+This process for note-taking certainly isn’t novel – you’ll even find books on GitHub written with markdown.
+Markdown offers the most formatting versatility, especially to display code excerpts with syntax highlighting and quickly reference links, create lists, and break notes out by sections.
+This is especially true since GitHub’s flavoring and small enhancements have made markdown previewing so accessible. Even this blog is made using markdown.&lt;/p&gt;
+&lt;h3&gt;Markdown&lt;/h3&gt;
+&lt;p&gt;I love markdown.
+I like how widely support it is, and I like how clear markdown format is to convey information.
+Markdown has become the ubiquitous plain text format for the GitHub community.
+My own blog posts are written in markdown and compiled with &lt;a href=&quot;https://github.com/brettinternet/minimaless/&quot;&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Git&lt;/h3&gt;
+&lt;p&gt;Right now I have a &lt;a href=&quot;https://bitbucket.org/brettinternet&quot;&gt;BitBucket&lt;/a&gt; for my private repos and notes and I use GitHub for my &lt;a href=&quot;https://github.com/brettinternet/public-notes&quot;&gt;public notes&lt;/a&gt;.
+Eventually, I’ll set up my own Gitab to self-host my own repos.&lt;/p&gt;
+&lt;p&gt;My commit messages are short, but they’re also meaningful so I can see my note history and refer back to find deleted excerpts. I also use &lt;a href=&quot;https://github.com/brettinternet/dotfiles/blob/master/.aliases&quot;&gt;aliases&lt;/a&gt; for git commands to make pushing to master very fast.&lt;/p&gt;
+&lt;h3&gt;Desktop&lt;/h3&gt;
+&lt;p&gt;I use Vim.
+To me, taking notes in my editor environment is the best possible scenario since I’m most comfortable with the shortcuts.
+Atom is also a great option.
+It has a markdown previewer you can access with &lt;code class=&quot;language-text&quot;&gt;ctrl&lt;/code&gt; + &lt;code class=&quot;language-text&quot;&gt;shift&lt;/code&gt; + &lt;code class=&quot;language-text&quot;&gt;m&lt;/code&gt;.
+The big advantage with markdown is that just about anything can open it up and preview it.
+I’m no longer bound to an app’s platform to view my notes.&lt;/p&gt;
+&lt;p&gt;I do very little clipping from the web.
+I tend to think that a simple bookmark is better.
+EverNote certainly has the strongest clipper, and I do like that OneNote’s web clipper is &lt;a href=&quot;https://blogs.msdn.microsoft.com/onenotedev/2016/08/31/the-web-clipper-goes-open-source/&quot;&gt;open source&lt;/a&gt;.
+There are a few other open source alternatives that have been mentioned in the self-hosting subreddit, but I haven’t looked into them yet.&lt;/p&gt;
+&lt;h3&gt;Mobile&lt;/h3&gt;
+&lt;p&gt;Before I found &lt;a href=&quot;https://workingcopyapp.com/&quot;&gt;Working Copy&lt;/a&gt;, a solid mobile git solution for iOS was &lt;em&gt;the&lt;/em&gt; missing piece for keeping notes in a git repo.
+I’m sure there are equally polished options on Android.
+With Working Copy you can fetch repos for free, but you’ll have to pay to unlock push.
+I think it’s worth it to support this developer.
+The app supports SSH keys, language highlighting and markdown and plain text previews.
+It’s an excellent mobile option and nearly an IDE for iOS.&lt;/p&gt;
+&lt;h3&gt;Save Menu&lt;/h3&gt;
+&lt;p&gt;It’s true, this method isn’t perfect.
+I need separate tools for sketches and pdf markups.
+But these mediums make up about 0.5% of all my notes.
+I just use my ownCloud for storing files or Keybase for my public documents.&lt;/p&gt;
+&lt;p&gt;However, markdown is certainly here to stay.
+&lt;a href=&quot;https://githubengineering.com/a-formal-spec-for-github-markdown/&quot;&gt;Some recent specification&lt;/a&gt; has been proposed to standardize Github’s flavor of markdown.
+One of my favorite introductions to markdown can be found &lt;a href=&quot;http://commonmark.org/&quot;&gt;here&lt;/a&gt;.
+Commonmark was put together by a few representatives of some major techs like GitHub, Reddit, and Stack Exchange.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Everything not saved will be lost.&lt;/p&gt;
+&lt;p&gt;- &lt;em&gt;Nintento “Quit Screen” message&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Like an accessible save menu, I keep everything in markdown.
+I record docker commands and obscure command-line arguments, JavaScript toy problems, or directions to setup Postgres permissions.
+I’ll only make a note on it if it’s easier to reference my notes than it is to &lt;a href=&quot;%7B%25%20post_url%202016-11-03-becoming-a-professional-googler%20%25%7D&quot;&gt;Google search it&lt;/a&gt;.
+I also take notes to help out the students that I mentor. You can checkout my &lt;a href=&quot;https://github.com/brettinternet/public-notes&quot;&gt;public notes&lt;/a&gt; on GitHub.&lt;/p&gt;
+&lt;p&gt;Apple Reminders still works for me with short term personal todos, and Trello for team projects.
+But for notes, I like good ol’ fashioned git and markdown.
+I use a private ~BitBucket~ GitHub repo for my personal notes, and a separate repo for my public notes.
+Perhaps you’ll think I’m a monk or a Luddite for not choosing the prettiest new apps, but I believe this method is the strongest embrace of trustworthy technology.
+Git and markdown are two timeless tools that are sure to be around for a long time.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Becoming a Professional Googler]]></title><description><![CDATA[When I took Organic Chemistry and other science courses in university, I quickly realized the value of referencing information from Google…]]></description><link>https://brettinternet.com/blog//becoming-a-professional-googler/</link><guid isPermaLink="false">https://brettinternet.com/blog//becoming-a-professional-googler/</guid><pubDate>Thu, 03 Nov 2016 06:00:00 GMT</pubDate><content:encoded>&lt;p&gt;When I took Organic Chemistry and other science courses in university, I quickly realized the value of referencing information from Google. There’s an ocean of available knowledge, direction and explanations on Stack Exchange, Yahoo Answers, Quora and other forums and blogs. As a developer, I’m now googling 10x as much to reference documentation, find an npm package or look for answers to a bug (I highly recommend &lt;a href=&quot;https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en&quot;&gt;Vimium&lt;/a&gt; to use vim shortcuts for fast navigation in your browser!).&lt;/p&gt;
+&lt;p&gt;Learning the ‘syntax’ of refining a web search can be critical to find what you’re looking for. I tell the students I mentor that learning to be a good researcher and referencing answers is so much more important than memorizing syntax or specific values.&lt;/p&gt;
+&lt;h2&gt;Google Search Operators&lt;/h2&gt;
+&lt;p&gt;Make sure you don’t put a space between your operator and the search value. Also, word order matters. The first word ranks higher than the second. You should use nouns to avoid &lt;a href=&quot;https://www.link-assistant.com/seo-stop-words.html&quot;&gt;stop words&lt;/a&gt;. Using too few words can yield crummy results, and the search input will accept up to 32 words.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Find an exact match: use quotes around a word or phrase.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;quot;typeof array&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;Specific site: use &lt;code class=&quot;language-text&quot;&gt;site:&lt;/code&gt; in front of a domain or .tld.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;react site:github.com` or `site:.edu calculus&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;Hashtags: &lt;code class=&quot;language-text&quot;&gt;#&lt;/code&gt; in front of a word.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;#harambe site:instagram.com&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;Exclude specific words: put &lt;code class=&quot;language-text&quot;&gt;-&lt;/code&gt; in front of a phrase you don’t want.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;react -native&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;Wildcards or unknown words: use a &lt;code class=&quot;language-text&quot;&gt;*&lt;/code&gt; inside a word or phrase as a placeholder.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;*.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Google uses automatic word stemming. When you search &lt;code class=&quot;language-text&quot;&gt;code&lt;/code&gt;, Google also searches &lt;code class=&quot;language-text&quot;&gt;coding&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;codes&lt;/code&gt;, etc.&lt;/p&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;Range of numbers: enter &lt;code class=&quot;language-text&quot;&gt;..&lt;/code&gt; between two numbers. Also, using &lt;code class=&quot;language-text&quot;&gt;$&lt;/code&gt; will search prices.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;laptop $500..$1000&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol start=&quot;7&quot;&gt;
+&lt;li&gt;Combine searches: use &lt;code class=&quot;language-text&quot;&gt;OR&lt;/code&gt; or &lt;code class=&quot;language-text&quot;&gt;|&lt;/code&gt; between each search query.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;colors site:github.com` OR `site:npmjs.org&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Using &lt;code class=&quot;language-text&quot;&gt;AND&lt;/code&gt; isn’t necessary, since “and” is assumed in a string of words.&lt;/p&gt;
+&lt;ol start=&quot;8&quot;&gt;
+&lt;li&gt;Related sites: put &lt;code class=&quot;language-text&quot;&gt;related:&lt;/code&gt; before a domain.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;related:angular.io&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol start=&quot;9&quot;&gt;
+&lt;li&gt;Define a word: simply use &lt;code class=&quot;language-text&quot;&gt;define:&lt;/code&gt; before your word.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;define:terse&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Most of the time Google will offer a word definition for single word searches.&lt;/p&gt;
+&lt;ol start=&quot;10&quot;&gt;
+&lt;li&gt;Filetypes: use &lt;code class=&quot;language-text&quot;&gt;filetype:&lt;/code&gt; before a preferred file extension.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;tax form filetype:pdf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol start=&quot;11&quot;&gt;
+&lt;li&gt;View the cached snapshot of a site: Use &lt;code class=&quot;language-text&quot;&gt;cache:&lt;/code&gt; before the site address. This is mostly useful if a site goes down.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;cache:https://nodejs.org/en/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should still use &lt;a href=&quot;https://archive.org/web/&quot;&gt;archive.org&lt;/a&gt; to see various snapshots over time.&lt;/p&gt;
+&lt;h3&gt;Other Search Operators&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Search terms in titles, text, urls with &lt;code class=&quot;language-text&quot;&gt;allintitle&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;allintext&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;allinurl&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;allintitle:samsung recall&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;This is distinct from &lt;code class=&quot;language-text&quot;&gt;intitle&lt;/code&gt; which search for a specific phrase in the title.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;intext:&amp;quot;periodic table&amp;quot; intitle:javascript&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Writing in Sand or in Stone?&lt;/h3&gt;
+&lt;p&gt;Traditional education would have you remember every single nuance and hoard endless notes for every possible subject (oops, see my &lt;a href=&quot;https://github.com/brettinternet/public-notes&quot;&gt;public notes&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;But we don’t really have to take notes on everything, because it’s all been written for us online! I can really appreciate how web development has embraced this paradigm. The ability to reference information from documentation and Google searches is more valuable.&lt;/p&gt;</content:encoded></item></channel></rss>

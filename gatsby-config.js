@@ -61,7 +61,7 @@ const siteMetadata = {
     {
       title: "This blog",
       description:
-        "This blog with React, CSS in JS, GraphQL and a static build for speed. 😎",
+        "Markdown, React, CSS in JS, and GraphQL 😎",
       details: "brettinternet/brettinternet.github.io",
       href: "https://github.com/brettinternet/brettinternet.github.io",
     },

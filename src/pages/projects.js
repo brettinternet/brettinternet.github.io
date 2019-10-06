@@ -36,22 +36,12 @@ const ProjectsPage = ({ data, location }) => {
       >
         <Cards>
           {projectsFound &&
-            projects.slice(0, 2).map((card, index) => (
+            projects.map((card, index) => (
               <div key={index}>
                 <Card {...card} />
               </div>
             ))}
         </Cards>
-        {projectsFound && projects.length > 2 && (
-          <Cards>
-            {projectsFound &&
-              projects.slice(2, 4).map((card, index) => (
-                <div key={index}>
-                  <Card {...card} />
-                </div>
-              ))}
-          </Cards>
-        )}
       </Section>
     </Layout>
   )
@@ -89,14 +79,6 @@ const Cards = styled.div`
 
     & > div {
       width: 50%;
-
-      &:first-child a {
-        margin-left: 0;
-      }
-
-      &:last-child a {
-        margin-right: 0;
-      }
     }
     
     a {
@@ -104,22 +86,3 @@ const Cards = styled.div`
     }
   `}
 `
-
-//// add project images
-// const Image = () => (
-//   <StaticQuery
-//     query={graphql`
-//       query {
-//         placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-//           childImageSharp {
-//             fluid(maxWidth: 300) {
-//               ...GatsbyImageSharpFluid
-//             }
-//           }
-//         }
-//       }
-//     `}
-//     render={data => <Img fluid={data.placeholderImage.childImageSharp.fluid} />}
-//   />
-// )
-// export default Image

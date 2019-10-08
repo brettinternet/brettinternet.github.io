@@ -159,7 +159,7 @@ module.exports = {
               title
               description
               siteUrl
-              site_url: siteUrl
+              postBasePath
             }
           }
         }
@@ -168,13 +168,14 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
-                return Object.assign({}, edge.node.frontmatter, {
+                return {
                   description: edge.node.excerpt,
                   date: edge.node.frontmatter.date,
-                  url: `${ site.siteMetadata.siteUrl }/blog${ edge.node.fields.slug }`,
-                  guid: `${ site.siteMetadata.siteUrl }/blog${ edge.node.fields.slug }`,
+                  url: site.siteMetadata.siteUrl + site.siteMetadata.postBasePath + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + site.siteMetadata.postBasePath + edge.node.fields.slug,
+                  categories: edge.node.frontmatter.tags,
                   custom_elements: [{ "content:encoded": edge.node.html }],
-                })
+                }
               })
             },
             query: `
@@ -192,6 +193,7 @@ module.exports = {
                     frontmatter {
                       title
                       date
+                      tags
                     }
                   }
                 }

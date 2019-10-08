@@ -120,7 +120,7 @@ module.exports = {
         background_color: theme.neutralPrimary,
         theme_color: theme.themePrimary,
         display: `minimal-ui`,
-        icon: `${ __dirname }/static/favicon.png`,
+        icon: `${ __dirname }/src/images/logo.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
@@ -204,7 +204,33 @@ module.exports = {
         ],
       },
     },
-
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemap.xml`,
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+        }`,
+        serialize: ({ site, allSitePage }) =>
+          allSitePage.edges.map(edge => {
+            return {
+              url: site.siteMetadata.siteUrl + edge.node.path,
+            }
+          })
+      }
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

@@ -9,6 +9,16 @@ const siteMetadata = {
   author: `@brettinternet`,
   siteUrl: "https://brettinternet.com",
   siteRepo: "https://github.com/brettinternet/brettinternet.github.io",
+  homePageTitle: `
+  Hi! I'm Brett
+  <span role="img" aria-label="hand wave" style="margin-left:0.5rem;">
+    👋
+  </span>
+  `,
+  homePageDescription: [
+    `I thrive on finding better solutions to challenging tasks and learning new technologies. Whether science, tech, or dinner table discussion, I enjoy dissecting, improving, and creating.`,
+    `I am passionate about solving problems with software.`
+  ],
   utterances: {
     repo: "brettinternet/brettinternet.github.io",
     label: "💬 Comments",
@@ -36,6 +46,13 @@ const siteMetadata = {
         "Container orchestration, VPS bastion server deployment with Terraform and WireGuard VPN.",
       details: "brettinternet/homelab",
       href: "https://github.com/brettinternet/homelab",
+    },
+    {
+      title: "Gatsby Themes",
+      description:
+        "A collection of my Gatsby themes and components for reuse and sharing",
+      details: "brettinternet/gatsby-themes",
+      href: "https://brettinternet.com/gatsby-themes/",
     },
     {
       title: "Public Notes",

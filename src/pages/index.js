@@ -24,7 +24,13 @@ const icons = {
 }
 
 const IndexPage = ({ data, location }) => {
-  const { postBasePath, projects, socialLinks } = data.site.siteMetadata
+  const {
+    postBasePath,
+    projects,
+    socialLinks,
+    homePageTitle,
+    homePageDescription: bio
+  } = data.site.siteMetadata
   const posts = data.allMarkdownRemark.edges.slice(0, 2)
 
   return (
@@ -40,22 +46,9 @@ const IndexPage = ({ data, location }) => {
           css={`
             margin-top: 0;
           `}
-        >
-          Hi! I'm Brett{" "}
-          <span role="img" aria-label="hand wave">
-            👋
-          </span>
-        </h1>
-        <P>
-          I thrive on finding better solutions to challenging tasks and learning
-          new technologies. Whether science, tech, or dinner table discussion, I
-          enjoy dissecting, improving, and creating.
-        </P>
-        <P>
-          I am passionate about solving problems through software. I enjoy
-          collaborating with other productive individuals and teams where I can
-          grow and add value.
-        </P>
+          dangerouslySetInnerHTML={{ __html: homePageTitle }}
+        />
+        {bio && (Array.isArray(bio) ? bio.map(paragraph => <P>{paragraph}</P>) : <P>{bio}</P>)}
       </Section>
 
       <Section skinny noPadding>
@@ -160,6 +153,8 @@ export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
+        homePageTitle
+        homePageDescription
         postBasePath
         socialLinks {
           name
@@ -206,7 +201,7 @@ const Ul = styled.ul`
       padding: 0.5rem;
 
       &:hover {
-        color: ${props => props.theme.neutralPrimary};
+        color: ${props => props.theme.neutralPrimary };
 
         svg {
           transform: translateY(-1px);

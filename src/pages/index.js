@@ -29,7 +29,7 @@ const IndexPage = ({ data, location }) => {
     projects,
     socialLinks,
     homePageTitle,
-    homePageDescription: bio
+    homePageDescription: bio,
   } = data.site.siteMetadata
   const posts = data.allMarkdownRemark.edges.slice(0, 2)
 
@@ -48,7 +48,12 @@ const IndexPage = ({ data, location }) => {
           `}
           dangerouslySetInnerHTML={{ __html: homePageTitle }}
         />
-        {bio && (Array.isArray(bio) ? bio.map(paragraph => <P>{paragraph}</P>) : <P>{bio}</P>)}
+        {bio &&
+          (Array.isArray(bio) ? (
+            bio.map(paragraph => <P>{paragraph}</P>)
+          ) : (
+            <P>{bio}</P>
+          ))}
       </Section>
 
       <Section skinny noPadding>
@@ -84,7 +89,12 @@ const IndexPage = ({ data, location }) => {
         <Cards>
           {projects.slice(0, 2).map((card, index) => (
             <div key={index}>
-              <Card {...card} />
+              <Card
+                {...card}
+                css={media.md`
+                  height: 210px;
+                `}
+              />
             </div>
           ))}
         </Cards>
@@ -126,6 +136,9 @@ const IndexPage = ({ data, location }) => {
                   description={node.frontmatter.description || node.excerpt}
                   details={node.frontmatter.date}
                   tags={node.frontmatter.tags}
+                  css={media.md`
+                    height: 265px;
+                  `}
                 />
               </div>
             )
@@ -201,7 +214,7 @@ const Ul = styled.ul`
       padding: 0.5rem;
 
       &:hover {
-        color: ${props => props.theme.neutralPrimary };
+        color: ${props => props.theme.neutralPrimary};
 
         svg {
           transform: translateY(-1px);
@@ -232,7 +245,7 @@ const Cards = styled.div`
     margin-bottom: 1em;
   }
 
-  ${media.sm`
+  ${media.md`
     flex-direction: row;
 
     & > div {

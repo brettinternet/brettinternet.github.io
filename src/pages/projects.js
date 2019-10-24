@@ -38,7 +38,12 @@ const ProjectsPage = ({ data, location }) => {
           {projectsFound &&
             projects.map((card, index) => (
               <div key={index}>
-                <Card {...card} />
+                <Card
+                  {...card}
+                  css={media.md`
+                    height: 210px;
+                  `}
+                />
               </div>
             ))}
         </Cards>
@@ -74,7 +79,7 @@ const Cards = styled.div`
     margin-bottom: 1em;
   }
 
-  ${media.sm`
+  ${media.md`
     flex-direction: row;
 
     & > div {

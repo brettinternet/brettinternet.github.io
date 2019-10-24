@@ -9,9 +9,9 @@ import { serifFont } from "utils/mixins"
 
 const Card = ({ to, href, className, title, description, details, tags }) => (
   <RootA to={to} href={href} className={className}>
-    <div>
+    <Wrapper>
       {title && <h3>{title}</h3>}
-      {description && <p>{description}</p>}
+      <div style={{ flex: 1 }}>{description && <p>{description}</p>}</div>
       <Flex>
         {details && <Details>{details}</Details>}
         {tags && (
@@ -24,7 +24,7 @@ const Card = ({ to, href, className, title, description, details, tags }) => (
           </Tags>
         )}
       </Flex>
-    </div>
+    </Wrapper>
   </RootA>
 )
 
@@ -86,6 +86,12 @@ const RootA = styled(A)`
       text-decoration: none;
     }
   }
+`
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 `
 
 const Flex = styled.div`

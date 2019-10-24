@@ -17,7 +17,7 @@ const siteMetadata = {
   `,
   homePageDescription: [
     `I thrive on finding better solutions to challenging tasks and learning new technologies. Whether science, tech, or dinner table discussion, I enjoy dissecting, improving, and creating.`,
-    `I am passionate about solving problems with software.`
+    `I am passionate about solving problems with software.`,
   ],
   utterances: {
     repo: "brettinternet/brettinternet.github.io",
@@ -43,16 +43,22 @@ const siteMetadata = {
     {
       title: "My Homelab",
       description:
-        "Container orchestration, VPS bastion server deployment with Terraform and WireGuard VPN.",
+        "Container orchestration, VPS bastion server via Terraform and WireGuard VPN. See what I self-host.",
       details: "brettinternet/homelab",
       href: "https://github.com/brettinternet/homelab",
     },
     {
       title: "Gatsby Themes",
       description:
-        "A collection of my Gatsby themes and components for reuse and sharing",
+        "A collection of my Gatsby themes and components for reuse and sharing.",
       details: "brettinternet/gatsby-themes",
       href: "https://brettinternet.com/gatsby-themes/",
+    },
+    {
+      title: "mpg",
+      description: "Mileage stats on my 2000 Toyota 4Runner",
+      details: "brettinternet/mpg",
+      href: "https://brettinternet.com/mpg/",
     },
     {
       title: "Public Notes",
@@ -77,8 +83,7 @@ const siteMetadata = {
     },
     {
       title: "This blog",
-      description:
-        "Markdown, React, CSS in JS, and GraphQL 😎",
+      description: "Markdown, React, CSS in JS, and GraphQL 😎",
       details: "brettinternet/brettinternet.github.io",
       href: "https://github.com/brettinternet/brettinternet.github.io",
     },
@@ -91,7 +96,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${ __dirname }/content/blog`,
+        path: `${__dirname}/content/blog`,
         name: `blog`,
       },
     },
@@ -123,7 +128,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${ __dirname }/src/images`,
+        path: `${__dirname}/src/images`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -137,7 +142,7 @@ module.exports = {
         background_color: theme.neutralPrimary,
         theme_color: theme.themePrimary,
         display: `minimal-ui`,
-        icon: `${ __dirname }/src/images/logo.png`,
+        icon: `${__dirname}/src/images/logo.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
@@ -146,12 +151,12 @@ module.exports = {
     {
       resolve: "gatsby-plugin-root-import",
       options: {
-        src: `${ __dirname }/src`,
-        pages: `${ __dirname }/src/pages`,
-        components: `${ __dirname }/src/components`,
-        images: `${ __dirname }/src/images`,
-        utils: `${ __dirname }/src/utils`,
-        templates: `${ __dirname }/src/templates`,
+        src: `${__dirname}/src`,
+        pages: `${__dirname}/src/pages`,
+        components: `${__dirname}/src/components`,
+        images: `${__dirname}/src/images`,
+        utils: `${__dirname}/src/utils`,
+        templates: `${__dirname}/src/templates`,
       },
     },
     {
@@ -188,8 +193,14 @@ module.exports = {
                 return {
                   description: edge.node.excerpt,
                   date: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + site.siteMetadata.postBasePath + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + site.siteMetadata.postBasePath + edge.node.fields.slug,
+                  url:
+                    site.siteMetadata.siteUrl +
+                    site.siteMetadata.postBasePath +
+                    edge.node.fields.slug,
+                  guid:
+                    site.siteMetadata.siteUrl +
+                    site.siteMetadata.postBasePath +
+                    edge.node.fields.slug,
                   categories: edge.node.frontmatter.tags,
                   custom_elements: [{ "content:encoded": edge.node.html }],
                 }
@@ -247,8 +258,8 @@ module.exports = {
             return {
               url: site.siteMetadata.siteUrl + edge.node.path,
             }
-          })
-      }
+          }),
+      },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,

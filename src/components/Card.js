@@ -11,7 +11,7 @@ const Card = ({ to, href, className, title, description, details, tags }) => (
   <RootA to={to} href={href} className={className}>
     <Wrapper>
       {title && <h3>{title}</h3>}
-      <div style={{ flex: 1 }}>{description && <p>{description}</p>}</div>
+      <Body>{description && <p>{description}</p>}</Body>
       <Flex>
         {details && <Details>{details}</Details>}
         {tags && (
@@ -100,6 +100,10 @@ const Flex = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+`
+
+const Body = styled.div`
+  flex: 1;
 `
 
 const Details = styled.div`

@@ -64,7 +64,7 @@ const IndexPage = ({ data, location }) => {
             const Svg = icons[name]
             return (
               <li key={index}>
-                <A href={href}>
+                <A href={href} aria-label={name}>
                   <Svg height="20" />
                 </A>
               </li>

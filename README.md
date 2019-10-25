@@ -16,5 +16,4 @@ This is the source for my personal site and blog [brettinternet.com](https://bre
 - [x] run build on push with travis ci
 - [x] add post commenting
 - [ ] paginate posts in `/blog`
-- [ ] move styled references to a utility layer
 - [ ] switch from `styled-components` to `@emotion`

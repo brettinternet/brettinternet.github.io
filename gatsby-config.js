@@ -15,9 +15,12 @@ const siteMetadata = {
     👋
   </span>
   `,
+  /**
+   * @TODO make this into markdown
+   */
   homePageDescription: [
     `I thrive on finding better solutions to challenging tasks and learning new technologies. Whether science, tech, or dinner table discussion, I enjoy dissecting, improving, and creating.`,
-    `I am passionate about solving problems with software.`,
+    // `I <a href="https://github.com/brettinternet/homelab">self-host various projects</a> that I admire because I am passionate about solving problems with software. I <a href="https://github.com/brettinternet/cv">work</a>.`,
   ],
   utterances: {
     repo: "brettinternet/brettinternet.github.io",

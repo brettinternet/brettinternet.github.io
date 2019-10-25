@@ -50,9 +50,11 @@ const IndexPage = ({ data, location }) => {
         />
         {bio &&
           (Array.isArray(bio) ? (
-            bio.map(paragraph => <P>{paragraph}</P>)
+            bio.map(paragraph => (
+              <P dangerouslySetInnerHTML={{ __html: paragraph }} />
+            ))
           ) : (
-            <P>{bio}</P>
+            <P dangerouslySetInnerHTML={{ __html: bio }} />
           ))}
       </Section>
 

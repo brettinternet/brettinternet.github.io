@@ -1,13 +1,10 @@
 language: node_js
 node_js:
-  - "9"
-dist: xenial
-sudo: false
+  - "stable"
 cache:
+  yarn: true
   directories:
-    - ~/.npm
-git:
-  depth: 3
+    - node_modules
 branches:
   only:
     - source

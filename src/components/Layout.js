@@ -9,6 +9,7 @@ import Footer from "./Footer"
 import styled, { createGlobalStyle } from "styled-components"
 import { reset } from "utils/mixins"
 import { setDarkMode, getDarkMode } from "utils/localStorage"
+import { anchorStyles } from "components/Link"
 
 class Layout extends React.PureComponent {
   state = {
@@ -138,6 +139,10 @@ const GlobalStyle = createGlobalStyle`
     transition: all ${props =>
       props.transitionBody ? "400ms" : "0s"} ease-out;
     overflow-y: ${props => (props.noBodyScroll ? "hidden" : "visible")};
+  }
+
+  a {
+    ${anchorStyles}
   }
 
   ${reset}

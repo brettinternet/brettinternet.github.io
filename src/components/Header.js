@@ -223,6 +223,7 @@ const BrandA = styled(A)`
 
   &:hover {
     text-decoration: none;
+    color: ${props => props.theme.neutralDark};
     background-color: ${props => props.theme.themeLighter};
   }
 
@@ -307,6 +308,7 @@ const StyledA = styled(A)`
 
   &:hover {
     text-decoration: none;
+    color: ${props => props.theme.neutralDark};
     background-color: ${props => props.theme.themeLight};
   }
 
@@ -375,11 +377,3 @@ const MobileCloseButton = styled.button`
   color: ${props => props.theme.black};
   ${resetButton};
 `
-
-// const StyledFooter = styled(Footer)`
-//   display: inline-block;
-//   position: absolute;
-//   bottom: 0;
-//   left: 50%;
-//   transform: translateX(-50%);
-// `

@@ -20,7 +20,7 @@ _Link.propTypes = {
 
 export default _Link
 
-const anchorStyles = css`
+export const anchorStyles = css`
   text-decoration: none;
   color: ${props => props.theme.themePrimary};
   transition: color 200ms;

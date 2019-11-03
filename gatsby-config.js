@@ -51,6 +51,12 @@ const siteMetadata = {
       href: "https://github.com/brettinternet/homelab",
     },
     {
+      title: "Slides",
+      description: "My slides for talks and show-and-tell.",
+      details: "brettinternet/slides",
+      href: "https://brettinternet.com/slides/",
+    },
+    {
       title: "Gatsby Themes",
       description:
         "A collection of my Gatsby themes and components for reuse and sharing.",

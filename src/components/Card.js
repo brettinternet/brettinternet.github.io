@@ -1,32 +1,54 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
+import { theme } from "utils/theme"
 
+import Image from "gatsby-image"
 import A from "components/Link"
 import Tag from "components/Tag"
 
 import { serifFont } from "utils/mixins"
 
-const Card = ({ to, href, className, title, description, details, tags }) => (
-  <RootA to={to} href={href} className={className}>
-    <Wrapper>
-      {title && <h3>{title}</h3>}
-      <Body>{description && <p>{description}</p>}</Body>
-      <Flex>
-        {details && <Details>{details}</Details>}
-        {tags && (
-          <Tags>
-            {tags.map(tag => (
-              <Tag key={tag} themed>
-                {tag}
-              </Tag>
-            ))}
-          </Tags>
-        )}
-      </Flex>
-    </Wrapper>
-  </RootA>
-)
+const Card = ({
+  to,
+  href,
+  className,
+  title,
+  description,
+  details,
+  tags,
+  imageProps,
+}) => {
+  return (
+    <RootA to={to} href={href} className={className} withImage={!!imageProps}>
+      {imageProps && (
+        <ImageContainer>
+          {imageProps.src ? (
+            <StyledImage {...imageProps} />
+          ) : (
+            <StyledGatsbyImage {...imageProps} />
+          )}
+        </ImageContainer>
+      )}
+      <Wrapper>
+        {title && <h3>{title}</h3>}
+        <Body>{description && <p>{description}</p>}</Body>
+        <Flex>
+          {details && <Details>{details}</Details>}
+          {tags && (
+            <Tags>
+              {tags.map(tag => (
+                <Tag key={tag} themed interactive={false}>
+                  {tag}
+                </Tag>
+              ))}
+            </Tags>
+          )}
+        </Flex>
+      </Wrapper>
+    </RootA>
+  )
+}
 
 Card.propTypes = {
   title: PropTypes.string,
@@ -36,22 +58,39 @@ Card.propTypes = {
   description: PropTypes.string,
   details: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string),
+  imageProps: PropTypes.object,
 }
 
 export default Card
 
+const Details = styled.div`
+  font-size: 11px;
+  ${serifFont};
+  font-weight: 400;
+`
+
+const imageStyles = css`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: all 200ms;
+  filter: brightness(40%);
+`
+
+const StyledGatsbyImage = styled(Image)`
+  ${imageStyles};
+`
+
+const StyledImage = styled.img`
+  ${imageStyles};
+`
+
 const RootA = styled(A)`
-  /* background: linear-gradient(
-      to right top,
-      ${({ theme }) => theme.themePrimary},
-      ${({ theme }) => theme.themeDark}
-    )
-    rgb(255, 255, 255); */
-  /* background: ${({ theme }) => theme.neutralTertiaryAlt}; */
   display: block;
+  position: relative;
   color: inherit;
   overflow: hidden;
-  padding: 2em;
   box-shadow: 0 13px 27px -5px ${({ theme }) => theme.neutralLighterAlt},
     0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
   transform: translateY(0);
@@ -60,12 +99,10 @@ const RootA = styled(A)`
   border: 1px solid ${({ theme }) => theme.neutralLighter};
 
   h3 {
-    color: ${({ theme }) => theme.black};
     margin: 0 0 0.5em 0;
   }
 
   p {
-    color: ${({ theme }) => theme.neutralSecondary};
     font-size: 15px;
     line-height: 1.3;
     margin: 0;
@@ -85,13 +122,65 @@ const RootA = styled(A)`
     p {
       text-decoration: none;
     }
+
+    ${StyledGatsbyImage}, ${StyledImage} {
+      width: 102%;
+      height: 102%;
+      filter: brightness(50%) blur(2px);
+    }
   }
+
+  ${({ withImage }) =>
+    withImage
+      ? css`
+          h3 {
+            color: ${theme.neutralLighter};
+          }
+
+          p {
+            color: ${theme.neutralLighterAlt};
+          }
+
+          ${Details} {
+            color: ${theme.neutralQuaternaryAlt};
+          }
+        `
+      : css`
+          h3 {
+            color: ${theme.black};
+          }
+
+          p {
+            color: ${theme.neutralSecondary};
+          }
+
+          ${Details} {
+            color: ${theme.neutralTertiary};
+          }
+        `}
 `
 
 const Wrapper = styled.div`
+  padding: 2em;
   display: flex;
   flex-direction: column;
   min-height: 100%;
+`
+
+const ImageContainer = styled.div`
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
 `
 
 const Flex = styled.div`
@@ -104,13 +193,6 @@ const Flex = styled.div`
 
 const Body = styled.div`
   flex: 1;
-`
-
-const Details = styled.div`
-  color: ${({ theme }) => theme.neutralTertiary};
-  font-size: 11px;
-  ${serifFont};
-  font-weight: 400;
 `
 
 const Tags = styled.div`

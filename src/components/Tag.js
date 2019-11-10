@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 const Tag = ({
   className,
@@ -12,6 +12,7 @@ const Tag = ({
   mRight,
   mBottom,
   noPadding,
+  interactive,
 }) => (
   <StyledTag
     className={className}
@@ -22,6 +23,7 @@ const Tag = ({
     mRight={mRight}
     mBottom={mBottom}
     noPadding={noPadding}
+    interactive={interactive}
   >
     <span>{children}</span>
   </StyledTag>
@@ -34,6 +36,7 @@ Tag.propTypes = {
   textMuted: PropTypes.bool,
   mRight: PropTypes.string,
   mBottom: PropTypes.string,
+  interactive: PropTypes.bool,
 }
 
 export default Tag
@@ -67,22 +70,18 @@ const StyledTag = styled.span`
 
   transition: background-color 150ms, color 150ms;
 
-  &:hover {
-    background-color: ${({ noBackground, themed, theme }) =>
-      noBackground
-        ? "inherit"
-        : themed
-        ? theme.themeDark
-        : theme.neutralQuaternaryAlt};
-    text-decoration: none;
-  }
-
+  &:hover,
   &:active {
-    background-color: ${({ noBackground, themed, theme }) =>
-      noBackground
-        ? "inherit"
-        : themed
-        ? theme.themeDarkAlt
-        : theme.neutralQuaternary};
+    ${({ interactive }) =>
+      interactive &&
+      css`
+        background-color: ${({ noBackground, themed, theme }) =>
+          noBackground
+            ? "inherit"
+            : themed
+            ? theme.themeDark
+            : theme.neutralQuaternaryAlt};
+        text-decoration: none;
+      `}
   }
 `

@@ -51,8 +51,8 @@ class BlogPostTemplate extends React.Component {
             {tags &&
               tags.length &&
               tags.map(tag => (
-                <A key={tag} to={`/tags/${ kebabCase(tag) }`}>
-                  <Tag themed mRight="0.5rem">
+                <A key={tag} to={`/tags/${kebabCase(tag)}`}>
+                  <Tag themed mRight="0.5rem" interactive>
                     {tag}
                   </Tag>
                 </A>
@@ -68,13 +68,13 @@ class BlogPostTemplate extends React.Component {
               >
                 >
               </Dot>
-              <A href={`${ siteRepo }/edit/source/content/blog${ slug }index.md`}>
+              <A href={`${siteRepo}/edit/source/content/blog${slug}index.md`}>
                 Edit on GitHub
               </A>
 
               <Dot>·</Dot>
               <A
-                href={`https://twitter.com/home?status=${ location.href }`}
+                href={`https://twitter.com/home?status=${location.href}`}
                 title="Tweet post"
               >
                 <TwitterSvg height="12" />
@@ -84,22 +84,26 @@ class BlogPostTemplate extends React.Component {
             <NavButton
               buttons={[
                 ...(previous
-                  ? [{
-                    dir: "backward",
-                    rel: "prev",
-                    to: (postBasePath || "") + previous.fields.slug,
-                    name: previous.frontmatter.title,
-                    css: `font-size: 13px;`,
-                  }]
+                  ? [
+                      {
+                        dir: "backward",
+                        rel: "prev",
+                        to: (postBasePath || "") + previous.fields.slug,
+                        name: previous.frontmatter.title,
+                        css: `font-size: 13px;`,
+                      },
+                    ]
                   : []),
                 ...(next
-                  ? [{
-                    dir: "forward",
-                    rel: "next",
-                    to: (postBasePath || "") + next.fields.slug,
-                    name: next.frontmatter.title,
-                    css: `font-size: 13px;`,
-                  }]
+                  ? [
+                      {
+                        dir: "forward",
+                        rel: "next",
+                        to: (postBasePath || "") + next.fields.slug,
+                        name: next.frontmatter.title,
+                        css: `font-size: 13px;`,
+                      },
+                    ]
                   : []),
               ]}
             />
@@ -159,10 +163,10 @@ const Title = styled.h1`
 `
 
 const Body = styled.div`
-  ${serifFont };
+  ${serifFont};
 
   a {
-    color: ${props => props.theme.themePrimary };
+    color: ${props => props.theme.themePrimary};
 
     &:hover {
       text-decoration: underline;

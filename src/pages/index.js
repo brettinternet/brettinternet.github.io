@@ -15,6 +15,8 @@ import TwitterSvg from "images/icons/twitter.svg"
 import KeybaseSvg from "images/icons/keybase.svg"
 import LinkedinSvg from "images/icons/linkedin.svg"
 
+import { getProjectImageProps } from "pages/projects"
+
 const icons = {
   linkedin: LinkedinSvg,
   github: GithubSvg,
@@ -50,8 +52,8 @@ const IndexPage = ({ data, location }) => {
         />
         {bio &&
           (Array.isArray(bio) ? (
-            bio.map(paragraph => (
-              <P dangerouslySetInnerHTML={{ __html: paragraph }} />
+            bio.map((paragraph, index) => (
+              <P key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />
             ))
           ) : (
             <P dangerouslySetInnerHTML={{ __html: bio }} />
@@ -89,16 +91,20 @@ const IndexPage = ({ data, location }) => {
         `}
       >
         <Cards>
-          {projects.slice(0, 2).map((card, index) => (
-            <div key={index}>
-              <Card
-                {...card}
-                css={media.md`
+          {projects.slice(0, 2).map((projectProps, index) => {
+            const { imageName, ...card } = projectProps
+            return (
+              <div key={index}>
+                <Card
+                  imageProps={getProjectImageProps(imageName)}
+                  {...card}
+                  css={media.md`
                   height: 210px;
                 `}
-              />
-            </div>
-          ))}
+                />
+              </div>
+            )
+          })}
         </Cards>
         <CTAWrapper>
           <NavButton
@@ -180,6 +186,7 @@ export const pageQuery = graphql`
           description
           details
           href
+          imageName
         }
       }
     }

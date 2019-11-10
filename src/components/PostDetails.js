@@ -32,7 +32,7 @@ const PostDetails = ({ title, date, link, description, tags }) => (
         <Tags>
           {tags.map(tag => (
             <A key={tag} to={`/tags/${kebabCase(tag)}`}>
-              <Tag textMuted mRight="0.5rem">
+              <Tag textMuted mRight="0.5rem" interactive>
                 {tag}
               </Tag>
             </A>

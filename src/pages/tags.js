@@ -30,7 +30,7 @@ class TagsPageRoute extends React.Component {
                 key={tag.fieldValue}
                 to={`/tags/${kebabCase(tag.fieldValue)}/`}
               >
-                <Tag themed mRight="0.75em" mBottom="0.5em">
+                <Tag themed mRight="0.75em" mBottom="0.5em" interactive>
                   {tag.fieldValue}
                   {tag.totalCount > 1 && <span> ({tag.totalCount})</span>}
                 </Tag>

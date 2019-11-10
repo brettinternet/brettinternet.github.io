@@ -1,6 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const _ = require("lodash")
+const { get, uniq, kebabCase } = require("lodash")
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -66,15 +66,15 @@ exports.createPages = ({ graphql, actions }) => {
 
     let tags = []
     posts.forEach(edge => {
-      if (_.get(edge, "node.frontmatter.tags")) {
+      if (get(edge, "node.frontmatter.tags")) {
         tags = tags.concat(edge.node.frontmatter.tags)
       }
     })
-    tags = _.uniq(tags)
+    tags = uniq(tags)
 
     tags.forEach(tag => {
       createPage({
-        path: `/tags/${_.kebabCase(tag)}/`,
+        path: `/tags/${kebabCase(tag)}/`,
         component: tagTemplate,
         context: {
           tag,

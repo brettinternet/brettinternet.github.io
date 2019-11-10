@@ -49,6 +49,15 @@ const siteMetadata = {
         "Container orchestration, VPS bastion server via Terraform and WireGuard VPN. See what I self-host.",
       details: "brettinternet/homelab",
       href: "https://github.com/brettinternet/homelab",
+      imageName: "homelab",
+    },
+    {
+      title: "Hugo-Slides",
+      description:
+        "Make your own library of slides, with client sync and other features.",
+      details: "brettinternet/hugo-slides",
+      href: "https://brettinternet.com/hugo-slides/",
+      imageName: "hugo-slides",
     },
     {
       title: "Slides",
@@ -64,15 +73,16 @@ const siteMetadata = {
       href: "https://brettinternet.com/gatsby-themes/",
     },
     {
-      title: "mpg",
+      title: "mpg ⛽",
       description: "Mileage stats on my 2000 Toyota 4Runner",
       details: "brettinternet/mpg",
       href: "https://brettinternet.com/mpg/",
+      imageName: "mpg",
     },
     {
       title: "Public Notes",
       description:
-        "Watch what I'm currently learning, and other references I aggregate over time.",
+        "Watch what I'm currently learning, and other references I aggregate over time. 📎",
       details: "brettinternet/public-notes",
       href: "https://github.com/brettinternet/public-notes",
     },
@@ -86,9 +96,18 @@ const siteMetadata = {
     {
       title: "CV",
       description:
-        "I wrote my CV with LaTeX. If you're an employer, check it out!",
+        "I wrote my CV with LaTeX. If you're an employer, check it out! 📄",
       details: "brettinternet/cv",
       href: "https://github.com/brettinternet/cv",
+    },
+    {
+      title: "Hackintosh",
+      description:
+        "PC hardware + macOS: my hardware, setup, troubleshooting, and Kernel Extensions 💻",
+      details: "brettinternet/hackintosh",
+      href: "https://github.com/brettinternet/hackintosh",
+      imageName: "hackintosh",
+      tags: ["Archived"],
     },
     {
       title: "This blog",

@@ -8,9 +8,50 @@ import Card from "components/Card"
 
 import { media } from "utils/mixins"
 
+import homelabGif from "images/projects/homelab.gif"
+import hugoSlidesGif from "images/projects/hugo-slides.gif"
+import mpgGif from "images/projects/mpg.gif"
+
+const homelabImageProps = {
+  src: homelabGif,
+  alt: "homelab",
+}
+
+const hugoSlidesImageProps = {
+  src: hugoSlidesGif,
+  alt: "hugo-slides",
+}
+
+const mpgImageProps = {
+  src: mpgGif,
+  alt: "mpg",
+}
+
+export const getProjectImageProps = (name, cb) => {
+  switch (name) {
+    case homelabImageProps.alt:
+      return homelabImageProps
+    case hugoSlidesImageProps.alt:
+      return hugoSlidesImageProps
+    case mpgImageProps.alt:
+      return mpgImageProps
+    default:
+      return cb ? cb(name) : undefined
+  }
+}
+
 const ProjectsPage = ({ data, location }) => {
   const { projects } = data.site.siteMetadata
-  const projectsFound = projects && projects.length
+  const images = data.projectImages.edges
+    .map(({ node }) => {
+      return (
+        node.childImageSharp && {
+          alt: node.name,
+          fluid: node.childImageSharp.fluid,
+        }
+      )
+    })
+    .filter(Boolean)
 
   return (
     <Layout
@@ -35,17 +76,22 @@ const ProjectsPage = ({ data, location }) => {
         `}
       >
         <Cards>
-          {projectsFound &&
-            projects.map((card, index) => (
+          {projects.map((projectProps, index) => {
+            const { imageName, ...card } = projectProps
+            return (
               <div key={index}>
                 <Card
+                  imageProps={getProjectImageProps(imageName, name =>
+                    name ? images.filter(img => img.alt === name)[0] : undefined
+                  )}
                   {...card}
                   css={media.md`
                     height: 210px;
                   `}
                 />
               </div>
-            ))}
+            )
+          })}
         </Cards>
       </Section>
     </Layout>
@@ -55,7 +101,7 @@ const ProjectsPage = ({ data, location }) => {
 export default ProjectsPage
 
 export const pageQuery = graphql`
-  query {
+  query ProjectsPageQuery {
     site {
       siteMetadata {
         projects {
@@ -63,6 +109,20 @@ export const pageQuery = graphql`
           description
           details
           href
+          imageName
+          tags
+        }
+      }
+    }
+    projectImages: allFile(filter: { relativePath: { regex: "/projects/" } }) {
+      edges {
+        node {
+          name
+          childImageSharp {
+            fluid(maxWidth: 350) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
       }
     }

@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import ThemeContext from "components/ThemeContext"
 import { media } from "utils/mixins"
 
@@ -74,8 +74,15 @@ class BlogPostTemplate extends React.Component {
 
               <Dot>·</Dot>
               <A
-                href={`https://twitter.com/home?status=${location.href}`}
+                href={`https://twitter.com/share?url=${location.href}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 title="Tweet post"
+                css={css`
+                  svg {
+                    vertical-align: top;
+                  }
+                `}
               >
                 <TwitterSvg height="12" />
               </A>

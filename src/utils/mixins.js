@@ -85,8 +85,11 @@ export const reset = css`
 
   blockquote {
     padding: 1rem;
-    background-color: ${({ theme }) => theme.neutralLighterAlt};
+    border: 5px solid ${({ theme }) => theme.neutralLighterAlt};
     font-size: 80%;
+    ${sansSerifFont};
+    line-height: 1.4;
+    margin: 1rem 0;
   }
 
   pre code {

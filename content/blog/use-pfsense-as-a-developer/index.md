@@ -2,6 +2,7 @@
 title: "Use pfSense as a Developer - Part 2"
 date: 2017-07-22 00:00:00 -0600
 description: ""
+draft: true
 tags:
   - network
   - homelab

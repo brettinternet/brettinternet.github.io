@@ -295,5 +295,6 @@ module.exports = {
         trackingId: `UA-91007995-3`,
       },
     },
+    "gatsby-plugin-twitter",
   ],
 }

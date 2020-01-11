@@ -1,5 +1,5 @@
 ---
-title: "Becoming a Professional Googler"
+title: "How I Search"
 date: 2016-11-03 00:00:00 -0600
 description: ""
 tags:
@@ -7,13 +7,21 @@ tags:
   - web
 ---
 
-When I took Organic Chemistry and other science courses in university, I quickly realized the value of referencing information from Google. There's an ocean of available knowledge, direction and explanations on Stack Exchange, Yahoo Answers, Quora and other forums and blogs. As a developer, I'm now googling 10x as much to reference documentation, find an npm package or look for answers to a bug (I highly recommend [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en) to use vim shortcuts for fast navigation in your browser!).
+In College, Organic Chemistry was the first beast I confronted where I realized the value of effectively referencing information. There's an ocean of available knowledge, direction and explanations on Stack Overflow, Quora, forums and blogs. As a developer, I'm now googling manyfold more to reference documentation, find a repository or look for answers to a bug (I highly recommend [Vimium](https://github.com/philc/vimium) to use vim shortcuts for fast navigation in your browser).
 
-Learning the 'syntax' of refining a web search can be critical to find what you're looking for. I tell the students I mentor that learning to be a good researcher and referencing answers is so much more important than memorizing syntax or specific values.
+Figuring out how to reference answers is a more valuable skill than memorizing code or definitions. Becoming a good researcher is learning to problem solve.
 
-## Google Search Operators
+Yes, there's a balance. You can't constantly cite everything for syntax and method lookups. Working effectively also requires producing results efficiently. However, quality code requires examination, while keeping abreast of the current environment within an ever-changing world of development.
 
-Make sure you don't put a space between your operator and the search value. Also, word order matters. The first word ranks higher than the second. You should use nouns to avoid [stop words](https://www.link-assistant.com/seo-stop-words.html). Using too few words can yield crummy results, and the search input will accept up to 32 words.
+## Maintaining Curiosity
+
+Occasionally, I'll search "best way to ${some API/method/prototype}". For example a recent "best way to" was with JavaScript's `filter` where I found a very simply example of filter in use. However, some discussion caught my eye on the use of a for loop compared to filter, along with performance demonstration of filter versus for loop. This led me further into examining on how the V8 engine has made performance improvements to looping methods and the current cost of using a shorthand loop. [Notice the performance changes over time](https://jsperf.com/array-filter-performance). A strong sense of curiosity can help us maintain our knowledge, even with basic concepts.
+
+## Search Operators
+
+The 'syntax' of refining a web search can be critical to find what you're looking for.
+
+Make sure you don't put a space between your operator and the search value. Also, word order matters. The first word ranks higher than the second. You should use nouns to avoid [stop words](https://en.wikipedia.org/wiki/Stop_words). Using too few words can yield crummy results, and the search input will accept up to 32 words.
 
 1. Find an exact match: use quotes around a word or phrase.
 
@@ -24,7 +32,9 @@ Make sure you don't put a space between your operator and the search value. Also
 2. Specific site: use `site:` in front of a domain or .tld.
 
 ```
-react site:github.com` or `site:.edu calculus
+react site:github.com
+
+site:.edu calculus
 ```
 
 3. Hashtags: `#` in front of a word.
@@ -56,7 +66,7 @@ laptop $500..$1000
 7. Combine searches: use `OR` or `|` between each search query.
 
 ```
-colors site:github.com` OR `site:npmjs.org
+colors site:github.com OR site:npmjs.org
 ```
 
 Using `AND` isn't necessary, since "and" is assumed in a string of words.
@@ -87,9 +97,9 @@ tax form filetype:pdf
 cache:https://nodejs.org/en/
 ```
 
-You should still use [archive.org](https://archive.org/web/) to see various snapshots over time.
+[Archive.org](https://archive.org/web/) is still a great choice to see a site's snapshots over time.
 
-### Other Search Operators
+### Other Operators
 
 - Search terms in titles, text, urls with `allintitle`, `allintext` and `allinurl`.
 
@@ -103,8 +113,8 @@ allintitle:samsung recall
 intext:"periodic table" intitle:javascript
 ```
 
-### Writing in Sand or in Stone?
+## What to Keep
 
 Traditional education would have you remember every single nuance and hoard endless notes for every possible subject (oops, see my [public notes](https://github.com/brettinternet/public-notes)).
 
-But we don't really have to take notes on everything, because it's all been written for us online! I can really appreciate how web development has embraced this paradigm. The ability to reference information from documentation and Google searches is more valuable.
+But we don't really have to take notes on everything, because so much knowledge has been indexed for us. I appreciate how the development world embraces this paradigm &mdash; it's okay to Google. I've shadowed family physicians while they Google symptoms, and I've also made the case at my company to allow candidates to Google during interviews. This is part of our everyday job. The ability to efficiently reference information from documentation and research is invaluable.

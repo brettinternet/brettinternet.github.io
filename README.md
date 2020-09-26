@@ -11,7 +11,6 @@
 - purgecss
 - sass
 - postcss
-- lodash
 - responsive images
 - lazy load & blur up images
 - self-hosted fonts
@@ -21,6 +20,7 @@
 - commit linting
 - github actions
 
+<!--
 ### todo
 
 - [x] values in `data/routes.js` are not importing in pug locals
@@ -68,3 +68,4 @@
 - [ ] integrate [critical](https://github.com/addyosmani/critical) like [this](https://github.com/anthonygore/html-critical-webpack-plugin/blob/master/src/index.js)
 - [ ] transfer slides over
 - [ ] paginate archive when it's necessary
+-->

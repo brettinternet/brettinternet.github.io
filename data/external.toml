@@ -1,0 +1,45 @@
+[[projects]]
+title = 'My homelab'
+date = 2019-07-11T00:00:00-00:00
+description = 'Long walks in the server room'
+url = 'https://github.com/brettinternet/homelab'
+tags = [
+  'homelab',
+  'linux'
+]
+  [projects.image]
+  filename = 'homelab.gif'
+  alt = 'commandline execution'
+
+[[projects]]
+title = 'Linux dotfiles'
+date = 2017-02-25T00:00:00-00:00
+description = "There's no place like $HOME"
+url = 'https://github.com/brettinternet/linux'
+tags = [
+  'linux'
+]
+
+[[projects]]
+title = 'Public notes'
+date = 2017-02-07T00:00:00-00:00
+description = 'My library of ideas, references, and napkin scribbles'
+url = 'https://github.com/brettinternet/public-notes'
+tags = []
+
+[[projects]]
+title = 'Slides'
+date = 2019-11-16T00:00:00-00:00
+description = 'Show-and-tell'
+url = 'https://github.com/brettinternet/slides'
+tags = []
+
+# [[projects]]
+# title = ''
+# date = 2019-09-27T00:00:00-00:00
+# description = ''
+# url = ''
+# tags = []
+#   [projects.image]
+#   filename = ''
+#   alt = ''

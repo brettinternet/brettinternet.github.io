@@ -1,0 +1,51 @@
+// https://github.com/aFarkas/lazysizes/tree/gh-pages/plugins/blur-up
+
+/*! purgecss ignore */
+.mediabox
+  position: relative
+  display: block
+  height: 0
+  width: 100%
+  padding-bottom: 66.6667%
+  overflow: hidden
+
+/*! purgecss ignore */
+.lazyimg
+  transition: opacity 500ms
+
+/*! purgecss ignore */
+.lazyimg.lazyload:not([src])
+  opacity: 0
+
+/*! purgecss ignore */
+.lazyimg.lazyloaded
+  opacity: 1
+
+/*! purgecss ignore */
+.lazyimg.ls-blur-up-is-loading,
+.lazyimg.lazyload:not([src])
+  visibility: hidden
+  opacity: 0
+
+/*! purgecss ignore */
+.ls-blur-up-img,
+.lazyimg
+  display: block
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  font-family: "blur-up: always", "object-fit: cover"
+  object-fit: cover
+
+/*! purgecss ignore */
+.ls-blur-up-img
+  filter: blur(10px)
+  opacity: 1
+  transition: opacity 1000ms, filter 1500ms
+
+  &.ls-inview.ls-original-loaded
+    opacity: 0
+    filter: blur(5px)

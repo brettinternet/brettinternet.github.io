@@ -54,30 +54,33 @@ mixin drawer
           else
             +vertical_card(projectArg, true)
 
-    #drawer-footer.block.text-sm.py-6.text-center.w-full.px-6
+    #drawer-footer.block.text-sm.py-6.text-center.w-full.px-6.flex.flex-row-reverse.items-center.justify-between.md_flex-col
       - var socialLinks = helpers.getSocialLinks(site.usernames)
-      ul.flex.flex-wrap.justify-center.mb-3
-        each link in socialLinks
+      ul.flex.flex-wrap.justify-center.md_mb-3
+        each link, index in socialLinks
           li
-            a.text-black.flex.items-center.no-underline.transition-colors.duration-150.h-full.p-1.mr-3(
+            a.text-black.flex.items-center.no-underline.transition-colors.duration-150.h-full.p-2(
               href=link.href,
               target='_blank',
-              rel='noopener noreferrer'
+              rel='noopener noreferrer',
+              class=index !== socialLinks.length - 1 && "mr-3"
             )
               +icon(link.icon)
       if site.buildVersion || site.githubRepo
-        p.m-0.text-xs.text-gray-900
-          if site.buildVersion
-            span.text-gray-500 v#{site.buildVersion}
-            |
-            | &#8226;
-            |
+        p.m-0.text-xs.text-gray-500
           if site.githubRepo
-            a.underline(
+            a.underline.text-gray-800(
               href=`https://github.com/${site.githubRepo}`,
               target='_blank',
               rel='noopener noreferrer'
             ) view source
+          if site.buildVersion
+            |
+            |
+            | &#8226;
+            |
+            |
+            span.text-gray-600 #{site.buildVersion}
 
 header#header.flex.p-4.mx-auto.w-full.items-center.h-20(
   class=isHomepage && "max-w-md"

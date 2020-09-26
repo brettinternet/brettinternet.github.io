@@ -2,7 +2,7 @@ extends ./base
 include ../mixins/pill
 
 block content
-  article.max-w-sm.w-full.mx-auto.mt-6.px-4
+  article.max-w-sm.w-full.mx-auto.mt-6.px-6
     if title
       h1.mb-8 #{title}
     if date
@@ -13,10 +13,10 @@ block content
         em.font-sans.font-light #{description}
     #content !{content}
   if tags
-    .mx-auto.max-w-sm.mt-8
+    .mx-auto.max-w-sm.mt-8.px-6
       each tag in tags
         +pill(tag).bg-gray-300
-  if site.githubRepo
+  if site.githubRepo && comments
     hr.mx-auto.max-w-sm
     if comments
-      section#comments.mx-auto.max-w-xs(data-repo=site.githubRepo)
+      section#comments.mx-auto.max-w-xs.px-4(data-repo=site.githubRepo)

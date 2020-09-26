@@ -3,7 +3,7 @@ const { merge } = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const SriPlugin = require('webpack-subresource-integrity')
+// const SriPlugin = require('webpack-subresource-integrity')
 const PreloadPlugin = require('preload-webpack-plugin')
 const PurgeCssPlugin = require('purgecss-webpack-plugin')
 const cssnano = require('cssnano')
@@ -139,9 +139,9 @@ module.exports = merge(baseConfig, {
       },
     }),
     new PreloadPlugin(),
-    new SriPlugin({
-      hashFuncNames: ['sha256', 'sha384'],
-    }),
+    // new SriPlugin({
+    //   hashFuncNames: ['sha256', 'sha384'],
+    // }),
   ],
   optimization: {
     minimize: true,

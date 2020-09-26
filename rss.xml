@@ -28,7 +28,7 @@
             <guid>https://brettinternet.com/build-a-hackintosh/</guid>
             <pubDate>Sun, 23 Apr 2017 00:00:00 GMT</pubDate>
             <description><![CDATA[PC hardware + macOS]]></description>
-            <content:encoded><![CDATA[<div><img src="https://brettinternet.com/images/523633d1b900a4497002ef449954c10d-584.png" alt="System specifications">
+            <content:encoded><![CDATA[<div><img src="https://brettinternet.com/images/bc990566d1b1fed53256a65d919a183b-584.png" alt="System specifications">
 <p>Apple’s overpriced offering is moving away from modular, upgradable hardware. Some recent unveils of the iMac, Mac Pro, and MacBook Pro failed to meet the expectations of many professionals that demand improved specifications. Using the more powerful hardware available with macOS can be the ultimate environment for a developer—Unix coupled with strong machinery. For example, at the time of writing this, I’m on my Kaby Lake build, but current Apple hardware doesn’t offer the newest Intel generation. This is currently experimental in the community, but more stable options do exist with Skylake hardware.</p>
 <p>I first started developing on a MacBook. There are aspects of Apple’s laptops that other hardware manufactures have not been able to match for me quite yet. But as for a desktop where form factor, sleek aluminum design, and the responsive trackpad are not concerns, then a Hackintosh is the way to go for tabletop computing.</p>
 <p>Should you build a hackintosh? Probably not. It’s a breach of Apple’s macOS Terms and Conditions and they <a href="https://en.wikipedia.org/wiki/Psystar_Corporation">have sued companies</a> that attempt to turn a profit. However, Apple has been kind and <a href="https://www.reddit.com/r/hackintosh/comments/2ek35g/is_it_technically_illegal/">hasn’t litigated individuals</a>. Building a Hackintosh involves a <em>lot</em> of troubleshooting and tinkering. But if you’re okay with all of this, then try it out! The first place to start is to begin lurking in the community (<a href="https://reddit.com/r/hackintosh">/r/hackintosh</a>).</p>
@@ -36,7 +36,7 @@
 <hr>
 <p><strong>Feb 2019 update</strong>: Proprietary software can be frustrating and in privacy matters and developer support Apple appears to be straying further from the light. I’ve archived my personal Hackintosh project and moved on to <a href="https://github.com/brettinternet/linux">Linux</a>.</p>
 </div>]]></content:encoded>
-            <enclosure length="0" type="image/png" url="https://brettinternet.com/images/523633d1b900a4497002ef449954c10d-584.png" title="system information"/>
+            <enclosure length="0" type="image/png" url="https://brettinternet.com/images/bc990566d1b1fed53256a65d919a183b-584.png" title="system information"/>
         </item>
         <item>
             <title><![CDATA[Manage notes with markdown and git]]></title>

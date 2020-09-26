@@ -1,0 +1,80 @@
+mixin picture(filename, alt, imgClass)
+  - const ext = helpers.getFileExtension(filename)
+  - const src = `~images/${filename}`
+  if ext === 'gif'
+    .mediabox(class!=attributes.class)
+      img.lazyimg.lazyload(
+        data-src=`${src}?quality=10`,
+        loading='lazy',
+        alt=alt,
+        class=imgClass
+      )
+      noscript
+        img.lazyimg.lazyload(src=src, alt=alt, loading='lazy', class=imgClass)
+  else
+    - const srcXs = `${src}?size=481`
+    - const srcSm = `${src}?size=640`
+    - const srcMd = `${src}?size=768`
+    - const srcLg = `${src}?size=1024`
+    - const srcXl = `${src}?size=1280`
+    - const srcLow = `${src}?size=40,quality=10,format=webp`
+    .mediabox(class!=attributes.class)
+      picture
+        source(
+          media='(min-width: 1024px)',
+          data-srcset=`${srcXl},format=webp`,
+          data-lowsrc=srcLow
+        )
+        source(
+          media='(min-width: 1024px)',
+          data-srcset=srcXl,
+          data-lowsrc=srcLow
+        )
+        source(
+          media='(min-width: 768px)',
+          data-srcset=`${srcLg},format=webp`,
+          data-lowsrc=srcLow
+        )
+        source(
+          media='(min-width: 768px)',
+          data-srcset=srcLg,
+          data-lowsrc=srcLow
+        )
+        source(
+          media='(min-width: 640px)',
+          data-srcset=`${srcMd},format=webp`,
+          data-lowsrc=srcLow
+        )
+        source(
+          media='(min-width: 640px)',
+          data-srcset=srcMd,
+          data-lowsrc=srcLow
+        )
+        source(
+          media='(min-width: 481px)',
+          data-srcset=`${srcSm},format=webp`,
+          data-lowsrc=srcLow
+        )
+        source(
+          media='(min-width: 481px)',
+          data-srcset=srcSm,
+          data-lowsrc=srcLow
+        )
+        source(data-srcset=`${srcXs},format=webp`, data-lowsrc=srcLow)
+        img.lazyimg.lazyload(
+          data-src=srcXs,
+          data-lowsrc=srcLow,
+          loading='lazy',
+          alt=alt,
+          class=imgClass
+        )
+        noscript
+          img.lazyimg.lazyload(src=srcXl, alt=alt, loading='lazy', class=imgClass)
+
+mixin image(filename, alt, caption, imgClass)
+  if filename && caption
+    figure(class!=attributes.class)
+      +picture(filename, alt, imgClass)
+      figcaption.my-4.text-gray-700.text-sm.text-center #{caption}
+  else if filename
+    +picture(filename, alt, imgClass)(class!=attributes.class)

@@ -1,0 +1,37 @@
+include ../mixins/icon
+
+footer.w-full.py-8.px-6.max-w-md.mx-auto.flex.justify-between.items-center.md_py-16
+  .mr-auto
+    if site.githubRepo
+      a.text-sm.text-blue-500.hover_underline(
+        href=`https://github.com/${site.githubRepo}/edit/master${helpers.getAbsoluteInputPath(page.inputPath)}`,
+        target='_blank',
+        rel='noopener noreferrer'
+      ) Edit page
+
+  - var routes = site.routes
+  - var socialLinks = helpers.getSocialLinks(site.usernames)
+  if socialLinks
+    ul.flex.flex-wrap
+      li
+        a.text-black.flex.items-center.transition-colors.duration-150.h-full.p-1.mr-3(
+          href=routes.archive
+        ) archive
+
+      each link in socialLinks
+        li
+          a.text-black.flex.items-center.transition-colors.duration-150.h-full.p-1.mr-3(
+            href=link.href,
+            target='_blank',
+            rel='noopener noreferrer'
+          )
+            +icon(link.icon)
+
+      li
+        a.text-black.flex.items-center.transition-colors.duration-150.h-full.p-1(
+          href=routes.rss,
+          aria-label='Archive RSS',
+          target='_blank',
+          rel='noopener noreferrer'
+        )
+          +icon('rss')

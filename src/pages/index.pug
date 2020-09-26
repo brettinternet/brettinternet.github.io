@@ -6,7 +6,7 @@ block prepend title
   - var title = "home"
 
 block content
-  section.max-w-sm.mx-auto.flex.justify-center.px-4.my-8.md_my-16
+  section.max-w-sm.mx-auto.flex.justify-center.px-6.my-8.md_my-16
     - var socialLinks = helpers.getSocialLinks(site.usernames)
     if socialLinks
       ul.flex.flex-wrap
@@ -22,7 +22,7 @@ block content
                 +icon(link.icon)
               span #{link.name}
 
-  section.mb-8
+  section.mb-8.p-3
     h5.max-w-md.mx-auto.font-serif.my-6.text-center.px-4.md_pl-8.md_text-lg.md_text-left.md_mb-3 stories from data & technology
     .max-w-md.mx-auto
       .p-3
@@ -44,7 +44,7 @@ block content
 
   +separator
 
-  section
+  section.p-3
     h5.max-w-md.mx-auto.font-serif.my-6.text-center.px-4.md_pl-8.md_text-lg.md_text-left.md_mb-3 projects
     .max-w-md.mx-auto
       - var projects = external.projects

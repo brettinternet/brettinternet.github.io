@@ -20,10 +20,12 @@ gifs.forEach((gifPath) => {
   const filepath = `${paths.tmp}/${filename}`
   if (!existsSync(filepath)) {
     // https://github.com/DefinitelyTyped/DefinitelyTyped/blob/ccebb665b78ce7ae7030ef80ddba608ab076797d/types/sharp/index.d.ts#L615
+    /* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call */
     // @ts-ignore
     sharp(gifPath, { animated: true })
       // @ts-ignore
       .gif({ pageHeight: 80, delay: [500] })
+      /* eslint-enable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call */
       .toFile(filepath, (err: Error, info: string) => {
         if (err?.message.includes('class "magicksave" not found')) {
           console.log(

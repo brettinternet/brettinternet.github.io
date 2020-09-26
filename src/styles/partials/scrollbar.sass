@@ -1,0 +1,38 @@
+@mixin scrollbar($size: medium)
+  @if $size == small
+    /* Firefox https://stackoverflow.com/a/54101063/6817437 */
+    scrollbar-color: auto
+    scrollbar-width: thin
+
+    /* Chrome */
+    &::-webkit-scrollbar
+      width: 0.4rem
+      height: 0.4rem
+
+    // &::-webkit-scrollbar-track
+
+    &::-webkit-scrollbar-thumb
+      @apply bg-gray-400
+
+    &::-webkit-scrollbar-thumb:hover
+      @apply bg-gray-500
+
+    &::-webkit-scrollbar-thumb:active
+      @apply bg-gray-600
+
+  @else
+    scrollbar-color: auto
+    scrollbar-width: auto
+
+    &::-webkit-scrollbar
+      width: 0.6rem
+      height: 0.6rem
+
+    &::-webkit-scrollbar-thumb
+      @apply bg-gray-400
+
+    &::-webkit-scrollbar-thumb:hover
+      @apply bg-gray-500
+
+    &::-webkit-scrollbar-thumb:active
+      @apply bg-gray-600

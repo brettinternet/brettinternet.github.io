@@ -1,3 +1,5 @@
+@import './scrollbar'
+
 pre,
 code
   &[class*="language-"]
@@ -16,25 +18,7 @@ pre
   margin: 2rem auto
   overflow: auto
 
-  /* Firefox https://stackoverflow.com/a/54101063/6817437 */
-  scrollbar-color: 'auto'
-  scrollbar-width: thin
-
-  /* Chrome */
-  &::-webkit-scrollbar
-    width: 0.4rem
-    height: 0.4rem
-
-  // &::-webkit-scrollbar-track
-
-  &::-webkit-scrollbar-thumb
-    @apply bg-gray-400
-
-  &::-webkit-scrollbar-thumb:hover
-    @apply bg-gray-500
-
-  &::-webkit-scrollbar-thumb:active
-    @apply bg-gray-600
+  @include scrollbar(small)
 
   @apply rounded-lg bg-gray-100 font-mono text-sm
 

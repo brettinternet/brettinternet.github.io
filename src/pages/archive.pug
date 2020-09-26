@@ -8,7 +8,7 @@ block prepend description
   - var description = "Welcome to the internet"
 
 block content
-  section.max-w-xs.w-full.mx-auto.px-4.mt-4
+  section.max-w-xs.w-full.mx-auto.px-6.mt-4
     - var projects = external.projects.map((j) => Object.assign({}, j, { category: "project" }))
     - var mapPosts = (p) => ({ url: p.url, title: p.data.title, date: p.date, description: p.data.description, tags: p.data.tags, category: "post" })
     - var posts = collections.archive.filter(helpers.postsFilter).map(mapPosts)

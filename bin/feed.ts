@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment */
 import { sep, basename, resolve } from 'path'
-import { writeFileSync } from 'fs'
+import { existsSync, writeFileSync } from 'fs'
 import { URL } from 'url'
 import { Feed } from 'feed'
 import { Author } from 'feed/lib/typings'
 import { JSDOM, DOMWindow } from 'jsdom'
 import { glob } from 'glob'
 import { find, head } from 'lodash'
-import paths = require('../config/paths')
+import * as paths from '../config/paths'
 /* eslint-disable @typescript-eslint/no-var-requires */
 const feedData = require(`${paths.tmp}/feed.json`)
 const site = require('../data/site')
@@ -229,4 +229,6 @@ const main = async (): Promise<void> => {
   writeFeed('rss.xml', feed.rss2())
 }
 
-main().catch(console.error)
+if (existsSync(paths.build)) {
+  main().catch(console.error)
+}

@@ -4,7 +4,7 @@ footer.w-full.py-8.px-6.max-w-md.mx-auto.flex.justify-between.items-center.md_py
   .mr-auto
     if site.githubRepo
       a.text-sm.text-blue-500.hover_underline(
-        href=`https://github.com/${site.githubRepo}/edit/master${helpers.getAbsoluteInputPath(page.inputPath)}`,
+        href=`https://github.com/${site.githubRepo}/edit/source${helpers.getAbsoluteInputPath(page.inputPath)}`,
         target='_blank',
         rel='noopener noreferrer'
       ) Edit page

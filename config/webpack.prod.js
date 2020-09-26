@@ -130,10 +130,6 @@ module.exports = merge(baseConfig, {
     new MiniCssExtractPlugin({
       filename: 'assets/[name].[contenthash].css',
     }),
-    new SriPlugin({
-      hashFuncNames: ['sha256', 'sha384'],
-    }),
-    new PreloadPlugin(),
     new PurgeCssPlugin({
       paths: glob
         .sync(`${paths.src}/**/*`, { nodir: true })
@@ -141,6 +137,10 @@ module.exports = merge(baseConfig, {
       safelist: {
         standard: [/^ls-/],
       },
+    }),
+    new PreloadPlugin(),
+    new SriPlugin({
+      hashFuncNames: ['sha256', 'sha384'],
     }),
   ],
   optimization: {

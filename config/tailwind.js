@@ -299,7 +299,7 @@ module.exports = {
       ],
     },
     /**
-     * Perfect fourth scale (mostly)
+     * Perfect Fourth scale (mostly) and Minor Third scale for smaller devices
      * https://en.wikipedia.org/wiki/Perfect_fourth
      * calculated with https://type-scale.com
      */
@@ -315,6 +315,12 @@ module.exports = {
       '4xl': '4.209rem',
       '5xl': '5.61rem',
       '6xl': '7.478rem',
+      'sm-alt': '0.833rem',
+      'lg-alt': '1.2rem',
+      'xl-alt': '1.44rem',
+      '2xl-alt': '1.728rem',
+      '3xl-alt': '2.074rem',
+      '4xl-alt': '2.488rem',
     },
     fontWeight: {
       hairline: '100',

@@ -1,3 +1,5 @@
+@import './mixins'
+
 html
   box-sizing: border-box
 
@@ -20,26 +22,36 @@ h6
   @apply font-serif
 
 h1
-  @apply text-4xl
+  @apply text-4xl-alt
+  @include screen-above(md)
+    @apply text-4xl
 
 h2
-  @apply text-3xl
+  @apply text-3xl-alt
+  @include screen-above(md)
+    @apply text-3xl
 
 h3
-  @apply text-2xl
+  @apply text-2xl-alt
+  @include screen-above(md)
+    @apply text-2xl
 
 h4
-  @apply text-xl
+  @apply text-xl-alt
+  @include screen-above(md)
+    @apply text-xl
 
 h5
-  @apply text-lg
+  @apply text-lg-alt
+  @include screen-above(md)
+    @apply text-lg
 
 h6
   @apply text-base
 
 p
   margin-bottom: 1rem
-  @apply leading-6
+  @apply leading-6 text-base
 
 em
   font-style: italic

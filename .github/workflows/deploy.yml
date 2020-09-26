@@ -53,8 +53,8 @@ jobs:
 
       - name: Build
         run: npm run build
-          env:
-            NODE_ENV: production
+        env:
+          NODE_ENV: production
 
       # source: https://github.com/tschaub/gh-pages/issues/345#issuecomment-608243163
       - name: Deploy site

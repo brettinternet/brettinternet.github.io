@@ -1,0 +1,29 @@
+if !draft
+  doctype html
+  html(
+    lang='en',
+    data-released=(site.buildTime ? new Date(site.buildTime) : new Date()).toLocaleString(),
+    data-version=site.buildVersion
+  )
+    head
+      block head
+        include ../partials/head
+
+      noscript
+        style.
+          #drawer-open { display: none; }
+
+    body.min-h-screen.flex.flex-col
+      a.sr-only.text-lg.rounded-sm.focus_not-sr-only.focus_absolute.focus_py-4.focus_px-3.focus_m-3.focus_bg-white(
+        href='#main'
+      ) Skip to content
+
+      block header
+        include ../partials/header
+
+      block main
+        main#main.flex-1
+          block content
+
+      block footer
+        include ../partials/footer

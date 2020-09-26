@@ -1,0 +1,97 @@
+include ../mixins/card
+
+- var routes = site.routes
+- var isHomepage = page.url === "/"
+
+include ../mixins/icon
+
+mixin link(name, title)
+  a.font-serif.py-1.px-3.text-black.no-underline.transition.duration-200.rounded-lg(
+    href=routes[name],
+    class=[page.url.includes(name) && "active"]
+  ) #{name}
+
+mixin logoLink(name)
+  a.font-serif.py-1.px-3.text-black.no-underline.transition.duration-200(
+    href=routes.home,
+    class!=attributes.class,
+    class=[isHomepage && "active"],
+    aria-current=isActive && "page"
+  ) #{name || site.title}
+
+mixin logo
+  .font-serif.no-underline.mr-auto(class!=attributes.class)
+    +logoLink
+
+mixin drawer
+  #drawer.fixed.bg-gray-100.z-drawer.flex.flex-col.w-full.sm_w-drawer(
+    aria-hidden='true'
+  )
+    #drawer-header.flex.justify-between.items-center.p-4.h-20
+      nav.flex.items-center
+        .p-1
+          +link('home')
+        .p-1
+          +link('archive')
+      button#drawer-close.rounded.p-3(aria-label='Close menu')
+        +icon('x')
+
+    aside.flex-1.px-6.py-4.overflow-y-auto
+      - var posts = collections.archive.filter((p) => !p.data.draft && p.url !== page.url).sort(helpers.sortByDate)
+      each p in posts
+        section.w-full.mb-6
+          - var postArg = { title: p.data.title, body: p.data.description, href: p.url, image: p.data.image && [p.data.image.filename, p.data.image.alt], tags: p.data.tags, category: "post" }
+          if p.data.image
+            +overlap_card(postArg)
+          else
+            +vertical_card(postArg, true)
+
+      each p in external.projects
+        section.w-full.mb-6
+          - var projectArg = { title: p.title, body: p.description, href: p.url, image: p.image && [p.image.filename, p.image.alt], tags: p.tags, category: "project" }
+          if p.image
+            +overlap_card(projectArg)
+          else
+            +vertical_card(projectArg, true)
+
+    #drawer-footer.block.text-sm.py-6.text-center.w-full.px-6
+      - var socialLinks = helpers.getSocialLinks(site.usernames)
+      ul.flex.flex-wrap.justify-center.mb-3
+        each link in socialLinks
+          li
+            a.text-black.flex.items-center.no-underline.transition-colors.duration-150.h-full.p-1.mr-3(
+              href=link.href,
+              target='_blank',
+              rel='noopener noreferrer'
+            )
+              +icon(link.icon)
+      if site.buildVersion || site.githubRepo
+        p.m-0.text-xs.text-gray-900
+          if site.buildVersion
+            span.text-gray-500 v#{site.buildVersion}
+            |
+            | &#8226;
+            |
+          if site.githubRepo
+            a.underline(
+              href=`https://github.com/${site.githubRepo}`,
+              target='_blank',
+              rel='noopener noreferrer'
+            ) view source
+
+header#header.flex.p-4.mx-auto.w-full.items-center.h-20(
+  class=isHomepage && "max-w-md"
+)
+  +logo(class=isHomepage ? "md_text-3xl" : "text-base")
+
+  if isHomepage
+    nav.flex.items-center
+      +link('archive')
+  else
+    noscript
+      nav.flex.items-center
+        +link('archive')
+    button#drawer-open.rounded.p-3(aria-label='Open menu')
+      +icon('menu')
+
+    +drawer

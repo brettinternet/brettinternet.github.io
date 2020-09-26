@@ -1,0 +1,99 @@
+html
+  box-sizing: border-box
+
+*,
+*::before,
+*::after
+  box-sizing: inherit
+
+body
+  font-size: 16px
+  @apply font-sans
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  margin-bottom: 1rem
+  @apply font-serif
+
+h1
+  @apply text-4xl
+
+h2
+  @apply text-3xl
+
+h3
+  @apply text-2xl
+
+h4
+  @apply text-xl
+
+h5
+  @apply text-lg
+
+h6
+  @apply text-base
+
+p
+  margin-bottom: 1rem
+  @apply leading-6
+
+em
+  font-style: italic
+
+hr
+  user-select: none
+  text-align: center
+  margin: 3rem auto
+  @apply text-2xl text-gray-400 font-serif
+
+main
+  a
+    &:hover
+      text-decoration: underline
+
+    @apply text-blue-500
+
+article
+  font-size: 18px
+  @apply font-article font-light
+
+  li
+    margin-top: 1rem
+    margin-bottom: 1rem
+
+  table,
+  :not(picture) > img,
+  :not(figure) > .mediabox,
+  figure,
+  blockquote,
+  iframe
+    margin: 2rem auto
+
+  blockquote
+    @apply text-lg font-light
+
+  table
+    width: 100%
+
+  ol
+    list-style-type: decimal
+
+  ul
+    list-style-type: disc
+
+  ol,
+  ul
+    padding-left: 2rem
+
+  ol ol,
+  ul ul,
+  ol ul,
+  ul ol
+    padding-left: 1rem
+
+  ul ul
+    list-style-type: circle

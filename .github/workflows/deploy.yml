@@ -1,0 +1,58 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    # api: https://developer.github.com/webhooks/event-payloads/
+    if: "!contains(github.event.head_commit.message, 'skipci')"
+
+    # Switch back to `runs-on: ubuntu-latest` when preview is promoted
+    # Sharp requires libvips 8.9 for gif transformations
+    # libvips 8.9 is available on Ubuntu-20.04
+    # source: https://packages.ubuntu.com/search?keywords=libvips
+    #
+    # ubuntu-20.04 is a preview option available (not in latest, however)
+    # source: https://github.com/actions/virtual-environments/issues/228#issuecomment-637362224
+    #
+    # keep track of status in documentation
+    # source: https://docs.github.com/en/actions/reference/specifications-for-github-hosted-runners#supported-runners-and-hardware-resources
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Git
+        run: |
+          git config --global user.name "$GITHUB_ACTOR"
+          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Install libvips
+        run: |
+          sudo apt-get install libvips
+          vips --version
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      # source: https://github.com/tschaub/gh-pages/issues/345#issuecomment-608243163
+      - name: Deploy site
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy -- -u "$GITHUB_ACTOR@users.noreply.github.com"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

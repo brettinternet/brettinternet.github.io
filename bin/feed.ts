@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment */
 import { sep, basename, resolve } from 'path'
 import { writeFileSync } from 'fs'
 import { URL } from 'url'
@@ -7,8 +8,10 @@ import { JSDOM, DOMWindow } from 'jsdom'
 import { glob } from 'glob'
 import { find, head } from 'lodash'
 import paths = require('../config/paths')
+/* eslint-disable @typescript-eslint/no-var-requires */
 const feedData = require(`${paths.tmp}/feed.json`)
 const site = require('../data/site')
+/* eslint-enable @typescript-eslint/no-var-requires */
 
 const port = process.env.PORT || 3000
 const siteUrl =
@@ -168,7 +171,7 @@ const writeFeed = (filename: string, output: string) => {
   }
 }
 
-;(async () => {
+const main = async (): Promise<void> => {
   const feed = new Feed({
     title: site.title,
     description: site.description,
@@ -224,4 +227,6 @@ const writeFeed = (filename: string, output: string) => {
   }
 
   writeFeed('rss.xml', feed.rss2())
-})()
+}
+
+main().catch(console.error)

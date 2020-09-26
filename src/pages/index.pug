@@ -52,6 +52,6 @@ block content
         each p in projects
           .p-3.w-full.sm_w-1-2
             +overlap_card({title: p.title, body: p.description, href: p.url, image: p.image && [p.image.filename, p.image.alt], tags: p.tags, category: 'project' }).h-full
-      if projects.length > 2
+      if projects.length > 4
         .flex.justify-end.my-3.pr-8
           a(href=site.routes.archive) more

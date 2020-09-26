@@ -16,6 +16,5 @@
     "target": "es5",
     "lib": ["es2017", "dom"],
     "outDir": "./build"
-  },
-  "include": ["src/scripts", "types"]
+  }
 }

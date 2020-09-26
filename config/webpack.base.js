@@ -2,7 +2,7 @@ const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin')
-const InlineSvg = require('./inline-svg')
+// const InlineSvg = require('./inline-svg')
 const glob = require('glob')
 const paths = require('./paths')
 
@@ -81,7 +81,7 @@ module.exports = {
                     /**
                      * @docs https://github.com/webpack-contrib/html-loader#list
                      */
-                    filter: (_tag, _attribute, attributes, _resourcePath) => {
+                    filter: (_tag, _attribute, attributes) => {
                       if (
                         attributes.property === 'og:image' ||
                         attributes.property === 'twitter:image'

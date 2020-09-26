@@ -20,6 +20,20 @@ tags = [
   'linux'
 ]
 
+[[projects]]
+title = 'Public notes'
+date = 2017-02-07T00:00:00-00:00
+description = 'My library of ideas, references, and napkin scribbles'
+url = 'https://github.com/brettinternet/public-notes'
+tags = []
+
+[[projects]]
+title = 'Slides'
+date = 2019-11-16T00:00:00-00:00
+description = 'Show-and-tell'
+url = 'https://github.com/brettinternet/slides'
+tags = []
+
 # [[projects]]
 # title = ''
 # date = 2019-09-27T00:00:00-00:00

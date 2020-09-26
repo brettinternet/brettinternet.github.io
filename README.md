@@ -1,5 +1,7 @@
 # [brettinternet.com](https://brettinternet.com)
 
+[![Deploy](https://github.com/brettinternet/brettinternet.github.io/workflows/Deploy/badge.svg)](https://github.com/brettinternet/brettinternet.github.io/actions?query=workflow%3ADeploy) [![Site status](https://img.shields.io/website?url=https%3A%2F%2Fbrettinternet.com)](https://brettinternet.com)
+
 ### technologies
 
 - typescript

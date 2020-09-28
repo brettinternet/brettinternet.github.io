@@ -65,9 +65,11 @@
 - [ ] optimize fonts with [subfont](https://github.com/Munter/subfont/issues/108#issuecomment-659468935) - requires [python](https://github.com/actions/setup-python)
 - [x] setup ci action
 - [x] setup deployment action
-- [ ] push to blog repo
+- [x] push to blog repo
+- [ ] fix `webpack-subresource-integrity` CSS failure
 - [ ] [async data requests](https://www.11ty.dev/docs/quicktips/cache-api-requests/)
 - [ ] integrate [critical](https://github.com/addyosmani/critical) like [this](https://github.com/anthonygore/html-critical-webpack-plugin/blob/master/src/index.js)
 - [ ] transfer slides over
 - [ ] paginate archive when it's necessary
+- [ ] extend eleventy highlighter to add diff-highlight
 -->

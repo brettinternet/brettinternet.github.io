@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Title
-date: 2020-12-31
+date: 2020-12-31T00:00:00-00:00
 description: Description
 categories:
   - archive

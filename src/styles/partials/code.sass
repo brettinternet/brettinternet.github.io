@@ -9,12 +9,12 @@ code
     white-space: pre
     word-spacing: normal
     word-break: normal
-    line-height: 1.4em
+    line-height: 1.4rem
     tab-size: 4
     hyphens: none
 
 pre
-  padding: 1em
+  padding: 1rem
   margin: 2rem auto
   overflow: auto
 
@@ -22,8 +22,12 @@ pre
 
   @apply rounded-lg bg-gray-100 font-mono text-sm
 
+  & > code
+    line-height: 1.4rem
+
 :not(pre) > code
-  @apply rounded bg-gray-200 p-1
+  overflow-wrap: break-word
+  @apply rounded bg-gray-200 p-1 text-sm
 
 pre > code[class*="language-"]
   font-size: 1em

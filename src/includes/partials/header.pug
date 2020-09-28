@@ -37,8 +37,8 @@ mixin drawer
         +icon('x')
 
     aside.flex-1.px-6.py-4.overflow-y-auto
-      - var posts = collections.archive.filter((p) => !p.data.draft && p.url !== page.url).sort(helpers.sortByDate)
-      each p in posts
+      - var drawerPosts = collections.drawer.filter((p) => !p.data.draft && p.url !== page.url).sort(helpers.sortByDate)
+      each p in drawerPosts
         section.w-full.mb-6
           - var postArg = { title: p.data.title, body: p.data.description, href: p.url, image: p.data.image && [p.data.image.filename, p.data.image.alt], tags: p.data.tags, category: "post" }
           if p.data.image
@@ -46,7 +46,7 @@ mixin drawer
           else
             +vertical_card(postArg, true)
 
-      each p in external.projects
+      each p in external.projects.slice(0, 2)
         section.w-full.mb-6
           - var projectArg = { title: p.title, body: p.description, href: p.url, image: p.image && [p.image.filename, p.image.alt], tags: p.tags, category: "project" }
           if p.image

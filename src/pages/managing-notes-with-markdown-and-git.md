@@ -5,6 +5,7 @@ date: 2017-02-06
 description: "'Everything not saved will be lost.'"
 categories:
   - archive
+  - drawer
 tags:
   - markdown
   - git
@@ -55,18 +56,8 @@ I use a combination of Apple Reminders and private GitHub issues with task lists
 
 ---
 
-**June 2020 update**: As of this year, I've now switch my to do list over to a simple `todo.txt` file.
+<div class="bg-indigo-100 p-6 rounded-md">
 
-```
-Thu 13 Feb 2020
-- todo
-✅ done
-❌ didn't do
+**June 2020 update**: As of this year, I have begun experimenting with a much simpler approach for tracking work-in-progress: `todo.txt`. More on this to come.
 
-9am appointment
-- appointment note
-4pm another appointment
-❌ 5pm mossed appointment
-
-Bullet journal item
-```
+</div>

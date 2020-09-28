@@ -63,7 +63,21 @@ module.exports = (config) => {
    * @source https://www.11ty.dev/docs/collections/#collection-api-methods
    */
   config.addCollection('archive', (collectionApi) =>
-    collectionApi.getAll().filter((item) => 'categories' in item.data)
+    collectionApi
+      .getAll()
+      .filter(
+        (item) =>
+          'categories' in item.data && item.data.categories.includes('archive')
+      )
+  )
+
+  config.addCollection('drawer', (collectionApi) =>
+    collectionApi
+      .getAll()
+      .filter(
+        (item) =>
+          'categories' in item.data && item.data.categories.includes('drawer')
+      )
   )
 
   config.addShortcode('image', shortcodes.image)

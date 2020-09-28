@@ -6,7 +6,7 @@ description: PC hardware + macOS
 categories:
   - archive
 tags:
-  - make
+  - build
 image:
   filename: system-info.png
   alt: system information

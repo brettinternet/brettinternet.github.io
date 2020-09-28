@@ -22,7 +22,7 @@ block content
                 +icon(link.icon)
               span #{link.name}
 
-  section.mb-8.p-3
+  section#posts.mb-8.p-3
     h5.max-w-md.mx-auto.font-serif.mb-6.text-center.px-4.md_pl-8.md_text-lg.md_text-left.md_mb-3 stories from data & technology
     .max-w-md.mx-auto
       .p-3
@@ -34,24 +34,20 @@ block content
         each p in posts1
           .p-3.w-full.md_w-1-2
             +overlap_card({title: p.data.title, body: p.data.description, href: p.url, image: p.data.image && [p.data.image.filename, p.data.image.alt], tags: p.data.tags, category: 'post' }).h-full
-        - var posts2 = posts.slice(3, 5)
-        each p in posts2
-          .p-3.w-full.sm_w-1-2
-            +vertical_card({title: p.data.title, body: p.data.description, href: p.url, image: p.data.image && [p.data.image.filename, p.data.image.alt], tags: p.data.tags, category: 'post' }, true).h-full
-      if posts.length > 5
+      if posts.length > 3
         .flex.justify-end.my-3.pr-8
           a(href=site.routes.archive) more
 
   +separator
 
-  section.p-3
+  section#projects.p-3
     h5.max-w-md.mx-auto.font-serif.mb-6.text-center.px-4.md_pl-8.md_text-lg.md_text-left.md_mb-3 projects
     .max-w-md.mx-auto
-      - var projects = external.projects
-      .flex.justify-center.flex-wrap
+      - var projects = external.projects.slice(0, 4)
+      .flex.flex-wrap
         each p in projects
           .p-3.w-full.sm_w-1-2
             +overlap_card({title: p.title, body: p.description, href: p.url, image: p.image && [p.image.filename, p.image.alt], tags: p.tags, category: 'project' }).h-full
-      if projects.length > 4
+      if external.projects.length > 4
         .flex.justify-end.my-3.pr-8
           a(href=site.routes.archive) more

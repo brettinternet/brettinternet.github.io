@@ -69,19 +69,9 @@ Composing markdown is a timeless method that isn’t married any third party too
 <p>Like an accessible save menu, I keep everything in markdown. I record docker commands and obscure command-line arguments, JavaScript toy problems, or directions to setup Postgres permissions. I also <a href="https://github.com/brettinternet/hugo-slides">create slides</a> with markdown. I’ll only make a note of something if it’s easier to reference my notes than it is to <a href="/blog/becoming-a-professional-googler">Google search it</a>. I also take notes to help out the students that I mentor. You can checkout my <a href="https://github.com/brettinternet/public-notes">public notes</a> on GitHub but you can’t see my private ones 😉.</p>
 <p>I use a combination of Apple Reminders and private GitHub issues with task lists for short term personal tasks, and GitHub Projects to visualize Kanban project and portfolio management. But for notes, I like good ol’ fashioned git and markdown. I use a private repository for my personal notes, and a separate repo for my public notes. I believe this method is the strongest embrace of trustworthy technology. Git and markdown are two timeless tools that are sure to be around for a long time.</p>
 <hr>
-<p><strong>June 2020 update</strong>: As of this year, I’ve now switch my to do list over to a simple <code>todo.txt</code> file.</p>
-<pre><code>Thu 13 Feb 2020
-- todo
-✅ done
-❌ didn't do
-
-9am appointment
-- appointment note
-4pm another appointment
-❌ 5pm mossed appointment
-
-Bullet journal item
-</code></pre>
+<div class="bg-indigo-100 p-6 rounded-md">
+<p><strong>June 2020 update</strong>: As of this year, I have begun experimenting with a much simpler approach for tracking work-in-progress: <code>todo.txt</code>. More on this to come.</p>
+</div>
 </div>]]></content:encoded>
         </item>
         <item>

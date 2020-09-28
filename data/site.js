@@ -23,4 +23,5 @@ module.exports = {
     rss: '/rss.xml',
     archive: '/archive/',
   },
+  trackingId: 'UA-91007995-3',
 }

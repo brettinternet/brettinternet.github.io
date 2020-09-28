@@ -15,7 +15,7 @@ exports.image = function (filename, alt, caption, imgClass) {
   const src = `~images/${filename}`
   const ext = getFileExtension(filename)
   if (ext === 'gif') {
-    picture = `<div class="mediabox">
+    picture = `<div class="mediabox rounded-md">
       <img class="lazyimg lazyload${cn(
         imgClass
       )}" data-src="${src}" loading="lazy" alt="${alt}">
@@ -32,7 +32,7 @@ exports.image = function (filename, alt, caption, imgClass) {
     const srcLg = `${src}?size=1024`
     const srcXl = `${src}?size=1280`
     const srcLow = `${src}?size=40,quality=10,format=webp`
-    picture = `<div class="mediabox">
+    picture = `<div class="mediabox rounded-md">
     <picture>
       <source media="(min-width: 1024px)" data-srcset="${srcXl},format=webp" data-lowsrc="${srcLow}">
       <source media="(min-width: 1024px)" data-srcset="${srcXl}" data-lowsrc="${srcLow}">

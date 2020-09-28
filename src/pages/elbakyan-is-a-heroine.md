@@ -8,7 +8,12 @@ categories:
   - drawer
 tags:
   - science
+image:
+  filename: 'scihub.png'
+  alt: 'Sci Hub landing page'
 ---
+
+{% image "scihub.png", "Sci Hub landing page" %}
 
 A popular [article](https://www.theverge.com/2018/2/8/16985666/alexandra-elbakyan-sci-hub-open-access-science-papers-lawsuit) was recently published about the history of Alexandra Elbakyan's Sci-Hub, a website that makes academic journal papers free to everyone. It's a controversial topic following last year's civil litigation by two major publishers, Elsevier and the American Chemical Society. Most recently, Cloudfare responded to the court's injunction by [terminating service](https://twitter.com/Sci_Hub/status/959702088543539200) to Sci-Hub's domains ([this](https://torrentfreak.com/cloudflare-terminates-service-to-sci-hub-domain-names-180205/) brings up additional ethical concern). Meanwhile, Sci-Hub dances away out of reach by staying available on other domain names inaccessible to the US without a VPN.
 

@@ -23,15 +23,13 @@ mixin responsive_card({ title, body, href, image, category, tags }, responsive=t
       class=image && responsive && (reverse ? "md_rounded-br-none" : "md_rounded-bl-none"),
       class=responsive && (reverse ? "md_rounded-l-lg" : "md_rounded-r-lg")
     )
-      if category
-        .uppercase.tracking-wide.text-sm.font-bold.mb-1(
-          class=helpers.getCategoryFgColor(category)
-        ) #{category}
       .flex-1
         h5.block.leading-tight.font-semibold.text-gray-900.mb-2 #{title}
         p.text-gray-600 #{body}
       if tags
         .mt-6
+          if category
+            +pill(category).uppercase(class=helpers.getCategoryBgColor(category))
           each tag in tags
             +pill(tag).bg-gray-300
     if isAbsoluteHref

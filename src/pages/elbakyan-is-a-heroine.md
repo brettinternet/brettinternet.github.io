@@ -7,6 +7,7 @@ categories:
   - archive
   - drawer
 tags:
+  - web
   - science
 image:
   filename: 'scihub.png'

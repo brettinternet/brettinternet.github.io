@@ -1,6 +1,6 @@
 const path = require('path')
-const paths = require('../config/paths')
 const { URL } = require('url')
+const paths = require('../config/paths')
 
 /**
  * Make a date visually understood

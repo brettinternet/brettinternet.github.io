@@ -4,7 +4,9 @@ const sharp = require('sharp')
 const paths = require('../config/paths')
 
 const images = glob.sync(`${paths.srcImages}/*`)
-const imageMetadata = images.map(async (filepath) => sharp(filepath).metadata())
+const imageMetadata = images.map(
+  async (filepath) => await sharp(filepath).metadata()
+)
 
 /**
  * @source https://sharp.pixelplumbing.com/api-input#metadata

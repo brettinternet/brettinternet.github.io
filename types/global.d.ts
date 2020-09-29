@@ -1,5 +1,3 @@
-declare global {
-  interface Window {
-    dataLayer: any
-  }
+interface Window {
+  dataLayer?: Record<string, unknown>[]
 }

@@ -29,6 +29,8 @@ block metaShare
   if site.url
     meta(property='og:url', content=`${site.url}${page.url}`)
 
+  //- debug: https://cards-dev.twitter.com/validator
+  //- debug: https://developers.facebook.com/tools/debug/
   - let twitterCardType = "summary"
   if image && image.filename
     - let imageUrl = `~images/${image.filename}`

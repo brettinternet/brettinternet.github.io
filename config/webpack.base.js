@@ -84,7 +84,7 @@ module.exports = {
                     filter: (_tag, _attribute, attributes) => {
                       if (
                         attributes.property === 'og:image' ||
-                        attributes.property === 'twitter:image'
+                        attributes.name === 'twitter:image'
                       ) {
                         return true
                       }

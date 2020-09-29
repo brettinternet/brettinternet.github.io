@@ -3,9 +3,9 @@ const glob = require('glob')
 const sharp = require('sharp')
 const paths = require('../config/paths')
 
-const images = glob.sync(`${paths.srcImages}/*`)
-const imageMetadata = images.map(
-  async (filepath) => await sharp(filepath).metadata()
+const images = glob.sync(`${paths.srcImages}/*.{png,jpe?g}`)
+const imageMetadata = images.map((filepath) =>
+  sharp(filepath).metadata().catch(console.error)
 )
 
 /**

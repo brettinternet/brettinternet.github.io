@@ -36,7 +36,7 @@ block metaShare
 
     if image.alt
       meta(property='og:image:alt', content=image.alt)
-      meta(property='twitter:image:alt', content=image.alt)
+      meta(name='twitter:image:alt', content=image.alt)
 
   meta(property='og:type', content=isArticle ? "article" : "website")
 

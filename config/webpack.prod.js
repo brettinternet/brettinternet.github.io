@@ -18,10 +18,12 @@ const comments = require('postcss-discard-comments')({
 })
 const baseConfig = require('./webpack.base')
 
+const isCI = process.env.CI == 'true'
+
 module.exports = merge(baseConfig, {
   mode: 'production',
   devtool: 'hidden-nosources-cheap-module-source-map',
-  stats: 'minimal',
+  stats: isCI ? 'errors-only' : 'minimal',
   module: {
     rules: [
       {

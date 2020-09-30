@@ -170,6 +170,8 @@ exports.getCategoryBgColor = (category) => {
   switch (category) {
     case 'project':
       return 'bg-green-200'
+    case 'meta':
+      return 'bg-orange-200'
     case 'post':
     default:
       return 'bg-blue-200'
@@ -186,6 +188,8 @@ exports.getCategoryFgColor = (category) => {
   switch (category) {
     case 'project':
       return 'text-green-600'
+    case 'meta':
+      return 'text-orange-600'
     case 'post':
     default:
       return 'text-blue-600'

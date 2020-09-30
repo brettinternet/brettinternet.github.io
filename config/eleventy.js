@@ -1,6 +1,7 @@
 const toml = require('toml')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
+const markdownItFootnote = require('markdown-it-footnote')
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 const {
   pairedShortcode: eleventyHighlighter,
@@ -28,6 +29,7 @@ const markdownFilter = (text, options) =>
     )
   )
     .use(markdownItAnchor)
+    .use(markdownItFootnote)
     .disable('code')
     .render(text)
 
@@ -55,6 +57,7 @@ module.exports = (config) => {
       highlight: true,
     })
       .use(markdownItAnchor)
+      .use(markdownItFootnote)
       .disable('code') // disables indented code blocks
   )
 
@@ -62,23 +65,17 @@ module.exports = (config) => {
    * Custom collections
    * @source https://www.11ty.dev/docs/collections/#collection-api-methods
    */
-  config.addCollection('archive', (collectionApi) =>
-    collectionApi
-      .getAll()
-      .filter(
-        (item) =>
-          'categories' in item.data && item.data.categories.includes('archive')
-      )
-  )
-
-  config.addCollection('drawer', (collectionApi) =>
-    collectionApi
-      .getAll()
-      .filter(
-        (item) =>
-          'categories' in item.data && item.data.categories.includes('drawer')
-      )
-  )
+  const customCategories = ['archive', 'drawer', 'meta']
+  customCategories.forEach((name) => {
+    config.addCollection(name, (collectionApi) =>
+      collectionApi
+        .getAll()
+        .filter(
+          (item) =>
+            'categories' in item.data && item.data.categories.includes(name)
+        )
+    )
+  })
 
   config.addShortcode('image', shortcodes.image)
 

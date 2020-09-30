@@ -76,7 +76,7 @@ mixin overlap_card({ title, body, href, image, category, tags })
         +image(...image).object-cover.object-center.overlap-card__image
     .flex.flex-col.min-h-full.p-8
       .flex-1
-        h5.leading-tight(class=image ? "text-white" : "text-gray-900") #{title}
+        h5.leading-tight.mb-2(class=image ? "text-white" : "text-gray-900") #{title}
         if body
           p(class=image ? "text-gray-100" : "text-gray-600") #{body}
       if category || tags

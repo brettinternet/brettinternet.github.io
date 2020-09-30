@@ -9,8 +9,7 @@ block content
       .text-gray-600.font-sans.text-sm.mb-2
         time #{helpers.formatDate(date)}
     if description
-      p.mb-8
-        em.font-sans.font-light #{description}
+      p.font-sans.font-light.italic.text-gray-900.mb-8 #{description}
     #content !{content}
   if tags
     .mx-auto.max-w-sm.mt-8.px-6

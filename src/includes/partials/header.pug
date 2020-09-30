@@ -40,7 +40,13 @@ mixin drawer
       - var drawerPosts = collections.drawer.filter((p) => !p.data.draft && p.url !== page.url).sort(helpers.sortByDate)
       each p in drawerPosts
         section.w-full.mb-6
-          - var postArg = { title: p.data.title, body: p.data.description, href: p.url, image: p.data.image && [p.data.image.filename, p.data.image.alt], tags: p.data.tags, category: "post" }
+          - let category
+          if p.data.categories
+            if p.data.categories.includes("archive")
+              - category = "post"
+            if p.data.categories.includes("meta")
+              - category = "meta"
+          - var postArg = { title: p.data.title, body: p.data.description, href: p.url, image: p.data.image && [p.data.image.filename, p.data.image.alt], tags: p.data.tags, category }
           if p.data.image
             +overlap_card(postArg)
           else

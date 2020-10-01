@@ -72,4 +72,6 @@
 - [ ] transfer slides over
 - [ ] paginate archive when it's necessary
 - [ ] extend eleventy highlighter to add diff-highlight
+- [ ] add default meta image
+- [ ] [debug](https://cards-dev.twitter.com/validator) twitter meta image unfurling
 -->

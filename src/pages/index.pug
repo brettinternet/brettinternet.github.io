@@ -43,7 +43,7 @@ block content
   section#projects.p-3
     h5.max-w-md.mx-auto.font-serif.mb-6.text-center.px-4.md_pl-8.md_text-lg.md_text-left.md_mb-3 projects
     .max-w-md.mx-auto
-      - var projects = external.projects.slice(0, 4)
+      - var projects = external.projects.sort(helpers.sortByDate).slice(0, 4)
       .flex.flex-wrap
         each p in projects
           .p-3.w-full.sm_w-1-2

@@ -38,27 +38,29 @@ mixin drawer
 
     aside.flex-1.px-6.py-4.overflow-y-auto
       - var drawerPosts = collections.drawer.filter((p) => !p.data.draft && p.url !== page.url).sort(helpers.sortByDate)
-      each p in drawerPosts
-        section.w-full.mb-6
-          - let category
-          if p.data.categories
-            if p.data.categories.includes("archive")
-              - category = "post"
-            if p.data.categories.includes("meta")
-              - category = "meta"
-          - var postArg = { title: p.data.title, body: p.data.description, href: p.url, image: p.data.image && [p.data.image.filename, p.data.image.alt], tags: p.data.tags, category }
-          if p.data.image
-            +overlap_card(postArg)
-          else
-            +vertical_card(postArg, true)
+      section
+        each p in drawerPosts
+          .w-full.mb-6
+            - let category
+            if p.data.categories
+              if p.data.categories.includes("archive")
+                - category = "post"
+              if p.data.categories.includes("meta")
+                - category = "meta"
+            - var postArg = { title: p.data.title, body: p.data.description, href: p.url, image: p.data.image && [p.data.image.filename, p.data.image.alt], tags: p.data.tags, category }
+            if p.data.image
+              +overlap_card(postArg)
+            else
+              +vertical_card(postArg, true)
 
-      each p in external.projects.slice(0, 2)
-        section.w-full.mb-6
-          - var projectArg = { title: p.title, body: p.description, href: p.url, image: p.image && [p.image.filename, p.image.alt], tags: p.tags, category: "project" }
-          if p.image
-            +overlap_card(projectArg)
-          else
-            +vertical_card(projectArg, true)
+      section
+        each p in external.projects.filter((p) => p.categories && p.categories.includes('drawer')).slice(0, 2)
+          .w-full.mb-6
+            - var projectArg = { title: p.title, body: p.description, href: p.url, image: p.image && [p.image.filename, p.image.alt], tags: p.tags, category: "project" }
+            if p.image
+              +overlap_card(projectArg)
+            else
+              +vertical_card(projectArg, true)
 
     #drawer-footer.block.text-sm.py-6.text-center.w-full.px-6.flex.flex-row-reverse.items-center.justify-between.md_flex-col
       - var socialLinks = helpers.getSocialLinks(site.usernames)

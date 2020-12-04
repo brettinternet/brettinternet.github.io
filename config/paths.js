@@ -11,7 +11,7 @@ module.exports = {
   srcStyles: path.resolve(ROOT, SRC, 'styles'),
   srcImages: path.resolve(ROOT, SRC, 'images'),
   srcStatic: path.resolve(ROOT, SRC, 'static'),
-  srcPages: path.resolve(ROOT, SRC, 'pages'),
+  srcPages: path.resolve(ROOT, SRC, 'pages'), // dup - TODO: delete
   includes: path.resolve(ROOT, SRC, 'includes'),
   pages: path.resolve(ROOT, SRC, 'pages'),
   build: path.resolve(ROOT, 'build'),

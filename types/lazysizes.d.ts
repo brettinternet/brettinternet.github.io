@@ -3,8 +3,9 @@ declare module 'lazysizes' {
    * @docs https://github.com/aFarkas/lazysizes#js-api
    */
   export const cfg: {
-    loadMode: number
     init: boolean
+    loadMode: number
+    loadHidden: boolean
   }
 
   export const init: () => void

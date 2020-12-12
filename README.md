@@ -67,9 +67,9 @@
 - [x] setup deployment action
 - [x] push to blog repo
 - [ ] fix `webpack-subresource-integrity` CSS failure
-- [ ] [async data requests](https://www.11ty.dev/docs/quicktips/cache-api-requests/)
+- [x] [async data requests](https://www.11ty.dev/docs/quicktips/cache-api-requests/)
 - [ ] integrate [critical](https://github.com/addyosmani/critical) like [this](https://github.com/anthonygore/html-critical-webpack-plugin/blob/master/src/index.js)
-- [ ] transfer slides over
+- [x] add slides
 - [ ] paginate archive when it's necessary
 - [ ] extend eleventy highlighter to add diff-highlight
 - [ ] add default meta image

@@ -1,8 +1,7 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 // const SriPlugin = require('webpack-subresource-integrity')
 const PreloadPlugin = require('preload-webpack-plugin')
 const PurgeCssPlugin = require('purgecss-webpack-plugin')
@@ -27,21 +26,11 @@ module.exports = merge(baseConfig, {
   module: {
     rules: [
       {
-        test: /\.sass$/,
+        test: /\.(sa|sc|c)ss$/,
         include: paths.srcStyles,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              esModule: true,
-            },
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
+          MiniCssExtractPlugin.loader,
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -52,24 +41,6 @@ module.exports = merge(baseConfig, {
           },
           'resolve-url-loader',
           'sass-loader',
-        ],
-      },
-      {
-        test: /\.css$/,
-        include: paths.srcStyles,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              esModule: true,
-            },
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
         ],
       },
       {
@@ -147,12 +118,7 @@ module.exports = merge(baseConfig, {
   ],
   optimization: {
     minimize: true,
-    minimizer: [
-      new TerserPlugin(),
-      new OptimizeCSSAssetsPlugin({
-        cssProcessor: cssnano,
-      }),
-    ],
+    minimizer: ['...', new CssMinimizerPlugin()],
     moduleIds: 'hashed',
     runtimeChunk: 'single',
     splitChunks: {

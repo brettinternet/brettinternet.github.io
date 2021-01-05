@@ -16,22 +16,11 @@ module.exports = merge(baseConfig, {
   module: {
     rules: [
       {
-        test: [/\.sass$/],
+        test: /\.(sa|sc|c)ss$/,
         include: paths.srcStyles,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: true,
-              esModule: true,
-            },
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
+          MiniCssExtractPlugin.loader,
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -42,25 +31,6 @@ module.exports = merge(baseConfig, {
           },
           'resolve-url-loader',
           'sass-loader',
-        ],
-      },
-      {
-        test: [/\.css$/],
-        include: paths.srcStyles,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: true,
-              esModule: true,
-            },
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
         ],
       },
       {
@@ -123,6 +93,12 @@ module.exports = merge(baseConfig, {
   output: {
     filename: 'assets/[name].js',
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'assets/[name].css',
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
   devServer: {
     before: (app, server) => {
       chokidar.watch([`${paths.tmp}/**/*.html`]).on('all', () => {
@@ -138,10 +114,4 @@ module.exports = merge(baseConfig, {
     open: false,
     writeToDisk: true,
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'assets/[name].css',
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-  ],
 })

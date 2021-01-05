@@ -1,4 +1,3 @@
-const toml = require('toml')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const markdownItFootnote = require('markdown-it-footnote')
@@ -34,12 +33,10 @@ const markdownFilter = (text, options) =>
     .render(text)
 
 module.exports = (config) => {
-  config.addDataExtension('toml', (contents) => toml.parse(contents))
-  config.setFrontMatterParsingOptions({
-    engines: {
-      toml: toml.parse.bind(toml),
-    },
-  })
+  config.addPlugin(require('./img-dim'))
+  config.addPlugin(require('./json-ld'))
+  config.addPlugin(require('./optimize-html'))
+  config.addPlugin(require('./apply-csp'))
 
   config.setPugOptions({
     filters: {
@@ -79,7 +76,25 @@ module.exports = (config) => {
 
   config.addShortcode('image', shortcodes.image)
 
+  eleventyConfig.setBrowserSyncConfig({
+    callbacks: {
+      ready: (_err, browserSync) => {
+        const content_404 = fs.readFileSync(
+          path.resolve(paths.build, '404.html')
+        )
+
+        browserSync.addMiddleware('*', (_req, res) => {
+          res.write(content_404)
+          res.end()
+        })
+      },
+    },
+    ui: false,
+    ghostMode: false,
+  })
+
   return {
+    templateFormats: ['md', 'pug', 'js'],
     dir: {
       /**
        * @note apparently this must be a relative path

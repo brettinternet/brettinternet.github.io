@@ -4,23 +4,23 @@
 
 ### technologies
 
-- typescript
-- babel
-- webpack
-- eleventy
-- pug
-- tailwind
-- purgecss
-- sass
-- postcss
-- responsive images
-- lazy load & blur up images
-- self-hosted fonts
-- syntax highlighting code blocks
-- prettier
-- eslint, stylelint
-- commit linting
-- github actions
+-   typescript
+-   babel
+-   webpack
+-   eleventy
+-   pug
+-   tailwind
+-   purgecss
+-   sass
+-   postcss
+-   responsive images
+-   lazy load & blur up images
+-   self-hosted fonts
+-   syntax highlighting code blocks
+-   prettier
+-   eslint, stylelint
+-   commit linting
+-   github actions
 
 <!--
 ### todo
@@ -70,6 +70,7 @@
 - [x] [async data requests](https://www.11ty.dev/docs/quicktips/cache-api-requests/)
 - [ ] integrate [critical](https://github.com/addyosmani/critical) like [this](https://github.com/anthonygore/html-critical-webpack-plugin/blob/master/src/index.js)
 - [x] add slides
+- [ ] Update to webpack 5, update other pkgs
 - [ ] Update to webpack 5, update other pkgs
 - [ ] paginate archive when it's necessary
 - [ ] extend eleventy highlighter to add diff-highlight

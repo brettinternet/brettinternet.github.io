@@ -35,10 +35,10 @@ block metaShare
   if image && image.filename
     - let imageUrl = `~images/${image.filename}`
     - const imageData = imageMetadata[image.filename]
-    if imageData.width > 400
-      - twitterCardType = "summary_large_image"
-    if imageData.width > 1200
-      - imageUrl += "?size=1200"
+    //- if imageData.width > 400
+    //-   - twitterCardType = "summary_large_image"
+    //- if imageData.width > 1200
+    //-   - imageUrl += "?size=1200"
     meta(property='og:image', content=imageUrl)
     meta(name='twitter:image', content=imageUrl)
 

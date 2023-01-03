@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <article>
+    {{ if not .Params.hide_title }}
+    <h1>{{ .Title }}</h1>
+    {{ end }}
+    {{ .Content }}
+  </article>
+  <ul class="container mx-auto my-8 flex flex-wrap justify-center align-middle max-w-4xl">
+    {{ range where .Pages "Type" "eq" "post" }}
+    <li class="p-3 w-full md:w-1-2 max-w-[600px]">
+      {{ partial "card" . }}
+    </li>
+    {{ end }}
+  </ul>
+{{ end }}

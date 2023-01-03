@@ -1,0 +1,6 @@
+{{ $image := resources.Get (.Get "src") }}
+<img
+  src="{{ $image }}"
+  alt='{{ .Get "alt" }}'
+  {{ with .Get "class" }}class="{{ . }}"{{ end }}
+/>

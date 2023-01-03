@@ -1,0 +1,22 @@
+{{ define "main" }}
+  {{ $image := index (.Resources.ByType "image") 0 }}
+  {{ $image_type_arr := split .Params.image "." }}
+  {{ $image_ext := index $image_type_arr 1 }}
+  {{ if $image }}
+    {{ $image = $image.Resize "600x Lanczos" }}
+  {{ end }}
+  <article class="container mx-auto prose prose-slate my-12">
+    {{ if not .Params.hide_title }}
+    <h1 class="font-serif">{{.Title}}</h1>
+    {{ end }}
+    {{ with .PublishDate }}
+    <p class="font-light"><time>{{ .Format "2006-01-02" }}</time></p>
+    {{ end }}
+    {{ if not .Params.hide_image }}
+    {{ with $image }}
+    <img src="{{ .RelPermalink }}" alt="{{ .Title }}" class="border border-solid border-slate-400" />
+    {{ end }}
+    {{ end }}
+    {{.Content}}
+  </article>
+{{ end }}

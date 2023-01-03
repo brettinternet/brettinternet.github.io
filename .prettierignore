@@ -1,4 +1,5 @@
 package-lock.json
 node_modules
-build
-coverage
+/public
+/resources
+.hugo_build.lock

@@ -1,0 +1,22 @@
+<div class="mx-auto w-full md:max-w-4xl bg-emerald-100 border-t border-slate-500 rounded-b text-blue-900 px-4 py-3 shadow-md" role="alert">
+  <div class="flex flex-row space-x-3 align-middle">
+    <div class="mt-1">
+      {{ partial "icons/info.svg" }}
+    </div>
+    <div class="flex-1">
+      <p class="font-bold font-serif text-lg">{{ .Get "title" }}</p>
+      <p class="text-sm font-sans">{{ .Get "body" }}</p>
+    </div>
+    <div class="flex align-middle space-x-4">
+      <a
+        href='{{ .Get "href" }}'
+        class="no-underline inline-flex items-center h-8 px-4 m-2 text-sm text-green-100 transition-colors duration-150 bg-blue-600 rounded-full focus:shadow-outline hover:bg-blue-800"
+      >
+        {{ .Get "action_text" }}
+      </a>
+      <!-- <button id='close-{{ .Get "key" }}'>
+        {{ partial "icons/x.svg" }}
+      </button> -->
+    </div>
+  </div>
+</div>

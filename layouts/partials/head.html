@@ -4,13 +4,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Meta -->
-{{ with .Params.description }}<meta name="description" content="{{ . }}"/>{{ end }}
+<meta name="twitter:card" content="summary"/>
+{{ with .Params.description }}
+  <meta name="description" content="{{ . }}"/>
+  <meta property="og:description" content="{{ . }}"/>
+{{ end }}
 <meta property="og:title" content="{{ .Params.meta_title | default .Title }}"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="{{ .Permalink }}"/>
-{{ with .Params.image }}<meta property="og:image" content="{{ . | absURL }}"/>{{ end }}
-{{ with .Params.description }}<meta property="og:description" content="{{ . }}"/>{{ end }}
-<meta name="twitter:card" content="summary"/>
+{{ $image := index (.Resources.ByType "image") 0 }}
+{{ if $image }}
+  {{ $image = $image.Resize "600x Lanczos" }}
+  <meta property="og:image" content="{{ $image.Permalink | absURL }}"/>
+{{ end }}
 
 <!-- Stylesheets -->
 <!-- Libs -->
@@ -27,7 +33,8 @@
 {{ else }}
   {{ $tailwind := resources.Get "tailwind/tailwind.css"
       | resources.PostCSS $postcss_options
-      | resources.Minify
+      | minify
+      | fingerprint
   }}
   <link rel="stylesheet" href="{{ $tailwind.RelPermalink }}" integrity="{{ $tailwind.Data.Integrity }}" >
 {{ end }}

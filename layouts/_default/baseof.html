@@ -3,11 +3,13 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body class="min-h-screen flex flex-col text-slate-800 bg-orange-50">
+<body
+  class="min-h-screen flex flex-col text-slate-800 bg-orange-50"
+>
   {{ if not .Params.hide_header }}
   {{ partial "header.html" . }}
   {{ end }}
-  <main class="flex-1">
+  <main class="flex-1{{if .Params.hide_header}} pt-12{{end}}{{with .Params.main_classes}} {{.}}{{end}}">
     {{ block "main" . }}
     {{ end }}
   </main>

@@ -1,0 +1,12 @@
+<div class="text-center">
+  <a href="{{ .Get "href" }}" class="group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full flex md:inline-flex no-underline" role="alert">
+    {{ $notice := .Get "notice" }}
+    {{ if $notice }}
+    <span class="flex rounded-full bg-slate-700 text-green-300 uppercase px-2 py-1 text-xs font-bold">{{ $notice }}</span>
+    {{ end }}
+    <span class="text-slate-700 font-serif font-semibold text-left flex-auto">{{ .Get "message" }}</span>
+    <span class="group-hover:translate-x-0.5 transition-transform">
+      {{ partial "icons/chevron-right.svg" (dict "class" "opacity-75 h-4 w-4") }}
+    </span>
+  </a>
+</div>

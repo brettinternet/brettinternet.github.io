@@ -1,0 +1,5 @@
+{{ $scripts := resources.Get "scripts/main.ts" | js.Build }}
+{{ if hugo.IsProduction }}
+  {{ $scripts = $scripts | minify | fingerprint }}
+{{ end }}
+<script src="{{ $scripts.Permalink }}" defer></script>

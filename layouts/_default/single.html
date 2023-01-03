@@ -5,7 +5,7 @@
   {{ if $image }}
     {{ $image = $image.Resize "600x Lanczos" }}
   {{ end }}
-  <article class="container mx-auto prose prose-slate mb-8 px-4 md:px-0">
+  <article class="container mx-auto prose prose-slate mb-8 px-4 md:px-0{{with .Params.article_classes}} {{.}}{{end}}">
     {{ if not .Params.hide_title }}
     <h1 class="font-serif">{{.Title}}</h1>
     {{ end }}

@@ -18,19 +18,20 @@ jobs:
         run: |
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
-
-      - name: Install
-        run: npm ci
+          node-version: 18
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.108.0'
           extended: true
+
+      - name: Install
+        run: npm ci
 
       # New syntax for setting environment variables:
       # https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#environment-files

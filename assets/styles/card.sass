@@ -1,0 +1,20 @@
+.card-layer
+  transition: transform 200ms
+  transform: translateY(0)
+
+  &:hover
+    transform: translateY(-2px)
+
+.overlap-card
+  transition: all 200ms
+
+  .overlap-card__image
+    height: 100%
+    width: 100%
+    transition: all 200ms
+    filter: brightness(50%)
+
+  &:hover .overlap-card__image
+    width: 102%
+    height: 102%
+    filter: brightness(50%) blur(2px)

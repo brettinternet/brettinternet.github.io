@@ -1,0 +1,44 @@
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>{{ block "title" . }}{{ .Params.meta_title | default (printf "%s • %s" .Title .Site.Title) }}{{ end }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Meta -->
+{{ with .Params.description }}<meta name="description" content="{{ . }}"/>{{ end }}
+<meta property="og:title" content="{{ .Params.meta_title | default .Title }}"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="{{ .Permalink }}"/>
+{{ with .Params.image }}<meta property="og:image" content="{{ . | absURL }}"/>{{ end }}
+{{ with .Params.description }}<meta property="og:description" content="{{ . }}"/>{{ end }}
+<meta name="twitter:card" content="summary"/>
+
+<!-- Stylesheets -->
+<!-- Libs -->
+<!-- Tailwind: https://discourse.gohugo.io/t/tailwind-v3-0-and-hugo/35994/27 -->
+{{ $postcss_options := dict "config" "postcss.config.js" "noMap" true }}
+{{ if .Site.IsServer }}
+  {{ $seed := "weqklrjfmnk213409ufasdfhnlk3j4bladsfsl" }}
+  {{ $random := delimit (shuffle (split (md5 $seed) "" )) "" }}
+  {{ $tailwind := resources.Get "tailwind/tailwind.css"
+      | resources.PostCSS $postcss_options
+      | resources.ExecuteAsTemplate (printf "tailwind.dev.%s.css" $random) $random
+  }}
+  <link rel="stylesheet" href="{{ $tailwind.RelPermalink }}">
+{{ else }}
+  {{ $tailwind := resources.Get "tailwind/tailwind.css"
+      | resources.PostCSS $postcss_options
+      | resources.Minify
+  }}
+  <link rel="stylesheet" href="{{ $tailwind.RelPermalink }}" integrity="{{ $tailwind.Data.Integrity }}" >
+{{ end }}
+
+<!-- Custom styles -->
+{{ $css_options := (dict "includePaths" (slice "node_modules")) }}
+{{ $styles := resources.Get "styles/main.sass" | resources.ToCSS $css_options }}
+{{ if hugo.IsProduction }}
+  {{ $styles = $styles | minify | fingerprint }}
+{{ end }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" />
+
+<!-- Favicon/icons -->
+<link rel="icon" type="image/png" href="/favicon.png">

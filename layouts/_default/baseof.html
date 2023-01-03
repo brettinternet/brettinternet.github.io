@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="min-h-screen flex flex-col text-slate-800 bg-orange-50">
+  {{ if not .Params.hide_header }}
+  {{ partial "header.html" . }}
+  {{ end }}
+  <main class="flex-1">
+    {{ block "main" . }}
+    {{ end }}
+  </main>
+  {{ partial "footer.html" . }}
+</body>
+</html>

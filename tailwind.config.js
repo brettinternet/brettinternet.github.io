@@ -1,3 +1,11 @@
+const breakpoints = {
+  xs: '481px',
+  sm: '640px',
+  md: '768px',
+  lg: '1024px',
+  xl: '1280px',
+}
+
 module.exports = {
   content: [
     'content/**/*.md',
@@ -7,6 +15,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: breakpoints,
       fontFamily: {
         sans: [
           'Lato',

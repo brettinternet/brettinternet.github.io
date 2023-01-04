@@ -39,8 +39,10 @@ work.
 If you still think I might be a good fit, then please share with me some details
 before we connect on a call:
 
-- What can you share with me about the product's tech stack?
-- What do the engineering and product team look like?
+- What can you share with me about the product's tech stack (e.g. front and
+  backends, other services, legacy code)?
+- What do the engineering and product team look like (e.g. headcount,
+  experience, roles)?
 - What problems are you trying to solve with your product?
 
 {{< cta href="https://www.linkedin.com/in/brettinternet/" message="Connect with Brett" new_window=true root_class="mt-12" >}}

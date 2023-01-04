@@ -18,7 +18,6 @@ module.exports = {
       screens: breakpoints,
       fontFamily: {
         sans: [
-          'Lato',
           'system-ui',
           '-apple-system',
           'BlinkMacSystemFont',

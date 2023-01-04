@@ -11,8 +11,6 @@ module:
       target: static
     - source: ./node_modules/typeface-fira-code/files/
       target: static/styles/files/
-    - source: ./node_modules/typeface-lato/files/
-      target: static/styles/files/
     - source: ./node_modules/typeface-patua-one/files/
       target: static/styles/files/
     - source: ./node_modules/typeface-roboto-slab/files/

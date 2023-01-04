@@ -39,6 +39,6 @@ work.
 If you still think I might be a good fit, then please share with me some details
 before we connect on a call:
 
-- What details can you share with me about the tech stack?
-- What does the engineering and product team look like?
-- What interesting problem are you trying to solve with your product?
+- What can you share with me about the product's tech stack?
+- What do the engineering and product team look like?
+- What problems are you trying to solve with your product?

@@ -1,8 +1,19 @@
-<div class="text-center">
-  <a href="{{ .Get "href" }}" class="group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full flex md:inline-flex no-underline" role="alert">
-    {{ $notice := .Get "notice" }}
-    {{ if $notice }}
-    <span class="flex rounded-full bg-slate-700 text-green-300 uppercase px-2 py-1 text-xs font-bold">{{ $notice }}</span>
+<div class='text-center{{with .Get "root_class"}} {{.}}{{end}}'>
+  <a
+    href="{{ .Get "href" }}"
+    {{if .Get "new_window"}}
+    target="_blank"
+    rel="noopener noreferrer"
+    {{end}}
+    class="group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full flex md:inline-flex no-underline" role="alert">
+    {{ $icon_class := .Get "icon_class" | default "" }}
+    {{ with .Get "icon" }}
+    {{ $svg := printf "%s%s" (.) ".svg" }}
+    {{ $path := (path.Join "icons" $svg) }}
+    {{ partial $path (dict "class" $icon_class) }}
+    {{ end }}
+    {{ with .Get "notice" }}
+    <span class="flex rounded-full bg-slate-700 text-green-300 uppercase px-2 py-1 text-xs font-bold">{{ . }}</span>
     {{ end }}
     <span class="text-slate-700 font-serif font-semibold text-left flex-auto">{{ .Get "message" }}</span>
     <span class="group-hover:translate-x-0.5 transition-transform">

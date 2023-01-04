@@ -23,7 +23,7 @@ I won't want to miss.
 - I'm excited by what I do. You can tell by the effort I put into side-projects,
   what my coworkers say about me, and my commitment to the products I work on.
 - I'm corrigible. I believe it's important to find growth in any circumstance
-  and to find something to learn from everyone.
+  and to learn from everyone I work with.
 
 ### What I'm looking for
 

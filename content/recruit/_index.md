@@ -30,8 +30,8 @@ I won't want to miss.
 I'm open to working with most kinds of products. Given the current market, I'm
 not open to products that rely solely on blockchain technologies.
 
-As part of the recruitment process, I require an opportunity to sit down the
-team in a casual setting, discuss the product and engineering experience.
+As part of the recruitment process, I require an opportunity to sit down with
+the team in a casual setting to discuss the product and engineering experience.
 
 I'm always willing to discussing additional contract work, but not as full time
 work.

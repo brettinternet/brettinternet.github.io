@@ -17,6 +17,17 @@ orchestrated deployments with multiple nodes. I haven't quite achieved
 high-availability, and I'm not likely to take things that far. However, it has
 been an excellent journey to become more acquainted with Kubernetes.
 
+Setup and usage are inspired by a
+[homelab gitops template](https://github.com/onedr0p/flux-cluster-template) and
+the [k8s-at-home](https://github.com/k8s-at-home) community. You can find
+similar setups with the
+[k8s at home search](https://nanne.dev/k8s-at-home-search/).
+[Historical revisions](https://github.com/brettinternet/homelab/tree/2481045c3a9a6542f10095c9550e324161394286)
+of my homelab setup had rootless Podman containers deployed with ansible as
+systemd units. Prior to that, I
+[used docker-compose](https://github.com/brettinternet/homelab/tree/d1d2c02106e61685d38c199d5971bc383831f72d)
+to orchestrate containers on a single node.
+
 ## Setup
 
 Here have been some of my goals:

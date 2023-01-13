@@ -3,9 +3,10 @@ type: post
 title: Elbakyan is a heroine for modern science
 publishDate: 2018-02-09
 description: Make publicly funded research free
-header_image:
-  src: scihub.png
-  alt: scihub website
+resources:
+  - src: scihub.png
+    params:
+      alt: scihub website
 ---
 
 A popular

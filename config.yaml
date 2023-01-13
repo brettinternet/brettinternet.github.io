@@ -15,3 +15,5 @@ module:
       target: static/styles/files/
     - source: ./node_modules/typeface-roboto-slab/files/
       target: static/styles/files/
+    - source: ./node_modules/mermaid/dist/mermaid.min.js
+      target: static/scripts/mermaid.min.js

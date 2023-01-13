@@ -5,7 +5,8 @@ publishDate: 2022-11-02
 description: Kubernetes at home
 resources:
   - src: k8s.gif
-    title: k9s shell tour
+    params:
+      alt: k9s shell tour
 comments: true
 ---
 
@@ -70,8 +71,6 @@ Here have been some of my goals:
   ([Taskfile](https://github.com/brettinternet/homelab/blob/main/Taskfile.yaml)
   and
   [taskfiles](https://github.com/brettinternet/homelab/blob/main/.taskfiles))
-
-![Book cover for "Mommy, Why is There a Server in the House?"](./stay_at_home_server.jpg)
 
 ### Some questions
 

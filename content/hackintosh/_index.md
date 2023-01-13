@@ -5,7 +5,8 @@ publishDate: 2017-04-23
 description: PC hardware + macOS
 resources:
   - src: system-info.png
-    title: MacOS system information
+    params:
+      alt: MacOS system information
 comments: true
 ---
 

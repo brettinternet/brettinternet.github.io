@@ -14,7 +14,16 @@
     {{ end }}
     {{ if not .Params.hide_image }}
     {{ with $image }}
-    <img src="{{ .RelPermalink }}" alt="{{ .Title }}" class="border border-solid border-slate-400" />
+    <figure>
+      <img
+        src="{{ .RelPermalink }}"
+        {{ with .Params.Alt }}alt="{{.}}"{{end}}
+        class="border border-solid border-slate-400 mx-auto"
+      />
+      {{ with .Params.Caption }}
+      <figcaption class="text-center">{{ . }}</figcaption>
+      {{ end }}
+    </figure>
     {{ end }}
     {{ end }}
     {{.Content}}

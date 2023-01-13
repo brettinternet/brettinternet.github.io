@@ -5,7 +5,8 @@ publishDate: 2021-10-27
 description: Config files for X11, i3wm, sway, macOS, Arch Linux, zsh and bash
 resources:
   - src: i3.png
-    title: X11 with i3 windows manager screenshot
+    params:
+      alt: X11 with i3 windows manager screenshot
 comments: true
 ---
 

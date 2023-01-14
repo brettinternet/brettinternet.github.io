@@ -1,10 +1,6 @@
 {{ $mermaid := .Page.Store.Get "hasMermaid" }}
 
 {{ if $mermaid }}
-  {{ $mermaid := resources.Get "scripts/mermaid.min.js" }}
-  {{ if hugo.IsProduction }}
-    {{ $mermaid = $mermaid | fingerprint }}
-  {{ end }}
   <script src="{{ "scripts/mermaid.min.js" | relURL }}" defer></script>
 {{ end }}
 

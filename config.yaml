@@ -1,9 +1,53 @@
 baseURL: https://brett.cloud
+author:
+  name: Brett Gardiner
+  email: hi@[domain]
 languageCode: en-us
-title: brett
+title: brett.cloud
+params:
+  description: Brett in the cloud ⛅️
 cascade:
   layout: single
   comments: false
+
+mediaTypes:
+  application/atom+xml:
+    suffixes:
+      - xml
+  application/json:
+    suffixes:
+      - json
+outputFormats:
+  Atom:
+    name: Atom
+    mediaType: application/atom+xml
+    baseName: atom
+    isPlainText: false
+    rel: alternate
+    isHTML: false
+    noUgly: true
+    permalinkable: false
+  RSS:
+    baseName: rss
+  JSON:
+    name: Json
+    mediaType: application/json
+    baseName: feed
+    isPlainText: true
+    # suffix: json
+    rel: alternate
+    isHTML: false
+    noUgly: true
+    permalinkable: false
+
+outputs:
+  home: [HTML, RSS, Atom, JSON]
+  list: [HTML, RSS, Atom, JSON]
+
+sitemap:
+  changefreq: monthly
+  filename: sitemap.xml
+  priority: 0.5
 
 module:
   mounts:

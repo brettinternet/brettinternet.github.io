@@ -49,3 +49,10 @@
 
 <!-- Favicon/icons -->
 <link rel="icon" type="image/png" href="/favicon.png">
+
+<!-- Feeds -->
+{{ if .IsHome }}
+{{ range .AlternativeOutputFormats -}}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{ end -}}
+{{ end -}}

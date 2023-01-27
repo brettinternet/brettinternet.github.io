@@ -31,12 +31,13 @@ I'm open to working with most kinds of products. Given the current market, I'm
 not open to products that rely solely on blockchain technologies.
 
 As part of the recruitment process, I require an opportunity to sit down with
-the team in a casual setting to discuss the product and engineering experience.
+the team in a casual setting to answer questions and discuss the product and
+engineering experience.
+
+I am only open to remote work at this time.
 
 I'm always willing to discussing additional contract work, but not as full time
 work.
-
-I am only open to remote work at this time.
 
 If you still think I might be a good fit, then please share with me some details
 before we connect on a call:

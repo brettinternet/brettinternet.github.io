@@ -36,6 +36,8 @@ the team in a casual setting to discuss the product and engineering experience.
 I'm always willing to discussing additional contract work, but not as full time
 work.
 
+I am only open to remote work at this time.
+
 If you still think I might be a good fit, then please share with me some details
 before we connect on a call:
 

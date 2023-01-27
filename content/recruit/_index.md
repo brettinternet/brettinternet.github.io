@@ -32,8 +32,8 @@ I'm open to working with most kinds of products. Given the current market, I'm
 not open to products that rely solely on blockchain technologies.
 
 As part of the recruitment process, I require an opportunity to sit down with
-the team in a casual setting to answer questions and discuss the product and
-engineering experience.
+the team (virtually or in-person) to answer questions and discuss the product
+and engineering experience.
 
 I am only open to remote work at this time.
 

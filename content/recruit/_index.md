@@ -17,8 +17,8 @@ I won't want to miss.
   an enterprise quality fit to solve problems at different scales and
   velocities. I've learned all kinds of technologies and I'm excited to continue
   to learn and solve problems.
-- I have devops experience, and I even run [my own Kubernetes cluster](/homelab)
-  at home.
+- I have solid DevOps experience, and I even run
+  [my own Kubernetes cluster](/homelab) at home.
 - I have [experience](https://go.gardiner.cloud/resume) mentoring, teaching, and
   uplifting others.
 - I'm thrilled by what I do. You can tell by what my coworkers say about me, my

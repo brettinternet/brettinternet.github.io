@@ -320,14 +320,14 @@ be around for a long time.&lt;/p>
 &lt;p>&lt;strong>June 2020 update&lt;/strong>: As of this year, I have begun experimenting with a much
 simpler approach for tracking work-in-progress: &lt;code>todo.txt&lt;/code>. More on this to
 come.&lt;/p>
-&lt;!-- raw HTML omitted --></content></entry><entry><title>About me</title><link rel="alternate" href="https://brett.cloud/about/"/><id>https://brett.cloud/about/</id><published>0001-01-01T00:00:00+0000</published><updated>0001-01-01T00:00:00+0000</updated><summary>code with me recruit me work with me Brett Gardiner is passionate about delivering working software solutions that customers love. He enjoys long walks in the server room and warming his hands by the mainframe. In the evenings, you'll find Brett tinkering with different technologies to expand and grow his interests. GitHub Twitter LinkedIn What do I like? I like my family, pizza, Linux, Costco, spinach but not arugula, dewy Rocky Mountain air in the morning, everything bagels, and Baja Blast Zero.</summary><content type="html">&lt;div class="flex justify-center container mb-16">
+&lt;!-- raw HTML omitted --></content></entry><entry><title>About me</title><link rel="alternate" href="https://brett.cloud/about/"/><id>https://brett.cloud/about/</id><published>0001-01-01T00:00:00+0000</published><updated>0001-01-01T00:00:00+0000</updated><summary>code with me recruit me work with me Brett Gardiner is passionate about delivering working software solutions that customers love. He enjoys long walks in the server room and warming his hands by the mainframe. In the evenings, you'll find Brett tinkering with different technologies to expand and grow his interests. GitHub Twitter LinkedIn What do I like? I like my family, pizza, Linux, Costco, spinach but not arugula, dewy Rocky Mountain air in the morning, everything bagels, and Baja Blast Zero.</summary><content type="html">&lt;div class="not-prose flex flex-col items-center justify-center space-y-10 container mb-16">
 &lt;a
 href="/"
 class="inline-flex items-center no-underline"
 w
 >
 &lt;svg
-class="w-60"
+class="w-60 text-slate-900"
 fill="currentColor"
 stroke="currentColor"
 version="1.1"

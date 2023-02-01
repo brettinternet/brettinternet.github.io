@@ -3,8 +3,11 @@ title: Recruit me
 description: Let's be candid about what would make us a good fit
 ---
 
-Hi, let's be candid about what would make us a good fit. I spell a few things
-out here in a very straightforward way in order to save us both time. You can
+Hi, let's be candid about what would make us a good fit. I'm suspicious of
+canned messages and recruiters that waste time, which is why you may have been
+linked to this page.
+
+I clearly spell a few things out here in order to save both of us time. You can
 also [learn more about me personally](/about).
 
 You should know that I really enjoy my job. But, perhaps you have something that

@@ -13,7 +13,9 @@
     {{ block "main" . }}
     {{ end }}
   </main>
+  {{ if not .Params.hide_footer }}
   {{ partial "footer.html" . }}
+  {{ end }}
   {{ partial "scripts.html" . }}
 </body>
 </html>

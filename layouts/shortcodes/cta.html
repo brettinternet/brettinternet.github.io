@@ -5,7 +5,7 @@
     target="_blank"
     rel="noopener noreferrer"
     {{end}}
-    class="group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full flex md:inline-flex no-underline" role="alert">
+    class="group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full flex xs:inline-flex no-underline" role="alert">
     {{ $icon_class := .Get "icon_class" | default "" }}
     {{ with .Get "icon" }}
     {{ $svg := printf "%s%s" (.) ".svg" }}

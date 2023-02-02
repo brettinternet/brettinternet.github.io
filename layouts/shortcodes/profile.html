@@ -1,0 +1,15 @@
+{{ $first_arg := .Get 0 }}
+{{ $image := .Page.Resources.GetMatch $first_arg }}
+{{ if $image }}
+  {{ $image = $image.Resize "120x Lanczos" }}
+  <figure>
+    <img
+      src="{{ $image.RelPermalink }}"
+      {{ with .Site.Author.Name }}alt="{{.}}"{{end}}
+      class="rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
+    />
+    {{ with .Site.Author.Name }}
+    <figcaption class="text-center">{{ . }}</figcaption>
+    {{ end }}
+  </figure>
+{{ end }}

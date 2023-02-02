@@ -1,18 +1,19 @@
 {{ $svg := printf "%s%s" (.Get "svg") ".svg" }}
-{{ $class := .Get "class" }}
+{{ $class := .Get "svg_class" }}
+{{ $anchor_class := .Get "anchor_class" }}
 {{ $text := .Get "text" }}
 {{ $href := .Get "href" }}
 {{ $path := (path.Join "icons" $svg) }}
 {{ if $href }}
 <a
   href="{{ $href }}"
-  class="inline-flex items-center no-underline{{if $text}} gap-2 group{{end}}"
+  class="inline-flex items-center no-underline{{if $text}} gap-1 group{{end}}{{with $anchor_class}} {{.}}{{end}}"
   {{ if .Get "new_window" }}
   target="_blank"
   rel="noopener noreferrer"
   {{ end }}w
 >
-  {{ partial $path (dict "class" $class) }}
+  {{ partial $path (dict "class" $class | default "") }}
   {{ if $text }}
   <span class="group-hover:underline">{{ $text }}</span>
   {{ end }}

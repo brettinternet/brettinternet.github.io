@@ -7,7 +7,7 @@
   </article>
   <ul class="container mx-auto mb-8 flex flex-wrap justify-center items-center max-w-4xl">
     {{ range where .Pages "Type" "eq" "post" }}
-    <li class="p-3 w-full md:w-1-2 max-w-[600px]">
+    <li class="p-3 flex items-center justify-center w-full md:w-1-2">
       {{ partial "card" . }}
     </li>
     {{ end }}

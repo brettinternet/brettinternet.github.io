@@ -1,8 +1,14 @@
 ---
 title: Recruit me
 description: Let's be candid about what would make us a good fit
+hide_header: true
+hide_title: true
 comments: false
 ---
+
+{{< icon svg="chevron-left" text="home" anchor_class="block mb-8" href="/" >}}
+
+# Recruit me
 
 Hi, let's be candid about what would make us a good fit. I clearly spell a few
 things out here in order to save both of us time. You can also

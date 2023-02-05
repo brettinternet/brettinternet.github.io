@@ -1,1 +1,0 @@
-(()=>{var e={NODE_ENV:"production",isProd:!0,mermaid:!0};e.isProd||console.info("params",e),e.mermaid&&window.mermaid&&window.mermaid.initialize({startOnLoad:!0,theme:"dark"})})()

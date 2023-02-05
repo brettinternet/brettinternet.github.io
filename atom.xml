@@ -333,14 +333,12 @@ be around for a long time.&lt;/p>
 &lt;p>&lt;strong>June 2020 update&lt;/strong>: As of this year, I have begun experimenting with a much
 simpler approach for tracking work-in-progress: &lt;code>todo.txt&lt;/code>. More on this to
 come.&lt;/p>
-&lt;!-- raw HTML omitted --></content></entry><entry><title>About me</title><link rel="alternate" href="https://brett.cloud/about/"/><id>https://brett.cloud/about/</id><published>0001-01-01T00:00:00+0000</published><updated>0001-01-01T00:00:00+0000</updated><summary>code with me recruit me work with me Brett Gardiner is passionate about delivering working software solutions that customers love. He enjoys long walks in the server room and warming his hands by the mainframe. In the evenings, you'll find Brett tinkering with different technologies to expand and grow his interests. GitHub Twitter LinkedIn What do I like? I like my family, pizza, Linux, Costco, spinach but not arugula, dewy Rocky Mountain air in the morning, everything bagels, and Baja Blast Zero.</summary><content type="html">&lt;div class="not-prose flex flex-col items-center justify-center container mb-12 mx-auto">
+&lt;!-- raw HTML omitted --></content></entry><entry><title>About me</title><link rel="alternate" href="https://brett.cloud/about/"/><id>https://brett.cloud/about/</id><published>0001-01-01T00:00:00+0000</published><updated>0001-01-01T00:00:00+0000</updated><summary>code with me recruit me work with me Brett Gardiner has been hard at work writing production code with an enterprise quality fit for solving problems at different scales and velocities. Brett is passionate about a variety of technologies and enjoys making a positive impact by delivering meaningful software for customers. GitHub Twitter LinkedIn What do I like? I like my family, pizza, Linux, Costco, spinach but not arugula, dewy Rocky Mountain air in the morning, everything bagels, and Baja Blast Zero.</summary><content type="html">&lt;div class="not-prose flex flex-col items-center justify-center container mb-12 mx-auto">
 &lt;a href="/">
-&lt;figure>
 &lt;img
 src="/about/profile_hu89dd9f0a2a539a08d41a23b9079e52ba_351109_160x0_resize_lanczos_3.png"
 class="rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
 />
-&lt;/figure>
 &lt;/a>
 &lt;/div>
 &lt;ul class="not-prose list-none p-0 mx-0 my-6 font-article grid xs:grid-cols-3 gap-4 content-center">
@@ -355,10 +353,8 @@ class="rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
 &lt;/li>
 &lt;/ul>
 &lt;p>
-Brett Gardiner is passionate about delivering working software solutions that
-customers love. He enjoys long walks in the server room and warming his hands by
-the mainframe. In the evenings, you'll find Brett tinkering with different technologies
-to expand and grow his interests.
+Brett Gardiner has been hard at work writing production code with an enterprise quality fit for solving problems at different scales and velocities.
+Brett is passionate about a variety of technologies and enjoys making a positive impact by delivering meaningful software for customers.
 &lt;/p>
 &lt;ul class="not-prose list-none mt-6 mb-12 p-0 mx-0 font-article grid xs:grid-cols-3 gap-4 content-center">
 &lt;li class="text-center xs:text-left">

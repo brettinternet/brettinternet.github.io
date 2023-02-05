@@ -31,7 +31,7 @@ I won't want to miss.
   commitment to the products I work on, and the effort I put into side-projects.
 - I'm corrigible. I believe it's important to find growth in any circumstance
   and to learn from everyone I work with.
-- [I'm passionate about different technologies.](/resume.pdf)
+- [I'm passionate about a variety technologies.](/resume.pdf)
 
 ### What I'm looking for
 

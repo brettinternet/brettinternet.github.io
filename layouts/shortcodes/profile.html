@@ -1,7 +1,7 @@
 {{ $first_arg := .Get 0 }}
 {{ $image := .Page.Resources.GetMatch $first_arg }}
 {{ if $image }}
-  {{ $image = $image.Resize "120x Lanczos" }}
+  {{ $image = $image.Resize "160x Lanczos" }}
   <figure>
     <img
       src="{{ $image.RelPermalink }}"

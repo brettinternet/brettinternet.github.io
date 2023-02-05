@@ -26,12 +26,12 @@ I won't want to miss.
   to learn and solve problems.
 - I have solid DevOps experience, and I even run
   [my own Kubernetes cluster](/homelab) at home.
-- I have [experience](https://go.gardiner.cloud/resume) mentoring, teaching, and
-  uplifting others.
+- I have [experience](/resume.pdf) mentoring, teaching, and uplifting others.
 - I'm thrilled by what I do. You can tell by what my coworkers say about me, my
   commitment to the products I work on, and the effort I put into side-projects.
 - I'm corrigible. I believe it's important to find growth in any circumstance
   and to learn from everyone I work with.
+- [I'm passionate about different technologies.](/resume.pdf)
 
 ### What I'm looking for
 

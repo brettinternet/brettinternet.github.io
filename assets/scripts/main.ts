@@ -1,3 +1,4 @@
+import 'lazysizes'
 import params from '@params'
 
 if (!params.isProd) {

@@ -1,8 +1,8 @@
 ---
 type: post
-title: You should self-host
+title: You can self-host
 publishDate: 2023-01-13
-description: Here's an easy way you can self-host your own application
+description: Here's an easy way to self-host your own application
 resources:
   - src: stay_at_home_server.jpg
     params:
@@ -11,12 +11,15 @@ resources:
 comments: true
 ---
 
-Self-hosting is a satisfying hobby with a plethora of utility for those willing
-to try it out. My own [homelab](/homelab) has become a severely overkill, but
-it's not required to take self-hosting that far. You can securely host
-applications with a cheap desktop in your home with minimal effort. However, I
-find that this hobby has become an excellent way to prototype and try new
-technologies out.
+Remember the old iPhone commercial from the late 2000s which introduced Apple's
+AppStore with the phrase, "There's an app for that"? That's how open source
+services are now. There's a wide selection of useful and mature software that
+containerization has made exceptionally portable.
+
+My own [homelab](/homelab) has become a monorepo of DevOps overkill, but
+self-hosting can be simple and easy with Docker. You can securely host
+applications with a cheap desktop in your home with minimal effort and a single
+docker-compose configuration file.
 
 ## Demo
 
@@ -24,19 +27,23 @@ I've set up a
 [simple demo to host an application](https://github.com/brettinternet/docker-compose-hosted-demo).
 
 Docker compose offers a very simple way to run and maintain self-hosted homelab.
-As demonstrated here, tooling available makes automation and setup very easy.
+The configuration is portable, easy to understand, and a container orchestration
+can be run on a single node with just one command. As I demonstrate here, the
+available tooling makes DNS and proxying automation and the service setup very
+easy.
 
 This demo hosts a simple Elixir notebook application called Livebook. I work in
-an Elixir shop where Livebook is a local favorite. Livebook is a similar to
-Python's Jupyter except it's built with Elixir and has real-time syncing between
-clients because it's built on the Phoenix framework's library
+an Elixir shop where Livebook is a local favorite. Livebook uses notebooks
+similar to Python's Jupyter except it's built with Elixir and has real-time
+syncing between clients because it's built on the Phoenix framework's library
 [LiveView](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html).
 
-This demo is for a single-node homelab using docker-compose to orchestrate a
-Cloudflared tunnel connection, a Traefik reverse proxy and the Livebook app.
-Cloudflare DNS is automated with CNAME creation from Traefik routes.
+This demo will set up a Cloudflared tunnel connection, a Traefik reverse proxy
+and the Livebook app. Cloudflare DNS is automated with CNAME creation from
+Traefik routes. There's no port forwarding required to host this app on a domain
+you own.
 
-There's no port forwarding required.
+Here's a sketch of the architecture:
 
 ```mermaid
 graph TB
@@ -57,7 +64,10 @@ graph TB
 {{< caption "Mermaidjs diagram of the architecture" >}}{{< /caption >}}
 
 The phony make targets below are used to simplify each step. Look at the
-[Makefile](./Makefile) to see what each one does.
+[Makefile](https://github.com/brettinternet/docker-compose-hosted-demo/blob/main/Makefile)
+to see what each one does.
+
+### Setup
 
 First, initialize the config file and terraform project.
 
@@ -87,7 +97,7 @@ Find the `tunnel_token` value in the terraform output file
 `./tunnel/terraform.tfstate` and add it as the value of
 `CLOUDFLARE_TUNNEL_TOKEN`.
 
-## Run
+### Run
 
 Start the docker compose.
 
@@ -98,3 +108,10 @@ make start
 This runs `docker-compose --compatibility up`. The compatibility flag appears to
 be required in order to
 [set resource limits in docker-compose](https://github.com/docker/compose/issues/4513).
+
+## You can self-host
+
+Self-hosting is a satisfying hobby with amazing utility. These methods also
+provide ways to try out new technologies, host a simple blog, or make use of
+existing services that you find on GitHub. Let me know if the demo has helped
+you along with your own homelab.

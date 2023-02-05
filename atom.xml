@@ -1,24 +1,30 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2023-01-13T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>You should self-host</title><link rel="alternate" href="https://brett.cloud/self-hosted/"/><id>https://brett.cloud/self-hosted/</id><published>2023-01-13T00:00:00+0000</published><updated>2023-01-13T00:00:00+0000</updated><summary>Self-hosting is a satisfying hobby with a plethora of utility for those willing to try it out. My own homelab has become a severely overkill, but it&amp;rsquo;s not required to take self-hosting that far. You can securely host applications with a cheap desktop in your home with minimal effort. However, I find that this hobby has become an excellent way to prototype and try new technologies out.
-Demo I&amp;rsquo;ve set up a simple demo to host an application.</summary><content type="html">&lt;p>Self-hosting is a satisfying hobby with a plethora of utility for those willing
-to try it out. My own &lt;a href="/homelab">homelab&lt;/a> has become a severely overkill, but
-it&amp;rsquo;s not required to take self-hosting that far. You can securely host
-applications with a cheap desktop in your home with minimal effort. However, I
-find that this hobby has become an excellent way to prototype and try new
-technologies out.&lt;/p>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2023-01-13T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>You can self-host</title><link rel="alternate" href="https://brett.cloud/self-hosted/"/><id>https://brett.cloud/self-hosted/</id><published>2023-01-13T00:00:00+0000</published><updated>2023-01-13T00:00:00+0000</updated><summary>Remember the old iPhone commercial from the late 2000s which introduced Apple&amp;rsquo;s AppStore with the phrase, &amp;ldquo;There&amp;rsquo;s an app for that&amp;rdquo;? That&amp;rsquo;s how open source services are now. There&amp;rsquo;s a wide selection of useful and mature software that containerization has made exceptionally portable.
+My own homelab has become a monorepo of DevOps overkill, but self-hosting can be simple and easy with Docker. You can securely host applications with a cheap desktop in your home with minimal effort and a single docker-compose configuration file.</summary><content type="html">&lt;p>Remember the old iPhone commercial from the late 2000s which introduced Apple&amp;rsquo;s
+AppStore with the phrase, &amp;ldquo;There&amp;rsquo;s an app for that&amp;rdquo;? That&amp;rsquo;s how open source
+services are now. There&amp;rsquo;s a wide selection of useful and mature software that
+containerization has made exceptionally portable.&lt;/p>
+&lt;p>My own &lt;a href="/homelab">homelab&lt;/a> has become a monorepo of DevOps overkill, but
+self-hosting can be simple and easy with Docker. You can securely host
+applications with a cheap desktop in your home with minimal effort and a single
+docker-compose configuration file.&lt;/p>
 &lt;h2 id="demo">Demo&lt;/h2>
 &lt;p>I&amp;rsquo;ve set up a
 &lt;a href="https://github.com/brettinternet/docker-compose-hosted-demo">simple demo to host an application&lt;/a>.&lt;/p>
 &lt;p>Docker compose offers a very simple way to run and maintain self-hosted homelab.
-As demonstrated here, tooling available makes automation and setup very easy.&lt;/p>
+The configuration is portable, easy to understand, and a container orchestration
+can be run on a single node with just one command. As I demonstrate here, the
+available tooling makes DNS and proxying automation and the service setup very
+easy.&lt;/p>
 &lt;p>This demo hosts a simple Elixir notebook application called Livebook. I work in
-an Elixir shop where Livebook is a local favorite. Livebook is a similar to
-Python&amp;rsquo;s Jupyter except it&amp;rsquo;s built with Elixir and has real-time syncing between
-clients because it&amp;rsquo;s built on the Phoenix framework&amp;rsquo;s library
+an Elixir shop where Livebook is a local favorite. Livebook uses notebooks
+similar to Python&amp;rsquo;s Jupyter except it&amp;rsquo;s built with Elixir and has real-time
+syncing between clients because it&amp;rsquo;s built on the Phoenix framework&amp;rsquo;s library
 &lt;a href="https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html">LiveView&lt;/a>.&lt;/p>
-&lt;p>This demo is for a single-node homelab using docker-compose to orchestrate a
-Cloudflared tunnel connection, a Traefik reverse proxy and the Livebook app.
-Cloudflare DNS is automated with CNAME creation from Traefik routes.&lt;/p>
-&lt;p>There&amp;rsquo;s no port forwarding required.&lt;/p>
+&lt;p>This demo will set up a Cloudflared tunnel connection, a Traefik reverse proxy
+and the Livebook app. Cloudflare DNS is automated with CNAME creation from
+Traefik routes. There&amp;rsquo;s no port forwarding required to host this app on a domain
+you own.&lt;/p>
+&lt;p>Here&amp;rsquo;s a sketch of the architecture:&lt;/p>
 &lt;pre class="mermaid">graph TB
 tf(Terraform) -.- dns
 tf -.- argo
@@ -36,7 +42,9 @@ end
 &lt;figcaption>Mermaidjs diagram of the architecture&lt;/figcaption>
 &lt;/figure>
 &lt;p>The phony make targets below are used to simplify each step. Look at the
-&lt;a href="./Makefile">Makefile&lt;/a> to see what each one does.&lt;/p>
+&lt;a href="https://github.com/brettinternet/docker-compose-hosted-demo/blob/main/Makefile">Makefile&lt;/a>
+to see what each one does.&lt;/p>
+&lt;h3 id="setup">Setup&lt;/h3>
 &lt;p>First, initialize the config file and terraform project.&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>make setup
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This creates a &lt;code>.env&lt;/code> file which you should edit with your own secrets.
@@ -54,12 +62,17 @@ record tunnel.example.com that points to the Cloudflared tunnel URL.&lt;/p>
 &lt;p>Find the &lt;code>tunnel_token&lt;/code> value in the terraform output file
 &lt;code>./tunnel/terraform.tfstate&lt;/code> and add it as the value of
 &lt;code>CLOUDFLARE_TUNNEL_TOKEN&lt;/code>.&lt;/p>
-&lt;h2 id="run">Run&lt;/h2>
+&lt;h3 id="run">Run&lt;/h3>
 &lt;p>Start the docker compose.&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>make start
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This runs &lt;code>docker-compose --compatibility up&lt;/code>. The compatibility flag appears to
 be required in order to
-&lt;a href="https://github.com/docker/compose/issues/4513">set resource limits in docker-compose&lt;/a>.&lt;/p></content></entry><entry><title>Homelab</title><link rel="alternate" href="https://brett.cloud/homelab/"/><id>https://brett.cloud/homelab/</id><published>2022-11-02T00:00:00+0000</published><updated>2022-11-02T00:00:00+0000</updated><summary>Don&amp;rsquo;t be fooled, having a home server is really just hundreds of hours of badblocks.
+&lt;a href="https://github.com/docker/compose/issues/4513">set resource limits in docker-compose&lt;/a>.&lt;/p>
+&lt;h2 id="you-can-self-host">You can self-host&lt;/h2>
+&lt;p>Self-hosting is a satisfying hobby with amazing utility. These methods also
+provide ways to try out new technologies, host a simple blog, or make use of
+existing services that you find on GitHub. Let me know if the demo has helped
+you along with your own homelab.&lt;/p></content></entry><entry><title>Homelab</title><link rel="alternate" href="https://brett.cloud/homelab/"/><id>https://brett.cloud/homelab/</id><published>2022-11-02T00:00:00+0000</published><updated>2022-11-02T00:00:00+0000</updated><summary>Don&amp;rsquo;t be fooled, having a home server is really just hundreds of hours of badblocks.
 I&amp;rsquo;ve been hard at work recently converting my architecture to support orchestrated deployments with multiple nodes. I haven&amp;rsquo;t quite achieved high-availability, and I&amp;rsquo;m not likely to take things that far. However, it has been an excellent journey to become more acquainted with Kubernetes.
 Setup and usage are inspired by a homelab gitops template and the k8s-at-home community.</summary><content type="html">&lt;p>Don&amp;rsquo;t be fooled, having a home server is really just hundreds of hours of
 &lt;a href="https://wiki.archlinux.org/index.php/Badblocks">badblocks&lt;/a>.&lt;/p>
@@ -324,7 +337,7 @@ come.&lt;/p>
 &lt;a href="/">
 &lt;figure>
 &lt;img
-src="/about/profile_hu89dd9f0a2a539a08d41a23b9079e52ba_351109_120x0_resize_lanczos_3.png"
+src="/about/profile_hu89dd9f0a2a539a08d41a23b9079e52ba_351109_160x0_resize_lanczos_3.png"
 class="rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
 />
 &lt;/figure>

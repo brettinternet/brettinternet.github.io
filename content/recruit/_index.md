@@ -44,8 +44,7 @@ and engineering experience.
 
 I am only open to remote work at this time.
 
-I'm always willing to discussing additional contract work, but not as full time
-work.
+I'm willing to discuss moonlighting additional contract work.
 
 If you still think I might be a good fit, then please share with me some details
 before we connect on a call:

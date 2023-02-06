@@ -1,5 +1,6 @@
 {{ $svg := printf "%s%s" (.Get "svg") ".svg" }}
 {{ $class := .Get "svg_class" }}
+{{ $text_class := .Get "text_class" }}
 {{ $anchor_class := .Get "anchor_class" }}
 {{ $text := .Get "text" }}
 {{ $href := .Get "href" }}
@@ -15,7 +16,7 @@
 >
   {{ partial $path (dict "class" $class | default "") }}
   {{ if $text }}
-  <span class="group-hover:underline">{{ $text }}</span>
+  <span class="group-hover:underline{{with $text_class}} {{.}}{{end}}">{{ $text }}</span>
   {{ end }}
 </a>
 {{ else }}

@@ -16,7 +16,7 @@ You may have been linked to this page as part of my recruitment funnel. If you
 are _not_ a recruiter and you are a hiring manager, please see how to
 [recruit me](/recruit). You may also [learn more about me personally](/about).
 
-If you are a recruiter, use this method to explore my candidacy for your
+**If you are a recruiter**, use this method to explore my candidacy for your
 position. We need to be candid about whether I would be a good fit. I'm
 suspicious of canned messages and recruiters that waste time.
 

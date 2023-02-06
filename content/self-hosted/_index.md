@@ -61,7 +61,7 @@ graph TB
   end
 ```
 
-{{< caption "Mermaidjs diagram of the architecture" >}}{{< /caption >}}
+{{< caption "Mermaid.js diagram of the architecture" >}}{{< /caption >}}
 
 The phony make targets below are used to simplify each step. Look at the
 [Makefile](https://github.com/brettinternet/docker-compose-hosted-demo/blob/main/Makefile)

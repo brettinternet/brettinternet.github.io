@@ -1,3 +1,5 @@
+import { LazySizesConfigPartial } from 'lazysizes'
+
 export {}
 
 declare global {
@@ -10,6 +12,9 @@ declare global {
   interface Window {
     mermaid?: {
       initialize: (options: Options) => void
+    }
+    lazysizes: {
+      cfg: LazySizesConfigPartial
     }
   }
 }

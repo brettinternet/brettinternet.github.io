@@ -1,10 +1,13 @@
-{{ $first_arg := .Get 0 }}
-{{ $image := .Page.Resources.GetMatch $first_arg }}
+{{ $arg_1 := .Get 0 }}
+{{ $image := .Page.Resources.GetMatch $arg_1 }}
 {{ if $image }}
   {{ $image = $image.Resize "160x Lanczos" }}
-  <img
-    src="{{ $image.RelPermalink }}"
-    {{ with .Site.Author.Name }}alt="{{.}}"{{end}}
-    class="rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
-  />
+  {{ $alt := .Site.Author.Name }}
+  {{ $params := dict
+    "context" .
+    "image" $image
+    "alt" $alt
+    "image_class" "rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
+  }}
+  {{ partial "image.html" $params }}
 {{ end }}

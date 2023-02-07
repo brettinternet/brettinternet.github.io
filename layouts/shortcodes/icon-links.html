@@ -1,0 +1,33 @@
+{{ $links = .Get "links" }}
+
+<ul class="not-prose list-none mt-3 sm:mt-6 mb-6 sm:mb-12 p-0 mx-0 font-article flex flex-row justify-between">
+  {{ range $links }}
+  <li>
+    {{ $svg := printf "%s%s" (.svg) ".svg" }}
+    {{ $class := .svg_class }}
+    {{ $text_class := .text_class }}
+    {{ $anchor_class := .anchor_class }}
+    {{ $text := .text }}
+    {{ $href := .href }}
+    {{ $path := (path.Join "icons" $svg) }}
+    {{ if $href }}
+      <a
+        href="{{ $href }}"
+        class="inline-flex items-center no-underline{{if $text}} gap-1 group{{end}}{{with $anchor_class}} {{.}}{{end}}"
+        {{ if .new_window }}
+        target="_blank"
+        rel="noopener noreferrer"
+        {{ end }}
+      >
+        {{ partial $path (dict "class" $class | default "") }}
+        {{ if $text }}
+        <span class="group-hover:underline{{with $text_class}} {{.}}{{end}}">{{ $text }}</span>
+        {{ end }}
+      </a>
+    {{ else }}
+      {{ partial $path (dict "class" $class) }}
+      {{ $text }}
+    {{ end }}
+  </li>
+  {{ end }}
+</ul>

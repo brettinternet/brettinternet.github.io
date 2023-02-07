@@ -42,7 +42,7 @@ As part of the recruitment process, I require an opportunity to sit down with
 the team (virtually or in-person) to answer questions and discuss the product
 and engineering experience.
 
-I am only open to remote work at this time.
+I am only open to remote work at this time, and I've gotten really good at it.
 
 I'm willing to discuss moonlighting additional contract work.
 

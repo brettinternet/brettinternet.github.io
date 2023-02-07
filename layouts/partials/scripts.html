@@ -1,4 +1,5 @@
 {{ $mermaid := .Page.Store.Get "hasMermaid" }}
+{{ $comments := .Params.comments }}
 
 {{ if $mermaid }}
   <script src="{{ "scripts/mermaid.min.js" | relURL }}" defer></script>
@@ -8,10 +9,11 @@
   "NODE_ENV" hugo.Environment
   "isProd" hugo.IsProduction
   "mermaid" $mermaid
+  "comments" $comments
 }}
 
-{{ $scripts := resources.Get "scripts/main.ts" | js.Build (dict "params" $params) }}
+{{ $scripts := resources.Get "scripts/main.ts" | js.Build (dict "params" $params) | fingerprint }}
 {{ if hugo.IsProduction }}
-  {{ $scripts = $scripts | minify | fingerprint }}
+  {{ $scripts = $scripts | minify }}
 {{ end }}
 <script src="{{ $scripts.Permalink }}" defer></script>

@@ -1,21 +1,30 @@
 {{ $href := .Permalink }}
 {{ $absolute_url := eq $href (relURL $href) }}
 {{ $image := index (.Resources.ByType "image") 0 }}
-{{ if $image }}
-  {{ $image = $image.Resize "422x Lanczos" }}
-{{ end }}
+
 <a
   href="{{ $href }}"
   {{ if $absolute_url }}
   target="_blank"
   ref="noopener noreferrer"
   {{ end }}
-  class="overlap-card card-layer group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 h-60 w-full max-w-[422px]"
+  class="overlap-card card-layer group transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 h-60 w-full max-w-[422px]"
 >
-  {{ with $image }}
-  <div class="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center rounded-md -z-10">
-    <img src="{{ .RelPermalink }}" alt="{{ .Title }}" class="object-cover object-center overlap-card__image" />
-  </div>
+  {{ if $image }}
+    <div class="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center rounded-md -z-10">
+    {{ $image = $image.Resize "x300 Lanczos" }}
+    {{ $alt := $image.Params.Alt | default $image.Title }}
+    {{ $caption := $image.Params.Caption }}
+    {{ $params := dict
+      "context" .
+      "image" $image
+      "alt" $alt
+      "caption" $caption
+      "image_class" "object-cover object-center w-full h-full"
+      "figure_class" "w-full h-full"
+    }}
+    {{ partial "image.html" $params }}
+    </div>
   {{ end }}
   <div class="flex flex-col min-h-full p-8">
     <div class="flex-1">

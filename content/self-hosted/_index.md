@@ -11,7 +11,7 @@ resources:
 comments: true
 ---
 
-Remember the old iPhone commercial from the late 2000s which introduced Apple's
+Remember the iPhone commercial from the late 2000s which introduced Apple's
 AppStore with the phrase, "There's an app for that"? That's how open source
 services are now. There's a wide selection of useful and mature software that
 containerization has made exceptionally portable.

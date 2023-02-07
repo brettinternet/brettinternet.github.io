@@ -7,7 +7,21 @@
     <p class="font-light"><time>{{ .Format "2006-01-02" }}</time></p>
     {{ end }}
     {{ if not .Params.hide_image }}
-      {{ partial "banner-image.html" . }}
+      {{ $image := index (.Resources.ByType "image") 0 }}
+      {{ if $image }}
+        {{ $image = $image.Resize "600x Lanczos" }}
+        {{ $alt := $image.Params.Alt }}
+        {{ $caption := $image.Params.Caption }}
+        {{ $params := dict
+          "context" .
+          "image" $image
+          "alt" $alt
+          "caption" $caption
+          "image_class" "border border-solid border-slate-400 mx-auto"
+          "figure" true
+        }}
+        {{ partial "image.html" $params }}
+      {{ end }}
     {{ end }}
     {{.Content}}
   </article>

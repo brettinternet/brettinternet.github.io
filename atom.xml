@@ -1,5 +1,5 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2023-01-13T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>You can self-host</title><link rel="alternate" href="https://brett.cloud/self-hosted/"/><id>https://brett.cloud/self-hosted/</id><published>2023-01-13T00:00:00+0000</published><updated>2023-01-13T00:00:00+0000</updated><summary>Remember the old iPhone commercial from the late 2000s which introduced Apple&amp;rsquo;s AppStore with the phrase, &amp;ldquo;There&amp;rsquo;s an app for that&amp;rdquo;? That&amp;rsquo;s how open source services are now. There&amp;rsquo;s a wide selection of useful and mature software that containerization has made exceptionally portable.
-My own homelab has become a monorepo of DevOps overkill, but self-hosting can be simple and easy with Docker. You can securely host applications with a cheap desktop in your home with minimal effort and a single docker-compose configuration file.</summary><content type="html">&lt;p>Remember the old iPhone commercial from the late 2000s which introduced Apple&amp;rsquo;s
+<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2023-01-13T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>You can self-host</title><link rel="alternate" href="https://brett.cloud/self-hosted/"/><id>https://brett.cloud/self-hosted/</id><published>2023-01-13T00:00:00+0000</published><updated>2023-01-13T00:00:00+0000</updated><summary>Remember the iPhone commercial from the late 2000s which introduced Apple&amp;rsquo;s AppStore with the phrase, &amp;ldquo;There&amp;rsquo;s an app for that&amp;rdquo;? That&amp;rsquo;s how open source services are now. There&amp;rsquo;s a wide selection of useful and mature software that containerization has made exceptionally portable.
+My own homelab has become a monorepo of DevOps overkill, but self-hosting can be simple and easy with Docker. You can securely host applications with a cheap desktop in your home with minimal effort and a single docker-compose configuration file.</summary><content type="html">&lt;p>Remember the iPhone commercial from the late 2000s which introduced Apple&amp;rsquo;s
 AppStore with the phrase, &amp;ldquo;There&amp;rsquo;s an app for that&amp;rdquo;? That&amp;rsquo;s how open source
 services are now. There&amp;rsquo;s a wide selection of useful and mature software that
 containerization has made exceptionally portable.&lt;/p>
@@ -39,7 +39,7 @@ ddns[cloudflare-companion] -. service discovery .- livebook
 end
 &lt;/pre>
 &lt;figure>
-&lt;figcaption>Mermaidjs diagram of the architecture&lt;/figcaption>
+&lt;figcaption>Mermaid.js diagram of the architecture&lt;/figcaption>
 &lt;/figure>
 &lt;p>The phony make targets below are used to simplify each step. Look at the
 &lt;a href="https://github.com/brettinternet/docker-compose-hosted-demo/blob/main/Makefile">Makefile&lt;/a>
@@ -333,15 +333,36 @@ be around for a long time.&lt;/p>
 &lt;p>&lt;strong>June 2020 update&lt;/strong>: As of this year, I have begun experimenting with a much
 simpler approach for tracking work-in-progress: &lt;code>todo.txt&lt;/code>. More on this to
 come.&lt;/p>
-&lt;!-- raw HTML omitted --></content></entry><entry><title>About me</title><link rel="alternate" href="https://brett.cloud/about/"/><id>https://brett.cloud/about/</id><published>0001-01-01T00:00:00+0000</published><updated>0001-01-01T00:00:00+0000</updated><summary>code with me recruit me work with me Brett Gardiner has been hard at work writing production code with an enterprise quality fit for solving problems at different scales and velocities. Brett is passionate about a variety of technologies and enjoys making a positive impact by delivering meaningful software for customers. GitHub Twitter LinkedIn What do I like? I like my family, pizza, Linux, Costco, spinach but not arugula, dewy Rocky Mountain air in the morning, everything bagels, and Baja Blast Zero.</summary><content type="html">&lt;div class="not-prose flex flex-col items-center justify-center container mb-12 mx-auto">
+&lt;!-- raw HTML omitted --></content></entry><entry><title>About me</title><link rel="alternate" href="https://brett.cloud/about/"/><id>https://brett.cloud/about/</id><published>0001-01-01T00:00:00+0000</published><updated>0001-01-01T00:00:00+0000</updated><summary>code with me recruit me work with me Brett Gardiner has been hard at work writing production code with an enterprise quality fit for solving problems at different scales and velocities. Brett is passionate about a variety of technologies and enjoys making a positive impact by delivering meaningful software for customers. GitHub Twitter LinkedIn What do I like? I like my family, pizza, Linux, spinach but not arugula, dewy Rocky Mountain air in the morning, everything bagels, and Baja Blast Zero.</summary><content type="html">&lt;div class="not-prose flex flex-col items-center justify-center container mb-6 sm:mb-12 mx-auto">
 &lt;a href="/">
+&lt;noscript>
+&lt;style>
+figure.lazy {
+display: none;
+}
+&lt;/style>
 &lt;img
-src="/about/profile_hu89dd9f0a2a539a08d41a23b9079e52ba_351109_160x0_resize_lanczos_3.png"
 class="rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
+src="/about/profile_hu89dd9f0a2a539a08d41a23b9079e52ba_351109_160x0_resize_lanczos_3.png"
+width="160"
+height="161"
+alt=""
+/>
+&lt;/noscript>
+&lt;img
+class="lazysizes lazyload rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
+alt=""
+src="/about/profile_hu89dd9f0a2a539a08d41a23b9079e52ba_351109_160x0_resize_lanczos_3.png"
+srcset="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAIsElEQVR4nHRZXXrcOq7ED7P/1d3nO3uI7XPSEoH5UAVSbDujyGy5LYnFQgEEkPH///cfWUdm9ph1RP3UwXHOGTHrHy/wHW/igyKqKqpmZhjc3c3dzHHp&amp;#43;J6jKn74gOJRYhjy7Ugik0YENI1i9jjn3b/WX2dEchV8ec0ECOae4RbDR&amp;#43;C9KTJMJFUk8an1FYA0GlUZqrrWRzwgh2Me5BSMe857jYAFqAdDAARuwgtKxPAElPV33mQialprOPBwGN&amp;#43;4OfhpewXpuQvKfV89Alks2xEQmDfaKspEM8fMDHn&amp;#43;3CxmsRCSppqbHn4OXGiSUkIR2fTkYgcIrnlf93UB1gWqNqAg&amp;#43;/oAGjHwPRcKKoq/oHIKk2IaYHoQjb5YpLaqCwoZopDvuO97FpT7ft0XkBVDTRKMfAIaSTQFaIt969jUQlMLDOyxLFfj&amp;#43;C7o3Efr5xHyDZIKDTHdUPedMFmWWGuydMuYAks1KwVTwwynW/mmpRmV8c1q44ePpWwPa0wzoiZuTLOgBKy2GKJpSJBmujh/lUmMZvOG0m2GzwgzvFnMJE&amp;#43;1/3T7raJDQklINNxxZp91A58pxaYKTKWiYWpT0yxmabyeqkAwM71ebpn5CLejkcjQx72WijampaSEo5GtQlBmmlJYp&amp;#43;RUuL3yBWaaoqFiU8LKNLgNZzznE1vkMFhxPLCsfFNRY15KypYnQECnGcqR94IWPKsqpVaMfWefsV6SRBOMLksky2z6Q9SZx9XiaQdLkeD0WjFEFLp93qcMM3VaBeM6Abph8VXSY66AsF1Mv3vZExifIMBlNAiVmgnOA2ZhH9mgoGr4VZmuRu35cOZi9M2BHiw/vUy/exy/zB3aCxBDSnkT0AAXp6mXqjUcQ7ipAbA2MvD6t&amp;#43;k60o9&amp;#43;Ufa0qj9uhP5NpbyG766IXwYpX6plx/FCBSYDJtMe1Hrf7Y2d&amp;#43;KS/7Ae571PUUi/emLYSmosCEAizHVXKZU3EQXntAgs5ny40oq5uddo&amp;#43;GpbJ2kbaUDsDQaTWx4x5&amp;#43;t9aUcdZMyzaTdNSgAZP1pZd9OXJUDZDLlawSJZ3JqBk7DhW3gJk48028u2&amp;#43;ejAxgQMQDSHpKdyHINX2/JVkla77ZsJSpGYVqpcN7ZhiJ2lENLZK6EvHXVuWBiv129ODzCxO/w4IJLm4L6u5&amp;#43;TIcYPHNz&amp;#43;p7VmhoZWiKKeTgBvSUiAqQumvOFK9oVBZoRTMcbJMlrCbqaV50giEY7huid7sty0FDy6vztNk7N4K9uhgqn/IFXyHqDkRUZiIU1Rq01iDeVmKetPPtk55TJINAtCP/m4pIkrUgXGymQ84MaIFA1Lo&amp;#43;PI0ms1NGndufDvcTzo7Uyh0AKjpF1Ms65Rm9CVhFbPkfgKTiRC5p68K0uWlH2zFK956zvUxXNEYsym/Ae4n1XksT5FYVGJWWeg&amp;#43;liyH9zpAe1c&amp;#43;hnydeNqyOQ0c0qiPltFt/REVrbAtZo0hoGJ4JfYv/xx6LR&amp;#43;VB8G6ooxzrkIzV/G0ne/vyiBQ9jfWmpHrschvKA0vlEaUs7z75/Dm3Pb&amp;#43;k/DiaydyTHU/SyGuUv62mlXUkD7on2tVa/7ZeMbp8Xm/IfHKVlaPJGlbC9Ny9tm5qr6Hk/jyxRIp1yldP2sr/RI9clvnQU6nmU3R0ttm5dWf89TyLqcAMdSHMco5SSuVZVqVjGlG788pfTSuBlHrSUsMCgacuK58YXHh3DHY1H7to7Y9co3CMmoC5rGZ25tiJQzzmrgwztCJ7VRyqkToD2Zv1ntdpqWVqxVKYbHPCxgJrsW4nVPGDWueeeU&amp;#43;WGTIrw1cUX8qzBdOetfJslZyd1e09pQzHkWfVZxXBiUlztCWeQn53OVi936zCAtd5V&amp;#43;kjcSuqDq2SI&amp;#43;n2R6SuPSUpGUtwBPvwHGkhNtIjrba7Ko2sSrUO5WNG18xsusRTydcxAQXjFfPKu9BIYSKa4G6v3H0QIZAGoDDVhWmCEw9FqVgF4z1thPu0MdwDvZvJjGCwzcN21IIyCYUjT5B0kR5peqroYkb9BBeEhk4TdKZWjpY2xWZVjV6njWH&amp;#43;y8c0Hz6m&amp;#43;&amp;#43;0&amp;#43;jP0s93Hf99EAgmRu9BR2o&amp;#43;NagFiqwl6kh1WOMelYeSiKdY5Qizpyo4E8ZGjNPcwvH79Azxg1emNyG9d1LSOx9QMsF9Bcr6P50oAoZ5VFD3ZS63AOaAhEgTwkZImY6WydhcmLpOHjV&amp;#43;HBr8RUP6/XRWrISWHh8XpdxESSZokpl5athJwuQNNFBbdHZpOVmywdL69qQE6SfAM6eRpj/Pnz56aVLrDxApAaXheuNqD2&amp;#43;WUsEuMmLEsOQIyXhWmKEhkT88ozS7llHcio6cHnuv7n338bTfMCRDW8CIvtqXlfaBjcFRKlADkqwCp1NiDt3S3o7OVeD1VVq0DjhqTW21K/xgZEqr6&amp;#43;/iGgRc0&amp;#43;/hxWu2NeAXqE9EA9buKKLJ5Zxtpoua8Q0MZEMSEvK55KxQ9Dv5bhfHx9fUHB4ORAw4/7el1oJwZbQYw9CvUsNG5PYbr7FIUjsgGFTKaW0rlbA/Klno3Mx/j4/IKprsbzB/&amp;#43;W5W66G&amp;#43;hZ3aDy6MdeDYh1LZNOtruk4AdICmzEXToRE1vphQmutXU9xsfHx3XdtNefg5vW9dXhMbo9xUhIemTVyjsjlMdkpIfb8bLgAwhlkXXsaWP1xe&amp;#43;PzzeGGk39Yzia6ErH7lZ17GkB2WbIdnGWG1CNoCpWkcLivyuICs6MQI2mPj5&amp;#43;f8AsBNSypsNd3SZHU/FprJbJsEZhxe62s2XZGgKgla1ASbmtJqxZWRv1/4c4kNXW8fvjc7v9a3F1rajUvV92CNnGQ7ODAjK6mIltSW9AQBMlo4zDZA1ok8RN3olslBU/Pj8Rodd&amp;#43;cRFK72fzaY13Q057o2BIfG//HNkiW9ezE05mlw&amp;#43;g1UXfmHwVtj4&amp;#43;P7/u42g0a8evfOigh4DI0K3NzY7Uq/XFHFwWlMxT1MLM0uSoRcvyC9l/AwAA//9K0vhHjIzB5AAAAABJRU5ErkJggg=="
+data-src="/about/profile_hu89dd9f0a2a539a08d41a23b9079e52ba_351109_160x0_resize_lanczos_3.png"
+data-sizes="auto"
+width="160"
+height="161"
+data-srcset="/about/profile_hu89dd9f0a2a539a08d41a23b9079e52ba_351109_160x0_resize_lanczos_3.png 160w"
 />
 &lt;/a>
 &lt;/div>
-&lt;ul class="not-prose list-none p-0 mx-0 my-6 font-article grid xs:grid-cols-3 gap-4 content-center">
+&lt;ul class="not-prose list-none p-0 mx-0 my-3 sm:my-6 font-article grid xs:grid-cols-3 gap-4 content-center">
 &lt;li class="text-center xs:text-left">
 &lt;a href="https://github.com/brettinternet" class="underline">code with me&lt;/a>
 &lt;/li>
@@ -356,7 +377,7 @@ class="rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
 Brett Gardiner has been hard at work writing production code with an enterprise quality fit for solving problems at different scales and velocities.
 Brett is passionate about a variety of technologies and enjoys making a positive impact by delivering meaningful software for customers.
 &lt;/p>
-&lt;ul class="not-prose list-none mt-6 mb-12 p-0 mx-0 font-article grid xs:grid-cols-3 gap-4 content-center">
+&lt;ul class="not-prose list-none mt-3 sm:mt-6 mb-6 sm:mb-12 p-0 mx-0 font-article grid xs:grid-cols-3 gap-4 content-center">
 &lt;li class="text-center xs:text-left">
 &lt;a
 href="https://github.com/brettinternet"
@@ -420,7 +441,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="r
 &lt;div class="grid sm:grid-cols-2 gap-4">
 &lt;details open>
 &lt;summary class="font-serif">What do I like?&lt;/summary>
-&lt;p>I like my family, pizza, Linux, Costco, spinach but not arugula, dewy Rocky Mountain air in the morning, everything bagels, and Baja Blast Zero.&lt;/p>
+&lt;p>I like my family, pizza, Linux, spinach but not arugula, dewy Rocky Mountain air in the morning, everything bagels, and Baja Blast Zero.&lt;/p>
 &lt;/details>
 &lt;details open>
 &lt;summary class="font-serif">What are my hobbies?&lt;/summary>

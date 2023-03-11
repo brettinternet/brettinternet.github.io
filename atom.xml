@@ -1,4 +1,38 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2023-01-13T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>You can self-host</title><link rel="alternate" href="https://brett.cloud/self-hosted/"/><id>https://brett.cloud/self-hosted/</id><published>2023-01-13T00:00:00+0000</published><updated>2023-01-13T00:00:00+0000</updated><summary>Remember the iPhone commercial from the late 2000s which introduced Apple&amp;rsquo;s AppStore with the phrase, &amp;ldquo;There&amp;rsquo;s an app for that&amp;rdquo;? That&amp;rsquo;s how open source services are now. There&amp;rsquo;s a wide selection of useful and mature software that containerization has made exceptionally portable.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2023-03-11T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>Mic Mute for macOS</title><link rel="alternate" href="https://brett.cloud/mic-mute/"/><id>https://brett.cloud/mic-mute/</id><published>2023-03-11T00:00:00+0000</published><updated>2023-03-11T00:00:00+0000</updated><summary>Mic Mute is a system-wide mute for macOS with a global shortcut and a clear visual indicator. It&amp;rsquo;s inspired by VCM for Windows.
+Mute with the shortcut Cmd Shift A or from the system tray dropdown menu.
+Mute window follows cursor to screens and monitors The mute indicator window will follow the cursor to desktops or screens and monitors. The system tray icon will also indicate the mute status. Once microphones are on again, the window will hide.</summary><content type="html">&lt;div class="flex justify-center">
+&lt;img width="128" src="./icon.png" alt="disabled microphone app icon" class="my-3" />
+&lt;/div>
+&lt;p>&lt;a href="https://github.com/brettinternet/mic-mute">Mic Mute&lt;/a> is a system-wide mute for
+macOS with a global shortcut and a clear visual indicator. It&amp;rsquo;s inspired by
+&lt;a href="https://learn.microsoft.com/en-us/windows/powertoys/video-conference-mute">VCM&lt;/a>
+for Windows.&lt;/p>
+&lt;p>Mute with the shortcut &lt;kbd>Cmd&lt;/kbd> &lt;kbd>Shift&lt;/kbd> &lt;kbd>A&lt;/kbd>
+or from the system tray dropdown menu.&lt;/p>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;img src="./screenshot.png" alt="popup window screenshot indicating the microphone is off" />
+&lt;figcaption>Mute window follows cursor to screens and monitors&lt;/figcaption>
+&lt;/figure>
+&lt;p>The mute indicator window will follow the cursor to desktops or screens and
+monitors. The system tray icon will also indicate the mute status. Once
+microphones are on again, the window will hide.&lt;/p>
+&lt;div class='text-center mt-12'>
+&lt;a
+href="https://github.com/brettinternet/mic-mute/releases"
+target="_blank"
+rel="noopener noreferrer"
+class="group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full inline-flex no-underline" role="alert">
+&lt;span class="text-slate-700 font-serif font-semibold text-left flex-auto">View latest release&lt;/span>
+&lt;span class="group-hover:translate-x-0.5 transition-transform">
+&lt;svg
+class="opacity-75 h-4 w-4"
+xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+stroke="currentColor">
+&lt;path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+&lt;/svg>
+&lt;/span>
+&lt;/a>
+&lt;/div></content></entry><entry><title>You can self-host</title><link rel="alternate" href="https://brett.cloud/self-hosted/"/><id>https://brett.cloud/self-hosted/</id><published>2023-01-13T00:00:00+0000</published><updated>2023-01-13T00:00:00+0000</updated><summary>Remember the iPhone commercial from the late 2000s which introduced Apple&amp;rsquo;s AppStore with the phrase, &amp;ldquo;There&amp;rsquo;s an app for that&amp;rdquo;? That&amp;rsquo;s how open source services are now. There&amp;rsquo;s a wide selection of useful and mature software that containerization has made exceptionally portable.
 My own homelab has become a monorepo of DevOps overkill, but self-hosting can be simple and easy with Docker. You can securely host applications with a cheap desktop in your home with minimal effort and a single docker-compose configuration file.</summary><content type="html">&lt;p>Remember the iPhone commercial from the late 2000s which introduced Apple&amp;rsquo;s
 AppStore with the phrase, &amp;ldquo;There&amp;rsquo;s an app for that&amp;rdquo;? That&amp;rsquo;s how open source
 services are now. There&amp;rsquo;s a wide selection of useful and mature software that
@@ -38,7 +72,7 @@ traefik --> livebook[Livebook]
 ddns[cloudflare-companion] -. service discovery .- livebook
 end
 &lt;/pre>
-&lt;figure>
+&lt;figure >
 &lt;figcaption>Mermaid.js diagram of the architecture&lt;/figcaption>
 &lt;/figure>
 &lt;p>The phony make targets below are used to simplify each step. Look at the

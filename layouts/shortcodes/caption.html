@@ -1,4 +1,4 @@
-<figure>
+<figure {{with .Get "class"}}class="{{.}}"{{end}}>
   {{ .Inner | safeHTML }}
-  <figcaption>{{ .Get 0 }}</figcaption>
+  <figcaption>{{ .Get "caption" }}</figcaption>
 </figure>

@@ -13,3 +13,7 @@ article p, article ul {
 details > p {
   @apply font-sans;
 }
+
+kbd {
+    @apply bg-gray-100 border border-gray-300 rounded-md shadow font-mono text-xs;
+}

@@ -4,6 +4,8 @@ title: Mic Mute for macOS
 publishDate: 2023-03-11
 description: 'Swiftly mute your hiccups on conference calls'
 hide_image: true
+hide_date: true
+hide_title: true
 comments: false
 ---
 
@@ -12,6 +14,8 @@ comments: false
 <div class="flex justify-center">
   <img width="128" src="./icon.png" alt="disabled microphone app icon" class="my-3" />
 </div>
+
+<h1 align="center">Mic Mute for macOS</h1>
 {{< /raw >}}
 
 [Mic Mute](https://github.com/brettinternet/mic-mute) is a system-wide mute for

@@ -1,4 +1,7 @@
 {{ $href := .Permalink }}
+{{ if eq .Type "link" }}
+  {{ $href = .Params.href }}
+{{ end }}
 {{ $absolute_url := eq $href (relURL $href) }}
 {{ $image := index (.Resources.ByType "image") 0 }}
 

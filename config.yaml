@@ -6,6 +6,9 @@ languageCode: en-us
 title: brett.cloud
 params:
   description: Brett in the cloud ⛅️
+  postTypes:
+    - post
+    - link
 cascade:
   layout: single
   comments: false

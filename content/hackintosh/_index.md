@@ -48,4 +48,4 @@ builds, guides and troubleshooting research at
 **Feb 2019 update**: Proprietary software can be frustrating and in privacy
 matters and developer support Apple appears to be straying further from the
 light. I've archived my personal Hackintosh project and moved on to
-[Linux](https://github.com/brettinternet/linux).
+[Linux](/dotfiles).

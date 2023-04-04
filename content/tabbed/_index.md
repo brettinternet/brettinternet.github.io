@@ -31,4 +31,4 @@ Tabbed is a different way to visualize and organize your browser tabs.
 
 Tabbed was built with accessibility in mind. See the full
 [feature list and source](https://github.com/brettinternet/tabbed) or
-[see the latest releases](https://github.com/brettinternet/tabbed/releases).
+[the latest releases](https://github.com/brettinternet/tabbed/releases).

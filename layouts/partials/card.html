@@ -3,7 +3,10 @@
   {{ $href = .Params.href }}
 {{ end }}
 {{ $absolute_url := eq $href (relURL $href) }}
-{{ $image := index (.Resources.ByType "image") 0 }}
+{{ $image := .Resources.GetMatch .Params.card_image }}
+{{ if not $image }}
+  {{ $image = index (.Resources.ByType "image") 0 }}
+{{ end }}
 
 <a
   href="{{ $href }}"

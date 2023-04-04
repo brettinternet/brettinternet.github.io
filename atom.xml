@@ -1,5 +1,6 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2023-04-03T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>Tabbed extension</title><link rel="alternate" href="https://brett.cloud/tabbed/"/><id>https://brett.cloud/tabbed/</id><published>2023-04-03T00:00:00+0000</published><updated>2023-04-03T00:00:00+0000</updated><summary>Tabbed Tabbed is a different way to visualize and organize your browser tabs.
-Drag and drop browser session management Tabbed was built with accessibility in mind. See the full feature list and source or the latest releases.</summary><content type="html">&lt;div class="flex justify-center">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2023-04-03T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>Tabbed extension</title><link rel="alternate" href="https://brett.cloud/tabbed/"/><id>https://brett.cloud/tabbed/</id><published>2023-04-03T00:00:00+0000</published><updated>2023-04-03T00:00:00+0000</updated><summary> Tabbed Tabbed is a different way to visualize and organize your browser tabs.
+Drag and drop browser session management Tabbed was built with accessibility in mind. See the full feature list and source or the latest releases.
+View in Chrome Web Store</summary><content type="html">&lt;div class="flex justify-center">
 &lt;img width="128" src="./icon.png" alt="session manager extension icon" class="my-3" />
 &lt;/div>
 &lt;h1 align="center">Tabbed&lt;/h1>
@@ -10,7 +11,24 @@ Drag and drop browser session management Tabbed was built with accessibility in 
 &lt;/figure>
 &lt;p>Tabbed was built with accessibility in mind. See the full
 &lt;a href="https://github.com/brettinternet/tabbed">feature list and source&lt;/a> or
-&lt;a href="https://github.com/brettinternet/tabbed/releases">the latest releases&lt;/a>.&lt;/p></content></entry><entry><title>Mic Mute for macOS</title><link rel="alternate" href="https://brett.cloud/mic-mute/"/><id>https://brett.cloud/mic-mute/</id><published>2023-03-11T00:00:00+0000</published><updated>2023-03-11T00:00:00+0000</updated><summary>Mic Mute for macOS Mic Mute is a system-wide mute for macOS with a global shortcut and a clear visual indicator. It&amp;rsquo;s inspired by VCM for Windows.
+&lt;a href="https://github.com/brettinternet/tabbed/releases">the latest releases&lt;/a>.&lt;/p>
+&lt;div class='text-center mt-12'>
+&lt;a
+href="https://chrome.google.com/webstore/detail/tabbed/paejpihjkfoijpmicndggfpgnnccfggg"
+target="_blank"
+rel="noopener noreferrer"
+class='group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full inline-flex no-underline pl-4' role="alert">
+&lt;span class="text-slate-700 font-serif font-semibold text-left flex-auto">View in Chrome Web Store&lt;/span>
+&lt;span class="group-hover:translate-x-0.5 transition-transform">
+&lt;svg
+class="opacity-75 h-4 w-4"
+xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+stroke="currentColor">
+&lt;path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+&lt;/svg>
+&lt;/span>
+&lt;/a>
+&lt;/div></content></entry><entry><title>Mic Mute for macOS</title><link rel="alternate" href="https://brett.cloud/mic-mute/"/><id>https://brett.cloud/mic-mute/</id><published>2023-03-11T00:00:00+0000</published><updated>2023-03-11T00:00:00+0000</updated><summary>Mic Mute for macOS Mic Mute is a system-wide mute for macOS with a global shortcut and a clear visual indicator. It&amp;rsquo;s inspired by VCM for Windows.
 Mute with the shortcut Cmd Shift A or from the system tray dropdown menu.
 Mute window follows cursor to screens and monitors The mute indicator window will follow the cursor to desktops or screens and monitors. The system tray icon will also indicate the mute status.</summary><content type="html">&lt;div class="flex justify-center">
 &lt;img width="128" src="./icon.png" alt="disabled microphone app icon" class="my-3" />
@@ -34,7 +52,7 @@ microphones are on again, the window will hide.&lt;/p>
 href="https://github.com/brettinternet/mic-mute/releases"
 target="_blank"
 rel="noopener noreferrer"
-class="group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full inline-flex no-underline" role="alert">
+class='group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full inline-flex no-underline pl-4' role="alert">
 &lt;span class="text-slate-700 font-serif font-semibold text-left flex-auto">View latest release&lt;/span>
 &lt;span class="group-hover:translate-x-0.5 transition-transform">
 &lt;svg

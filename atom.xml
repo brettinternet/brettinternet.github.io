@@ -1,4 +1,16 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2023-03-11T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>Mic Mute for macOS</title><link rel="alternate" href="https://brett.cloud/mic-mute/"/><id>https://brett.cloud/mic-mute/</id><published>2023-03-11T00:00:00+0000</published><updated>2023-03-11T00:00:00+0000</updated><summary>Mic Mute for macOS Mic Mute is a system-wide mute for macOS with a global shortcut and a clear visual indicator. It&amp;rsquo;s inspired by VCM for Windows.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2023-04-03T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>Tabbed extension</title><link rel="alternate" href="https://brett.cloud/tabbed/"/><id>https://brett.cloud/tabbed/</id><published>2023-04-03T00:00:00+0000</published><updated>2023-04-03T00:00:00+0000</updated><summary>Tabbed Tabbed is a different way to visualize and organize your browser tabs.
+Drag and drop browser session management Tabbed was built with accessibility in mind. See the full feature list and source or see the latest releases.</summary><content type="html">&lt;div class="flex justify-center">
+&lt;img width="128" src="./icon.png" alt="session manager extension icon" class="my-3" />
+&lt;/div>
+&lt;h1 align="center">Tabbed&lt;/h1>
+&lt;p>Tabbed is a different way to visualize and organize your browser tabs.&lt;/p>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;img src="./screenshot.png" alt="dragging window tab to a new window" class="border-4 border-slate-900" />
+&lt;figcaption>Drag and drop browser session management&lt;/figcaption>
+&lt;/figure>
+&lt;p>Tabbed was built with accessibility in mind. See the full
+&lt;a href="https://github.com/brettinternet/tabbed">feature list and source&lt;/a> or
+&lt;a href="https://github.com/brettinternet/tabbed/releases">see the latest releases&lt;/a>.&lt;/p></content></entry><entry><title>Mic Mute for macOS</title><link rel="alternate" href="https://brett.cloud/mic-mute/"/><id>https://brett.cloud/mic-mute/</id><published>2023-03-11T00:00:00+0000</published><updated>2023-03-11T00:00:00+0000</updated><summary>Mic Mute for macOS Mic Mute is a system-wide mute for macOS with a global shortcut and a clear visual indicator. It&amp;rsquo;s inspired by VCM for Windows.
 Mute with the shortcut Cmd Shift A or from the system tray dropdown menu.
 Mute window follows cursor to screens and monitors The mute indicator window will follow the cursor to desktops or screens and monitors. The system tray icon will also indicate the mute status.</summary><content type="html">&lt;div class="flex justify-center">
 &lt;img width="128" src="./icon.png" alt="disabled microphone app icon" class="my-3" />
@@ -11,7 +23,7 @@ for Windows.&lt;/p>
 &lt;p>Mute with the shortcut &lt;kbd>Cmd&lt;/kbd> &lt;kbd>Shift&lt;/kbd> &lt;kbd>A&lt;/kbd>
 or from the system tray dropdown menu.&lt;/p>
 &lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./screenshot.png" alt="popup window screenshot indicating the microphone is off" />
+&lt;img src="./screenshot.png" alt="popup window screenshot indicating the microphone is off" class="border-4 border-slate-900" />
 &lt;figcaption>Mute window follows cursor to screens and monitors&lt;/figcaption>
 &lt;/figure>
 &lt;p>The mute indicator window will follow the cursor to desktops or screens and

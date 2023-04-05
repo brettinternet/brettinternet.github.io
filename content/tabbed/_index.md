@@ -2,7 +2,7 @@
 type: post
 title: Tabbed extension
 publishDate: 2023-04-03
-description: A different way to visualize and organize your browser tabs
+description: An experiment to visualize and organize browser tabs
 hide_image: true
 hide_date: true
 hide_title: true
@@ -23,7 +23,8 @@ resources:
 <h1 align="center">Tabbed</h1>
 {{< /raw >}}
 
-Tabbed is a different way to visualize and organize your browser tabs.
+Tabbed is an experiment with a Chrome extension to visualize and organize
+browser tabs.
 
 {{< caption caption="Drag and drop browser session management" class="flex flex-col justify-center items-center" >}}
 <img src="./screenshot.png" alt="dragging window tab to a new window" class="border-4 border-slate-900" />

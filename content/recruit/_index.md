@@ -22,8 +22,8 @@ I won't want to miss.
 - I've been hard at work
   [writing production code](https://github.com/brettinternet) for years now with
   an enterprise quality fit to solve problems at different scales and
-  velocities. I've learned all kinds of technologies and I'm excited to continue
-  to learn and solve problems.
+  velocities. I work with all kinds of technologies and I'm excited to solve
+  problems.
 - I have solid DevOps experience, and I even run
   [my own Kubernetes cluster](/homelab) at home.
 - I have [experience](/resume.pdf) mentoring, teaching, and uplifting others.
@@ -46,7 +46,8 @@ and engineering experience.
 
 I am only open to remote work at this time.
 
-I'm willing to discuss moonlighting additional contract work.
+I'm willing to discuss moonlighting additional
+[contract or consulting](/consult) work.
 
 If you still think I might be a good fit, then please share with me some details
 before we connect on a call:

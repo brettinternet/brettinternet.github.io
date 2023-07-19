@@ -399,7 +399,7 @@ be around for a long time.&lt;/p>
 &lt;p>&lt;strong>June 2020 update&lt;/strong>: As of this year, I have begun experimenting with a much
 simpler approach for tracking work-in-progress: &lt;code>todo.txt&lt;/code>. More on this to
 come.&lt;/p>
-&lt;!-- raw HTML omitted --></content></entry><entry><title>About me</title><link rel="alternate" href="https://brett.cloud/about/"/><id>https://brett.cloud/about/</id><published>0001-01-01T00:00:00+0000</published><updated>0001-01-01T00:00:00+0000</updated><summary>code with me recruit me work with me Brett Gardiner has been hard at work writing production code with an enterprise quality fit for solving problems at different scales and velocities. Brett is passionate about a variety of technologies and enjoys making a positive impact by delivering meaningful software for customers. GitHub Twitter LinkedIn What do I like? I like my family, pizza, Linux, spinach but not arugula, dewy Rocky Mountain air in the morning, everything bagels, and Baja Blast Zero.</summary><content type="html">&lt;div class="not-prose flex flex-col items-center justify-center container mb-6 sm:mb-12 mx-auto">
+&lt;!-- raw HTML omitted --></content></entry><entry><title>About me</title><link rel="alternate" href="https://brett.cloud/about/"/><id>https://brett.cloud/about/</id><published>0001-01-01T00:00:00+0000</published><updated>0001-01-01T00:00:00+0000</updated><summary>code with me recruit me work with me Brett Gardiner has been hard at work writing production code with an enterprise quality fit for solving problems at different scales and velocities. Brett is passionate about a variety of technologies and enjoys making a positive impact by delivering meaningful software for customers. GitHub Twitter LinkedIn What do I like? I like my family, pizza, Linux, reading, spinach but not arugula, early morning hikes in the Rocky Mountains, custom keyboards, and tinkering with IoT devices.</summary><content type="html">&lt;div class="not-prose flex flex-col items-center justify-center container mb-6 sm:mb-12 mx-auto">
 &lt;a href="/">
 &lt;noscript>
 &lt;style>
@@ -507,11 +507,12 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="r
 &lt;div class="grid sm:grid-cols-2 gap-4">
 &lt;details open>
 &lt;summary class="font-serif">What do I like?&lt;/summary>
-&lt;p>I like my family, pizza, Linux, spinach but not arugula, dewy Rocky Mountain air in the morning, everything bagels, and Baja Blast Zero.&lt;/p>
+&lt;p>I like my family, pizza, Linux, reading, spinach but not arugula, early morning hikes in the Rocky Mountains, custom keyboards, and tinkering with IoT devices.&lt;/p>
+&lt;p>Ask me how my kefir grains are doing.&lt;/p>
 &lt;/details>
 &lt;details open>
 &lt;summary class="font-serif">What are my hobbies?&lt;/summary>
-&lt;p>I play pickleball, hike and camp. I also have numerous ongoing projects such as home automation with IoT devices, a self-hosted kubernetes homelab, custom keyboards, and programming projects.&lt;/p>
+&lt;p>I play pickleball, hike and camp. I also have numerous ongoing projects such as a self-hosted kubernetes homelab and moonlighting programming projects.&lt;/p>
 &lt;/details>
 &lt;details>
 &lt;summary class="font-serif">How do we get in touch?&lt;/summary>

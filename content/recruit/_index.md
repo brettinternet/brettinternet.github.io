@@ -24,23 +24,29 @@ I won't want to miss.
   an enterprise quality fit to solve problems at different scales and
   velocities. I work with all kinds of technologies and I'm excited to solve
   problems.
-- I have solid DevOps experience, and I even run
-  [my own Kubernetes cluster](/homelab) at home.
 - I have [experience](/resume.pdf) mentoring, teaching, and uplifting others.
 - I'm thrilled by what I do. You can tell by what my coworkers say about me, my
-  commitment to the products I work on, and the effort I put into side-projects.
-- I'm corrigible. I believe it's important to find growth in any circumstance
-  and to learn from everyone I work with.
+  commitment to the products I work on, and the effort I put into my career
+  development outside working hours.
+- I have solid DevOps experience, and I even run
+  [my own Kubernetes cluster](/homelab) at home.
+- I'm corrigible and I enjoy being on teams with people of different
+  backgrounds, experiences, and viewpoints. I believe it's important to find
+  growth in any circumstance and to learn from everyone I work with.
 - [I'm passionate about a variety technologies.](/resume.pdf)
-- I collaborate really well remotely. Ask me about some of the techniques I
-  employ to engage with my team.
+- I collaborate really well remotely. _Ask me about some of the techniques I
+  employ to engage with my team!_
 
 ### What I'm looking for
+
+**I value opportunities** to innovate and solve complex technical challenges so
+I can grow and stretch myself. I seek to deliver performant software that's
+meaningful to customers.
 
 I'm open to working with most kinds of products. Given the current market, I'm
 not open to products that rely solely on blockchain technologies.
 
-As part of the recruitment process, I require an opportunity to sit down with
+As part of the recruitment process, I would like an opportunity to sit down with
 the team (virtually or in-person) to answer questions and discuss the product
 and engineering experience.
 

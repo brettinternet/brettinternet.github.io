@@ -6,16 +6,18 @@
 <body
   class="min-h-screen flex flex-col text-slate-800 bg-orange-50"
 >
-  {{ if not .Params.hide_header }}
-  {{ partial "header.html" . }}
-  {{ end }}
-  <main class="flex-1{{if .Params.hide_header}} pt-12{{end}}{{with .Params.main_classes}} {{.}}{{end}}">
-    {{ block "main" . }}
+  {{ if not .Params.redirect_url }}
+    {{ if not .Params.hide_header }}
+      {{ partial "header.html" . }}
     {{ end }}
-  </main>
-  {{ if not .Params.hide_footer }}
-  {{ partial "footer.html" . }}
+    <main class="flex-1{{if .Params.hide_header}} pt-12{{end}}{{with .Params.main_classes}} {{.}}{{end}}">
+      {{ block "main" . }}
+      {{ end }}
+    </main>
+    {{ if not .Params.hide_footer }}
+      {{ partial "footer.html" . }}
+    {{ end }}
+    {{ partial "scripts.html" . }}
   {{ end }}
-  {{ partial "scripts.html" . }}
 </body>
 </html>

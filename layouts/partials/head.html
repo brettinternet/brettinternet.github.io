@@ -42,6 +42,9 @@
 <!-- Custom styles -->
 {{ $css_options := (dict "includePaths" (slice "node_modules")) }}
 {{ $styles := resources.Get "styles/main.sass" | resources.ToCSS $css_options }}
+{{ with .Params.redirect_url }}
+  <meta http-equiv="refresh" content="0; url={{ . }}">
+{{ end }}
 {{ if hugo.IsProduction }}
   {{ $styles = $styles | minify | fingerprint }}
 {{ end }}

@@ -28,8 +28,8 @@ I won't want to miss.
 - I'm thrilled by what I do. You can tell by what my coworkers say about me, my
   commitment to the products I work on, and the effort I put into my career
   development outside working hours.
-- I have solid DevOps experience, and I even run
-  [my own Kubernetes cluster](/homelab) at home.
+- I have solid DevOps experience, and I even run [my own servers](/homelab) at
+  home.
 - I'm corrigible and I enjoy being on teams with people of different
   backgrounds, experiences, and viewpoints. I believe it's important to find
   growth in any circumstance and to learn from everyone I work with.

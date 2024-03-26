@@ -2,7 +2,7 @@
 {{ $image := .Page.Resources.GetMatch $arg_1 }}
 {{ if $image }}
   {{ $image = $image.Resize "160x Lanczos" }}
-  {{ $alt := .Site.Author.Name }}
+  {{ $alt := .Site.Params.Author.Name }}
   {{ $params := dict
     "context" .
     "image" $image

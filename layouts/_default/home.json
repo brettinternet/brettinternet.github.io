@@ -8,10 +8,10 @@
   "title"        : {{ .Site.Title | htmlUnescape | jsonify }},
   "home_page_url": {{ .Site.BaseURL  | absURL | jsonify }},
   {{ with .OutputFormats.Get "JSON" }}"feed_url"     : {{.Permalink | absURL | jsonify }},{{ end }}
-  {{ if or .Site.Author.name .Site.Author.email }}"author"       :
+  {{ if or .Site.Params.Author.name .Site.Params.Author.email }}"author"       :
   {
-    {{ with .Site.Author.name }}"name"       : {{ . | jsonify }}{{ end }}
-    {{ with .Site.Author.email }}, "email"      : {{ . | jsonify }}{{ end }}
+    {{ with .Site.Params.Author.name }}"name"       : {{ . | jsonify }}{{ end }}
+    {{ with .Site.Params.Author.email }}, "email"      : {{ . | jsonify }}{{ end }}
   },{{ end }}
   "items":
   [{{ range $index, $item := $pages }}

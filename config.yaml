@@ -1,10 +1,10 @@
 baseURL: https://brett.cloud
-author:
-  name: Brett Gardiner
-  email: hi@[domain]
 languageCode: en-us
 title: brett.cloud
 params:
+  author:
+    name: Brett Gardiner
+    email: hi@[domain]
   description: Brett in the cloud ⛅️
   postTypes:
     - post
@@ -45,7 +45,6 @@ outputFormats:
 
 outputs:
   home: [HTML, RSS, Atom, JSON]
-  list: [HTML, RSS, Atom, JSON]
 
 sitemap:
   changefreq: monthly

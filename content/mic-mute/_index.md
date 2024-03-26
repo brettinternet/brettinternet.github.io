@@ -7,6 +7,7 @@ hide_image: true
 hide_date: true
 hide_title: true
 comments: false
+card_image: app.png
 resources:
   - src: app.png
     params:

@@ -47,14 +47,75 @@ or from the system tray dropdown menu.&lt;/p>
 &lt;/figure>
 &lt;p>The mute indicator window will follow the cursor to desktops or screens and
 monitors. The system tray icon will also indicate the mute status. Once
-microphones are on again, the window will hide.&lt;/p>
+microphones are on again, the window will hide.
+&lt;a href="https://github.com/brettinternet/mic-mute/releases">View releases&lt;/a>.&lt;/p>
+&lt;h2 id="update-what-i-use-now">Update: What I use now&lt;/h2>
+&lt;p>My journey finding the best solution for this has evolved. I now use
+&lt;a href="https://www.hammerspoon.org">Hammerspoon&lt;/a> which is a delightful way to hack
+together MacOS scripts. The Lua scripting in Hammerspoon makes maintaining this
+a lot more fun than foreign functions in Rust. I&amp;rsquo;m still able to use the hotkey
+&lt;code>⌘ ⇧ A&lt;/code> and I&amp;rsquo;ve also mapped it to a macropad that uses &lt;code>F13&lt;/code>. My script also
+supports Push To Talk.&lt;/p>
+&lt;p>Muted and unmuted indicators:&lt;/p>
+&lt;div class="flex flex-row items-center">
+&lt;img src="./alert-on.png" alt="popup window screenshot indicating the microphone is off" class="border-4 border-slate-900 mx-auto max-w-56" />
+&lt;img src="./alert-off.png" alt="popup window screenshot indicating the microphone is on" class="border-4 border-slate-900 mx-auto max-w-56" />
+&lt;/div>
+&lt;p>Here&amp;rsquo;s the solution:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>muteAlertId &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">nil&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Clear the alert if exists to avoid notifications stacking&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">local&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">clearMuteAlert&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> muteAlertId &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> hs.alert.closeSpecific(muteAlertId)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Hold the hotkey for Push To Talk&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">local&lt;/span> holdingToTalk &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">local&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">pushToTalk&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> holdingToTalk &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">local&lt;/span> audio &lt;span style="color:#f92672">=&lt;/span> hs.audiodevice.defaultInputDevice()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">local&lt;/span> muted &lt;span style="color:#f92672">=&lt;/span> audio:inputMuted()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> muted &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> clearMuteAlert()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> muteAlertId &lt;span style="color:#f92672">=&lt;/span> hs.alert.show(&lt;span style="color:#e6db74">&amp;#34;🎤 Microphone on&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">true&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> audio:setInputMuted(&lt;span style="color:#66d9ef">false&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Toggles the default microphone&amp;#39;s mute state on hotkey release&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- or performs PTT when holding down the hotkey&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">local&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">toggleMuteOrPTT&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">local&lt;/span> audio &lt;span style="color:#f92672">=&lt;/span> hs.audiodevice.defaultInputDevice()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">local&lt;/span> muted &lt;span style="color:#f92672">=&lt;/span> audio:inputMuted()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">local&lt;/span> muting &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">not&lt;/span> muted
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> holdingToTalk &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> holdingToTalk &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> audio:setInputMuted(&lt;span style="color:#66d9ef">true&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> muting &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> audio:setInputMuted(muting)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> clearMuteAlert()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> muting &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> muteAlertId &lt;span style="color:#f92672">=&lt;/span> hs.alert.show(&lt;span style="color:#e6db74">&amp;#34;📵 Microphone muted&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> muteAlertId &lt;span style="color:#f92672">=&lt;/span> hs.alert.show(&lt;span style="color:#e6db74">&amp;#34;🎤 Microphone on&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- `⌘ ⇧ A` but you could also map to F13 for a macropad&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hs.hotkey.bind({&lt;span style="color:#e6db74">&amp;#34;cmd&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;shift&amp;#34;&lt;/span>}, &lt;span style="color:#e6db74">&amp;#34;a&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">nil&lt;/span>, toggleMuteOrPTT, pushToTalk)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Hammerspoon also makes it incredibly easy to add other utilities, such as making
+a hotkey to change the default audio output or input. Find the latest
+&lt;a href="https://github.com/brettinternet/dotfiles/tree/9ff9cdaba6358b16fc0efa4f2fd3f0617f038dcb/mac/.hammerspoon">source in my dotfiles&lt;/a>.&lt;/p>
 &lt;div class='text-center mt-12'>
 &lt;a
-href="https://github.com/brettinternet/mic-mute/releases"
+href="https://github.com/brettinternet/dotfiles"
 target="_blank"
 rel="noopener noreferrer"
 class='group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full inline-flex no-underline pl-4' role="alert">
-&lt;span class="text-slate-700 font-serif font-semibold text-left flex-auto">View latest release&lt;/span>
+&lt;span class="text-slate-700 font-serif font-semibold text-left flex-auto">View dotfiles&lt;/span>
 &lt;span class="group-hover:translate-x-0.5 transition-transform">
 &lt;svg
 class="opacity-75 h-4 w-4"
@@ -412,12 +473,12 @@ class="rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
 src="/about/profile_hu89dd9f0a2a539a08d41a23b9079e52ba_351109_160x0_resize_lanczos_3.png"
 width="160"
 height="161"
-alt=""
+alt="Brett Gardiner"
 />
 &lt;/noscript>
 &lt;img
 class="lazysizes lazyload rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
-alt=""
+alt="Brett Gardiner"
 src="/about/profile_hu89dd9f0a2a539a08d41a23b9079e52ba_351109_160x0_resize_lanczos_3.png"
 srcset="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAIsElEQVR4nHRZXXrcOq7ED7P/1d3nO3uI7XPSEoH5UAVSbDujyGy5LYnFQgEEkPH///cfWUdm9ph1RP3UwXHOGTHrHy/wHW/igyKqKqpmZhjc3c3dzHHp&amp;#43;J6jKn74gOJRYhjy7Ugik0YENI1i9jjn3b/WX2dEchV8ec0ECOae4RbDR&amp;#43;C9KTJMJFUk8an1FYA0GlUZqrrWRzwgh2Me5BSMe857jYAFqAdDAARuwgtKxPAElPV33mQialprOPBwGN&amp;#43;4OfhpewXpuQvKfV89Alks2xEQmDfaKspEM8fMDHn&amp;#43;3CxmsRCSppqbHn4OXGiSUkIR2fTkYgcIrnlf93UB1gWqNqAg&amp;#43;/oAGjHwPRcKKoq/oHIKk2IaYHoQjb5YpLaqCwoZopDvuO97FpT7ft0XkBVDTRKMfAIaSTQFaIt969jUQlMLDOyxLFfj&amp;#43;C7o3Efr5xHyDZIKDTHdUPedMFmWWGuydMuYAks1KwVTwwynW/mmpRmV8c1q44ePpWwPa0wzoiZuTLOgBKy2GKJpSJBmujh/lUmMZvOG0m2GzwgzvFnMJE&amp;#43;1/3T7raJDQklINNxxZp91A58pxaYKTKWiYWpT0yxmabyeqkAwM71ebpn5CLejkcjQx72WijampaSEo5GtQlBmmlJYp&amp;#43;RUuL3yBWaaoqFiU8LKNLgNZzznE1vkMFhxPLCsfFNRY15KypYnQECnGcqR94IWPKsqpVaMfWefsV6SRBOMLksky2z6Q9SZx9XiaQdLkeD0WjFEFLp93qcMM3VaBeM6Abph8VXSY66AsF1Mv3vZExifIMBlNAiVmgnOA2ZhH9mgoGr4VZmuRu35cOZi9M2BHiw/vUy/exy/zB3aCxBDSnkT0AAXp6mXqjUcQ7ipAbA2MvD6t&amp;#43;k60o9&amp;#43;Ufa0qj9uhP5NpbyG766IXwYpX6plx/FCBSYDJtMe1Hrf7Y2d&amp;#43;KS/7Ae571PUUi/emLYSmosCEAizHVXKZU3EQXntAgs5ny40oq5uddo&amp;#43;GpbJ2kbaUDsDQaTWx4x5&amp;#43;t9aUcdZMyzaTdNSgAZP1pZd9OXJUDZDLlawSJZ3JqBk7DhW3gJk48028u2&amp;#43;ejAxgQMQDSHpKdyHINX2/JVkla77ZsJSpGYVqpcN7ZhiJ2lENLZK6EvHXVuWBiv129ODzCxO/w4IJLm4L6u5&amp;#43;TIcYPHNz&amp;#43;p7VmhoZWiKKeTgBvSUiAqQumvOFK9oVBZoRTMcbJMlrCbqaV50giEY7huid7sty0FDy6vztNk7N4K9uhgqn/IFXyHqDkRUZiIU1Rq01iDeVmKetPPtk55TJINAtCP/m4pIkrUgXGymQ84MaIFA1Lo&amp;#43;PI0ms1NGndufDvcTzo7Uyh0AKjpF1Ms65Rm9CVhFbPkfgKTiRC5p68K0uWlH2zFK956zvUxXNEYsym/Ae4n1XksT5FYVGJWWeg&amp;#43;liyH9zpAe1c&amp;#43;hnydeNqyOQ0c0qiPltFt/REVrbAtZo0hoGJ4JfYv/xx6LR&amp;#43;VB8G6ooxzrkIzV/G0ne/vyiBQ9jfWmpHrschvKA0vlEaUs7z75/Dm3Pb&amp;#43;k/DiaydyTHU/SyGuUv62mlXUkD7on2tVa/7ZeMbp8Xm/IfHKVlaPJGlbC9Ny9tm5qr6Hk/jyxRIp1yldP2sr/RI9clvnQU6nmU3R0ttm5dWf89TyLqcAMdSHMco5SSuVZVqVjGlG788pfTSuBlHrSUsMCgacuK58YXHh3DHY1H7to7Y9co3CMmoC5rGZ25tiJQzzmrgwztCJ7VRyqkToD2Zv1ntdpqWVqxVKYbHPCxgJrsW4nVPGDWueeeU&amp;#43;WGTIrw1cUX8qzBdOetfJslZyd1e09pQzHkWfVZxXBiUlztCWeQn53OVi936zCAtd5V&amp;#43;kjcSuqDq2SI&amp;#43;n2R6SuPSUpGUtwBPvwHGkhNtIjrba7Ko2sSrUO5WNG18xsusRTydcxAQXjFfPKu9BIYSKa4G6v3H0QIZAGoDDVhWmCEw9FqVgF4z1thPu0MdwDvZvJjGCwzcN21IIyCYUjT5B0kR5peqroYkb9BBeEhk4TdKZWjpY2xWZVjV6njWH&amp;#43;y8c0Hz6m&amp;#43;&amp;#43;0&amp;#43;jP0s93Hf99EAgmRu9BR2o&amp;#43;NagFiqwl6kh1WOMelYeSiKdY5Qizpyo4E8ZGjNPcwvH79Azxg1emNyG9d1LSOx9QMsF9Bcr6P50oAoZ5VFD3ZS63AOaAhEgTwkZImY6WydhcmLpOHjV&amp;#43;HBr8RUP6/XRWrISWHh8XpdxESSZokpl5athJwuQNNFBbdHZpOVmywdL69qQE6SfAM6eRpj/Pnz56aVLrDxApAaXheuNqD2&amp;#43;WUsEuMmLEsOQIyXhWmKEhkT88ozS7llHcio6cHnuv7n338bTfMCRDW8CIvtqXlfaBjcFRKlADkqwCp1NiDt3S3o7OVeD1VVq0DjhqTW21K/xgZEqr6&amp;#43;/iGgRc0&amp;#43;/hxWu2NeAXqE9EA9buKKLJ5Zxtpoua8Q0MZEMSEvK55KxQ9Dv5bhfHx9fUHB4ORAw4/7el1oJwZbQYw9CvUsNG5PYbr7FIUjsgGFTKaW0rlbA/Klno3Mx/j4/IKprsbzB/&amp;#43;W5W66G&amp;#43;hZ3aDy6MdeDYh1LZNOtruk4AdICmzEXToRE1vphQmutXU9xsfHx3XdtNefg5vW9dXhMbo9xUhIemTVyjsjlMdkpIfb8bLgAwhlkXXsaWP1xe&amp;#43;PzzeGGk39Yzia6ErH7lZ17GkB2WbIdnGWG1CNoCpWkcLivyuICs6MQI2mPj5&amp;#43;f8AsBNSypsNd3SZHU/FprJbJsEZhxe62s2XZGgKgla1ASbmtJqxZWRv1/4c4kNXW8fvjc7v9a3F1rajUvV92CNnGQ7ODAjK6mIltSW9AQBMlo4zDZA1ok8RN3olslBU/Pj8Rodd&amp;#43;cRFK72fzaY13Q057o2BIfG//HNkiW9ezE05mlw&amp;#43;g1UXfmHwVtj4&amp;#43;P7/u42g0a8evfOigh4DI0K3NzY7Uq/XFHFwWlMxT1MLM0uSoRcvyC9l/AwAA//9K0vhHjIzB5AAAAABJRU5ErkJggg=="
 data-src="/about/profile_hu89dd9f0a2a539a08d41a23b9079e52ba_351109_160x0_resize_lanczos_3.png"
@@ -508,7 +569,6 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="r
 &lt;details open>
 &lt;summary class="font-serif">What do I like?&lt;/summary>
 &lt;p>I like my family, pizza, Linux, reading, spinach but not arugula, early morning hikes in the Rocky Mountains, custom keyboards, and tinkering with IoT devices.&lt;/p>
-&lt;p>Ask me how my kefir grains are doing.&lt;/p>
 &lt;/details>
 &lt;details open>
 &lt;summary class="font-serif">What are my hobbies?&lt;/summary>

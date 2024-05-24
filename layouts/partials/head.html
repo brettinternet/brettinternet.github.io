@@ -22,7 +22,7 @@
 <!-- Libs -->
 <!-- Tailwind: https://discourse.gohugo.io/t/tailwind-v3-0-and-hugo/35994/27 -->
 {{ $postcss_options := dict "config" "postcss.config.js" "noMap" true }}
-{{ if .Site.IsServer }}
+{{ if hugo.IsServer }}
   {{ $seed := "weqklrjfmnk213409ufasdfhnlk3j4bladsfsl" }}
   {{ $random := delimit (shuffle (split (md5 $seed) "" )) "" }}
   {{ $tailwind := resources.Get "tailwind/tailwind.css"

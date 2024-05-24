@@ -460,7 +460,7 @@ be around for a long time.&lt;/p>
 &lt;p>&lt;strong>June 2020 update&lt;/strong>: As of this year, I have begun experimenting with a much
 simpler approach for tracking work-in-progress: &lt;code>todo.txt&lt;/code>. More on this to
 come.&lt;/p>
-&lt;!-- raw HTML omitted --></content></entry><entry><title>About me</title><link rel="alternate" href="https://brett.cloud/about/"/><id>https://brett.cloud/about/</id><published>0001-01-01T00:00:00+0000</published><updated>0001-01-01T00:00:00+0000</updated><summary>code with me recruit me work with me Brett Gardiner has been hard at work writing production code with an enterprise quality fit for solving problems at different scales and velocities. Brett is passionate about a variety of technologies and enjoys making a positive impact by delivering meaningful software for customers. GitHub LinkedIn What do I like? I like my family, pizza, Linux, reading, spinach but not arugula, early morning hikes in the Rocky Mountains, custom keyboards, and tinkering with IoT devices.</summary><content type="html">&lt;div class="not-prose flex flex-col items-center justify-center container mb-6 sm:mb-12 mx-auto">
+&lt;!-- raw HTML omitted --></content></entry><entry><title>About me</title><link rel="alternate" href="https://brett.cloud/about/"/><id>https://brett.cloud/about/</id><published>0001-01-01T00:00:00+0000</published><updated>0001-01-01T00:00:00+0000</updated><summary>code with me recruit me work with me Brett Gardiner has been hard at work writing enterprise software fit for solving problems at different scales and velocities. Brett is passionate about a variety of technologies and enjoys making a positive impact by delivering meaningful software for customers. GitHub LinkedIn What do I like? I like my family, pizza, Linux, reading, spinach but not arugula, early morning hikes in the Rocky Mountains, custom keyboards, movies, and tinkering with IoT devices.</summary><content type="html">&lt;div class="not-prose flex flex-col items-center justify-center container mb-6 sm:mb-12 mx-auto">
 &lt;a href="/">
 &lt;noscript>
 &lt;style>
@@ -501,7 +501,7 @@ data-srcset="/about/profile_hu89dd9f0a2a539a08d41a23b9079e52ba_351109_160x0_resi
 &lt;/li>
 &lt;/ul>
 &lt;p>
-Brett Gardiner has been hard at work writing production code with an enterprise quality fit for solving problems at different scales and velocities.
+Brett Gardiner has been hard at work writing enterprise software fit for solving problems at different scales and velocities.
 Brett is passionate about a variety of technologies and enjoys making a positive impact by delivering meaningful software for customers.
 &lt;/p>
 &lt;ul class="not-prose list-none mt-3 sm:mt-6 mb-6 sm:mb-12 p-0 mx-0 font-article flex flex-row items-center justify-center space-x-9">
@@ -549,7 +549,7 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="r
 &lt;div class="grid sm:grid-cols-2 gap-4">
 &lt;details open>
 &lt;summary class="font-serif">What do I like?&lt;/summary>
-&lt;p>I like my family, pizza, Linux, reading, spinach but not arugula, early morning hikes in the Rocky Mountains, custom keyboards, and tinkering with IoT devices.&lt;/p>
+&lt;p>I like my family, pizza, Linux, reading, spinach but not arugula, early morning hikes in the Rocky Mountains, custom keyboards, movies, and tinkering with IoT devices.&lt;/p>
 &lt;/details>
 &lt;details open>
 &lt;summary class="font-serif">What are my hobbies?&lt;/summary>

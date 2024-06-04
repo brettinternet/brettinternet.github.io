@@ -23,27 +23,25 @@ Setup and usage are inspired by a
 the [k8s-at-home](https://github.com/k8s-at-home) community. You can find
 similar setups with the
 [k8s at home search](https://nanne.dev/k8s-at-home-search/).
-[Historical revisions](https://github.com/brettinternet/homelab/tree/2481045c3a9a6542f10095c9550e324161394286)
+[Historical revisions](https://github.com/brettinternet/homeops/tree/2481045c3a9a6542f10095c9550e324161394286)
 of my homelab setup had rootless Podman containers deployed with ansible as
 systemd units. Prior to that, I
-[used docker-compose](https://github.com/brettinternet/homelab/tree/d1d2c02106e61685d38c199d5971bc383831f72d)
+[used docker-compose](https://github.com/brettinternet/homeops/tree/d1d2c02106e61685d38c199d5971bc383831f72d)
 to orchestrate containers on a single node.
 
 ## Setup
 
 Here have been some of my goals:
 
-- Lots of
-  [self-hosted services](https://github.com/brettinternet/homelab/blob/main/cluster/apps)
 - [Flux](https://toolkit.fluxcd.io/) GitOps with this repository
-  ([cluster directory](https://github.com/brettinternet/homelab/blob/main/cluster))
+  ([cluster directory](https://github.com/brettinternet/cluster))
 - Ansible node provisioning and
   [K3s setup](https://github.com/PyratLabs/ansible-role-k3s) (Ansible
-  [roles](https://github.com/brettinternet/homelab/blob/main/provision/ansible/roles)
+  [roles](https://github.com/brettinternet/cluster/blob/main/provision/ansible/roles)
   and
-  [playbooks](https://github.com/brettinternet/homelab/blob/main/provision/ansible))
+  [playbooks](https://github.com/brettinternet/cluster/blob/main/provision/ansible))
 - Terraform DNS records
-  ([terraform](https://github.com/brettinternet/homelab/blob/main/provision/terraform))
+  ([terraform](https://github.com/brettinternet/cluster/blob/main/provision/terraform))
 - [SOPS](https://github.com/mozilla/sops) secrets stored in Git
 - [Renovate bot](https://github.com/renovatebot/renovate) dependency updates
 - WireGuard VPN pod gateway via paid service
@@ -58,19 +56,16 @@ Here have been some of my goals:
   [authentication](https://www.authelia.com/configuration/identity-providers/open-id-connect/)
   with [LDAP](https://github.com/nitnelave/lldap)
 - Automatic Cloudflare DNS updates
-  ([ddns cronjob](https://github.com/brettinternet/homelab/blob/main/cluster/apps/networking/cloudflare-ddns))
 - [MetalLB](https://metallb.universe.tf/) bare metal K8s network loadbalancing
 - [Calico](https://www.tigera.io/project-calico/) CNI
 - [ZFS](https://wiki.archlinux.org/index.php/ZFS)
 - JBOD [mergerfs](https://github.com/trapexit/mergerfs) union NFS with
   [SnapRAID](https://www.snapraid.it) backup for low-touch media files
-  ([snapraid-runner cluster cronjob](https://github.com/brettinternet/homelab/blob/main/cluster/apps/media/snapraid-runner))
 - [Restic](https://restic.net) backups to remote and local buckets
-  ([backup namespace](https://github.com/brettinternet/homelab/blob/main/cluster/apps/backup))
 - [go-task](https://taskfile.dev) shorthand for useful commands
-  ([Taskfile](https://github.com/brettinternet/homelab/blob/main/Taskfile.yaml)
+  ([Taskfile](https://github.com/brettinternet/cluster/blob/main/Taskfile.yaml)
   and
-  [taskfiles](https://github.com/brettinternet/homelab/blob/main/.taskfiles))
+  [taskfiles](https://github.com/brettinternet/cluster/blob/main/.taskfiles))
 
 ### Some questions
 

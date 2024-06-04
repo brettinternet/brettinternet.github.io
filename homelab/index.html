@@ -8,30 +8,26 @@ been an excellent journey to become more acquainted with Kubernetes.</p><p>Setup
 the <a href=https://github.com/k8s-at-home>k8s-at-home</a> community. You can find
 similar setups with the
 <a href=https://nanne.dev/k8s-at-home-search/>k8s at home search</a>.
-<a href=https://github.com/brettinternet/homelab/tree/2481045c3a9a6542f10095c9550e324161394286>Historical revisions</a>
+<a href=https://github.com/brettinternet/homeops/tree/2481045c3a9a6542f10095c9550e324161394286>Historical revisions</a>
 of my homelab setup had rootless Podman containers deployed with ansible as
 systemd units. Prior to that, I
-<a href=https://github.com/brettinternet/homelab/tree/d1d2c02106e61685d38c199d5971bc383831f72d>used docker-compose</a>
-to orchestrate containers on a single node.</p><h2 id=setup>Setup</h2><p>Here have been some of my goals:</p><ul><li>Lots of
-<a href=https://github.com/brettinternet/homelab/blob/main/cluster/apps>self-hosted services</a></li><li><a href=https://toolkit.fluxcd.io/>Flux</a> GitOps with this repository
-(<a href=https://github.com/brettinternet/homelab/blob/main/cluster>cluster directory</a>)</li><li>Ansible node provisioning and
+<a href=https://github.com/brettinternet/homeops/tree/d1d2c02106e61685d38c199d5971bc383831f72d>used docker-compose</a>
+to orchestrate containers on a single node.</p><h2 id=setup>Setup</h2><p>Here have been some of my goals:</p><ul><li><a href=https://toolkit.fluxcd.io/>Flux</a> GitOps with this repository
+(<a href=https://github.com/brettinternet/cluster>cluster directory</a>)</li><li>Ansible node provisioning and
 <a href=https://github.com/PyratLabs/ansible-role-k3s>K3s setup</a> (Ansible
-<a href=https://github.com/brettinternet/homelab/blob/main/provision/ansible/roles>roles</a>
+<a href=https://github.com/brettinternet/cluster/blob/main/provision/ansible/roles>roles</a>
 and
-<a href=https://github.com/brettinternet/homelab/blob/main/provision/ansible>playbooks</a>)</li><li>Terraform DNS records
-(<a href=https://github.com/brettinternet/homelab/blob/main/provision/terraform>terraform</a>)</li><li><a href=https://github.com/mozilla/sops>SOPS</a> secrets stored in Git</li><li><a href=https://github.com/renovatebot/renovate>Renovate bot</a> dependency updates</li><li>WireGuard VPN pod gateway via paid service</li><li>WireGuard VPN proxy hosted on VPS</li><li><a href=https://github.com/cloudflare/cloudflared>Cloudflared HTTP tunnel</a></li><li><a href=https://github.com/ori-edge/k8s_gateway>K8s gateway</a> for local DNS
+<a href=https://github.com/brettinternet/cluster/blob/main/provision/ansible>playbooks</a>)</li><li>Terraform DNS records
+(<a href=https://github.com/brettinternet/cluster/blob/main/provision/terraform>terraform</a>)</li><li><a href=https://github.com/mozilla/sops>SOPS</a> secrets stored in Git</li><li><a href=https://github.com/renovatebot/renovate>Renovate bot</a> dependency updates</li><li>WireGuard VPN pod gateway via paid service</li><li>WireGuard VPN proxy hosted on VPS</li><li><a href=https://github.com/cloudflare/cloudflared>Cloudflared HTTP tunnel</a></li><li><a href=https://github.com/ori-edge/k8s_gateway>K8s gateway</a> for local DNS
 resolution to cluster and
 <a href=https://kubernetes.github.io/ingress-nginx/>NGINX ingress controller</a></li><li>Both internal & external services with a service
 <a href=https://github.com/ori-edge/k8s_gateway/>gateway</a></li><li>OIDC
 <a href=https://www.authelia.com/configuration/identity-providers/open-id-connect/>authentication</a>
-with <a href=https://github.com/nitnelave/lldap>LDAP</a></li><li>Automatic Cloudflare DNS updates
-(<a href=https://github.com/brettinternet/homelab/blob/main/cluster/apps/networking/cloudflare-ddns>ddns cronjob</a>)</li><li><a href=https://metallb.universe.tf/>MetalLB</a> bare metal K8s network loadbalancing</li><li><a href=https://www.tigera.io/project-calico/>Calico</a> CNI</li><li><a href=https://wiki.archlinux.org/index.php/ZFS>ZFS</a></li><li>JBOD <a href=https://github.com/trapexit/mergerfs>mergerfs</a> union NFS with
-<a href=https://www.snapraid.it>SnapRAID</a> backup for low-touch media files
-(<a href=https://github.com/brettinternet/homelab/blob/main/cluster/apps/media/snapraid-runner>snapraid-runner cluster cronjob</a>)</li><li><a href=https://restic.net>Restic</a> backups to remote and local buckets
-(<a href=https://github.com/brettinternet/homelab/blob/main/cluster/apps/backup>backup namespace</a>)</li><li><a href=https://taskfile.dev>go-task</a> shorthand for useful commands
-(<a href=https://github.com/brettinternet/homelab/blob/main/Taskfile.yaml>Taskfile</a>
+with <a href=https://github.com/nitnelave/lldap>LDAP</a></li><li>Automatic Cloudflare DNS updates</li><li><a href=https://metallb.universe.tf/>MetalLB</a> bare metal K8s network loadbalancing</li><li><a href=https://www.tigera.io/project-calico/>Calico</a> CNI</li><li><a href=https://wiki.archlinux.org/index.php/ZFS>ZFS</a></li><li>JBOD <a href=https://github.com/trapexit/mergerfs>mergerfs</a> union NFS with
+<a href=https://www.snapraid.it>SnapRAID</a> backup for low-touch media files</li><li><a href=https://restic.net>Restic</a> backups to remote and local buckets</li><li><a href=https://taskfile.dev>go-task</a> shorthand for useful commands
+(<a href=https://github.com/brettinternet/cluster/blob/main/Taskfile.yaml>Taskfile</a>
 and
-<a href=https://github.com/brettinternet/homelab/blob/main/.taskfiles>taskfiles</a>)</li></ul><h3 id=some-questions>Some questions</h3><ul><li><a href=https://danluu.com/why-ecc/>Why use ECC RAM?</a><ul><li><a href="https://news.ycombinator.com/item?id=14206635">Hacker News discussion</a></li><li><a href=https://arstechnica.com/civis/threads/ars-walkthrough-using-the-zfs-next-gen-filesystem-on-linux.1235679/#p26303271>If you love your data, use ECC RAM</a></li><li><a href=https://en.wikipedia.org/wiki/ECC_memory#Description>Error rates increase rapidly with rising altitude</a></li></ul></li></ul><h2 id=hardware>Hardware</h2><p>I finally upgraded my media server chassis to a
+<a href=https://github.com/brettinternet/cluster/blob/main/.taskfiles>taskfiles</a>)</li></ul><h3 id=some-questions>Some questions</h3><ul><li><a href=https://danluu.com/why-ecc/>Why use ECC RAM?</a><ul><li><a href="https://news.ycombinator.com/item?id=14206635">Hacker News discussion</a></li><li><a href=https://arstechnica.com/civis/threads/ars-walkthrough-using-the-zfs-next-gen-filesystem-on-linux.1235679/#p26303271>If you love your data, use ECC RAM</a></li><li><a href=https://en.wikipedia.org/wiki/ECC_memory#Description>Error rates increase rapidly with rising altitude</a></li></ul></li></ul><h2 id=hardware>Hardware</h2><p>I finally upgraded my media server chassis to a
 <a href=https://www.techyparts.com/supermicro-cse-826be16-r1k28lpb-2u-server-chassis-2x1280w-12x3-5-bpn-sas2-826el1.html>Supermicro CSE-826</a>.
 For almost 7 years I was using a
 <a href=https://www.fractal-design.com/products/cases/node/node-804/black/>Node 804</a>,

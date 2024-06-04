@@ -212,25 +212,23 @@ been an excellent journey to become more acquainted with Kubernetes.&lt;/p>
 the &lt;a href="https://github.com/k8s-at-home">k8s-at-home&lt;/a> community. You can find
 similar setups with the
 &lt;a href="https://nanne.dev/k8s-at-home-search/">k8s at home search&lt;/a>.
-&lt;a href="https://github.com/brettinternet/homelab/tree/2481045c3a9a6542f10095c9550e324161394286">Historical revisions&lt;/a>
+&lt;a href="https://github.com/brettinternet/homeops/tree/2481045c3a9a6542f10095c9550e324161394286">Historical revisions&lt;/a>
 of my homelab setup had rootless Podman containers deployed with ansible as
 systemd units. Prior to that, I
-&lt;a href="https://github.com/brettinternet/homelab/tree/d1d2c02106e61685d38c199d5971bc383831f72d">used docker-compose&lt;/a>
+&lt;a href="https://github.com/brettinternet/homeops/tree/d1d2c02106e61685d38c199d5971bc383831f72d">used docker-compose&lt;/a>
 to orchestrate containers on a single node.&lt;/p>
 &lt;h2 id="setup">Setup&lt;/h2>
 &lt;p>Here have been some of my goals:&lt;/p>
 &lt;ul>
-&lt;li>Lots of
-&lt;a href="https://github.com/brettinternet/homelab/blob/main/cluster/apps">self-hosted services&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://toolkit.fluxcd.io/">Flux&lt;/a> GitOps with this repository
-(&lt;a href="https://github.com/brettinternet/homelab/blob/main/cluster">cluster directory&lt;/a>)&lt;/li>
+(&lt;a href="https://github.com/brettinternet/cluster">cluster directory&lt;/a>)&lt;/li>
 &lt;li>Ansible node provisioning and
 &lt;a href="https://github.com/PyratLabs/ansible-role-k3s">K3s setup&lt;/a> (Ansible
-&lt;a href="https://github.com/brettinternet/homelab/blob/main/provision/ansible/roles">roles&lt;/a>
+&lt;a href="https://github.com/brettinternet/cluster/blob/main/provision/ansible/roles">roles&lt;/a>
 and
-&lt;a href="https://github.com/brettinternet/homelab/blob/main/provision/ansible">playbooks&lt;/a>)&lt;/li>
+&lt;a href="https://github.com/brettinternet/cluster/blob/main/provision/ansible">playbooks&lt;/a>)&lt;/li>
 &lt;li>Terraform DNS records
-(&lt;a href="https://github.com/brettinternet/homelab/blob/main/provision/terraform">terraform&lt;/a>)&lt;/li>
+(&lt;a href="https://github.com/brettinternet/cluster/blob/main/provision/terraform">terraform&lt;/a>)&lt;/li>
 &lt;li>&lt;a href="https://github.com/mozilla/sops">SOPS&lt;/a> secrets stored in Git&lt;/li>
 &lt;li>&lt;a href="https://github.com/renovatebot/renovate">Renovate bot&lt;/a> dependency updates&lt;/li>
 &lt;li>WireGuard VPN pod gateway via paid service&lt;/li>
@@ -244,20 +242,17 @@ resolution to cluster and
 &lt;li>OIDC
 &lt;a href="https://www.authelia.com/configuration/identity-providers/open-id-connect/">authentication&lt;/a>
 with &lt;a href="https://github.com/nitnelave/lldap">LDAP&lt;/a>&lt;/li>
-&lt;li>Automatic Cloudflare DNS updates
-(&lt;a href="https://github.com/brettinternet/homelab/blob/main/cluster/apps/networking/cloudflare-ddns">ddns cronjob&lt;/a>)&lt;/li>
+&lt;li>Automatic Cloudflare DNS updates&lt;/li>
 &lt;li>&lt;a href="https://metallb.universe.tf/">MetalLB&lt;/a> bare metal K8s network loadbalancing&lt;/li>
 &lt;li>&lt;a href="https://www.tigera.io/project-calico/">Calico&lt;/a> CNI&lt;/li>
 &lt;li>&lt;a href="https://wiki.archlinux.org/index.php/ZFS">ZFS&lt;/a>&lt;/li>
 &lt;li>JBOD &lt;a href="https://github.com/trapexit/mergerfs">mergerfs&lt;/a> union NFS with
-&lt;a href="https://www.snapraid.it">SnapRAID&lt;/a> backup for low-touch media files
-(&lt;a href="https://github.com/brettinternet/homelab/blob/main/cluster/apps/media/snapraid-runner">snapraid-runner cluster cronjob&lt;/a>)&lt;/li>
-&lt;li>&lt;a href="https://restic.net">Restic&lt;/a> backups to remote and local buckets
-(&lt;a href="https://github.com/brettinternet/homelab/blob/main/cluster/apps/backup">backup namespace&lt;/a>)&lt;/li>
+&lt;a href="https://www.snapraid.it">SnapRAID&lt;/a> backup for low-touch media files&lt;/li>
+&lt;li>&lt;a href="https://restic.net">Restic&lt;/a> backups to remote and local buckets&lt;/li>
 &lt;li>&lt;a href="https://taskfile.dev">go-task&lt;/a> shorthand for useful commands
-(&lt;a href="https://github.com/brettinternet/homelab/blob/main/Taskfile.yaml">Taskfile&lt;/a>
+(&lt;a href="https://github.com/brettinternet/cluster/blob/main/Taskfile.yaml">Taskfile&lt;/a>
 and
-&lt;a href="https://github.com/brettinternet/homelab/blob/main/.taskfiles">taskfiles&lt;/a>)&lt;/li>
+&lt;a href="https://github.com/brettinternet/cluster/blob/main/.taskfiles">taskfiles&lt;/a>)&lt;/li>
 &lt;/ul>
 &lt;h3 id="some-questions">Some questions&lt;/h3>
 &lt;ul>

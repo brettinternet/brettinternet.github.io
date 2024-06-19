@@ -21,6 +21,6 @@ Some business models are to swindle and bankrupt families.
 The predatory practice of Progressive Eye Care begins by obscuring all costs to
 avoid upfront disclosure about insurance coverage (despite our inquiries). They
 ended up charging cash on the way out the door because their strategy is to prey
-on patients by adding line items to an unrelated visits – these items were _not_
-covered by insurance. Credit to them for a sense of humor, because in the end
-these goofballs provided no assistance with our case.
+on patients by adding line items to unrelated visits – these items were
+conveniently _not_ covered by insurance. Credit to them for a sense of humor,
+because in the end these goofballs provided no assistance with our case.

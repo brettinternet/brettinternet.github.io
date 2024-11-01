@@ -61,7 +61,7 @@ before we connect on a call:
 - What can you share about the product's tech stack (e.g. front and backends,
   other services, legacy code)?
 - What do the engineering and product team look like (e.g. headcount,
-  experience, roles)?
+  experience, roles)? What does a Pull Request on the team look like?
 - What problems are you trying to solve with your product?
 
 {{< cta href="https://www.linkedin.com/in/brettinternet/" message="Connect with Brett" new_window=true root_class="mt-12" >}}

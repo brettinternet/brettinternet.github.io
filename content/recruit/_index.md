@@ -24,6 +24,10 @@ I won't want to miss.
   an enterprise quality fit to solve problems at different scales and
   velocities. I work with all kinds of technologies and I'm excited to solve
   problems.
+- I've been with
+  [my current employer](https://www.linkedin.com/in/brettinternet/) for quite
+  some time, dedicated to solving realtime patch management in an interesting
+  way.
 - I have [experience](/resume.pdf) mentoring, teaching, and uplifting others.
 - I'm thrilled by what I do. You can tell by what my coworkers say about me, my
   commitment to the products I work on, and the effort I put into my career
@@ -34,8 +38,7 @@ I won't want to miss.
   backgrounds, experiences, and viewpoints. I believe it's important to find
   growth in any circumstance and to learn from everyone I work with.
 - [I'm passionate about a variety technologies.](/resume.pdf)
-- I collaborate really well remotely. _Ask me about some of the techniques I
-  employ to engage with my team!_
+- I collaborate really well remotely. \_Ask me about some of the techniques I
 
 ### What I'm looking for
 
@@ -43,14 +46,14 @@ I won't want to miss.
 I can grow and stretch myself. I seek to deliver performant software that's
 meaningful to customers.
 
-I'm open to working with most kinds of products. Given the current market, I'm
-not open to products that rely solely on blockchain technologies.
+I'm open to working with most kinds of products. I like to write _Go_,
+_TypeScript_, _Elixir_, _Python_ and _SQL_.
 
 As part of the recruitment process, I would like an opportunity to sit down with
 the team (virtually or in-person) to answer questions and discuss the product
 and engineering experience.
 
-I am only open to remote work at this time.
+I am **only** open to remote work at this time.
 
 I'm willing to discuss moonlighting additional
 [contract or consulting](/consult) work.

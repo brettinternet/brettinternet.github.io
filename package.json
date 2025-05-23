@@ -2,17 +2,18 @@
   "name": "brettinternet.github.io",
   "scripts": {},
   "dependencies": {
+    "@fontsource/fira-code": "^5.2.6",
+    "@fontsource/patua-one": "^5.2.5",
+    "@fontsource/roboto-slab": "^5.2.5",
     "@tailwindcss/typography": "^0.5.16",
     "autoprefixer": "^10.4.21",
     "giscus": "^1.6.0",
     "lazysizes": "^5.3.2",
     "mermaid": "^11.6.0",
-    "tailwindcss": "^4.1.7",
-    "typeface-fira-code": "^1.1.13",
-    "typeface-patua-one": "^1.1.13",
-    "typeface-roboto-slab": "^1.1.13"
+    "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.7",
     "@tailwindcss/postcss": "^4.1.7",
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.1"

@@ -1,5 +1,6 @@
 # Hugo
 .hugo_build.lock
+hugo_stats.json
 /resources/_gen
 /public
 

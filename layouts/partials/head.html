@@ -26,7 +26,7 @@
   {{ $seed := "weqklrjfmnk213409ufasdfhnlk3j4bladsfsl" }}
   {{ $random := delimit (shuffle (split (md5 $seed) "" )) "" }}
   {{ $tailwind := resources.Get "tailwind/tailwind.css"
-      | resources.PostCSS $postcss_options
+      | css.PostCSS $postcss_options
       | resources.ExecuteAsTemplate (printf "tailwind.dev.%s.css" $random) $random
   }}
   <link rel="stylesheet" href="{{ $tailwind.RelPermalink }}">
@@ -41,7 +41,7 @@
 
 <!-- Custom styles -->
 {{ $css_options := (dict "includePaths" (slice "node_modules")) }}
-{{ $styles := resources.Get "styles/main.sass" | resources.ToCSS $css_options }}
+{{ $styles := resources.Get "styles/main.sass" | css.Sass $css_options }}
 {{ with .Params.redirect_url }}
   <meta http-equiv="refresh" content="0; url={{ . }}">
 {{ end }}

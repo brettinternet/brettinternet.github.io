@@ -61,7 +61,7 @@
 <figure {{with $figure_class}}class="{{.}}"{{end}}>
   {{ end }}
   <img
-    class="lazysizes lazyload{{with $image_class}} {{.}}{{end}}"
+    class="lazysizes lazyload transition-all duration-200 opacity-100{{with $image_class}} {{.}}{{end}}"
     alt="{{ $alt }}"
     src="{{ .image.RelPermalink }}"
     srcset="data:image/jpeg;base64,{{ $placeholder.Content | base64Encode }}"

@@ -64,15 +64,16 @@ stroke="currentColor">
 macOS with a global shortcut and a clear visual indicator. It&amp;rsquo;s inspired by
 &lt;a href="https://learn.microsoft.com/en-us/windows/powertoys/video-conference-mute">VCM&lt;/a>
 for Windows.&lt;/p>
-&lt;h2 id="update-what-i-use-now">Update: What I use now&lt;/h2>
-&lt;p>My journey finding the best solution for this has evolved. I now use
-&lt;a href="https://www.hammerspoon.org">Hammerspoon&lt;/a> which is a delightful way to hack
-together MacOS scripts. I store my configuration
-&lt;a href="https://github.com/brettinternet/dotfiles/tree/b72aee44e5039fa9f721eeb84c5145dca83e65fa/darwin/.hammerspoon">in my dotfiles&lt;/a>.
-The Lua scripting in Hammerspoon makes maintaining this a lot more fun than
-foreign functions in Rust. I&amp;rsquo;m still able to use the hotkey &lt;kbd>⌘ ⇧ A&lt;/kbd> and
-I&amp;rsquo;ve also mapped it to a macropad that uses &lt;kbd>F13&lt;/kbd>. My script also
-supports Push To Talk.&lt;/p></summary><content type="html">&lt;div class="flex justify-center">
+&lt;p>Mute with the shortcut &lt;kbd>Cmd&lt;/kbd> &lt;kbd>Shift&lt;/kbd> &lt;kbd>A&lt;/kbd>
+or from the system tray dropdown menu.&lt;/p>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;img src="./screenshot.png" alt="popup window screenshot indicating the microphone is off" class="border-4 border-slate-900" />
+&lt;figcaption>Mute window follows cursor to screens and monitors&lt;/figcaption>
+&lt;/figure>
+&lt;p>The mute indicator window will follow the cursor to desktops or screens and
+monitors. The system tray icon will also indicate the mute status. Once
+microphones are on again, the window will hide.
+&lt;a href="https://github.com/brettinternet/mic-mute/releases">View releases&lt;/a>.&lt;/p></summary><content type="html">&lt;div class="flex justify-center">
 &lt;img width="128" src="./icon.png" alt="disabled microphone app icon" class="my-3" />
 &lt;/div>
 &lt;h1 align="center">Mic Mute for macOS&lt;/h1>
@@ -80,16 +81,6 @@ supports Push To Talk.&lt;/p></summary><content type="html">&lt;div class="flex 
 macOS with a global shortcut and a clear visual indicator. It&amp;rsquo;s inspired by
 &lt;a href="https://learn.microsoft.com/en-us/windows/powertoys/video-conference-mute">VCM&lt;/a>
 for Windows.&lt;/p>
-&lt;h2 id="update-what-i-use-now">Update: What I use now&lt;/h2>
-&lt;p>My journey finding the best solution for this has evolved. I now use
-&lt;a href="https://www.hammerspoon.org">Hammerspoon&lt;/a> which is a delightful way to hack
-together MacOS scripts. I store my configuration
-&lt;a href="https://github.com/brettinternet/dotfiles/tree/b72aee44e5039fa9f721eeb84c5145dca83e65fa/darwin/.hammerspoon">in my dotfiles&lt;/a>.
-The Lua scripting in Hammerspoon makes maintaining this a lot more fun than
-foreign functions in Rust. I&amp;rsquo;m still able to use the hotkey &lt;kbd>⌘ ⇧ A&lt;/kbd> and
-I&amp;rsquo;ve also mapped it to a macropad that uses &lt;kbd>F13&lt;/kbd>. My script also
-supports Push To Talk.&lt;/p>
-&lt;hr>
 &lt;p>Mute with the shortcut &lt;kbd>Cmd&lt;/kbd> &lt;kbd>Shift&lt;/kbd> &lt;kbd>A&lt;/kbd>
 or from the system tray dropdown menu.&lt;/p>
 &lt;figure class="flex flex-col justify-center items-center">
@@ -105,6 +96,16 @@ microphones are on again, the window will hide.
 &lt;img src="./alert-on.png" alt="popup window screenshot indicating the microphone is off" class="border-4 border-slate-900 mx-auto max-w-56" />
 &lt;img src="./alert-off.png" alt="popup window screenshot indicating the microphone is on" class="border-4 border-slate-900 mx-auto max-w-56" />
 &lt;/div>
+&lt;hr>
+&lt;h2 id="update-what-i-use-now">Update: What I use now&lt;/h2>
+&lt;p>My journey finding the best solution for this has evolved. I now use
+&lt;a href="https://www.hammerspoon.org">Hammerspoon&lt;/a> which is a delightful way to hack
+together MacOS scripts. I store my configuration
+&lt;a href="https://github.com/brettinternet/dotfiles/tree/b72aee44e5039fa9f721eeb84c5145dca83e65fa/darwin/.hammerspoon">in my dotfiles&lt;/a>.
+The Lua scripting in Hammerspoon makes maintaining this a lot more fun than
+foreign functions in Rust. I&amp;rsquo;m still able to use the hotkey &lt;kbd>⌘ ⇧ A&lt;/kbd> and
+I&amp;rsquo;ve also mapped it to a macropad that uses &lt;kbd>F13&lt;/kbd>. My script also
+supports Push To Talk.&lt;/p>
 &lt;p>Here&amp;rsquo;s the solution:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>muteAlertId &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">nil&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Clear the alert if exists to avoid notifications stacking&lt;/span>
@@ -545,8 +546,8 @@ data-srcset="/about/profile_hu_c80af297f4462462.png 160w"
 &lt;/li>
 &lt;/ul>
 &lt;p>
-Brett Gardiner has been hard at work writing enterprise software fit for solving problems at different scales and velocities.
-Brett is passionate about a variety of technologies and enjoys making a positive impact by delivering meaningful software for customers.
+Brett Gardiner is passionate at writing enterprise software fit for solving problems at different scales and velocities.
+Recently, Brett has been hard at work optimizing realtime communication with hundreds of thousands of devices.
 &lt;/p></summary><content type="html">&lt;div class="not-prose flex flex-col items-center justify-center container mb-6 sm:mb-12 mx-auto">
 &lt;a href="/">
 &lt;noscript>
@@ -588,8 +589,8 @@ data-srcset="/about/profile_hu_c80af297f4462462.png 160w"
 &lt;/li>
 &lt;/ul>
 &lt;p>
-Brett Gardiner has been hard at work writing enterprise software fit for solving problems at different scales and velocities.
-Brett is passionate about a variety of technologies and enjoys making a positive impact by delivering meaningful software for customers.
+Brett Gardiner is passionate at writing enterprise software fit for solving problems at different scales and velocities.
+Recently, Brett has been hard at work optimizing realtime communication with hundreds of thousands of devices.
 &lt;/p>
 &lt;ul class="not-prose list-none mt-3 sm:mt-6 mb-6 sm:mb-12 p-0 mx-0 font-article flex flex-row items-center justify-center space-x-9">
 &lt;li class="text-center xs:text-left">

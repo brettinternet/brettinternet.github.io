@@ -28,19 +28,6 @@ macOS with a global shortcut and a clear visual indicator. It's inspired by
 [VCM](https://learn.microsoft.com/en-us/windows/powertoys/video-conference-mute)
 for Windows.
 
-## Update: What I use now
-
-My journey finding the best solution for this has evolved. I now use
-[Hammerspoon](https://www.hammerspoon.org) which is a delightful way to hack
-together MacOS scripts. I store my configuration
-[in my dotfiles](https://github.com/brettinternet/dotfiles/tree/b72aee44e5039fa9f721eeb84c5145dca83e65fa/darwin/.hammerspoon).
-The Lua scripting in Hammerspoon makes maintaining this a lot more fun than
-foreign functions in Rust. I'm still able to use the hotkey <kbd>⌘ ⇧ A</kbd> and
-I've also mapped it to a macropad that uses <kbd>F13</kbd>. My script also
-supports Push To Talk.
-
----
-
 Mute with the shortcut {{< raw >}} <kbd>Cmd</kbd> <kbd>Shift</kbd> <kbd>A</kbd>
 {{< /raw >}} or from the system tray dropdown menu.
 
@@ -62,6 +49,19 @@ Muted and unmuted indicators:
 <img src="./alert-off.png" alt="popup window screenshot indicating the microphone is on" class="border-4 border-slate-900 mx-auto max-w-56" />
 </div>
 {{< /raw >}}
+
+---
+
+## Update: What I use now
+
+My journey finding the best solution for this has evolved. I now use
+[Hammerspoon](https://www.hammerspoon.org) which is a delightful way to hack
+together MacOS scripts. I store my configuration
+[in my dotfiles](https://github.com/brettinternet/dotfiles/tree/b72aee44e5039fa9f721eeb84c5145dca83e65fa/darwin/.hammerspoon).
+The Lua scripting in Hammerspoon makes maintaining this a lot more fun than
+foreign functions in Rust. I'm still able to use the hotkey <kbd>⌘ ⇧ A</kbd> and
+I've also mapped it to a macropad that uses <kbd>F13</kbd>. My script also
+supports Push To Talk.
 
 Here's the solution:
 

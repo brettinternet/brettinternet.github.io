@@ -1,6 +1,4 @@
-import { LazySizesConfigPartial } from 'lazysizes'
-
-export {}
+import type { LazySizesConfigPartial } from 'lazysizes'
 
 declare global {
   type Options = {

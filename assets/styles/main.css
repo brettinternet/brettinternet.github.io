@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin '@tailwindcss/typography';
 @source "hugo_stats.json";
 
@@ -11,10 +11,10 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1400px;
 
-  --font-article: 'Roboto Slab', serif;
-  --font-sans: 'system-ui', sans-serif;
-  --font-serif: 'Patua One', serif;
-  --font-mono: 'Fira Code', monospace;
+  --font-article: "Roboto Slab", serif;
+  --font-sans: "system-ui", sans-serif;
+  --font-serif: "Patua One", serif;
+  --font-mono: "Fira Code", monospace;
   --text-xxs: 0.625rem;
 }
 
@@ -23,11 +23,17 @@
     @apply font-normal font-sans;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-serif;
   }
 
-  article p, article ul {
+  article p,
+  article ul {
     @apply font-article;
   }
 
@@ -49,45 +55,45 @@
 }
 
 @font-face {
-  font-family: 'Patua One';
+  font-family: "Patua One";
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: local('Roboto Slab Regular ');
-  src: local('Roboto Slab-Regular');
-  src: url('./files/patua-one-latin-400-normal.woff2') format('woff2');
-  src: url('./files/patua-one-latin-400-normal.woff') format('woff');
+  src: local("Roboto Slab Regular ");
+  src: local("Roboto Slab-Regular");
+  src: url("./files/patua-one-latin-400-normal.woff2") format("woff2");
+  src: url("./files/patua-one-latin-400-normal.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'Roboto Slab';
+  font-family: "Roboto Slab";
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: local('Roboto Slab Regular ');
-  src: local('Roboto Slab-Regular');
-  src: url('./files/roboto-slab-latin-400-normal.woff2') format('woff2');
-  src: url('./files/roboto-slab-latin-400-normal.woff') format('woff');
+  src: local("Roboto Slab Regular ");
+  src: local("Roboto Slab-Regular");
+  src: url("./files/roboto-slab-latin-400-normal.woff2") format("woff2");
+  src: url("./files/roboto-slab-latin-400-normal.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'Roboto Slab';
+  font-family: "Roboto Slab";
   font-style: normal;
   font-display: swap;
   font-weight: 700;
-  src: local('Roboto Slab Bold ');
-  src: local('Roboto Slab-Bold');
-  src: url('./files/roboto-slab-latin-700-normal.woff2') format('woff2');
-  src: url('./files/roboto-slab-latin-700-normal.woff') format('woff');
+  src: local("Roboto Slab Bold ");
+  src: local("Roboto Slab-Bold");
+  src: url("./files/roboto-slab-latin-700-normal.woff2") format("woff2");
+  src: url("./files/roboto-slab-latin-700-normal.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'Fira Code';
+  font-family: "Fira Code";
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: local('Fira Code Regular ');
-  src: local('Fira Code-Regular');
-  src: url('./files/fira-code-latin-400-normal.woff2') format('woff2');
-  src: url('./files/fira-code-latin-400-normal.woff') format('woff');
+  src: local("Fira Code Regular ");
+  src: local("Fira Code-Regular");
+  src: url("./files/fira-code-latin-400-normal.woff2") format("woff2");
+  src: url("./files/fira-code-latin-400-normal.woff") format("woff");
 }

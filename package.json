@@ -1,6 +1,8 @@
 {
   "name": "brettinternet.github.io",
-  "scripts": {},
+  "scripts": {
+    "check": "biome check"
+  },
   "dependencies": {
     "@fontsource/fira-code": "^5.2.6",
     "@fontsource/patua-one": "^5.2.5",
@@ -13,6 +15,7 @@
     "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.0.6",
     "@tailwindcss/cli": "^4.1.7",
     "@tailwindcss/postcss": "^4.1.7",
     "postcss": "^8.5.3",

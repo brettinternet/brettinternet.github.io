@@ -41,3 +41,7 @@ node_modules
 
 # go-task
 .task
+/Taskfile.yaml
+/Taskfile.yml
+
+mise.local.toml

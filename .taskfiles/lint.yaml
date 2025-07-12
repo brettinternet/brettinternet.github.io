@@ -1,8 +1,9 @@
 ---
-version: '3'
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
 
 vars:
-  CONFIG_DIR: '.'
+  CONFIG_DIR: "."
 
 tasks:
   default:

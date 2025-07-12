@@ -1,17 +1,18 @@
 ---
-version: '3'
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
 
 vars:
   PROJECT_DIR:
     sh: git rev-parse --show-toplevel
 
 env:
-  ROOT_DIR: '{{.PROJECT_DIR}}'
+  ROOT_DIR: "{{.PROJECT_DIR}}"
 
 includes:
   lint: .taskfiles/lint.yaml
   precommit: .taskfiles/precommit.yaml
-  setup: .taskfiles/setup_{{OS}}.yaml
+  setup: .taskfiles/setup.yaml
 
 tasks:
   default:

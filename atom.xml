@@ -1,4 +1,31 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2023-04-03T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>Tabbed extension</title><link rel="alternate" href="https://brett.cloud/tabbed/"/><id>https://brett.cloud/tabbed/</id><published>2023-04-03T00:00:00+0000</published><updated>2023-04-03T00:00:00+0000</updated><summary>&lt;div class="flex justify-center">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2025-07-25T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>Appresize</title><link rel="alternate" href="https://brett.cloud/appresize/"/><id>https://brett.cloud/appresize/</id><published>2025-07-25T00:00:00+0000</published><updated>2025-07-25T00:00:00+0000</updated><summary>&lt;div class="flex justify-center">
+&lt;img width="128" src="./icon.png" alt="resize" class="my-3" />
+&lt;/div>
+&lt;h1 align="center">Appresize&lt;/h1>
+&lt;p>&lt;a href="https://github.com/brettinternet/Appresize">Appresize&lt;/a> is a utility to resize and move apps from anywhere on the window with custom modifiers and other preferences.&lt;/p>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;img src="./demo.gif" alt="move and resize window from anywhere" class="border-4 border-slate-900" />
+&lt;figcaption>Although not captured by the screen recorder, the cursor does follow window&lt;/figcaption>
+&lt;/figure>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;img src="./screenshot.png" alt="window preferences" />
+&lt;figcaption>Custom modifiers &amp;amp; other behaviors&lt;/figcaption>
+&lt;/figure>
+&lt;p>One of my favorite abandonware apps on macOS was an old closed-source Objective C application called &lt;a href="https://bahoom.com/hyperdock">Hyperdock&lt;/a> that had a small secondary feature to resize and move windows by a modifier from anywhere on the window.&lt;/p></summary><content type="html">&lt;div class="flex justify-center">
+&lt;img width="128" src="./icon.png" alt="resize" class="my-3" />
+&lt;/div>
+&lt;h1 align="center">Appresize&lt;/h1>
+&lt;p>&lt;a href="https://github.com/brettinternet/Appresize">Appresize&lt;/a> is a utility to resize and move apps from anywhere on the window with custom modifiers and other preferences.&lt;/p>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;img src="./demo.gif" alt="move and resize window from anywhere" class="border-4 border-slate-900" />
+&lt;figcaption>Although not captured by the screen recorder, the cursor does follow window&lt;/figcaption>
+&lt;/figure>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;img src="./screenshot.png" alt="window preferences" />
+&lt;figcaption>Custom modifiers &amp;amp; other behaviors&lt;/figcaption>
+&lt;/figure>
+&lt;p>One of my favorite abandonware apps on macOS was an old closed-source Objective C application called &lt;a href="https://bahoom.com/hyperdock">Hyperdock&lt;/a> that had a small secondary feature to resize and move windows by a modifier from anywhere on the window.&lt;/p>
+&lt;p>There are various window utilities on Mac, but none of them satisfied my very specific expectation. Now, this demand lives on with Swift in a small utility &lt;a href="https://github.com/brettinternet/Appresize">here&lt;/a>.&lt;/p></content></entry><entry><title>Tabbed extension</title><link rel="alternate" href="https://brett.cloud/tabbed/"/><id>https://brett.cloud/tabbed/</id><published>2023-04-03T00:00:00+0000</published><updated>2023-04-03T00:00:00+0000</updated><summary>&lt;div class="flex justify-center">
 &lt;img width="128" src="./icon.png" alt="session manager extension icon" class="my-3" />
 &lt;/div>
 &lt;h1 align="center">Tabbed&lt;/h1>

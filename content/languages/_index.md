@@ -4,6 +4,7 @@ title: Programming Languages
 # publishDate: 2025-xx-xx
 description: My drivel on programming languages I've worked with
 comments: false
+draft: true
 ---
 
 What's the best language for building sophisticated enterprise applications at scale? This question has no answer. But we explore it anyway. 💀

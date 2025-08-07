@@ -60,3 +60,15 @@ tasks:
             echo "You may want to activate a python virtual environment before installing the python dependencies.
         Pass 'force' as argument to continue anyway (e.g. task python -- force)."
     silent: true
+
+  check:
+    desc: Run all checks
+    cmds:
+      - bun run check
+      - task: precommit:run
+
+  fix:
+    desc: Run all checks
+    cmds:
+      - bun run fix
+      - task: precommit:run

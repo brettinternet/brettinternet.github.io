@@ -1,4 +1,371 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2025-07-25T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>Appresize</title><link rel="alternate" href="https://brett.cloud/appresize/"/><id>https://brett.cloud/appresize/</id><published>2025-07-25T00:00:00+0000</published><updated>2025-07-25T00:00:00+0000</updated><summary>&lt;div class="flex justify-center">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2025-08-07T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>Scaling Elixir Applications with Context Boundaries</title><link rel="alternate" href="https://brett.cloud/boundary/"/><id>https://brett.cloud/boundary/</id><published>2025-08-07T00:00:00+0000</published><updated>2025-08-07T00:00:00+0000</updated><summary>&lt;p>Building large-scale Elixir applications presents unique challenges. As codebases grow beyond the initial team of 3-5 developers, the lack of enforced architectural boundaries becomes a significant bottleneck. Teams spend more time reading and understanding code than writing new features, and the dynamic nature of Elixir makes code navigation increasingly difficult without proper structure.&lt;/p>
+&lt;p>Lately I&amp;rsquo;ve been exploring how context boundaries, enforced by compile-time checks, can transform unwieldy monoliths into well-organized, maintainable applications that can scale to teams of 20+ engineers.&lt;/p></summary><content type="html">&lt;p>Building large-scale Elixir applications presents unique challenges. As codebases grow beyond the initial team of 3-5 developers, the lack of enforced architectural boundaries becomes a significant bottleneck. Teams spend more time reading and understanding code than writing new features, and the dynamic nature of Elixir makes code navigation increasingly difficult without proper structure.&lt;/p>
+&lt;p>Lately I&amp;rsquo;ve been exploring how context boundaries, enforced by compile-time checks, can transform unwieldy monoliths into well-organized, maintainable applications that can scale to teams of 20+ engineers.&lt;/p>
+&lt;h2 id="the-scaling-problem">The Scaling Problem&lt;/h2>
+&lt;h3 id="why-large-elixir-codebases-become-unwieldy">Why Large Elixir Codebases Become Unwieldy&lt;/h3>
+&lt;p>When Elixir applications start small, the flexibility of the language is a tremendous asset. You can quickly prototype features, leverage pattern matching, and build robust systems with relatively few lines of code. However, as applications grow, several problems emerge:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Lack of Enforced Structure&lt;/strong>: Phoenix contexts provide organizational guidance, but there&amp;rsquo;s no compile-time enforcement preventing modules from calling deep into other contexts&amp;rsquo; internals. An organization module might directly access user database schemas, creating tight coupling that makes refactoring dangerous.&lt;/li>
+&lt;li>&lt;strong>Inconsistent Organization Patterns&lt;/strong>: Different teams or developers organize code differently. Some put business logic in controllers, others in contexts, and still others in custom service modules. These inconsistencies cause immense mental overhead for teams I&amp;rsquo;ve been on.&lt;/li>
+&lt;li>&lt;strong>Circular Dependencies&lt;/strong>: Without boundaries, it&amp;rsquo;s easy to create circular dependencies that slow compilation times in Elixir and make the code harder to reason about. Module A calls Module B, which calls Module C, which calls Module A—creating a tangled web and slow CI.&lt;/li>
+&lt;li>&lt;strong>Testing Complexity&lt;/strong>: When modules are tightly coupled, testing becomes complex. You end up testing through the web API layer because it&amp;rsquo;s the only stable interface, leading to slow, brittle tests.&lt;/li>
+&lt;/ol>
+&lt;h3 id="reading-vs-writing-code">Reading vs. Writing Code&lt;/h3>
+&lt;p>In mature applications or when onboarding in a new team, I find myself spending more time reading code than writing it. This ratio becomes problematic when functions are scattered across the codebase with no clear ownership and business logic is mixed with infrastructure concerns.&lt;/p>
+&lt;h2 id="context-boundaries">Context Boundaries&lt;/h2>
+&lt;p>On my Elixir team, we&amp;rsquo;ve extended the ideas from the Boundary library into an opinionated design pattern we call &amp;ldquo;Context Boundaries.&amp;rdquo;&lt;/p>
+&lt;h3 id="what-are-context-boundaries">What Are Context Boundaries?&lt;/h3>
+&lt;p>Context boundaries are architectural constraints that group related functionality together and define explicit interfaces for interaction between different parts of your application. Think of them as microservices within a monolith—each boundary owns a specific business domain and exposes a well-defined API.&lt;/p>
+&lt;p>In an e-commerce application, you might have top-level boundaries like:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>lib/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── my_app/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ billing/ &lt;span style="color:#75715e"># Payment processing, invoicing, subscriptions&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ catalog/ &lt;span style="color:#75715e"># Product management, categories, pricing&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ orders/ &lt;span style="color:#75715e"># Order processing, fulfillment, tracking &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ users/ &lt;span style="color:#75715e"># Authentication, authorization, user profiles&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ billing.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ catalog.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ orders.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └─ users.ex
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Each boundary would have its own schemas, business logic, and database concerns, but could only interact with other boundaries through their public interfaces defined in the outer context file.&lt;/p>
+&lt;p>In larger organizations, boundaries naturally form around teams and interfaces would likely be used by other teams, so design them thoughtfully.&lt;/p>
+&lt;h3 id="benefits-of-boundaries">Benefits of Boundaries&lt;/h3>
+&lt;ol>
+&lt;li>&lt;strong>Reduced Cognitive Load&lt;/strong>: Developers working on the catalog system don&amp;rsquo;t need to understand the intricacies of billing logic. They just need to know the public API. They should also spend less time figuring out where code lives.&lt;/li>
+&lt;li>&lt;strong>Parallel Development&lt;/strong>: Teams can work independently on different boundaries without stepping on each other&amp;rsquo;s toes in merge conflicts.&lt;/li>
+&lt;li>&lt;strong>Clearer Testing Strategy&lt;/strong>: Each boundary can be thoroughly tested in isolation, with integration tests covering the interactions between boundaries.&lt;/li>
+&lt;li>&lt;strong>Future Microservice Extraction&lt;/strong>: If you ever need to split off pieces of your monolith, boundaries provide natural seams for extraction.&lt;/li>
+&lt;li>&lt;strong>Documentation&lt;/strong>: The boundary definitions serve as living documentation of your system&amp;rsquo;s architecture. Boundaries are also good places to define actual documentation within a more narrow context for both humans and LLMs (e.g. &lt;code>CLAUDE.md&lt;/code>).&lt;/li>
+&lt;li>&lt;strong>Improved Discoverability&lt;/strong>: Public interfaces make it clear what operations are available and how to use them.&lt;/li>
+&lt;li>&lt;strong>Performance&lt;/strong>: Boundaries should reduce compilation time by eliminating circular dependencies. Boundary checks happen at compile time, not runtime, so there&amp;rsquo;s no performance impact in production.&lt;/li>
+&lt;/ol>
+&lt;p>An honest implementation of context boundaries should turn spaghetti code into a well-organized tree with each domain branching out in a visually traceable call stack.&lt;/p>
+&lt;h2 id="the-boundary-library">The Boundary Library&lt;/h2>
+&lt;p>The &lt;a href="https://github.com/sasa1977/boundary">Boundary library&lt;/a> by Saša Jurić provides compile-time enforcement of architectural boundaries in Elixir applications. It transforms organizational guidelines into compiler checks, catching boundary violations before they reach production.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>mix clean &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ae81ff">\ &lt;/span> &lt;span style="color:#75715e"># Cleaning prevents false positives&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mix compile --warnings-as-errors
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># count boundary errors&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mix compile | grep -E &lt;span style="color:#e6db74">&amp;#39;warning:.*(boundary|forbidden reference)&amp;#39;&lt;/span> | wc -l
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="how-boundary-works">How Boundary Works&lt;/h3>
+&lt;p>The library operates through registering module attributes that define named groups of modules called a boundaries. These boundaries can export inner modules from within a boundary and make them publicly accessible. Boundaries have dependencies from other boundary exports.&lt;/p>
+&lt;p>Here&amp;rsquo;s a simple example:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> This boundary can use MyApp.Users
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> and exports Products and Categories modules
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">use&lt;/span> &lt;span style="color:#a6e22e">Boundary&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">deps&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">MyApp.Users&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">exports&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Products&lt;/span>, &lt;span style="color:#75715e"># MyApp.Catalog.Products&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Categories&lt;/span>, &lt;span style="color:#75715e"># MyApp.Catalog.Categories&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#e6db74">&amp;#34;This module is exported and can be used by other boundaries&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Internal.PriceCalculator&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#e6db74">&amp;#34;This module is internal and cannot be used outside the boundary&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>If module functions in another boundary try to call &lt;code>MyApp.Catalog.Internal.PriceCalculator&lt;/code>, the compiler will raise an error.&lt;/p>
+&lt;h3 id="setting-up-boundary">Setting Up Boundary&lt;/h3>
+&lt;p>Add &lt;a href="https://hexdocs.pm/boundary/Boundary.html">Boundary&lt;/a> to your &lt;code>mix.exs&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defp&lt;/span> deps &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:boundary&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;~&amp;gt; 0.10&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">runtime&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>},
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>runtime: false&lt;/code> option is important—Boundary is a compile-time tool and doesn&amp;rsquo;t need to be included in your production release.&lt;/p>
+&lt;h2 id="implementing-context-boundaries">Implementing Context Boundaries&lt;/h2>
+&lt;p>There are some additional steps to take to maximize boundaries for larger organizations.&lt;/p>
+&lt;h3 id="directory-structure">Directory Structure&lt;/h3>
+&lt;details open>
+&lt;summary>A well-organized boundary-based application follows a consistent directory structure.&lt;/summary>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>lib/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> my_app/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> catalog/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> products/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> schemas/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> product.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> actions/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> list_products.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> create_product.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> update_product.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> categories/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> schemas/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> category.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> actions/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> list_categories.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> utils/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> price_calculator.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> catalog.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> orders/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> order_processing/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> schemas/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> order.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> line_item.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> actions/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> create_order.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> process_payment.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> fulfillment/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> actions/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ship_order.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> track_shipment.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> orders.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> users/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> authentication/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> actions/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> login.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> register.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> profiles/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> schemas/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> user.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> actions/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> update_profile.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> users.ex
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/details>
+&lt;h3 id="context-interface-design">Context Interface Design&lt;/h3>
+&lt;p>Each context exposes a clean public interface through its main module. Here&amp;rsquo;s how you might structure the &lt;code>Catalog&lt;/code> context:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> Context for managing product catalog.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> Handles products, categories, pricing, and inventory.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@behaviour&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Actions.ListProducts&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@behaviour&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Actions.GetProduct&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@behaviour&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Actions.CreateProduct&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@behaviour&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Actions.UpdateProduct&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@behaviour&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Categories.Actions.ListCategories&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@behaviour&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Categories.Actions.CreateCategory&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">use&lt;/span> &lt;span style="color:#a6e22e">Boundary&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">deps&lt;/span>: [&lt;span style="color:#a6e22e">MyApp.Users&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">exports&lt;/span>: [&lt;span style="color:#a6e22e">Products.Schemas.Product&lt;/span>, &lt;span style="color:#a6e22e">Categories.Schemas.Category&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">alias&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Actions&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">alias&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Categories.Actions&lt;/span>, &lt;span style="color:#e6db74">as&lt;/span>: &lt;span style="color:#a6e22e">CategoryActions&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># Product operations&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@impl&lt;/span> &lt;span style="color:#a6e22e">Actions.ListProducts&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">defdelegate&lt;/span> list_products(params \\ []), &lt;span style="color:#e6db74">to&lt;/span>: &lt;span style="color:#a6e22e">Actions.ListProducts&lt;/span>, &lt;span style="color:#e6db74">as&lt;/span>: &lt;span style="color:#e6db74">:list_products&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@impl&lt;/span> &lt;span style="color:#a6e22e">Actions.GetProduct&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">defdelegate&lt;/span> get_product(id), &lt;span style="color:#e6db74">to&lt;/span>: &lt;span style="color:#a6e22e">Actions.GetProduct&lt;/span>, &lt;span style="color:#e6db74">as&lt;/span>: &lt;span style="color:#e6db74">:get_product&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@impl&lt;/span> &lt;span style="color:#a6e22e">Actions.CreateProduct&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">defdelegate&lt;/span> create_product(attrs), &lt;span style="color:#e6db74">to&lt;/span>: &lt;span style="color:#a6e22e">Actions.CreateProduct&lt;/span>, &lt;span style="color:#e6db74">as&lt;/span>: &lt;span style="color:#e6db74">:create_product&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@impl&lt;/span> &lt;span style="color:#a6e22e">Actions.UpdateProduct&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">defdelegate&lt;/span> update_product(product, attrs), &lt;span style="color:#e6db74">to&lt;/span>: &lt;span style="color:#a6e22e">Actions.UpdateProduct&lt;/span>, &lt;span style="color:#e6db74">as&lt;/span>: &lt;span style="color:#e6db74">:update_product&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># Category operations &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@impl&lt;/span> &lt;span style="color:#a6e22e">Actions.ListCategories&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">defdelegate&lt;/span> list_categories(), &lt;span style="color:#e6db74">to&lt;/span>: &lt;span style="color:#a6e22e">CategoryActions.ListCategories&lt;/span>, &lt;span style="color:#e6db74">as&lt;/span>: &lt;span style="color:#e6db74">:list_categories&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@impl&lt;/span> &lt;span style="color:#a6e22e">Actions.CreateCategory&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">defdelegate&lt;/span> create_category(attrs), &lt;span style="color:#e6db74">to&lt;/span>: &lt;span style="color:#a6e22e">CategoryActions.CreateCategory&lt;/span>, &lt;span style="color:#e6db74">as&lt;/span>: &lt;span style="color:#e6db74">:create_category&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This interface provides several benefits:&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Discoverability&lt;/strong>: All public operations are visible in one place&lt;/li>
+&lt;li>&lt;strong>Delegation&lt;/strong>: Implementation details are hidden in specialized modules&lt;/li>
+&lt;li>&lt;strong>Consistency&lt;/strong>: All contexts follow the same interface pattern&lt;/li>
+&lt;li>&lt;strong>Type Safety&lt;/strong>: You can use behaviors to ensure implementations match &lt;code>@callback&lt;/code> interfaces&lt;/li>
+&lt;li>&lt;strong>Mockable&lt;/strong>: Behaviour definitions make each action easily mocked&lt;/li>
+&lt;/ol>
+&lt;h3 id="action-modules">Action Modules&lt;/h3>
+&lt;p>Action modules contain the actual business logic and should follow a consistent pattern. They expose and implement a callback for their interface. At the org I work at now, we generally have one file contain only one action so that an action has one public function but can have unlimited private functions.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Actions.CreateProduct&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@behaviour&lt;/span> __MODULE__
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">alias&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Schemas.Product&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">alias&lt;/span> &lt;span style="color:#a6e22e">MyApp.Users&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">alias&lt;/span> &lt;span style="color:#a6e22e">MyApp.Repo&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@type&lt;/span> params_t &lt;span style="color:#f92672">::&lt;/span> %{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">name&lt;/span>: &lt;span style="color:#a6e22e">String&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t(),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">description&lt;/span>: &lt;span style="color:#a6e22e">String&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t(),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">price&lt;/span>: &lt;span style="color:#a6e22e">Decimal&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t(),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">category_id&lt;/span>: &lt;span style="color:#a6e22e">String&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t(),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">created_by&lt;/span>: &lt;span style="color:#a6e22e">String&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@type&lt;/span> result_t &lt;span style="color:#f92672">::&lt;/span> {&lt;span style="color:#e6db74">:ok&lt;/span>, &lt;span style="color:#a6e22e">Product&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t()} &lt;span style="color:#f92672">|&lt;/span> {&lt;span style="color:#e6db74">:error&lt;/span>, &lt;span style="color:#a6e22e">Ecto.Changeset&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t()}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@doc&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> Creates a new product.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@callback&lt;/span> create_product(params_t()) &lt;span style="color:#f92672">::&lt;/span> result_t()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> create_product(params) &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> with {&lt;span style="color:#e6db74">:ok&lt;/span>, user} &lt;span style="color:#f92672">&amp;lt;-&lt;/span> &lt;span style="color:#a6e22e">Users&lt;/span>&lt;span style="color:#f92672">.&lt;/span>get_user(params&lt;span style="color:#f92672">.&lt;/span>created_by),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">:ok&lt;/span> &lt;span style="color:#f92672">&amp;lt;-&lt;/span> validate_permissions(user),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:ok&lt;/span>, product} &lt;span style="color:#f92672">&amp;lt;-&lt;/span> create_product(params) &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:ok&lt;/span>, product}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">defp&lt;/span> validate_permissions(user) &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#a6e22e">Users&lt;/span>&lt;span style="color:#f92672">.&lt;/span>has_permission?(user, &lt;span style="color:#e6db74">:create_products&lt;/span>) &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">:ok&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:error&lt;/span>, &lt;span style="color:#e6db74">:unauthorized&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">defp&lt;/span> create_product(params) &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> %&lt;span style="color:#a6e22e">Product&lt;/span>{}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">Product&lt;/span>&lt;span style="color:#f92672">.&lt;/span>changeset(params)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">Repo&lt;/span>&lt;span style="color:#f92672">.&lt;/span>insert()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>@behaviour __MODULE__&lt;/code> is a self-referencing behavior that replaces &lt;code>@spec&lt;/code> with &lt;code>@callback&lt;/code> to provide compile-time documentation of our action functions in our context API. Each action module is now a swappable backend that can be easily mocked in tests or refactored.&lt;/p>
+&lt;p>Key principles for action modules that we&amp;rsquo;ve implemented with our large Elixir monolith:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Single Responsibility&lt;/strong>: One action per module with self-referencing behavior&lt;/li>
+&lt;li>&lt;strong>Public/Private Separation&lt;/strong>: One public function that matches the module name (a uniform function name such as &lt;code>call&lt;/code> might also be appropriate) alongside private helpers&lt;/li>
+&lt;li>&lt;strong>Type Specifications&lt;/strong>: Clear input/output types with &lt;code>@callback&lt;/code> specification defining the contract of the action&amp;rsquo;s behaviour&lt;/li>
+&lt;li>&lt;strong>Error Handling&lt;/strong>: Consistent error patterns across actions that mask errors which could be useless outside the context&lt;/li>
+&lt;/ul>
+&lt;h3 id="schema-organization">Schema Organization&lt;/h3>
+&lt;p>Schemas should be pure data definitions with minimal logic and only pure functions:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Schemas.Product&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">use&lt;/span> &lt;span style="color:#a6e22e">Ecto.Schema&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">import&lt;/span> &lt;span style="color:#a6e22e">Ecto.Changeset&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@type&lt;/span> t &lt;span style="color:#f92672">::&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">%&lt;/span>__MODULE__{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">id&lt;/span>: &lt;span style="color:#a6e22e">String&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t(),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">name&lt;/span>: &lt;span style="color:#a6e22e">String&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t(),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">description&lt;/span>: &lt;span style="color:#a6e22e">String&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t(),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">price&lt;/span>: &lt;span style="color:#a6e22e">Decimal&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t(),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">category_id&lt;/span>: &lt;span style="color:#a6e22e">String&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t(),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">inserted_at&lt;/span>: &lt;span style="color:#a6e22e">DateTime&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t(),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">updated_at&lt;/span>: &lt;span style="color:#a6e22e">DateTime&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> schema &lt;span style="color:#e6db74">&amp;#34;products&amp;#34;&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> field &lt;span style="color:#e6db74">:name&lt;/span>, &lt;span style="color:#e6db74">:string&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> field &lt;span style="color:#e6db74">:description&lt;/span>, &lt;span style="color:#e6db74">:string&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> field &lt;span style="color:#e6db74">:price&lt;/span>, &lt;span style="color:#e6db74">:decimal&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> belongs_to &lt;span style="color:#e6db74">:category&lt;/span>, &lt;span style="color:#a6e22e">MyApp.Catalog.Categories.Schemas.Category&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> timestamps()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> changeset(product, attrs) &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> product
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|&amp;gt;&lt;/span> cast(attrs, [&lt;span style="color:#e6db74">:name&lt;/span>, &lt;span style="color:#e6db74">:description&lt;/span>, &lt;span style="color:#e6db74">:price&lt;/span>, &lt;span style="color:#e6db74">:category_id&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|&amp;gt;&lt;/span> validate_required([&lt;span style="color:#e6db74">:name&lt;/span>, &lt;span style="color:#e6db74">:price&lt;/span>, &lt;span style="color:#e6db74">:category_id&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|&amp;gt;&lt;/span> validate_number(&lt;span style="color:#e6db74">:price&lt;/span>, &lt;span style="color:#e6db74">greater_than&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|&amp;gt;&lt;/span> foreign_key_constraint(&lt;span style="color:#e6db74">:category_id&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Schemas are typically exported by boundaries since they&amp;rsquo;re part of the public interface—other contexts need to pattern match on them and pass them around. You may want to bulk export schemas in a sub-boundary.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lib/my_app/catalog/products/schemas.ex&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">exports&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Product&lt;/span> &lt;span style="color:#75715e"># Ecto schema definition&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="cross-boundary-communication">Cross-Boundary Communication&lt;/h2>
+&lt;h3 id="synchronous-communication">Synchronous Communication&lt;/h3>
+&lt;p>For synchronous operations where you need immediate results, call through the boundary&amp;rsquo;s public interface:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Orders.Actions.CreateOrder&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@behaviour&lt;/span> __MODULE__
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">alias&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">alias&lt;/span> &lt;span style="color:#a6e22e">MyApp.Orders.Schemas.Order&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">alias&lt;/span> &lt;span style="color:#a6e22e">MyApp.Users&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@callback&lt;/span> create_order(map()) &lt;span style="color:#f92672">::&lt;/span> {&lt;span style="color:#e6db74">:ok&lt;/span>, &lt;span style="color:#a6e22e">Order&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t()} &lt;span style="color:#f92672">|&lt;/span> &lt;span style="color:#66d9ef">nil&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> create_order(params) &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> with {&lt;span style="color:#e6db74">:ok&lt;/span>, user} &lt;span style="color:#f92672">&amp;lt;-&lt;/span> &lt;span style="color:#a6e22e">Users&lt;/span>&lt;span style="color:#f92672">.&lt;/span>get_user(params&lt;span style="color:#f92672">.&lt;/span>user_id),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:ok&lt;/span>, products} &lt;span style="color:#f92672">&amp;lt;-&lt;/span> validate_products(params&lt;span style="color:#f92672">.&lt;/span>line_items),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:ok&lt;/span>, order} &lt;span style="color:#f92672">&amp;lt;-&lt;/span> create_order(user, products, params) &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:ok&lt;/span>, order}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">defp&lt;/span> validate_products(line_items) &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> product_ids &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">Enum&lt;/span>&lt;span style="color:#f92672">.&lt;/span>map(line_items, &lt;span style="color:#f92672">&amp;amp;&lt;/span> &amp;amp;1&lt;span style="color:#f92672">.&lt;/span>product_id)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># Call through Catalog boundary interface&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#a6e22e">Catalog&lt;/span>&lt;span style="color:#f92672">.&lt;/span>get_products_by_ids(product_ids) &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:ok&lt;/span>, products} &lt;span style="color:#f92672">when&lt;/span> length(products) &lt;span style="color:#f92672">==&lt;/span> length(product_ids) &lt;span style="color:#f92672">-&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:ok&lt;/span>, products}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> _ &lt;span style="color:#f92672">-&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:error&lt;/span>, &lt;span style="color:#e6db74">:invalid_products&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="asynchronous-communication">Asynchronous Communication&lt;/h3>
+&lt;p>For side effects that don&amp;rsquo;t need immediate consistency, use event-driven communication:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Orders.Actions.CompleteOrder&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@behaviour&lt;/span> __MODULE__
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">alias&lt;/span> &lt;span style="color:#a6e22e">MyApp.EventBus&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">alias&lt;/span> &lt;span style="color:#a6e22e">MyApp.Orders.Schemas.Order&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@type&lt;/span> complete_order(&lt;span style="color:#a6e22e">String&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t()) &lt;span style="color:#f92672">::&lt;/span> {&lt;span style="color:#e6db74">:ok&lt;/span>, &lt;span style="color:#a6e22e">Order&lt;/span>&lt;span style="color:#f92672">.&lt;/span>t()}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> complete_order(order_id) &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> with {&lt;span style="color:#e6db74">:ok&lt;/span>, order} &lt;span style="color:#f92672">&amp;lt;-&lt;/span> get_order(order_id),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:ok&lt;/span>, updated_order} &lt;span style="color:#f92672">&amp;lt;-&lt;/span> mark_completed(order) &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># Publish event for other contexts to react&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Phoenix.PubSub&lt;/span>&lt;span style="color:#f92672">.&lt;/span>broadcast(&lt;span style="color:#a6e22e">MyApp.PubSub&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;order_completed:&lt;/span>&lt;span style="color:#e6db74">#{&lt;/span>updated_order&lt;span style="color:#f92672">.&lt;/span>user_id&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>, %{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">order_id&lt;/span>: updated_order&lt;span style="color:#f92672">.&lt;/span>id,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">user_id&lt;/span>: updated_order&lt;span style="color:#f92672">.&lt;/span>user_id,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">total&lt;/span>: updated_order&lt;span style="color:#f92672">.&lt;/span>total
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> })
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:ok&lt;/span>, updated_order}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="web-layer-organization">Web Layer Organization&lt;/h2>
+&lt;p>The web layer should also define its own boundary in &lt;code>my_app_web.ex&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">deps&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Absinthe.Subscription&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Absinthe&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">MyApp.Billing&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">MyApp.Catalog&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">MyApp.Orders&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">MyApp.Users&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Phoenix&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">exports&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Endpoint&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Keep controllers or resolvers thin. For example, a GraphQL endpoint&amp;rsquo;s resolver should only handle request-specific concerns. Similarly, controllers should delegate business logic to contexts.&lt;/p>
+&lt;h2 id="challenges">Challenges&lt;/h2>
+&lt;p>There are a few non-trivial challenges we encountered at our org with our implementation. The initial refactor was significant overhead since moving files around and function calls was so wide-spread. We were all hands on deck for a few weeks to make this work. Following our initial refactor, continuing education and discipline became a priority for us.&lt;/p>
+&lt;p>Database queries that span boundaries become more complex and may require boundary coupling, duplication or event-driven updates. We&amp;rsquo;ve elected to use a controlled coupling approach for interdependent schemas and joins. Each domain has a dedicated schemas module that acts as a child boundary that exports all of its schemas.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lib/my_app/orders/order_processing/schemas.ex&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">exports&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Order&lt;/span>, &lt;span style="color:#75715e"># Ecto schema definition&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">LineItem&lt;/span> &lt;span style="color:#75715e"># Ecto schema definition&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">deps&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">MyApp.Orders.OrderProcessing.Schemas&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We may eventually have to decouple some domains that need to become their own microservices. This needs to be balanced against architectural benefits.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>The dynamic nature and loose conventions of Elixir makes it challenging to navigate large codebases. Context boundaries enforced through the Boundary library provide a practical path for scaling Elixir applications beyond small teams.&lt;/p>
+&lt;p>Whether you&amp;rsquo;re currently feeling the pain of a growing monolith or planning for future scale, context boundaries offer a pragmatic solution that preserves the benefits of monolithic deployment while providing the organizational clarity of business domains and microservices.&lt;/p></content></entry><entry><title>Appresize</title><link rel="alternate" href="https://brett.cloud/appresize/"/><id>https://brett.cloud/appresize/</id><published>2025-07-25T00:00:00+0000</published><updated>2025-07-25T00:00:00+0000</updated><summary>&lt;div class="flex justify-center">
 &lt;img width="128" src="./icon.png" alt="resize" class="my-3" />
 &lt;/div>
 &lt;h1 align="center">Appresize&lt;/h1>

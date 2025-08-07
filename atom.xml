@@ -12,42 +12,15 @@
 &lt;/ol>
 &lt;h3 id="reading-vs-writing-code">Reading vs. Writing Code&lt;/h3>
 &lt;p>In mature applications or when onboarding in a new team, I find myself spending more time reading code than writing it. This ratio becomes problematic when functions are scattered across the codebase with no clear ownership and business logic is mixed with infrastructure concerns.&lt;/p>
-&lt;h2 id="context-boundaries">Context Boundaries&lt;/h2>
-&lt;p>On my Elixir team, we&amp;rsquo;ve extended the ideas from the Boundary library into an opinionated design pattern we call &amp;ldquo;Context Boundaries.&amp;rdquo;&lt;/p>
-&lt;h3 id="what-are-context-boundaries">What Are Context Boundaries?&lt;/h3>
-&lt;p>Context boundaries are architectural constraints that group related functionality together and define explicit interfaces for interaction between different parts of your application. Think of them as microservices within a monolith—each boundary owns a specific business domain and exposes a well-defined API.&lt;/p>
-&lt;p>In an e-commerce application, you might have top-level boundaries like:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>lib/
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── my_app/
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ billing/ &lt;span style="color:#75715e"># Payment processing, invoicing, subscriptions&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ catalog/ &lt;span style="color:#75715e"># Product management, categories, pricing&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ orders/ &lt;span style="color:#75715e"># Order processing, fulfillment, tracking &lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ users/ &lt;span style="color:#75715e"># Authentication, authorization, user profiles&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ billing.ex
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ catalog.ex
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ orders.ex
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └─ users.ex
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Each boundary would have its own schemas, business logic, and database concerns, but could only interact with other boundaries through their public interfaces defined in the outer context file.&lt;/p>
-&lt;p>In larger organizations, boundaries naturally form around teams and interfaces would likely be used by other teams, so design them thoughtfully.&lt;/p>
-&lt;h3 id="benefits-of-boundaries">Benefits of Boundaries&lt;/h3>
-&lt;ol>
-&lt;li>&lt;strong>Reduced Cognitive Load&lt;/strong>: Developers working on the catalog system don&amp;rsquo;t need to understand the intricacies of billing logic. They just need to know the public API. They should also spend less time figuring out where code lives.&lt;/li>
-&lt;li>&lt;strong>Parallel Development&lt;/strong>: Teams can work independently on different boundaries without stepping on each other&amp;rsquo;s toes in merge conflicts.&lt;/li>
-&lt;li>&lt;strong>Clearer Testing Strategy&lt;/strong>: Each boundary can be thoroughly tested in isolation, with integration tests covering the interactions between boundaries.&lt;/li>
-&lt;li>&lt;strong>Future Microservice Extraction&lt;/strong>: If you ever need to split off pieces of your monolith, boundaries provide natural seams for extraction.&lt;/li>
-&lt;li>&lt;strong>Documentation&lt;/strong>: The boundary definitions serve as living documentation of your system&amp;rsquo;s architecture. Boundaries are also good places to define actual documentation within a more narrow context for both humans and LLMs (e.g. &lt;code>CLAUDE.md&lt;/code>).&lt;/li>
-&lt;li>&lt;strong>Improved Discoverability&lt;/strong>: Public interfaces make it clear what operations are available and how to use them.&lt;/li>
-&lt;li>&lt;strong>Performance&lt;/strong>: Boundaries should reduce compilation time by eliminating circular dependencies. Boundary checks happen at compile time, not runtime, so there&amp;rsquo;s no performance impact in production.&lt;/li>
-&lt;/ol>
-&lt;p>An honest implementation of context boundaries should turn spaghetti code into a well-organized tree with each domain branching out in a visually traceable call stack.&lt;/p>
+&lt;p>One approach to dealing with readability is to address organizational patterns for code, such as well-defined and enforceable &amp;ldquo;boundaries&amp;rdquo;.&lt;/p>
 &lt;h2 id="the-boundary-library">The Boundary Library&lt;/h2>
-&lt;p>The &lt;a href="https://github.com/sasa1977/boundary">Boundary library&lt;/a> by Saša Jurić provides compile-time enforcement of architectural boundaries in Elixir applications. It transforms organizational guidelines into compiler checks, catching boundary violations before they reach production.&lt;/p>
+&lt;p>&lt;a href="https://github.com/sasa1977/boundary">Boundary&lt;/a> by Saša Jurić provides compile-time warnings of architectural boundaries in Elixir applications. It transforms organizational guidelines into compiler checks, catching boundary violations before they reach production.&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>mix clean &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ae81ff">\ &lt;/span> &lt;span style="color:#75715e"># Cleaning prevents false positives&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mix compile --warnings-as-errors
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># count boundary errors&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mix compile | grep -E &lt;span style="color:#e6db74">&amp;#39;warning:.*(boundary|forbidden reference)&amp;#39;&lt;/span> | wc -l
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="how-boundary-works">How Boundary Works&lt;/h3>
-&lt;p>The library operates through registering module attributes that define named groups of modules called a boundaries. These boundaries can export inner modules from within a boundary and make them publicly accessible. Boundaries have dependencies from other boundary exports.&lt;/p>
+&lt;p>The library operates through registering module attributes that define named groups of modules called boundaries. These boundaries can export inner modules from within a boundary and make them publicly accessible. Boundaries have dependencies from other boundary exports.&lt;/p>
 &lt;p>Here&amp;rsquo;s a simple example:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;
@@ -80,6 +53,34 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>runtime: false&lt;/code> option is important—Boundary is a compile-time tool and doesn&amp;rsquo;t need to be included in your production release.&lt;/p>
+&lt;h2 id="context-boundaries">Context Boundaries&lt;/h2>
+&lt;p>On my Elixir team, we&amp;rsquo;ve extended the ideas from the Boundary library into an opinionated design pattern we call &amp;ldquo;Context Boundaries&amp;rdquo;.&lt;/p>
+&lt;h3 id="what-are-context-boundaries">What Are Context Boundaries?&lt;/h3>
+&lt;p>Context boundaries are architectural constraints that group related functionality together and define explicit interfaces for interaction between different parts of your application. Think of them as microservices within a monolith—each boundary owns a specific business domain and exposes a well-defined API.&lt;/p>
+&lt;p>In an e-commerce application, you might have top-level boundaries like:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>lib/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── my_app/
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ billing/ &lt;span style="color:#75715e"># Payment processing, invoicing, subscriptions&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ catalog/ &lt;span style="color:#75715e"># Product management, categories, pricing&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ orders/ &lt;span style="color:#75715e"># Order processing, fulfillment, tracking &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ users/ &lt;span style="color:#75715e"># Authentication, authorization, user profiles&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ billing.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ catalog.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ orders.ex
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └─ users.ex
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Each boundary would have its own schemas, business logic, and database concerns, but could only interact with other boundaries through their public interfaces defined in the outer context file.&lt;/p>
+&lt;p>In larger organizations, boundaries naturally form around teams and interfaces would likely be used by other teams, so design them thoughtfully.&lt;/p>
+&lt;h3 id="benefits-of-context-boundaries">Benefits of Context Boundaries&lt;/h3>
+&lt;ol>
+&lt;li>&lt;strong>Reduced Cognitive Load&lt;/strong>: Developers working on the catalog system don&amp;rsquo;t need to understand the intricacies of billing logic. They just need to know the public API. They should also spend less time figuring out where code lives.&lt;/li>
+&lt;li>&lt;strong>Parallel Development&lt;/strong>: Teams can shape themselves around business domains and can work independently on different boundaries without merge conflicts.&lt;/li>
+&lt;li>&lt;strong>Clearer Testing Strategy&lt;/strong>: Each boundary can be thoroughly tested in isolation, with integration tests covering the interactions between boundaries.&lt;/li>
+&lt;li>&lt;strong>Future Microservice Extraction&lt;/strong>: If you ever need to split off pieces of your monolith, boundaries provide natural seams for extraction.&lt;/li>
+&lt;li>&lt;strong>Documentation&lt;/strong>: The boundary definitions serve as living documentation of your system&amp;rsquo;s architecture. Boundaries are also good places to define actual documentation within a more narrow context for both humans and LLMs (e.g. &lt;code>CLAUDE.md&lt;/code>).&lt;/li>
+&lt;li>&lt;strong>Improved Discoverability&lt;/strong>: Public interfaces make it clear what operations are available and how to use them.&lt;/li>
+&lt;li>&lt;strong>Performance&lt;/strong>: Boundaries should reduce compilation time by eliminating circular dependencies. Boundary checks happen at compile time, not runtime, so there&amp;rsquo;s no performance impact in production.&lt;/li>
+&lt;/ol>
+&lt;p>An honest implementation of context boundaries should turn spaghetti code into a well-organized tree with each domain branching out in a visually traceable call stack.&lt;/p>
 &lt;h2 id="implementing-context-boundaries">Implementing Context Boundaries&lt;/h2>
 &lt;p>There are some additional steps to take to maximize boundaries for larger organizations.&lt;/p>
 &lt;h3 id="directory-structure">Directory Structure&lt;/h3>
@@ -154,7 +155,6 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">alias&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Categories.Actions&lt;/span>, &lt;span style="color:#e6db74">as&lt;/span>: &lt;span style="color:#a6e22e">CategoryActions&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># Product operations&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@impl&lt;/span> &lt;span style="color:#a6e22e">Actions.ListProducts&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">defdelegate&lt;/span> list_products(params \\ []), &lt;span style="color:#e6db74">to&lt;/span>: &lt;span style="color:#a6e22e">Actions.ListProducts&lt;/span>, &lt;span style="color:#e6db74">as&lt;/span>: &lt;span style="color:#e6db74">:list_products&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
@@ -271,12 +271,22 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|&amp;gt;&lt;/span> foreign_key_constraint(&lt;span style="color:#e6db74">:category_id&lt;/span>)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Schemas are typically exported by boundaries since they&amp;rsquo;re part of the public interface—other contexts need to pattern match on them and pass them around. You may want to bulk export schemas in a sub-boundary.&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Schemas are typically exported by boundaries since they&amp;rsquo;re part of the public interface. Other contexts will likely need to pattern match on them and pass them around. You may want to bulk export schemas in an inner boundary.&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lib/my_app/catalog/products/schemas.ex&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Schemas&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> Product schemas boundary
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">use&lt;/span> &lt;span style="color:#a6e22e">Boundary&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">deps&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">MyApp.Catalog.Categories.Schemas&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ],
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">exports&lt;/span>: [
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Product&lt;/span> &lt;span style="color:#75715e"># Ecto schema definition&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="cross-boundary-communication">Cross-Boundary Communication&lt;/h2>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This is one example of how boundaries interface with each other.&lt;/p>
+&lt;h2 id="cross-boundary-communication">Cross-Boundary Communication&lt;/h2>
 &lt;h3 id="synchronous-communication">Synchronous Communication&lt;/h3>
 &lt;p>For synchronous operations where you need immediate results, call through the boundary&amp;rsquo;s public interface:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Orders.Actions.CreateOrder&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>

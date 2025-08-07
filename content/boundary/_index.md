@@ -2,7 +2,7 @@
 type: post
 title: Scaling Elixir Applications with Context Boundaries
 publishDate: 2025-08-07
-description: Improve readability, tests, compile times and code organization in an Elixir monolith
+description: Improve readability, testing, compile times and organization in an Elixir monolith
 comments: true
 ---
 

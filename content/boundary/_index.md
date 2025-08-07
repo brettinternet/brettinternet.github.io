@@ -210,7 +210,6 @@ defmodule MyApp.Catalog do
   alias MyApp.Catalog.Categories.Actions, as: CategoryActions
 
   # Product operations
-
   @impl Actions.ListProducts
   defdelegate list_products(params \\ []), to: Actions.ListProducts, as: :list_products
 

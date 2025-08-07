@@ -25,48 +25,11 @@ When Elixir applications start small, the flexibility of the language is a treme
 
 In mature applications or when onboarding in a new team, I find myself spending more time reading code than writing it. This ratio becomes problematic when functions are scattered across the codebase with no clear ownership and business logic is mixed with infrastructure concerns.
 
-## Context Boundaries
-
-On my Elixir team, we've extended the ideas from the Boundary library into an opinionated design pattern we call "Context Boundaries."
-
-### What Are Context Boundaries?
-
-Context boundaries are architectural constraints that group related functionality together and define explicit interfaces for interaction between different parts of your application. Think of them as microservices within a monolith—each boundary owns a specific business domain and exposes a well-defined API.
-
-In an e-commerce application, you might have top-level boundaries like:
-
-```sh
-lib/
-└── my_app/
-    ├─ billing/     # Payment processing, invoicing, subscriptions
-    ├─ catalog/     # Product management, categories, pricing
-    ├─ orders/      # Order processing, fulfillment, tracking  
-    ├─ users/       # Authentication, authorization, user profiles
-    ├─ billing.ex
-    ├─ catalog.ex
-    ├─ orders.ex
-    └─ users.ex
-```
-
-Each boundary would have its own schemas, business logic, and database concerns, but could only interact with other boundaries through their public interfaces defined in the outer context file.
-
-In larger organizations, boundaries naturally form around teams and interfaces would likely be used by other teams, so design them thoughtfully.
-
-### Benefits of Boundaries
-
-1. **Reduced Cognitive Load**: Developers working on the catalog system don't need to understand the intricacies of billing logic. They just need to know the public API. They should also spend less time figuring out where code lives.
-1. **Parallel Development**: Teams can work independently on different boundaries without stepping on each other's toes in merge conflicts.
-1. **Clearer Testing Strategy**: Each boundary can be thoroughly tested in isolation, with integration tests covering the interactions between boundaries.
-1. **Future Microservice Extraction**: If you ever need to split off pieces of your monolith, boundaries provide natural seams for extraction.
-1. **Documentation**: The boundary definitions serve as living documentation of your system's architecture. Boundaries are also good places to define actual documentation within a more narrow context for both humans and LLMs (e.g. `CLAUDE.md`).
-1. **Improved Discoverability**: Public interfaces make it clear what operations are available and how to use them.
-1. **Performance**: Boundaries should reduce compilation time by eliminating circular dependencies. Boundary checks happen at compile time, not runtime, so there's no performance impact in production.
-
-An honest implementation of context boundaries should turn spaghetti code into a well-organized tree with each domain branching out in a visually traceable call stack.
+One approach to dealing with readability is to address organizational patterns for code, such as well-defined and enforceable "boundaries".
 
 ## The Boundary Library
 
-The [Boundary library](https://github.com/sasa1977/boundary) by Saša Jurić provides compile-time enforcement of architectural boundaries in Elixir applications. It transforms organizational guidelines into compiler checks, catching boundary violations before they reach production.
+[Boundary](https://github.com/sasa1977/boundary) by Saša Jurić provides compile-time warnings of architectural boundaries in Elixir applications. It transforms organizational guidelines into compiler checks, catching boundary violations before they reach production.
 
 ```sh
 mix clean && \  # Cleaning prevents false positives
@@ -80,7 +43,7 @@ mix compile | grep -E 'warning:.*(boundary|forbidden reference)'  | wc -l
 
 ### How Boundary Works
 
-The library operates through registering module attributes that define named groups of modules called a boundaries. These boundaries can export inner modules from within a boundary and make them publicly accessible. Boundaries have dependencies from other boundary exports.
+The library operates through registering module attributes that define named groups of modules called boundaries. These boundaries can export inner modules from within a boundary and make them publicly accessible. Boundaries have dependencies from other boundary exports.
 
 Here's a simple example:
 
@@ -124,6 +87,45 @@ end
 ```
 
 The `runtime: false` option is important—Boundary is a compile-time tool and doesn't need to be included in your production release.
+
+## Context Boundaries
+
+On my Elixir team, we've extended the ideas from the Boundary library into an opinionated design pattern we call "Context Boundaries".
+
+### What Are Context Boundaries?
+
+Context boundaries are architectural constraints that group related functionality together and define explicit interfaces for interaction between different parts of your application. Think of them as microservices within a monolith—each boundary owns a specific business domain and exposes a well-defined API.
+
+In an e-commerce application, you might have top-level boundaries like:
+
+```sh
+lib/
+└── my_app/
+    ├─ billing/     # Payment processing, invoicing, subscriptions
+    ├─ catalog/     # Product management, categories, pricing
+    ├─ orders/      # Order processing, fulfillment, tracking  
+    ├─ users/       # Authentication, authorization, user profiles
+    ├─ billing.ex
+    ├─ catalog.ex
+    ├─ orders.ex
+    └─ users.ex
+```
+
+Each boundary would have its own schemas, business logic, and database concerns, but could only interact with other boundaries through their public interfaces defined in the outer context file.
+
+In larger organizations, boundaries naturally form around teams and interfaces would likely be used by other teams, so design them thoughtfully.
+
+### Benefits of Context Boundaries
+
+1. **Reduced Cognitive Load**: Developers working on the catalog system don't need to understand the intricacies of billing logic. They just need to know the public API. They should also spend less time figuring out where code lives.
+1. **Parallel Development**: Teams can shape themselves around business domains and can work independently on different boundaries without merge conflicts.
+1. **Clearer Testing Strategy**: Each boundary can be thoroughly tested in isolation, with integration tests covering the interactions between boundaries.
+1. **Future Microservice Extraction**: If you ever need to split off pieces of your monolith, boundaries provide natural seams for extraction.
+1. **Documentation**: The boundary definitions serve as living documentation of your system's architecture. Boundaries are also good places to define actual documentation within a more narrow context for both humans and LLMs (e.g. `CLAUDE.md`).
+1. **Improved Discoverability**: Public interfaces make it clear what operations are available and how to use them.
+1. **Performance**: Boundaries should reduce compilation time by eliminating circular dependencies. Boundary checks happen at compile time, not runtime, so there's no performance impact in production.
+
+An honest implementation of context boundaries should turn spaghetti code into a well-organized tree with each domain branching out in a visually traceable call stack.
 
 ## Implementing Context Boundaries
 
@@ -339,14 +341,25 @@ defmodule MyApp.Catalog.Products.Schemas.Product do
 end
 ```
 
-Schemas are typically exported by boundaries since they're part of the public interface—other contexts need to pattern match on them and pass them around. You may want to bulk export schemas in a sub-boundary.
+Schemas are typically exported by boundaries since they're part of the public interface. Other contexts will likely need to pattern match on them and pass them around. You may want to bulk export schemas in an inner boundary.
 
 ```elixir
 # lib/my_app/catalog/products/schemas.ex
-  exports: [
-    Product   # Ecto schema definition
-  ]
+defmodule MyApp.Catalog.Products.Schemas do
+  @moduledoc """
+  Product schemas boundary
+  """
+  use Boundary,
+    deps: [
+      MyApp.Catalog.Categories.Schemas
+    ],
+    exports: [
+      Product   # Ecto schema definition
+    ]
+end
 ```
+
+This is one example of how boundaries interface with each other.
 
 ## Cross-Boundary Communication
 

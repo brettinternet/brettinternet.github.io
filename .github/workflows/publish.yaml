@@ -34,8 +34,11 @@ jobs:
           hugo-version: "0.147.5"
           extended: true
 
-      - name: Install
-        run: npm ci
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install node module dependencies
+        run: bun ci
 
       # New syntax for setting environment variables:
       # https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#environment-files

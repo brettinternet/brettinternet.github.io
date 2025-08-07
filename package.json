@@ -5,20 +5,20 @@
   },
   "dependencies": {
     "@fontsource/fira-code": "^5.2.6",
-    "@fontsource/patua-one": "^5.2.5",
-    "@fontsource/roboto-slab": "^5.2.5",
+    "@fontsource/patua-one": "^5.2.6",
+    "@fontsource/roboto-slab": "^5.2.6",
     "@tailwindcss/typography": "^0.5.16",
     "autoprefixer": "^10.4.21",
     "giscus": "^1.6.0",
     "lazysizes": "^5.3.2",
-    "mermaid": "^11.6.0",
-    "tailwindcss": "^4.1.7"
+    "mermaid": "^11.9.0",
+    "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.6",
-    "@tailwindcss/cli": "^4.1.7",
-    "@tailwindcss/postcss": "^4.1.7",
-    "postcss": "^8.5.3",
+    "@tailwindcss/cli": "^4.1.11",
+    "@tailwindcss/postcss": "^4.1.11",
+    "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1"
   }
 }

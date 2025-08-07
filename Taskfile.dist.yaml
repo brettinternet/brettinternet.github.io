@@ -26,7 +26,7 @@ tasks:
       - task: setup:init
       - task: precommit:init
       - task: precommit:update
-      - task: npm-install
+      - task: node-modules-install
 
   start:
     desc: Run development server
@@ -38,9 +38,9 @@ tasks:
     cmds:
       - hugo
 
-  npm-install:
+  node-modules-install:
     cmds:
-      - npm install
+      - bun install
     status:
       - test -d node_modules
 

@@ -4,15 +4,15 @@ version: "3"
 
 tasks:
   init:
-    desc: Project setup
+    desc: Install dependencies
     cmds:
       - task: mise
 
   mise:
     desc: Install workstation dependencies
     cmds:
-      - mise trust --silent -a
-      - mise install
+      - mise trust -q -a
+      - mise install -q
     preconditions:
       - sh: command -v mise
         msg: Mise is not installed

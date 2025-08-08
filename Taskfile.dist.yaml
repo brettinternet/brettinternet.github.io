@@ -44,23 +44,6 @@ tasks:
     status:
       - test -d node_modules
 
-  create-envrc:
-    desc: Create local environment variable file
-    cmds:
-      - cp example.envrc .envrc
-    status:
-      - test -f .envrc
-
-  python:
-    desc: Install python dependencies
-    cmds:
-      - |
-        ([ "{{.CLI_ARGS}}" == "force" ] || pip -V 2>/dev/null | grep -q .virtualenv) && \
-            pip install -r requirements.txt || \
-            echo "You may want to activate a python virtual environment before installing the python dependencies.
-        Pass 'force' as argument to continue anyway (e.g. task python -- force)."
-    silent: true
-
   check:
     desc: Run all checks
     cmds:

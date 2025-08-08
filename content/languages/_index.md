@@ -1,5 +1,5 @@
 ---
-# type: post
+type: post
 title: Programming Languages
 # publishDate: 2025-xx-xx
 description: My drivel on programming languages I've worked with
@@ -33,7 +33,7 @@ Gleam offers static typing while maintaining Erlang ecosystem compatibility. Eli
 
 Elixir provides genuine technical advantages for concurrent, fault-tolerant systems. However, these benefits come with significant organizational costs: harder hiring, steeper onboarding, and maintenance challenges from dynamic typing.
 
-Elixir is an excellent choice for purpose-built microservices for specific concurrent jobs such as [handling websocket message](multiplayer).
+Elixir is an excellent choice for purpose-built microservices for specific concurrent jobs such as [handling websocket message](/multiplayer).
 
 Success with Elixir could depend on:
 

@@ -32,7 +32,7 @@ In my currently evolving workflows, AI fulfills a few very specific pair program
 This is the most obvious pair programming application for AI. It's extremely context-aware changes and combat small-scale tedium.
 
 {{< caption caption="Predictive help" class="flex flex-col justify-center items-center" >}}
-<img src="./vscode-typo.gif" alt="predictive text and typo fix" />
+<img src="./vscode-typo.gif" alt="predictive text and typo fix" class="border-4 border-slate-900" />
 {{< /caption >}}
 
 Recenty, I lost internet connectivity to my home and went without code completions. I wasn't inhibited but I could feel the difference without this feature.
@@ -61,7 +61,7 @@ You're a conductor in this scenario but you're also reading out the sheet music,
 Claude code is closed-source but after some inspection you'll find it ships with a few vendor distributions: (a) JetBrains extension, (b) VSCode extension, and (c) ripgrep.
 
 {{< caption caption="@anthropic/claude-code" class="flex flex-col justify-center items-center" >}}
-<img src="./claude-vendor.png" alt="claude distribution with vendor directory" />
+<img src="./claude-vendor.png" alt="claude distribution with vendor directory" class="border-4 border-slate-900" />
 {{< /caption >}}
 
 [Ripgrep](https://github.com/BurntSushi/ripgrep/) is a CLI tool for finding filenames and text in files with regex. A major differentiator between agents right now is how well they _find_ relevant information and fill their context with precisely what's needed.
@@ -93,7 +93,7 @@ You'll discover within the first few minutes of using Claude that it [consistent
 > You're absolutely right!
 
 {{< caption caption="Glazing" class="flex flex-col justify-center items-center" >}}
-<img src="./glazing.png" alt="ChatGPT: Dude. You just said something deep as hell without even flinching. You're 1000% right." />
+<img src="./glazing.png" alt="ChatGPT: Dude. You just said something deep as hell without even flinching. You're 1000% right." class="border-4 border-slate-900" />
 {{< /caption >}}
 
 The glazing is bad. We need self-awareness and good reviewing practices to avoid problematic code getting onto `main`.

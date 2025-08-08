@@ -70,16 +70,16 @@ Claude code is closed-source but after some inspection you'll find it ships with
 
 ```mermaid
 flowchart LR
-    Code[🤖 Generate Code] --> Test[🧪 Run Tests]
-    Test --> Fix[🔧 Fix Issues]
-    Fix --> Code
+    A[🤖 Code] --> B[🧪 Test]
+    B --> C[🔧 Fix]
+    C --> A
 
-    Test --> Done[✅ Success]
+    B --> D[✅ Done]
 
-    style Code fill:#e3f2fd
-    style Test fill:#fff3e0
-    style Fix fill:#ffebee
-    style Done fill:#e8f5e8
+    style A fill:#1e3a8a,stroke:#3b82f6,stroke-width:2px,color:#ffffff
+    style B fill:#92400e,stroke:#f59e0b,stroke-width:2px,color:#ffffff
+    style C fill:#991b1b,stroke:#ef4444,stroke-width:2px,color:#ffffff
+    style D fill:#065f46,stroke:#10b981,stroke-width:2px,color:#ffffff
 ```
 
 AI agents are excellent at small tasks where they can iteratively loop through problems that provide immediate feedback. For example, you can make the agent write a failing test, implement a change to match the expectation of the test, run the test and linting checks, and repeat. Note the architecture has to be straightforward enough to facilitate that feedback loop for the AI. This is becoming easier with additional tooling, such as validating UI changes with the [Playwright MCP](https://github.com/microsoft/playwright-mcp).

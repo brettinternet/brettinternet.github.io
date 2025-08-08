@@ -33,6 +33,10 @@ tasks:
     cmds:
       - hugo server --navigateToChanged --gc
 
+  start-drafts:
+    desc: Run development server with drafts
+    cmd: hugo server --navigateToChanged --buildDrafts
+
   build:
     desc: Build production static site
     cmds:

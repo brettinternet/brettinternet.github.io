@@ -97,3 +97,7 @@
   src: url("./files/fira-code-latin-400-normal.woff2") format("woff2");
   src: url("./files/fira-code-latin-400-normal.woff") format("woff");
 }
+
+.twitter-tweet {
+  justify-self: center;
+}

@@ -68,6 +68,20 @@ Claude code is closed-source but after some inspection you'll find it ships with
 
 ### Iterative Edit-Test Loops
 
+```mermaid
+flowchart LR
+    Code[🤖 Generate Code] --> Test[🧪 Run Tests]
+    Test --> Fix[🔧 Fix Issues]
+    Fix --> Code
+
+    Test --> Done[✅ Success]
+
+    style Code fill:#e3f2fd
+    style Test fill:#fff3e0
+    style Fix fill:#ffebee
+    style Done fill:#e8f5e8
+```
+
 AI agents are excellent at small tasks where they can iteratively loop through problems that provide immediate feedback. For example, you can make the agent write a failing test, implement a change to match the expectation of the test, run the test and linting checks, and repeat. Note the architecture has to be straightforward enough to facilitate that feedback loop for the AI. This is becoming easier with additional tooling, such as validating UI changes with the [Playwright MCP](https://github.com/microsoft/playwright-mcp).
 
 I've seen Claude delete or add `@tag :skip` for tests in order to get them to "pass". You have to exercise caution. Engineers have to be hands-on conductors. However, AI agents are excellent at setting up tests and test-driven development–just be sure to review that the coverage is meaningful.

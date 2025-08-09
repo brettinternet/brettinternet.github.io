@@ -8,7 +8,7 @@ hide_image: true
 draft: true
 ---
 
-[My experience with AI](https://github.com/brettinternet/ai) has been that it augments my ability and it can automate tedium. However, for more sophisticated tasks related to programming, AI cannot replace a hard-working and fully engaged engineer. There is no replacement for consciousness.
+My experience with AI has been that it augments my ability and it can automate tedium. However, for more sophisticated tasks related to programming, AI cannot replace a hard-working and fully engaged engineer. There is no replacement for consciousness.
 
 Some people might feel like we're at a moment like this:
 
@@ -28,6 +28,8 @@ In my currently evolving workflows, AI fulfills a few very specific pair program
 1. Discovery
 1. Surgical updates
 1. Iterative edit-test loops
+
+There are MCP servers that assist with most of these roles. I have some [I'm working on](https://github.com/brettinternet/mcp) and [a few I use](https://github.com/brettinternet/ai) regularly.
 
 ### Code completions
 

@@ -1,19 +1,21 @@
 ---
 type: post
 title: AI
-# publishDate: 2025-08-20
-description: My approach to AI tooling
+# publishDate: 2025-08-11
+description: My approach to AI-augmented development
 comments: true
 hide_image: true
 draft: true
 ---
 
-I think we could be at a moment like this:
+[My experience with AI](https://github.com/brettinternet/ai) has been that it augments my ability and it can automate tedium. However, for more sophisticated tasks related to programming, AI cannot replace a hard-working and fully engaged engineer. There is no replacement for consciousness.
+
+Some people might feel like we're at a moment like this:
 
 <!-- https://x.com/RyanEls4/status/1879978018204184582 -->
 {{< x user="RyanEls4" id="1879978018204184582" >}}
 
-However, I don't think we're at a moment like this:
+And we could be. However, I don't think we're at a moment like this:
 
 <!-- https://x.com/amritwt/status/1941460667946713311 -->
 {{< x user="amritwt" id="1941460667946713311" >}}
@@ -24,7 +26,7 @@ In my currently evolving workflows, AI fulfills a few very specific pair program
 
 1. Code completions
 1. Discovery
-1. Surgical updates (steer towards specific context)
+1. Surgical updates
 1. Iterative edit-test loops
 
 ### Code completions
@@ -51,7 +53,7 @@ This is a huge lift on onboarding engineers and understanding code. I frequently
 
 ### Surgical updates
 
-I have a coworker that calls these "surgical updates". This is where you pave a precise path for the agent to make specific changes. You might build up a context from a discovery or planning stage with an agent. In large enterprise codebases, this is how you manage context.
+AI can accomplish more sophisticated tasks when it's steered towards a very specific context. I have a coworker that calls these "surgical updates". This is where you pave a precise path for the agent to make specific changes. You might build up a context from a discovery or planning stage with an agent. In large enterprise codebases, this is how you manage context.
 
 <!-- https://x.com/vasumanmoza/status/1926487201463832863 -->
 {{< x user="vasumanmoza" id="1926487201463832863" >}}
@@ -84,7 +86,7 @@ flowchart LR
 
 AI agents are excellent at small tasks where they can iteratively loop through problems that provide immediate feedback. For example, you can make the agent write a failing test, implement a change to match the expectation of the test, run the test and linting checks, and repeat. Note the architecture has to be straightforward enough to facilitate that feedback loop for the AI. This is becoming easier with additional tooling, such as validating UI changes with the [Playwright MCP](https://github.com/microsoft/playwright-mcp).
 
-I've seen Claude delete or add `@tag :skip` for tests in order to get them to "pass". You have to exercise caution. Engineers have to be hands-on conductors. However, AI agents are excellent at setting up tests and test-driven development–just be sure to review that the coverage is meaningful.
+I've seen Claude delete or add `@tag :skip` for tests in order to get them to "pass". Engineers have to be hands-on conductors. However, AI agents are excellent at setting up tests and other boilerplate and iterative test-driven development–just be sure to review that the coverage is meaningful.
 
 ## Best Practice
 
@@ -112,3 +114,9 @@ In my opinion, there isn't really a major paradigm shift with best practice. We 
 As LLMs and the tooling evolves, so do my workflows. I'm continuing to learn and grow with these changes. My [AI repo](https://github.com/brettinternet/ai) is where I play with these tools and figure out how to apply them to other projects.
 
 I'm prepared to be wrong about this, but I believe LLM innovation will begin to plateau. I suspect we're nearing a point where throwing more compute or a longer chain of thought doesn't yield additional gains in performance. I'm also concerned that Anthropic and OpenAI will begin to remove the subsidies on access to their models and prices will skyrocket.
+
+For now, AI can augment software engineering in meaningful ways and I encourage every engineer to try it out and play with it.
+
+---
+
+This post was adapted from a [lightning talk](https://brett.cloud/slides/ai/) I gave recently to a group of executives.

@@ -112,7 +112,7 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;ol>
 &lt;li>&lt;strong>Lack of Enforced Structure&lt;/strong>: Phoenix contexts provide organizational guidance, but there&amp;rsquo;s no compile-time enforcement preventing modules from calling deep into other contexts&amp;rsquo; internals. An organization module might directly access user database schemas, creating tight coupling that makes refactoring dangerous.&lt;/li>
 &lt;li>&lt;strong>Inconsistent Organization Patterns&lt;/strong>: Different teams or developers organize code differently. Some put business logic in controllers, others in contexts, and still others in custom service modules. These inconsistencies cause immense mental overhead for teams I&amp;rsquo;ve been on.&lt;/li>
-&lt;li>&lt;strong>Circular Dependencies&lt;/strong>: Without boundaries, it&amp;rsquo;s easy to create circular dependencies that slow compilation times in Elixir and make the code harder to reason about. Module A calls Module B, which calls Module C, which calls Module A—creating a tangled web and slow CI.&lt;/li>
+&lt;li>&lt;strong>Circular Dependencies&lt;/strong>: Without boundaries, it&amp;rsquo;s easy to create circular dependencies that slow compilation times in Elixir and make the code harder to reason about. Module A calls Module B, which calls Module C, which calls Module A. This creates a tangled web and slow CI.&lt;/li>
 &lt;li>&lt;strong>Testing Complexity&lt;/strong>: When modules are tightly coupled, testing becomes complex. You end up testing through the web API layer because it&amp;rsquo;s the only stable interface, leading to slow, brittle tests.&lt;/li>
 &lt;/ol>
 &lt;h3 id="reading-vs-writing-code">Reading vs. Writing Code&lt;/h3>
@@ -157,11 +157,11 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:boundary&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;~&amp;gt; 0.10&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">runtime&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>},
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>runtime: false&lt;/code> option is important—Boundary is a compile-time tool and doesn&amp;rsquo;t need to be included in your production release.&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>runtime: false&lt;/code> option is important. Boundary is a compile-time tool and doesn&amp;rsquo;t need to be included in your production release.&lt;/p>
 &lt;h2 id="context-boundaries">Context Boundaries&lt;/h2>
 &lt;p>On my Elixir team, we&amp;rsquo;ve extended the ideas from the Boundary library into an opinionated design pattern we call &amp;ldquo;Context Boundaries&amp;rdquo;.&lt;/p>
 &lt;h3 id="what-are-context-boundaries">What Are Context Boundaries?&lt;/h3>
-&lt;p>Context boundaries are architectural constraints that group related functionality together and define explicit interfaces for interaction between different parts of your application. Think of them as microservices within a monolith—each boundary owns a specific business domain and exposes a well-defined API.&lt;/p>
+&lt;p>Context boundaries are architectural constraints that group related functionality together and define explicit interfaces for interaction between different parts of your application. Think of them as microservices within a monolith. Each boundary owns a specific business domain and exposes a well-defined API.&lt;/p>
 &lt;p>In an e-commerce application, you might have top-level boundaries like:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>lib/
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── my_app/
@@ -938,24 +938,23 @@ create lists, and break notes out by sections. This is especially true since
 &lt;a href="https://github.github.com/gfm/">GitHub&amp;rsquo;s flavoring&lt;/a> and small enhancements have
 made markdown previewing so accessible. Even this blog is made using markdown.&lt;/p>
 &lt;h3 id="markdown">Markdown&lt;/h3>
-&lt;p>I love markdown. I like how widely support it is, and I like how clear markdown
-format is to convey information. Markdown has become the ubiquitous plain text
+&lt;p>I love markdown. I like how widely supported it is, and I like how clear the markdown
+format is for conveying information. Markdown has become the ubiquitous plain text
 format for the GitHub community. My own blog posts are written in markdown
 (&lt;a href="https://github.com/brettinternet/brettinternet.github.io/">brettinternet.github.io&lt;/a>).
-Composing markdown is a timeless method that isn&amp;rsquo;t married any third party tools
+Composing markdown is a timeless method that isn&amp;rsquo;t tied to any third-party tools
 except a modern text editor (which isn&amp;rsquo;t going anywhere).&lt;/p>
 &lt;p>It&amp;rsquo;s true, this method isn&amp;rsquo;t perfect. I need separate tools for sketches and PDF
 markups. But these mediums make up about 0.5% of all my notes. I just use my
 NextCloud for storing files or Keybase for my public documents.&lt;/p>
-&lt;p>&lt;a href="https://githubengineering.com/a-formal-spec-for-github-markdown/">Some recent specification&lt;/a>
-has been proposed to standardize Github&amp;rsquo;s flavor of markdown. One of my favorite
-introductions to markdown can be found &lt;a href="http://commonmark.org/">here&lt;/a>.
+&lt;p>GitHub has formalized their &lt;a href="https://github.github.com/gfm/">CommonMark specification&lt;/a>
+to standardize GitHub&amp;rsquo;s flavor of markdown.
 Commonmark was put together by a few representatives of some major companies
 that use markdown like GitHub, Reddit, and Stack Exchange. Some nonconforming
 markdown features have added some very nice features such as task lists,
 autolinking, diff and code block improvements.&lt;/p>
 &lt;h3 id="git">Git&lt;/h3>
-&lt;p>Right now I have a &lt;del>BitBucket&lt;/del> separate GitHub repo for my private notes and
+&lt;p>I maintain a separate GitHub repository for my private notes and
 another for my &lt;a href="https://github.com/brettinternet/public-notes">public notes&lt;/a>.
 Eventually, I&amp;rsquo;d like to self-host my own GitLab within
 &lt;a href="https://github.com/brettinternet/homelab">my homelab&lt;/a>.&lt;/p>
@@ -964,38 +963,32 @@ my note history and refer back to find deleted excerpts. I also use
 &lt;a href="https://github.com/brettinternet/dotfiles/blob/master/.aliases">aliases&lt;/a> for
 git commands to make pushing to master very fast.&lt;/p>
 &lt;h3 id="desktop">Desktop&lt;/h3>
-&lt;p>I use Vim and VS Code. To me, taking notes in my editor environment is the best
-possible scenario since I&amp;rsquo;m most comfortable with the shortcuts. VS Code offers
-a markdown previewer out of the box with &lt;code>ctrl&lt;/code> + &lt;code>shift&lt;/code> + &lt;code>v&lt;/code>. Markdown&amp;rsquo;s
+&lt;p>I use Vim and VS Code for note-taking. Taking notes in my editor environment is ideal
+since I&amp;rsquo;m most comfortable with the shortcuts. VS Code offers
+a markdown previewer out of the box with &lt;code>Ctrl&lt;/code> + &lt;code>Shift&lt;/code> + &lt;code>V&lt;/code>. Markdown&amp;rsquo;s
 lifespan on desktop will exceed my own, so I&amp;rsquo;m no longer bound to an app&amp;rsquo;s
 survival on a platform to access my notes.&lt;/p>
 &lt;p>&lt;a href="https://github.com/ShareX/ShareX">ShareX&lt;/a> is a good option for screenshots on
-PC or &lt;a href="https://wiki.archlinux.org/index.php/Flameshot">Flameshot&lt;/a> or
-&lt;a href="https://www.gimp.org/downloads/">GIMP&lt;/a> on Linux. I tend to think that a simple
-bookmark is better than web clippings. EverNote certainly has the strongest
-clipper, and I do like that OneNote&amp;rsquo;s web clipper is
-&lt;a href="https://blogs.msdn.microsoft.com/onenotedev/2016/08/31/the-web-clipper-goes-open-source/">open source&lt;/a>.&lt;/p>
+Windows, while &lt;a href="https://flameshot.org/">Flameshot&lt;/a> works well on Linux. I tend to think that a simple
+bookmark is better than web clippings for most use cases.&lt;/p>
 &lt;h3 id="mobile">Mobile&lt;/h3>
 &lt;p>Before I found &lt;a href="https://workingcopyapp.com/">Working Copy&lt;/a>, a solid mobile git
 solution for iOS was &lt;em>the&lt;/em> missing piece for keeping notes in a git repository.
-I&amp;rsquo;m sure there are equally polished options on Android. With Working Copy you
-can fetch repos for free, but you&amp;rsquo;ll have to pay to unlock push. The app is very
-polished, so I think it&amp;rsquo;s worth it to support this developer. SSH keys are
-supported, language highlighting and markdown and plain text previews. It&amp;rsquo;s an
-excellent mobile option for iOS.&lt;/p>
+There are equally good options on Android like &lt;a href="https://github.com/maks/MGit">MGit&lt;/a> or &lt;a href="https://termux.dev/">Termux&lt;/a>. Working Copy
+offers free repository cloning and viewing, with push capabilities available through in-app purchase. The app includes
+SSH key support, syntax highlighting, and markdown preview. It&amp;rsquo;s an
+excellent mobile git client for iOS.&lt;/p>
 &lt;h3 id="save-menu">Save Menu&lt;/h3>
 &lt;blockquote>
 &lt;p>Everything not saved will be lost.&lt;/p>
 &lt;p>- &lt;em>Nintendo &amp;ldquo;Quit Screen&amp;rdquo; message&lt;/em>&lt;/p>&lt;/blockquote>
-&lt;p>Like an accessible save menu, I keep everything in markdown. I record docker
-commands and obscure command-line arguments, JavaScript toy problems, or
-directions to setup Postgres permissions. I also
-&lt;a href="https://github.com/brettinternet/hugo-slides">create slides&lt;/a> with markdown.
-I&amp;rsquo;ll only make a note of something if it&amp;rsquo;s easier to reference my notes than it
-is to &lt;a href="/blog/becoming-a-professional-googler">Google search it&lt;/a>. I also take
-notes to help out the students that I mentor. You can checkout my
-&lt;a href="https://github.com/brettinternet/public-notes">public notes&lt;/a> on GitHub but you
-can&amp;rsquo;t see my private ones 😉.&lt;/p>
+&lt;p>Like an accessible save menu, I keep everything in markdown. I record Docker
+commands and obscure command-line arguments, JavaScript problems, or
+directions to set up Postgres permissions. I also
+&lt;a href="https://github.com/brettinternet/slides">create slides&lt;/a> with markdown.
+I&amp;rsquo;ll only note something if it&amp;rsquo;s easier to reference my notes than
+search for it online. I also take
+notes to help students I mentor.&lt;/p>
 &lt;p>I use a combination of Apple Reminders and private GitHub issues with task lists
 for short term personal tasks, and GitHub Projects to visualize Kanban project
 and portfolio management. But for notes, I like good ol&amp;rsquo; fashioned git and
@@ -1016,8 +1009,8 @@ d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.
 &lt;span class="font-semibold">June 2020 update&lt;/span>
 &lt;/div>
 &lt;div>
-As of this year, I have begun experimenting with a much
-simpler approach for tracking work-in-progress: &lt;code>todo.txt&lt;/code> (&lt;a href="https://news.ycombinator.com/item?id=39432876">source&lt;/a>).
+I began experimenting with a much
+simpler approach for tracking work-in-progress: &lt;code>todo.txt&lt;/code> format.
 &lt;/div>
 &lt;/div>
 &lt;div class="border-l-4 border-blue-500 p-2 my-5" role="alert">
@@ -1032,9 +1025,9 @@ d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.
 &lt;span class="font-semibold">Aug. 2024 update&lt;/span>
 &lt;/div>
 &lt;div>
-I&amp;rsquo;m a father now and time is limited. Lately, I shove all
-my thoughts in the notes app on my phone for convenience. The stage of life I&amp;rsquo;m
-in calls for it now.
+As a parent with limited time, I&amp;rsquo;ve simplified to using
+my phone&amp;rsquo;s built-in notes app for quick capture. Sometimes convenience trumps
+optimal workflow and the stage of life I&amp;rsquo;m in calls for it.
 &lt;/div>
 &lt;/div></content></entry><entry><title>About me</title><link rel="alternate" href="https://brett.cloud/about/"/><id>https://brett.cloud/about/</id><published>0001-01-01T00:00:00+0000</published><updated>0001-01-01T00:00:00+0000</updated><summary>&lt;div class="not-prose flex flex-col items-center justify-center container mb-6 sm:mb-12 mx-auto">
 &lt;a href="/">

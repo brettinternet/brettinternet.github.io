@@ -1,11 +1,10 @@
 ---
 type: post
 title: AI
-# publishDate: 2025-08-11
+publishDate: 2025-08-11
 description: My approach to AI-augmented development
 comments: true
 hide_image: true
-draft: true
 ---
 
 My experience with AI has been that it augments my abilities. It can consolidate information and automate tedium to make me more productive. For more sophisticated tasks related to programming, AI cannot replace a hardworking and fully engaged engineer.
@@ -20,7 +19,7 @@ And we could be. But, we're absolutely not at a moment like this:
 <!-- https://x.com/amritwt/status/1941460667946713311 -->
 {{< x user="amritwt" id="1941460667946713311" >}}
 
-Then, there's stuff like this, and who knows what to make of this?
+Then, there's this:
 
 <!-- https://x.com/paulg/status/1953289830982664236 -->
 {{< x user="paulg" id="1953289830982664236" >}}
@@ -56,9 +55,9 @@ These are extremely context-aware changes and combat small-scale tedium.
 
 Discovery is my favorite usecase for AI. I use it for researching topics, summarizing documentation, querying libraries and codebases, getting usage examples, and planning implementation approaches. This is where AI shines as a research assistant that can quickly traverse large amounts of information.
 
-For codebase exploration, AI excels at answering questions like "What are the side effects of this module?" or "Show me all the places where authentication is handled." I frequently use this to understand hotspots in our code and trace dependencies before making changes.
+For codebase exploration, AI excels at answering questions like "What are the side effects of this module?" or "Show me all the places where authentication is handled." I frequently use this to understand hotspots in code and trace dependencies before making changes.
 
-Well-structured codebases with clear boundaries are easier for both humans and AI to navigate. When I refactored our codebase using [Context Boundaries](/boundary) for team scalability, it also improved AI's ability to provide focused, relevant insights by confining context to specific code subdivisions.
+Well-structured codebases with clear boundaries are easier for both humans and AI to navigate. When I refactored a large codebase using [Context Boundaries](/boundary) for team scalability, it also improved AI's ability to provide focused, relevant insights by confining context to specific code subdivisions.
 
 This raises an important design question as we integrate AI into development workflows:
 
@@ -121,13 +120,13 @@ You'll discover within the first few minutes of using Claude that it [consistent
 
 > You're absolutely right!
 
-{{< caption caption="Glazing" class="flex flex-col justify-center items-center" >}}
+{{< caption caption="Glazing is bad" class="flex flex-col justify-center items-center" >}}
 <img src="./glazing.png" alt="ChatGPT: Dude. You just said something deep as hell without even flinching. You're 1000% right." />
 {{< /caption >}}
 
 There was a GPT 4o update a few months ago where OpenAI released a personality update that was intensely sycophantic and mirrored user language. [OpenAI's AMA](https://www.reddit.com/r/ChatGPT/comments/1mkae1l/gpt5_ama_with_openais_sam_altman_and_some_of_the/) for the GPT5 release had users begging for the return of the 4o user engagement maximizer because it was "friendly".
 
-The glazing is bad. We need self-awareness about what using AI does to our psychology and good reviewing practices to avoid problematic code getting onto `main`.
+We need self-awareness about what using AI does to our psychology and good reviewing practices to avoid problematic code getting onto `main`.
 
 <!-- https://x.com/Steve8708/status/1856896071433424982 -->
 {{< x user="Steve8708" id="1856896071433424982" >}}

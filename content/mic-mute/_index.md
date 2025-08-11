@@ -32,7 +32,7 @@ Mute with the shortcut {{< raw >}} <kbd>Cmd</kbd> <kbd>Shift</kbd> <kbd>A</kbd>
 {{< /raw >}} or from the system tray dropdown menu.
 
 {{< caption caption="Mute window follows cursor to screens and monitors" class="flex flex-col justify-center items-center" >}}
-<img src="./screenshot.png" alt="popup window screenshot indicating the microphone is off" class="border-4 border-slate-900" />
+<img src="./screenshot.png" alt="popup window screenshot indicating the microphone is off" />
 {{< /caption >}}
 
 The mute indicator window will follow the cursor to desktops or screens and
@@ -45,8 +45,8 @@ Muted and unmuted indicators:
 {{< raw >}}
 
 <div class="flex flex-row items-center">
-<img src="./alert-on.png" alt="popup window screenshot indicating the microphone is off" class="border-4 border-slate-900 mx-auto max-w-56" />
-<img src="./alert-off.png" alt="popup window screenshot indicating the microphone is on" class="border-4 border-slate-900 mx-auto max-w-56" />
+<img src="./alert-on.png" alt="popup window screenshot indicating the microphone is off" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
+<img src="./alert-off.png" alt="popup window screenshot indicating the microphone is on" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
 </div>
 {{< /raw >}}
 

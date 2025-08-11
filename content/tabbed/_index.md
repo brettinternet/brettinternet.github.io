@@ -27,7 +27,7 @@ Tabbed is an experiment with a Chrome extension to visualize and organize
 browser tabs.
 
 {{< caption caption="Drag and drop browser session management" class="flex flex-col justify-center items-center" >}}
-<img src="./screenshot.png" alt="dragging window tab to a new window" class="border-4 border-slate-900" />
+<img src="./screenshot.png" alt="dragging window tab to a new window" />
 {{< /caption >}}
 
 Tabbed was built with accessibility in mind. See the full

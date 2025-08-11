@@ -26,7 +26,7 @@ resources:
 [Appresize](https://github.com/brettinternet/Appresize) is a utility to resize and move apps from anywhere on the window with custom modifiers and other preferences.
 
 {{< caption caption="Although not captured by the screen recorder, the cursor does follow window" class="flex flex-col justify-center items-center" >}}
-<img src="./demo.gif" alt="move and resize window from anywhere" class="border-4 border-slate-900" />
+<img src="./demo.gif" alt="move and resize window from anywhere" />
 {{< /caption >}}
 
 {{< caption caption="Custom modifiers & other behaviors" class="flex flex-col justify-center items-center" >}}

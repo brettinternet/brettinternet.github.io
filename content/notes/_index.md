@@ -95,12 +95,10 @@ excellent mobile option for iOS.
 Like an accessible save menu, I keep everything in markdown. I record docker
 commands and obscure command-line arguments, JavaScript toy problems, or
 directions to setup Postgres permissions. I also
-[create slides](https://github.com/brettinternet/hugo-slides) with markdown.
+[create slides](https://github.com/brettinternet/slides) with markdown.
 I'll only make a note of something if it's easier to reference my notes than it
-is to [Google search it](/blog/becoming-a-professional-googler). I also take
-notes to help out the students that I mentor. You can checkout my
-[public notes](https://github.com/brettinternet/public-notes) on GitHub but you
-can't see my private ones 😉.
+is to search it. I also take
+notes to help out the students that I mentor.
 
 I use a combination of Apple Reminders and private GitHub issues with task lists
 for short term personal tasks, and GitHub Projects to visualize Kanban project

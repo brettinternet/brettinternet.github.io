@@ -112,20 +112,13 @@ be around for a long time.
 
 ---
 
-<div class="bg-indigo-100 p-6 rounded-md border border-slate-400">
+{{< note title="June 2020 update" >}}
+As of this year, I have begun experimenting with a much
+simpler approach for tracking work-in-progress: `todo.txt` ([source](https://news.ycombinator.com/item?id=39432876)).
+{{< /note >}}
 
-**June 2020 update**: As of this year, I have begun experimenting with a much
-simpler approach for tracking work-in-progress: `todo.txt`. More on this to
-come.
-
-</div>
-
----
-
-<div class="bg-indigo-100 p-6 rounded-md border border-slate-400">
-
-**Aug. 2024 update**: I'm a father now and time is limited. Lately, I shove all
+{{< note title="Aug. 2024 update" >}}
+I'm a father now and time is limited. Lately, I shove all
 my thoughts in the notes app on my phone for convenience. The stage of life I'm
 in calls for it now.
-
-</div>
+{{< /note >}}

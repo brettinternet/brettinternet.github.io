@@ -113,5 +113,5 @@ simpler approach for tracking work-in-progress: `todo.txt` format.
 {{< note title="Aug. 2024 update" >}}
 As a parent with limited time, I've simplified to using
 my phone's built-in notes app for quick capture. Sometimes convenience trumps
-optimal workflow—the stage of life I'm in calls for it.
+optimal workflow and the stage of life I'm in calls for it.
 {{< /note >}}

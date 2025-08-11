@@ -18,7 +18,7 @@ When Elixir applications start small, the flexibility of the language is a treme
 
 1. **Lack of Enforced Structure**: Phoenix contexts provide organizational guidance, but there's no compile-time enforcement preventing modules from calling deep into other contexts' internals. An organization module might directly access user database schemas, creating tight coupling that makes refactoring dangerous.
 1. **Inconsistent Organization Patterns**: Different teams or developers organize code differently. Some put business logic in controllers, others in contexts, and still others in custom service modules. These inconsistencies cause immense mental overhead for teams I've been on.
-1. **Circular Dependencies**: Without boundaries, it's easy to create circular dependencies that slow compilation times in Elixir and make the code harder to reason about. Module A calls Module B, which calls Module C, which calls Module A—creating a tangled web and slow CI.
+1. **Circular Dependencies**: Without boundaries, it's easy to create circular dependencies that slow compilation times in Elixir and make the code harder to reason about. Module A calls Module B, which calls Module C, which calls Module A. This creates a tangled web and slow CI.
 1. **Testing Complexity**: When modules are tightly coupled, testing becomes complex. You end up testing through the web API layer because it's the only stable interface, leading to slow, brittle tests.
 
 ### Reading vs. Writing Code
@@ -86,7 +86,7 @@ defp deps do
 end
 ```
 
-The `runtime: false` option is important—Boundary is a compile-time tool and doesn't need to be included in your production release.
+The `runtime: false` option is important. Boundary is a compile-time tool and doesn't need to be included in your production release.
 
 ## Context Boundaries
 
@@ -94,7 +94,7 @@ On my Elixir team, we've extended the ideas from the Boundary library into an op
 
 ### What Are Context Boundaries?
 
-Context boundaries are architectural constraints that group related functionality together and define explicit interfaces for interaction between different parts of your application. Think of them as microservices within a monolith—each boundary owns a specific business domain and exposes a well-defined API.
+Context boundaries are architectural constraints that group related functionality together and define explicit interfaces for interaction between different parts of your application. Think of them as microservices within a monolith. Each boundary owns a specific business domain and exposes a well-defined API.
 
 In an e-commerce application, you might have top-level boundaries like:
 

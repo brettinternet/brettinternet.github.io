@@ -49,7 +49,7 @@ I encountered a [Hacker News comment](https://news.ycombinator.com/item?id=44392
 
 > I guess Google's years of experience led to the conclusion that, for software development to scale, a simple type system, GC, and wicked fast compilation speed are more important than raw runtime throughput and semantic correctness. Given the amount of networking and large - scale infrastructure software written in Go, I think they absolutely nailed it.
 
-Go has become the "practical pragmatist" of modern languages—beloved for its simplicity but limited by deliberate design choices.
+Go has become the "practical pragmatist" of modern languages. It's beloved for its simplicity but limited by deliberate design choices.
 
 ### What Works
 
@@ -101,4 +101,4 @@ Go works best when:
 - Team composition favors simplicity over expressiveness
 - GC limitations align with your data access patterns
 
-The language's greatest strength—extreme simplicity—is also its primary limitation when requirements demand more sophisticated solutions.
+The language's greatest strength of extreme simplicity is also its primary limitation when requirements demand more sophisticated solutions.

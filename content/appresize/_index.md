@@ -30,7 +30,7 @@ resources:
 {{< /caption >}}
 
 {{< caption caption="Custom modifiers & other behaviors" class="flex flex-col justify-center items-center" >}}
-<img src="./screenshot.png" alt="window preferences" />
+<img src="./screenshot.png" alt="window preferences" class="border-none" />
 {{< /caption >}}
 
 One of my favorite abandonware apps on macOS was an old closed-source Objective C application called [Hyperdock](https://bahoom.com/hyperdock) that had a small secondary feature to resize and move windows by a modifier from anywhere on the window.

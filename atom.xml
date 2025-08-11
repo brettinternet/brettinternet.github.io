@@ -1,4 +1,109 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2025-08-07T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>Scaling Elixir Applications with Context Boundaries</title><link rel="alternate" href="https://brett.cloud/boundary/"/><id>https://brett.cloud/boundary/</id><published>2025-08-07T00:00:00+0000</published><updated>2025-08-07T00:00:00+0000</updated><summary>&lt;p>Building large-scale Elixir applications presents unique challenges. As codebases grow beyond the initial team of 3-5 developers, the lack of enforced architectural boundaries becomes a significant bottleneck. Teams spend more time reading and understanding code than writing new features, and the dynamic nature of Elixir makes code navigation increasingly difficult without proper structure.&lt;/p>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2025-08-11T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>AI</title><link rel="alternate" href="https://brett.cloud/ai/"/><id>https://brett.cloud/ai/</id><published>2025-08-11T00:00:00+0000</published><updated>2025-08-11T00:00:00+0000</updated><summary>&lt;p>My experience with AI has been that it augments my abilities. It can consolidate information and automate tedium to make me more productive. For more sophisticated tasks related to programming, AI cannot replace a hardworking and fully engaged engineer.&lt;/p>
+&lt;p>Some people might feel like we&amp;rsquo;re at a moment like this:&lt;/p>
+&lt;!-- https://x.com/RyanEls4/status/1879978018204184582 -->
+&lt;blockquote class="twitter-tweet">&lt;p lang="en" dir="ltr">Software developers in the 60s 🤭 &lt;a href="https://t.co/eZZYTmzl0E">pic.twitter.com/eZZYTmzl0E&lt;/a>&lt;/p>&amp;mdash; Ryan Els (@RyanEls4) &lt;a href="https://twitter.com/RyanEls4/status/1879978018204184582?ref_src=twsrc%5Etfw">January 16, 2025&lt;/a>&lt;/blockquote>
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
+&lt;p>And we could be. But, we&amp;rsquo;re absolutely not at a moment like this:&lt;/p></summary><content type="html">&lt;p>My experience with AI has been that it augments my abilities. It can consolidate information and automate tedium to make me more productive. For more sophisticated tasks related to programming, AI cannot replace a hardworking and fully engaged engineer.&lt;/p>
+&lt;p>Some people might feel like we&amp;rsquo;re at a moment like this:&lt;/p>
+&lt;!-- https://x.com/RyanEls4/status/1879978018204184582 -->
+&lt;blockquote class="twitter-tweet">&lt;p lang="en" dir="ltr">Software developers in the 60s 🤭 &lt;a href="https://t.co/eZZYTmzl0E">pic.twitter.com/eZZYTmzl0E&lt;/a>&lt;/p>&amp;mdash; Ryan Els (@RyanEls4) &lt;a href="https://twitter.com/RyanEls4/status/1879978018204184582?ref_src=twsrc%5Etfw">January 16, 2025&lt;/a>&lt;/blockquote>
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
+&lt;p>And we could be. But, we&amp;rsquo;re absolutely not at a moment like this:&lt;/p>
+&lt;!-- https://x.com/amritwt/status/1941460667946713311 -->
+&lt;blockquote class="twitter-tweet">&lt;p lang="en" dir="ltr">&amp;quot;ok claude, make a billion dollar b2b todo app. make no mistakes.&amp;quot; &lt;a href="https://t.co/mPE0gPFgac">pic.twitter.com/mPE0gPFgac&lt;/a>&lt;/p>&amp;mdash; amrit (@amritwt) &lt;a href="https://twitter.com/amritwt/status/1941460667946713311?ref_src=twsrc%5Etfw">July 5, 2025&lt;/a>&lt;/blockquote>
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
+&lt;p>Then, there&amp;rsquo;s this:&lt;/p>
+&lt;!-- https://x.com/paulg/status/1953289830982664236 -->
+&lt;blockquote class="twitter-tweet">&lt;p lang="en" dir="ltr">I met a founder today who said he writes 10,000 lines of code a day now thanks to AI. This is probably the limit case. He&amp;#39;s a hotshot programmer, he knows AI tools very well, and he&amp;#39;s talking about a 12 hour day. But he&amp;#39;s not naive. This is not 10,000 lines of bug-filled crap.&lt;/p>&amp;mdash; Paul Graham (@paulg) &lt;a href="https://twitter.com/paulg/status/1953289830982664236?ref_src=twsrc%5Etfw">August 7, 2025&lt;/a>&lt;/blockquote>
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
+&lt;p>Who in this scenario is actually confirming that it&amp;rsquo;s not 10k lines of slop?&lt;/p>
+&lt;p>I&amp;rsquo;ve seen software engineers sometimes get defensive on the topic of AI, because they are perturbed by these sorts of unrealistic soundbites. Similar melodramatic sentiments are rampant on LinkedIn. I&amp;rsquo;ve been grateful to work with other engineers that have a strong interest in productivity and are level-headed about AI.&lt;/p>
+&lt;p>The reality is somewhere between the extremes. AI isn&amp;rsquo;t replacing engineers, but it&amp;rsquo;s also not just a fancy autocomplete. When used thoughtfully, it can genuinely accelerate development workflows by taking on specific, well-defined roles in the programming process.&lt;/p>
+&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>In my currently evolving workflows, AI fulfills a few very specific pair programming roles to augment my work:&lt;/p>
+&lt;ol>
+&lt;li>Code completions&lt;/li>
+&lt;li>Discovery&lt;/li>
+&lt;li>Surgical updates&lt;/li>
+&lt;li>Iterative edit-test loops&lt;/li>
+&lt;/ol>
+&lt;p>There are MCP servers that assist with most of these roles. I have &lt;a href="https://github.com/brettinternet/mcp">some I&amp;rsquo;m working on&lt;/a> and &lt;a href="https://github.com/brettinternet/ai">a few I use&lt;/a> regularly.&lt;/p>
+&lt;h3 id="1-code-completions">1. Code completions&lt;/h3>
+&lt;p>This is the most obvious pair programming application for AI.&lt;/p>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;img src="./vscode-typo.gif" alt="predictive text and typo fix" />
+&lt;figcaption>Predictive help&lt;/figcaption>
+&lt;/figure>
+&lt;p>These are extremely context-aware changes and combat small-scale tedium.&lt;/p>
+&lt;h3 id="2-discovery">2. Discovery&lt;/h3>
+&lt;p>Discovery is my favorite usecase for AI. I use it for researching topics, summarizing documentation, querying libraries and codebases, getting usage examples, and planning implementation approaches. This is where AI shines as a research assistant that can quickly traverse large amounts of information.&lt;/p>
+&lt;p>For codebase exploration, AI excels at answering questions like &amp;ldquo;What are the side effects of this module?&amp;rdquo; or &amp;ldquo;Show me all the places where authentication is handled.&amp;rdquo; I frequently use this to understand hotspots in code and trace dependencies before making changes.&lt;/p>
+&lt;p>Well-structured codebases with clear boundaries are easier for both humans and AI to navigate. When I refactored a large codebase using &lt;a href="/boundary">Context Boundaries&lt;/a> for team scalability, it also improved AI&amp;rsquo;s ability to provide focused, relevant insights by confining context to specific code subdivisions.&lt;/p>
+&lt;p>This raises an important design question as we integrate AI into development workflows:&lt;/p>
+&lt;blockquote>
+&lt;p>How can we improve code organization for both human and AI readability?&lt;/p>&lt;/blockquote>
+&lt;p>The answer benefits onboarding, knowledge transfer, and debugging regardless of whether you&amp;rsquo;re working with human teammates or AI assistants.&lt;/p>
+&lt;h3 id="3-surgical-updates">3. Surgical updates&lt;/h3>
+&lt;p>AI can accomplish more sophisticated tasks when it&amp;rsquo;s steered towards a very specific context. I have a coworker that calls these &amp;ldquo;surgical updates&amp;rdquo;. This is where you pave a precise path for the agent to make specific changes. You might build up a context from a discovery or planning stage with an agent. In large enterprise codebases, this is how you manage context.&lt;/p>
+&lt;!-- https://x.com/vasumanmoza/status/1926487201463832863 -->
+&lt;blockquote class="twitter-tweet">&lt;p lang="en" dir="ltr">Claude 4 just refactored my entire codebase in one call.&lt;br>&lt;br>25 tool invocations. 3,000+ new lines. 12 brand new files.&lt;br>&lt;br>It modularized everything. Broke up monoliths. Cleaned up spaghetti.&lt;br>&lt;br>None of it worked.&lt;br>But boy was it beautiful. &lt;a href="https://t.co/wvmzh7IeAP">pic.twitter.com/wvmzh7IeAP&lt;/a>&lt;/p>&amp;mdash; vas (@vasumanmoza) &lt;a href="https://twitter.com/vasumanmoza/status/1926487201463832863?ref_src=twsrc%5Etfw">May 25, 2025&lt;/a>&lt;/blockquote>
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
+&lt;p>Writing code is rarely the bottleneck. The real challenges in software development are understanding requirements, designing systems, debugging complex interactions, and making architectural decisions. Even with AI assistance, these cognitive tasks require human judgment, domain expertise, and the ability to reason about trade-offs. AI can help you write code faster, but it can&amp;rsquo;t replace the critical thinking needed to determine what code should be written in the first place.&lt;/p>
+&lt;p>Claude code is closed-source but after some inspection you&amp;rsquo;ll find it ships with a few vendor distributions: (a) JetBrains extension, (b) VSCode extension, and (c) ripgrep.&lt;/p>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;img src="./claude-vendor.png" alt="claude distribution with vendor directory" />
+&lt;figcaption>@anthropic/claude-code&lt;/figcaption>
+&lt;/figure>
+&lt;p>&lt;a href="https://github.com/BurntSushi/ripgrep/">Ripgrep&lt;/a> is a CLI tool for finding filenames and text in files with regex. A major differentiator between agents right now is how well they &lt;em>find&lt;/em> relevant information and fill their context with precisely what&amp;rsquo;s needed.&lt;/p>
+&lt;h3 id="4-iterative-edit-test-loops">4. Iterative Edit-Test Loops&lt;/h3>
+&lt;pre class="mermaid">flowchart LR
+A[🤖 Code] --> B[🧪 Test]
+B --> C[🔧 Fix]
+C --> A
+B --> D[✅ Done]
+style A fill:#1e3a8a,stroke:#3b82f6,stroke-width:2px,color:#ffffff
+style B fill:#92400e,stroke:#f59e0b,stroke-width:2px,color:#ffffff
+style C fill:#991b1b,stroke:#ef4444,stroke-width:2px,color:#ffffff
+style D fill:#065f46,stroke:#10b981,stroke-width:2px,color:#ffffff
+&lt;/pre>
+&lt;p>AI agents are excellent at small tasks where they can iteratively loop through problems that provide immediate feedback. For example, you can make the agent write a failing test, implement a change to match the expectation of the test, run the test and linting checks, and repeat. Note the architecture has to be straightforward enough to facilitate that feedback loop for the AI. This is becoming easier with additional tooling, such as validating UI changes with the &lt;a href="https://github.com/microsoft/playwright-mcp">Playwright MCP&lt;/a>.&lt;/p>
+&lt;p>I&amp;rsquo;ve seen Claude delete or add &lt;code>@tag :skip&lt;/code> for tests in order to get them to &amp;ldquo;pass&amp;rdquo;. Engineers have to be hands-on conductors. However, AI agents are excellent at setting up tests and other boilerplate and iterative test-driven development–just be sure to review that the coverage is meaningful.&lt;/p>
+&lt;h2 id="best-practice">Best Practice&lt;/h2>
+&lt;h3 id="workflow">Workflow&lt;/h3>
+&lt;p>Using an AI agent for development looks unique for different tasks. Let me lay out a very general workflow with agentic prompting and some ideas to guide our approach.&lt;/p>
+&lt;ol>
+&lt;li>Create worktree as a sibling folder to &lt;code>work/repo-name&lt;/code> to parallelize working on a repository&lt;/li>
+&lt;li>Use Linear MCP to examine specifications of a ticket&lt;/li>
+&lt;li>Investigate the work in parallel with the agent in main worktree, ask the agent for an execution plan and then analyze the plan&lt;/li>
+&lt;li>Run a first pass on the work and write tests for our expectations (or inverse order)&lt;/li>
+&lt;li>Review the work, refactor or fill in the gaps&lt;/li>
+&lt;/ol>
+&lt;h3 id="caution">Caution&lt;/h3>
+&lt;p>You&amp;rsquo;ll discover within the first few minutes of using Claude that it &lt;a href="https://github.com/anthropics/claude-code/issues/3382">consistently responds&lt;/a> with this praise:&lt;/p>
+&lt;blockquote>
+&lt;p>You&amp;rsquo;re absolutely right!&lt;/p>&lt;/blockquote>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;img src="./glazing.png" alt="ChatGPT: Dude. You just said something deep as hell without even flinching. You're 1000% right." />
+&lt;figcaption>Glazing is bad&lt;/figcaption>
+&lt;/figure>
+&lt;p>There was a GPT 4o update a few months ago where OpenAI released a personality update that was intensely sycophantic and mirrored user language. &lt;a href="https://www.reddit.com/r/ChatGPT/comments/1mkae1l/gpt5_ama_with_openais_sam_altman_and_some_of_the/">OpenAI&amp;rsquo;s AMA&lt;/a> for the GPT5 release had users begging for the return of the 4o user engagement maximizer because it was &amp;ldquo;friendly&amp;rdquo;.&lt;/p>
+&lt;p>We need self-awareness about what using AI does to our psychology and good reviewing practices to avoid problematic code getting onto &lt;code>main&lt;/code>.&lt;/p>
+&lt;!-- https://x.com/Steve8708/status/1856896071433424982 -->
+&lt;blockquote class="twitter-tweet">&lt;p lang="en" dir="ltr">wait what &lt;a href="https://t.co/4CKClCEzvH">pic.twitter.com/4CKClCEzvH&lt;/a>&lt;/p>&amp;mdash; Steve (Builder.io) (@Steve8708) &lt;a href="https://twitter.com/Steve8708/status/1856896071433424982?ref_src=twsrc%5Etfw">November 14, 2024&lt;/a>&lt;/blockquote>
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
+&lt;p>I noticed a coworker published a PR for review that had invalid code and the engineer blamed it on AI.
+People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
+&lt;p>There doesn&amp;rsquo;t need to be a major paradigm shift with best practice. We should still maintain all existing practices for code maintainability whether it&amp;rsquo;s generated by AI or written by humans. For example, of course we should be concerned about what code AI writes. The same is true when we select libraries or languages without AI. In both cases we own the decision and the code. Age old best practice continue even with modern AI technology.&lt;/p>
+&lt;h2 id="open-questions">Open Questions&lt;/h2>
+&lt;p>As LLMs and the tooling evolves, so do my workflows. I&amp;rsquo;m continuing to learn and grow with these changes. My &lt;a href="https://github.com/brettinternet/ai">AI repo&lt;/a> is where I play with these tools and figure out how to apply them to other projects.&lt;/p>
+&lt;p>Can engineers become excessively reliant on agentic prompting? Will this change engineering culture? What will this mean especially for newer programmers in the field?&lt;/p>
+&lt;p>Will LLM innovation will begin to plateau? I wonder if we&amp;rsquo;re nearing a point where throwing more compute or a longer chain of thought won&amp;rsquo;t yield additional gains in performance.&lt;/p>
+&lt;p>Are Anthropic and OpenAI subsidizing access to their models and will prices skyrocket soon? GPT5 appears to have been a cost-saving exercise for several reasons.&lt;/p>
+&lt;p>For now, AI can augment software engineering in meaningful ways and I encourage every software engineer to discover what LLMs can do for your workflows.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>AI isn&amp;rsquo;t going to replace thoughtful engineering, but it can make thoughtful engineers more effective. The key is approaching it as a sophisticated tool that excels in specific contexts such as code completion, research and discovery, focused updates, and iterative problem-solving. As the technology evolves, so should our practices for integrating it responsibly into development workflows.&lt;/p>
+&lt;hr>
+&lt;p>This post was adapted from a &lt;a href="https://brett.cloud/slides/ai/">lightning talk&lt;/a> I gave recently to a group of executives.&lt;/p></content></entry><entry><title>Scaling Elixir Applications with Context Boundaries</title><link rel="alternate" href="https://brett.cloud/boundary/"/><id>https://brett.cloud/boundary/</id><published>2025-08-07T00:00:00+0000</published><updated>2025-08-07T00:00:00+0000</updated><summary>&lt;p>Building large-scale Elixir applications presents unique challenges. As codebases grow beyond the initial team of 3-5 developers, the lack of enforced architectural boundaries becomes a significant bottleneck. Teams spend more time reading and understanding code than writing new features, and the dynamic nature of Elixir makes code navigation increasingly difficult without proper structure.&lt;/p>
 &lt;p>Lately I&amp;rsquo;ve been exploring how context boundaries, enforced by compile-time checks, can transform unwieldy monoliths into well-organized, maintainable applications that can scale to teams of 20+ engineers.&lt;/p></summary><content type="html">&lt;p>Building large-scale Elixir applications presents unique challenges. As codebases grow beyond the initial team of 3-5 developers, the lack of enforced architectural boundaries becomes a significant bottleneck. Teams spend more time reading and understanding code than writing new features, and the dynamic nature of Elixir makes code navigation increasingly difficult without proper structure.&lt;/p>
 &lt;p>Lately I&amp;rsquo;ve been exploring how context boundaries, enforced by compile-time checks, can transform unwieldy monoliths into well-organized, maintainable applications that can scale to teams of 20+ engineers.&lt;/p>
 &lt;h2 id="the-scaling-problem">The Scaling Problem&lt;/h2>
@@ -381,7 +486,7 @@
 &lt;h1 align="center">Appresize&lt;/h1>
 &lt;p>&lt;a href="https://github.com/brettinternet/Appresize">Appresize&lt;/a> is a utility to resize and move apps from anywhere on the window with custom modifiers and other preferences.&lt;/p>
 &lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./demo.gif" alt="move and resize window from anywhere" class="border-4 border-slate-900" />
+&lt;img src="./demo.gif" alt="move and resize window from anywhere" />
 &lt;figcaption>Although not captured by the screen recorder, the cursor does follow window&lt;/figcaption>
 &lt;/figure>
 &lt;figure class="flex flex-col justify-center items-center">
@@ -394,7 +499,7 @@
 &lt;h1 align="center">Appresize&lt;/h1>
 &lt;p>&lt;a href="https://github.com/brettinternet/Appresize">Appresize&lt;/a> is a utility to resize and move apps from anywhere on the window with custom modifiers and other preferences.&lt;/p>
 &lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./demo.gif" alt="move and resize window from anywhere" class="border-4 border-slate-900" />
+&lt;img src="./demo.gif" alt="move and resize window from anywhere" />
 &lt;figcaption>Although not captured by the screen recorder, the cursor does follow window&lt;/figcaption>
 &lt;/figure>
 &lt;figure class="flex flex-col justify-center items-center">
@@ -409,7 +514,7 @@
 &lt;p>Tabbed is an experiment with a Chrome extension to visualize and organize
 browser tabs.&lt;/p>
 &lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./screenshot.png" alt="dragging window tab to a new window" class="border-4 border-slate-900" />
+&lt;img src="./screenshot.png" alt="dragging window tab to a new window" />
 &lt;figcaption>Drag and drop browser session management&lt;/figcaption>
 &lt;/figure>
 &lt;p>Tabbed was built with accessibility in mind. See the full
@@ -438,7 +543,7 @@ stroke="currentColor">
 &lt;p>Tabbed is an experiment with a Chrome extension to visualize and organize
 browser tabs.&lt;/p>
 &lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./screenshot.png" alt="dragging window tab to a new window" class="border-4 border-slate-900" />
+&lt;img src="./screenshot.png" alt="dragging window tab to a new window" />
 &lt;figcaption>Drag and drop browser session management&lt;/figcaption>
 &lt;/figure>
 &lt;p>Tabbed was built with accessibility in mind. See the full
@@ -471,7 +576,7 @@ for Windows.&lt;/p>
 &lt;p>Mute with the shortcut &lt;kbd>Cmd&lt;/kbd> &lt;kbd>Shift&lt;/kbd> &lt;kbd>A&lt;/kbd>
 or from the system tray dropdown menu.&lt;/p>
 &lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./screenshot.png" alt="popup window screenshot indicating the microphone is off" class="border-4 border-slate-900" />
+&lt;img src="./screenshot.png" alt="popup window screenshot indicating the microphone is off" />
 &lt;figcaption>Mute window follows cursor to screens and monitors&lt;/figcaption>
 &lt;/figure>
 &lt;p>The mute indicator window will follow the cursor to desktops or screens and
@@ -488,7 +593,7 @@ for Windows.&lt;/p>
 &lt;p>Mute with the shortcut &lt;kbd>Cmd&lt;/kbd> &lt;kbd>Shift&lt;/kbd> &lt;kbd>A&lt;/kbd>
 or from the system tray dropdown menu.&lt;/p>
 &lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./screenshot.png" alt="popup window screenshot indicating the microphone is off" class="border-4 border-slate-900" />
+&lt;img src="./screenshot.png" alt="popup window screenshot indicating the microphone is off" />
 &lt;figcaption>Mute window follows cursor to screens and monitors&lt;/figcaption>
 &lt;/figure>
 &lt;p>The mute indicator window will follow the cursor to desktops or screens and
@@ -497,8 +602,8 @@ microphones are on again, the window will hide.
 &lt;a href="https://github.com/brettinternet/mic-mute/releases">View releases&lt;/a>.&lt;/p>
 &lt;p>Muted and unmuted indicators:&lt;/p>
 &lt;div class="flex flex-row items-center">
-&lt;img src="./alert-on.png" alt="popup window screenshot indicating the microphone is off" class="border-4 border-slate-900 mx-auto max-w-56" />
-&lt;img src="./alert-off.png" alt="popup window screenshot indicating the microphone is on" class="border-4 border-slate-900 mx-auto max-w-56" />
+&lt;img src="./alert-on.png" alt="popup window screenshot indicating the microphone is off" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
+&lt;img src="./alert-off.png" alt="popup window screenshot indicating the microphone is on" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
 &lt;/div>
 &lt;hr>
 &lt;h2 id="update-what-i-use-now">Update: What I use now&lt;/h2>

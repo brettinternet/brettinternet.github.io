@@ -5,6 +5,11 @@ publishDate: 2025-08-11
 description: My approach to AI-augmented development
 comments: true
 hide_image: true
+card_image: vscode-typo.gif
+resources:
+  - src: vscode-typo.gif
+    params:
+      alt: code completions
 ---
 
 My experience with AI has been that it augments my abilities. It can consolidate information and automate tedium to make me more productive. For more sophisticated tasks related to programming, AI cannot replace a hardworking and fully engaged engineer.
@@ -45,7 +50,7 @@ There are MCP servers that assist with most of these roles. I have [some I'm wor
 
 This is the most obvious pair programming application for AI.
 
-{{< caption caption="Predictive help" class="flex flex-col justify-center items-center" >}}
+{{< caption caption="Copilot code completions" class="flex flex-col justify-center items-center" >}}
 <img src="./vscode-typo.gif" alt="predictive text and typo fix" />
 {{< /caption >}}
 

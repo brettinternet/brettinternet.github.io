@@ -1,6 +1,6 @@
 ---
 type: post
-title: AI
+title: AI Productivity
 publishDate: 2025-08-11
 description: My approach to AI-augmented development
 comments: true

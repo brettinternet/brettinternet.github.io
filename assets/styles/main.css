@@ -52,6 +52,10 @@
     line-height: 10px;
     vertical-align: middle;
   }
+
+  article figure img {
+    @apply rounded-lg border-1 border-slate-300;
+  }
 }
 
 @font-face {

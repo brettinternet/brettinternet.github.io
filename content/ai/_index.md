@@ -29,6 +29,8 @@ Who in this scenario is actually confirming that it's not 10k lines of slop?
 
 I've seen software engineers sometimes get defensive on the topic of AI, because they are perturbed by these sorts of unrealistic soundbites. Similar melodramatic sentiments are rampant on LinkedIn. I've been grateful to work with other engineers that have a strong interest in productivity and are level-headed about AI.
 
+The reality is somewhere between the extremes. AI isn't replacing engineers, but it's also not just a fancy autocomplete. When used thoughtfully, it can genuinely accelerate development workflows by taking on specific, well-defined roles in the programming process.
+
 ## Usage
 
 In my currently evolving workflows, AI fulfills a few very specific pair programming roles to augment my work:
@@ -52,15 +54,17 @@ These are extremely context-aware changes and combat small-scale tedium.
 
 ### 2. Discovery
 
-Discovery is my favorite usecase for AI. I use it for researching topics, summarizing, querying libraries and codebases, getting usage examples, and planning changes.
+Discovery is my favorite usecase for AI. I use it for researching topics, summarizing documentation, querying libraries and codebases, getting usage examples, and planning implementation approaches. This is where AI shines as a research assistant that can quickly traverse large amounts of information.
 
-Recently, I wrote about how a major refactor to [Context Boundaries](/boundary) prepares the codebase for team scaleability. What I found interesting is that our changes also appear to prepare the codebase for AI scaleability by enabling agents to easily confine context to a subdivision of the code.
+For codebase exploration, AI excels at answering questions like "What are the side effects of this module?" or "Show me all the places where authentication is handled." I frequently use this to understand hotspots in our code and trace dependencies before making changes.
 
-As we're beginning to think about discoverability for AI, I believe the question becomes:
+Well-structured codebases with clear boundaries are easier for both humans and AI to navigate. When I refactored our codebase using [Context Boundaries](/boundary) for team scalability, it also improved AI's ability to provide focused, relevant insights by confining context to specific code subdivisions.
 
-> How can we improve readability for both humans and AI?
+This raises an important design question as we integrate AI into development workflows:
 
-This is a huge lift for onboarding engineers, knowledge transfer and debugging code. I frequently query for side effects of certain modules and find it deepens my grasp on hotspots in our code.
+> How can we improve code organization for both human and AI readability?
+
+The answer benefits onboarding, knowledge transfer, and debugging regardless of whether you're working with human teammates or AI assistants.
 
 ### 3. Surgical updates
 
@@ -69,7 +73,7 @@ AI can accomplish more sophisticated tasks when it's steered towards a very spec
 <!-- https://x.com/vasumanmoza/status/1926487201463832863 -->
 {{< x user="vasumanmoza" id="1926487201463832863" >}}
 
-Writing code is rarely the bottleneck.
+Writing code is rarely the bottleneck. The real challenges in software development are understanding requirements, designing systems, debugging complex interactions, and making architectural decisions. Even with AI assistance, these cognitive tasks require human judgment, domain expertise, and the ability to reason about trade-offs. AI can help you write code faster, but it can't replace the critical thinking needed to determine what code should be written in the first place.
 
 Claude code is closed-source but after some inspection you'll find it ships with a few vendor distributions: (a) JetBrains extension, (b) VSCode extension, and (c) ripgrep.
 
@@ -105,7 +109,7 @@ I've seen Claude delete or add `@tag :skip` for tests in order to get them to "p
 
 Using an AI agent for development looks unique for different tasks. Let me lay out a very general workflow with agentic prompting and some ideas to guide our approach.
 
-1. Create worktree as a sibling folder to `work/repo-name`
+1. Create worktree as a sibling folder to `work/repo-name` to parallelize working on a repository
 1. Use Linear MCP to examine specifications of a ticket
 1. Investigate the work in parallel with the agent in main worktree, ask the agent for an execution plan and then analyze the plan
 1. Run a first pass on the work and write tests for our expectations (or inverse order)
@@ -144,6 +148,10 @@ Will LLM innovation will begin to plateau? I wonder if we're nearing a point whe
 Are Anthropic and OpenAI subsidizing access to their models and will prices skyrocket soon? GPT5 appears to have been a cost-saving exercise for several reasons.
 
 For now, AI can augment software engineering in meaningful ways and I encourage every software engineer to discover what LLMs can do for your workflows.
+
+## Conclusion
+
+AI isn't going to replace thoughtful engineering, but it can make thoughtful engineers more effective. The key is approaching it as a sophisticated tool that excels in specific contexts such as code completion, research and discovery, focused updates, and iterative problem-solving. As the technology evolves, so should our practices for integrating it responsibly into development workflows.
 
 ---
 

@@ -32,7 +32,7 @@
 &lt;p>This is the most obvious pair programming application for AI.&lt;/p>
 &lt;figure class="flex flex-col justify-center items-center">
 &lt;img src="./vscode-typo.gif" alt="predictive text and typo fix" />
-&lt;figcaption>Predictive help&lt;/figcaption>
+&lt;figcaption>Copilot code completions&lt;/figcaption>
 &lt;/figure>
 &lt;p>These are extremely context-aware changes and combat small-scale tedium.&lt;/p>
 &lt;h3 id="2-discovery">2. Discovery&lt;/h3>
@@ -490,7 +490,7 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;figcaption>Although not captured by the screen recorder, the cursor does follow window&lt;/figcaption>
 &lt;/figure>
 &lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./screenshot.png" alt="window preferences" />
+&lt;img src="./screenshot.png" alt="window preferences" class="border-none" />
 &lt;figcaption>Custom modifiers &amp;amp; other behaviors&lt;/figcaption>
 &lt;/figure>
 &lt;p>One of my favorite abandonware apps on macOS was an old closed-source Objective C application called &lt;a href="https://bahoom.com/hyperdock">Hyperdock&lt;/a> that had a small secondary feature to resize and move windows by a modifier from anywhere on the window.&lt;/p></summary><content type="html">&lt;div class="flex justify-center">
@@ -503,7 +503,7 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;figcaption>Although not captured by the screen recorder, the cursor does follow window&lt;/figcaption>
 &lt;/figure>
 &lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./screenshot.png" alt="window preferences" />
+&lt;img src="./screenshot.png" alt="window preferences" class="border-none" />
 &lt;figcaption>Custom modifiers &amp;amp; other behaviors&lt;/figcaption>
 &lt;/figure>
 &lt;p>One of my favorite abandonware apps on macOS was an old closed-source Objective C application called &lt;a href="https://bahoom.com/hyperdock">Hyperdock&lt;/a> that had a small secondary feature to resize and move windows by a modifier from anywhere on the window.&lt;/p>

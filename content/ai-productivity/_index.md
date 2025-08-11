@@ -1,6 +1,6 @@
 ---
 type: post
-title: AI Productivity
+title: Productivity with AI
 publishDate: 2025-08-11
 description: My approach to AI-augmented development
 comments: true
@@ -159,4 +159,4 @@ AI isn't going to replace thoughtful engineering, but it can make thoughtful eng
 
 ---
 
-This post was adapted from a [lightning talk](https://brett.cloud/slides/ai/) I gave recently to a group of executives.
+This post was adapted from a [lightning talk](https://brett.cloud/slides/ai/) I gave to a group of executives.

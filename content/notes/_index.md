@@ -42,8 +42,7 @@ markups. But these mediums make up about 0.5% of all my notes. I just use my
 NextCloud for storing files or Keybase for my public documents.
 
 GitHub has formalized their [CommonMark specification](https://github.github.com/gfm/)
-to standardize GitHub's flavor of markdown. One of my favorite
-introductions to markdown can be found [here](http://commonmark.org/).
+to standardize GitHub's flavor of markdown.
 Commonmark was put together by a few representatives of some major companies
 that use markdown like GitHub, Reddit, and Stack Exchange. Some nonconforming
 markdown features have added some very nice features such as task lists,

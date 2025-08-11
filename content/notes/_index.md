@@ -30,19 +30,19 @@ made markdown previewing so accessible. Even this blog is made using markdown.
 
 ### Markdown
 
-I love markdown. I like how widely support it is, and I like how clear markdown
-format is to convey information. Markdown has become the ubiquitous plain text
+I love markdown. I like how widely supported it is, and I like how clear the markdown
+format is for conveying information. Markdown has become the ubiquitous plain text
 format for the GitHub community. My own blog posts are written in markdown
 ([brettinternet.github.io](https://github.com/brettinternet/brettinternet.github.io/)).
-Composing markdown is a timeless method that isn't married any third party tools
+Composing markdown is a timeless method that isn't tied to any third-party tools
 except a modern text editor (which isn't going anywhere).
 
 It's true, this method isn't perfect. I need separate tools for sketches and PDF
 markups. But these mediums make up about 0.5% of all my notes. I just use my
 NextCloud for storing files or Keybase for my public documents.
 
-[Some recent specification](https://githubengineering.com/a-formal-spec-for-github-markdown/)
-has been proposed to standardize Github's flavor of markdown. One of my favorite
+GitHub has formalized their [CommonMark specification](https://github.github.com/gfm/)
+to standardize GitHub's flavor of markdown. One of my favorite
 introductions to markdown can be found [here](http://commonmark.org/).
 Commonmark was put together by a few representatives of some major companies
 that use markdown like GitHub, Reddit, and Stack Exchange. Some nonconforming
@@ -51,7 +51,7 @@ autolinking, diff and code block improvements.
 
 ### Git
 
-Right now I have a ~~BitBucket~~ separate GitHub repo for my private notes and
+I maintain a separate GitHub repository for my private notes and
 another for my [public notes](https://github.com/brettinternet/public-notes).
 Eventually, I'd like to self-host my own GitLab within
 [my homelab](https://github.com/brettinternet/homelab).
@@ -63,28 +63,24 @@ git commands to make pushing to master very fast.
 
 ### Desktop
 
-I use Vim and VS Code. To me, taking notes in my editor environment is the best
-possible scenario since I'm most comfortable with the shortcuts. VS Code offers
-a markdown previewer out of the box with `ctrl` + `shift` + `v`. Markdown's
+I use Vim and VS Code for note-taking. Taking notes in my editor environment is ideal
+since I'm most comfortable with the shortcuts. VS Code offers
+a markdown previewer out of the box with `Ctrl` + `Shift` + `V`. Markdown's
 lifespan on desktop will exceed my own, so I'm no longer bound to an app's
 survival on a platform to access my notes.
 
 [ShareX](https://github.com/ShareX/ShareX) is a good option for screenshots on
-PC or [Flameshot](https://wiki.archlinux.org/index.php/Flameshot) or
-[GIMP](https://www.gimp.org/downloads/) on Linux. I tend to think that a simple
-bookmark is better than web clippings. EverNote certainly has the strongest
-clipper, and I do like that OneNote's web clipper is
-[open source](https://blogs.msdn.microsoft.com/onenotedev/2016/08/31/the-web-clipper-goes-open-source/).
+Windows, while [Flameshot](https://flameshot.org/) works well on Linux. I tend to think that a simple
+bookmark is better than web clippings for most use cases.
 
 ### Mobile
 
 Before I found [Working Copy](https://workingcopyapp.com/), a solid mobile git
 solution for iOS was _the_ missing piece for keeping notes in a git repository.
-I'm sure there are equally polished options on Android. With Working Copy you
-can fetch repos for free, but you'll have to pay to unlock push. The app is very
-polished, so I think it's worth it to support this developer. SSH keys are
-supported, language highlighting and markdown and plain text previews. It's an
-excellent mobile option for iOS.
+There are equally good options on Android like [MGit](https://github.com/maks/MGit) or [Termux](https://termux.dev/). Working Copy
+offers free repository cloning and viewing, with push capabilities available through in-app purchase. The app includes
+SSH key support, syntax highlighting, and markdown preview. It's an
+excellent mobile git client for iOS.
 
 ### Save Menu
 
@@ -92,13 +88,13 @@ excellent mobile option for iOS.
 >
 > \- _Nintendo "Quit Screen" message_
 
-Like an accessible save menu, I keep everything in markdown. I record docker
-commands and obscure command-line arguments, JavaScript toy problems, or
-directions to setup Postgres permissions. I also
+Like an accessible save menu, I keep everything in markdown. I record Docker
+commands and obscure command-line arguments, JavaScript problems, or
+directions to set up Postgres permissions. I also
 [create slides](https://github.com/brettinternet/slides) with markdown.
-I'll only make a note of something if it's easier to reference my notes than it
-is to search it. I also take
-notes to help out the students that I mentor.
+I'll only note something if it's easier to reference my notes than
+search for it online. I also take
+notes to help students I mentor.
 
 I use a combination of Apple Reminders and private GitHub issues with task lists
 for short term personal tasks, and GitHub Projects to visualize Kanban project
@@ -111,12 +107,12 @@ be around for a long time.
 ---
 
 {{< note title="June 2020 update" >}}
-As of this year, I have begun experimenting with a much
-simpler approach for tracking work-in-progress: `todo.txt` ([source](https://news.ycombinator.com/item?id=39432876)).
+I began experimenting with a much
+simpler approach for tracking work-in-progress: `todo.txt` format.
 {{< /note >}}
 
 {{< note title="Aug. 2024 update" >}}
-I'm a father now and time is limited. Lately, I shove all
-my thoughts in the notes app on my phone for convenience. The stage of life I'm
-in calls for it now.
+As a parent with limited time, I've simplified to using
+my phone's built-in notes app for quick capture. Sometimes convenience trumps
+optimal workflow—the stage of life I'm in calls for it.
 {{< /note >}}

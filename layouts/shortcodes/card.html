@@ -1,0 +1,45 @@
+{{/* Parse shortcode arguments */}}
+{{ $title := .Get "title" }}
+{{ $description := .Get "description" }}
+{{ $href := .Get "href" }}
+{{ $image := .Get "image" }}
+
+{{/* Check if this is an external URL */}}
+{{ $absolute_url := false }}
+{{ if $href }}
+  {{ $absolute_url = not (hasPrefix $href "/") }}
+{{ end }}
+
+<a
+  href="{{ $href }}"
+  {{ if $absolute_url }}
+  target="_blank"
+  rel="noopener noreferrer"
+  {{ end }}
+  class="group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 h-60 w-full max-w-[422px] mx-auto"
+>
+  {{ if $image }}
+    <div class="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center rounded-md -z-10 brightness-50">
+      <img
+        src="{{ $image }}"
+        alt="{{ $title }}"
+        class="object-cover object-center w-full h-full transition-all duration-200 group-hover:scale-101 group-hover:blur-[2px]"
+      />
+    </div>
+  {{ end }}
+  <div class="flex flex-col min-h-full p-8">
+    <div class="flex-1">
+      <h2 class="leading-tight font-serif text-lg mb-2 font-bold {{ if $image }}text-white{{else}}text-slate-900{{ end }}">
+        {{ $title }}
+      </h2>
+    </div>
+    {{ if $description }}
+    <p class="font-sans {{ if $image }}text-gray-100{{else}}text-slate-500{{ end }}">{{ $description }}</p>
+    {{ end }}
+    {{ if $absolute_url }}
+    <div class="absolute top-0 right-0 m-3 {{ if $image }}text-gray-200{{else}}text-slate-500{{ end }}">
+      {{ partial "icons/external-link.svg" }}
+    </div>
+    {{ end }}
+  </div>
+</a>

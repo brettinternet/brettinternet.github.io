@@ -35,6 +35,12 @@ I've seen software engineers sometimes get defensive on the topic of AI, because
 
 The reality is somewhere between the extremes. AI isn't replacing engineers, but it's also not just a fancy autocomplete. When used thoughtfully, it can genuinely accelerate development workflows by taking on specific, well-defined roles in the programming process.
 
+{{< card
+  title="brettinternet/ai"
+  description="AI tools, research & playground"
+  href="https://github.com/brettinternet/ai" >}}
+
+
 ## Usage
 
 In my currently evolving workflows, AI fulfills a few very specific pair programming roles to augment my work:

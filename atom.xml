@@ -19,6 +19,30 @@
 &lt;p>Who in this scenario is actually confirming that it&amp;rsquo;s not 10k lines of slop?&lt;/p>
 &lt;p>I&amp;rsquo;ve seen software engineers sometimes get defensive on the topic of AI, because they are perturbed by these sorts of unrealistic soundbites. Similar melodramatic sentiments are rampant on LinkedIn. I&amp;rsquo;ve been grateful to work with other engineers that have a strong interest in productivity and are level-headed about AI.&lt;/p>
 &lt;p>The reality is somewhere between the extremes. AI isn&amp;rsquo;t replacing engineers, but it&amp;rsquo;s also not just a fancy autocomplete. When used thoughtfully, it can genuinely accelerate development workflows by taking on specific, well-defined roles in the programming process.&lt;/p>
+&lt;a
+href="https://github.com/brettinternet/ai"
+target="_blank"
+rel="noopener noreferrer"
+class="group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 h-60 w-full max-w-[422px] mx-auto"
+>
+&lt;div class="flex flex-col min-h-full p-8">
+&lt;div class="flex-1">
+&lt;h2 class="leading-tight font-serif text-lg mb-2 font-bold text-slate-900">
+brettinternet/ai
+&lt;/h2>
+&lt;/div>
+&lt;p class="font-sans text-slate-500">AI tools, research &amp;amp; playground&lt;/p>
+&lt;div class="absolute top-0 right-0 m-3 text-slate-500">
+&lt;svg
+class="w-4 h-4"
+xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+stroke="currentColor">
+&lt;path stroke-linecap="round" stroke-linejoin="round"
+d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+&lt;/svg>
+&lt;/div>
+&lt;/div>
+&lt;/a>
 &lt;h2 id="usage">Usage&lt;/h2>
 &lt;p>In my currently evolving workflows, AI fulfills a few very specific pair programming roles to augment my work:&lt;/p>
 &lt;ol>

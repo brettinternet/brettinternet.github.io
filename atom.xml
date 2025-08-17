@@ -477,7 +477,7 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="web-layer-organization">Web Layer Organization&lt;/h2>
 &lt;p>The web layer should also define its own boundary in &lt;code>my_app_web.ex&lt;/code>.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">deps&lt;/span>: [
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">deps&lt;/span>: [
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Absinthe.Subscription&lt;/span>,
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Absinthe&lt;/span>,
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">MyApp.Billing&lt;/span>,
@@ -485,10 +485,10 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">MyApp.Orders&lt;/span>,
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">MyApp.Users&lt;/span>,
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Phoenix&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ],
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">exports&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">exports&lt;/span>: [
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Endpoint&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>]
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Keep controllers or resolvers thin. For example, a GraphQL endpoint&amp;rsquo;s resolver should only handle request-specific concerns. Similarly, controllers should delegate business logic to contexts.&lt;/p>
 &lt;h2 id="challenges">Challenges&lt;/h2>
 &lt;p>There are a few non-trivial challenges we encountered at our org with our implementation. The initial refactor was significant overhead since moving files around and function calls was so wide-spread. We were all hands on deck for a few weeks to make this work. Following our initial refactor, continuing education and discipline became a priority for us.&lt;/p>
@@ -498,9 +498,9 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Order&lt;/span>, &lt;span style="color:#75715e"># Ecto schema definition&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">LineItem&lt;/span> &lt;span style="color:#75715e"># Ecto schema definition&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">deps&lt;/span>: [
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">deps&lt;/span>: [
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">MyApp.Orders.OrderProcessing.Schemas&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>]
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We may eventually have to decouple some domains that need to become their own microservices. This needs to be balanced against architectural benefits.&lt;/p>
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>The dynamic nature and loose conventions of Elixir makes it challenging to navigate large codebases. Context boundaries enforced through the Boundary library provide a practical path for scaling Elixir applications beyond small teams.&lt;/p>

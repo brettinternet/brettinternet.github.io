@@ -14,71 +14,136 @@
 {{ end }}
 
 {{ if $isGif }}
-  {{ $sizes := slice }}
-  {{ range $width := slice 500 800 1200 1500 }}
-    {{ if ge $image.Width $width }}
-      {{ $resized := $image.Resize (printf "%dx" $width) }}
-      {{ $sizes = $sizes | append (printf "%s %dw" $resized.RelPermalink $resized.Width) }}
-    {{ end }}
-  {{ end }}
-  {{ $sizes = $sizes | append (printf "%s %dw" $image.RelPermalink $image.Width) }}
-  {{ $srcset := delimit $sizes ", " }}
-
-  <img
-    class="transition-all duration-200 opacity-100{{with $image_class}} {{.}}{{end}}"
-    alt="{{ $alt }}"
-    src="{{ $placeholder.RelPermalink }}"
-    data-src="{{ $image.RelPermalink }}"
-    srcset="{{ $placeholder.RelPermalink }}"
-    data-srcset="{{ $srcset }}"
-    sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
-    width="{{ $image.Width }}"
-    height="{{ $image.Height }}"
-    loading="lazy"
-    decoding="async"
-  />
-{{ else }}
+  {{/* Create WebP still frame for initial display */}}
+  {{ $webp_still := $image.Process "webp" }}
   {{ $webp_placeholder := $placeholder.Process "webp" }}
-  {{ $sizes := slice }}
-  {{ $webp_sizes := slice }}
 
-  {{ range $width := slice 500 800 1200 1500 }}
+  {{ $gif_srcset := "" }}
+  {{ $webp_srcset := "" }}
+
+  {{ range $index, $width := slice 500 800 1200 1500 }}
     {{ if ge $image.Width $width }}
-      {{ $resized := $image.Resize (printf "%dx" $width) }}
-      {{ $webp := $resized.Process "webp" }}
-      {{ $sizes = $sizes | append (printf "%s %dw" $resized.RelPermalink $resized.Width) }}
-      {{ $webp_sizes = $webp_sizes | append (printf "%s %dw" $webp.RelPermalink $webp.Width) }}
+      {{ $gif_resized := $image.Resize (printf "%dx" $width) }}
+      {{ $webp_resized := $gif_resized.Process "webp" }}
+
+      {{ if ne $gif_srcset "" }}
+        {{ $gif_srcset = printf "%s, %s %dw" $gif_srcset $gif_resized.RelPermalink $gif_resized.Width }}
+        {{ $webp_srcset = printf "%s, %s %dw" $webp_srcset $webp_resized.RelPermalink $webp_resized.Width }}
+      {{ else }}
+        {{ $gif_srcset = printf "%s %dw" $gif_resized.RelPermalink $gif_resized.Width }}
+        {{ $webp_srcset = printf "%s %dw" $webp_resized.RelPermalink $webp_resized.Width }}
+      {{ end }}
     {{ end }}
   {{ end }}
 
-  {{ $original_webp := $image.Process "webp" }}
-  {{ $sizes = $sizes | append (printf "%s %dw" $image.RelPermalink $image.Width) }}
-  {{ $webp_sizes = $webp_sizes | append (printf "%s %dw" $original_webp.RelPermalink $original_webp.Width) }}
+  {{/* Add original size */}}
+  {{ if ne $gif_srcset "" }}
+    {{ $gif_srcset = printf "%s, %s %dw" $gif_srcset $image.RelPermalink $image.Width }}
+    {{ $webp_srcset = printf "%s, %s %dw" $webp_srcset $webp_still.RelPermalink $webp_still.Width }}
+  {{ else }}
+    {{ $gif_srcset = printf "%s %dw" $image.RelPermalink $image.Width }}
+    {{ $webp_srcset = printf "%s %dw" $webp_still.RelPermalink $webp_still.Width }}
+  {{ end }}
 
-  {{ $srcset := delimit $sizes ", " }}
-  {{ $webp_srcset := delimit $webp_sizes ", " }}
-
-  <picture>
+  {{ $html := printf `<picture>
     <source
       type="image/webp"
-      srcset="{{ $webp_placeholder.RelPermalink }}"
-      data-srcset="{{ $webp_srcset }}"
+      srcset="%s"
+      data-srcset="%s"
       sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
     />
     <img
-      class="transition-all duration-200 opacity-100{{with $image_class}} {{.}}{{end}}"
-      alt="{{ $alt }}"
-      src="{{ $placeholder.RelPermalink }}"
-      data-src="{{ $image.RelPermalink }}"
-      srcset="{{ $placeholder.RelPermalink }}"
-      data-srcset="{{ $srcset }}"
+      class="transition-all duration-300 opacity-100 gif-progressive%s"
+      alt="%s"
+      src="%s"
+      srcset="%s"
+      data-webp-src="%s"
+      data-webp-srcset="%s"
+      data-gif-src="%s"
+      data-gif-srcset="%s"
       sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
-      width="{{ $image.Width }}"
-      height="{{ $image.Height }}"
+      width="%d"
+      height="%d"
       loading="lazy"
       decoding="async"
     />
-  </picture>
+  </picture>`
+    $webp_placeholder.RelPermalink
+    $webp_srcset
+    (cond $image_class (printf " %s" $image_class) "")
+    $alt
+    $placeholder.RelPermalink
+    $placeholder.RelPermalink
+    $webp_still.RelPermalink
+    $webp_srcset
+    $image.RelPermalink
+    $gif_srcset
+    $image.Width
+    $image.Height }}
+  {{ $html | safeHTML }}
+{{ else }}
+  {{ $webp_placeholder := $placeholder.Process "webp" }}
+  {{ $original_webp := $image.Process "webp" }}
+
+  {{ $srcset := "" }}
+  {{ $webp_srcset := "" }}
+
+  {{ range $index, $width := slice 500 800 1200 1500 }}
+    {{ if ge $image.Width $width }}
+      {{ $resized := $image.Resize (printf "%dx" $width) }}
+      {{ $webp := $resized.Process "webp" }}
+
+      {{ if ne $srcset "" }}
+        {{ $srcset = printf "%s, %s %dw" $srcset $resized.RelPermalink $resized.Width }}
+        {{ $webp_srcset = printf "%s, %s %dw" $webp_srcset $webp.RelPermalink $webp.Width }}
+      {{ else }}
+        {{ $srcset = printf "%s %dw" $resized.RelPermalink $resized.Width }}
+        {{ $webp_srcset = printf "%s %dw" $webp.RelPermalink $webp.Width }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{/* Add original size */}}
+  {{ if ne $srcset "" }}
+    {{ $srcset = printf "%s, %s %dw" $srcset $image.RelPermalink $image.Width }}
+    {{ $webp_srcset = printf "%s, %s %dw" $webp_srcset $original_webp.RelPermalink $original_webp.Width }}
+  {{ else }}
+    {{ $srcset = printf "%s %dw" $image.RelPermalink $image.Width }}
+    {{ $webp_srcset = printf "%s %dw" $original_webp.RelPermalink $original_webp.Width }}
+  {{ end }}
+
+  {{ $html := printf `<picture>
+    <source
+      type="image/webp"
+      srcset="%s"
+      data-srcset="%s"
+      sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+    />
+    <img
+      class="transition-all duration-200 opacity-100%s"
+      alt="%s"
+      src="%s"
+      data-src="%s"
+      srcset="%s"
+      data-srcset="%s"
+      sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+      width="%d"
+      height="%d"
+      loading="lazy"
+      decoding="async"
+    />
+  </picture>`
+    $webp_placeholder.RelPermalink
+    $webp_srcset
+    (cond $image_class (printf " %s" $image_class) "")
+    $alt
+    $placeholder.RelPermalink
+    $image.RelPermalink
+    $placeholder.RelPermalink
+    $srcset
+    $image.Width
+    $image.Height }}
+  {{ $html | safeHTML }}
 {{ end }}
 
   {{ if and $figure $caption }}

@@ -6,31 +6,58 @@
 {{ $figure_class := .figure_class }}
 {{ $figure := .figure | default false }}
 
+{{ $isGif := eq (path.Ext $image.RelPermalink) ".gif" }}
 {{ $placeholder := ($image.Resize "48x q20") | images.Filter (images.GaussianBlur 6) }}
-{{ $webp_placeholder := $placeholder.Process "webp" }}
-
-{{ $sizes := slice }}
-{{ $webp_sizes := slice }}
-
-{{ range $width := slice 500 800 1200 1500 }}
-  {{ if ge $image.Width $width }}
-    {{ $resized := $image.Resize (printf "%dx" $width) }}
-    {{ $webp := $resized.Process "webp" }}
-    {{ $sizes = $sizes | append (printf "%s %dw" $resized.RelPermalink $resized.Width) }}
-    {{ $webp_sizes = $webp_sizes | append (printf "%s %dw" $webp.RelPermalink $webp.Width) }}
-  {{ end }}
-{{ end }}
-
-{{ $original_webp := $image.Process "webp" }}
-{{ $sizes = $sizes | append (printf "%s %dw" $image.RelPermalink $image.Width) }}
-{{ $webp_sizes = $webp_sizes | append (printf "%s %dw" $original_webp.RelPermalink $original_webp.Width) }}
-
-{{ $srcset := delimit $sizes ", " }}
-{{ $webp_srcset := delimit $webp_sizes ", " }}
 
 {{ if $figure }}
 <figure {{with $figure_class}}class="{{.}}"{{end}}>
 {{ end }}
+
+{{ if $isGif }}
+  {{ $sizes := slice }}
+  {{ range $width := slice 500 800 1200 1500 }}
+    {{ if ge $image.Width $width }}
+      {{ $resized := $image.Resize (printf "%dx" $width) }}
+      {{ $sizes = $sizes | append (printf "%s %dw" $resized.RelPermalink $resized.Width) }}
+    {{ end }}
+  {{ end }}
+  {{ $sizes = $sizes | append (printf "%s %dw" $image.RelPermalink $image.Width) }}
+  {{ $srcset := delimit $sizes ", " }}
+
+  <img
+    class="transition-all duration-200 opacity-100{{with $image_class}} {{.}}{{end}}"
+    alt="{{ $alt }}"
+    src="{{ $placeholder.RelPermalink }}"
+    data-src="{{ $image.RelPermalink }}"
+    srcset="{{ $placeholder.RelPermalink }}"
+    data-srcset="{{ $srcset }}"
+    sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+    width="{{ $image.Width }}"
+    height="{{ $image.Height }}"
+    loading="lazy"
+    decoding="async"
+  />
+{{ else }}
+  {{ $webp_placeholder := $placeholder.Process "webp" }}
+  {{ $sizes := slice }}
+  {{ $webp_sizes := slice }}
+
+  {{ range $width := slice 500 800 1200 1500 }}
+    {{ if ge $image.Width $width }}
+      {{ $resized := $image.Resize (printf "%dx" $width) }}
+      {{ $webp := $resized.Process "webp" }}
+      {{ $sizes = $sizes | append (printf "%s %dw" $resized.RelPermalink $resized.Width) }}
+      {{ $webp_sizes = $webp_sizes | append (printf "%s %dw" $webp.RelPermalink $webp.Width) }}
+    {{ end }}
+  {{ end }}
+
+  {{ $original_webp := $image.Process "webp" }}
+  {{ $sizes = $sizes | append (printf "%s %dw" $image.RelPermalink $image.Width) }}
+  {{ $webp_sizes = $webp_sizes | append (printf "%s %dw" $original_webp.RelPermalink $original_webp.Width) }}
+
+  {{ $srcset := delimit $sizes ", " }}
+  {{ $webp_srcset := delimit $webp_sizes ", " }}
+
   <picture>
     <source
       type="image/webp"
@@ -52,6 +79,8 @@
       decoding="async"
     />
   </picture>
+{{ end }}
+
   {{ if and $figure $caption }}
   <figcaption class="text-center">
     {{ $caption }}

@@ -1055,31 +1055,27 @@ optimal workflow and the stage of life I&amp;rsquo;m in calls for it.
 &lt;/div>
 &lt;/div></content></entry><entry><title>About me</title><link rel="alternate" href="https://brett.cloud/about/"/><id>https://brett.cloud/about/</id><published>0001-01-01T00:00:00+0000</published><updated>0001-01-01T00:00:00+0000</updated><summary>&lt;div class="not-prose flex flex-col items-center justify-center container mb-6 sm:mb-12 mx-auto">
 &lt;a href="/">
-&lt;noscript>
-&lt;style>
-figure.lazy {
-display: none;
-}
-&lt;/style>
-&lt;img
-class="rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
-src="/about/profile_hu_c80af297f4462462.png"
-width="160"
-height="160"
-alt="Brett Gardiner"
+&lt;picture>
+&lt;source
+type="image/webp"
+srcset="/about/profile_hu_2eef663adb0258d6.webp"
+data-srcset="/about/profile_hu_a37a9af8b11298de.webp 160w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
-&lt;/noscript>
 &lt;img
-class="lazysizes lazyload transition-all duration-200 opacity-100 rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
+class="transition-all duration-200 opacity-100 rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
 alt="Brett Gardiner"
-src="/about/profile_hu_c80af297f4462462.png"
-srcset="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAHzElEQVR4nGyZDX7jOgjEAfndZ&amp;#43;9/tbXg/ZgBCbebJorjtPbfw7f7/PnzR0Q0X6q15Ip30do5fgG/jS9D&amp;#43;Ih&amp;#43;BT9Fb9SB&amp;#43;/dUZPzF2Y7xHvL0qX&amp;#43;gKCEOkBRW7RcJPSfQCNHEyCX3Bp65kWx1/HERqoMGH/COv3kGgAwUrEeegVJr/lwdUhbQBA4dRyccYUpVl6EtlP4QLx7jmcsQ/6QpFFP5ydQsIBEHTkR47iXWxzp9Yv1lw/t41Gy4zj9oyGHYZcJt0Xu0gGU0OcDiYGksfq3RThFfptYPG/jw2PCaAVRMxQEg641mOtaCrwDIFasHsVKzwgITjl0WvB44mEQfM/uHPK2NzdV0FZNQLTlRFc2hvl1cZXueSXO/hCrcS2O4xg1DZUSUt3&amp;#43;BOvJtApED67JJSZEKB0C&amp;#43;Xc1973TxHaGehy2m1iYa6KgU5TKJVUDa0WW/5FmJosuwMeBaJAK5e2zXvf3N/aHq6rJbh/Zxjb5qCnKMBcvnN88yk4/3HHnUTIDCZ7rbMsVarEpHTH1spzD6qupOUTrMgy7tMq1W60ekTm&amp;#43;PrdUunV8XDU4JAxXEs7SBiqyBIsJSINAcD4M4wHItMG2R&amp;#43;vLlmqxTSJRTT3cerkO/SRQj03&amp;#43;XDL9DH4L7bHOzbcMvuqRQGfFQ0sSh0W9tQXZNkw3vYUi3vdpGj9l/6wAZRaIYSIXuru&amp;#43;uS&amp;#43;7cI8hDHlCqPUaP1ZpJYwgVIjBZKfShgeeWHgnRNP9xD9xLFQkx1F3TE2fQWTz5pSF7n7qrIfYBSu/RY7aQKIV&amp;#43;28sUplkQCUDJdIEQaPQhV68KvYpmwYypj7vIKtNNk9k/gIRAa8lIykpHPj5Ej1mpY26TrBRiAfHIwII0Fo&amp;#43;ZW6z0p/zzHbawH50AYk2tfcg6zjQmEKPs2EsrEzYQmRoFWOlDlZCkqmpuWri5G9W1pbE1loqbmFfd6Kxov93oFKHfJusqcYHMGuXuTIWCB3PEK60MHq9ts4QMMaMPpSr/BDpNXptMpjynXGBdlCqTw/kIl5f24jx3ZApQu2ExEmwqxCLPlGgfoONJbbUnL3949DHZUOhul79bFTKUDvU&amp;#43;8ujjJlPqDYWsgY5I9jsVPWt1AjoVY&amp;#43;hkq9b&amp;#43;os5xGlkpF9WffVgdL9G9/8LIcUW6QEekXybDBZ1M3XpUIhhKsNTf1vMDcwvVEQwOlC4HGjOt4P8FNEw2FGKn0UBqR8LThWYkaw0bEdW81vDQNZzd2LSnSTmb3d2/FDK5db69kqa5qugIiDqr9smZiNnVx89GWnt0ueWgm3P7EWXaCp2TyqweCkt18PTFjC66xanGvkcOmc/pVnUUs9ZJ69BI1trjwjCZfGOtrqHbKT2nqbN6sBlilUCH371sm0&amp;#43;qMoTKD50Ze/1Rb0s02g85HAjaORSezH5QqhX17qazbNX6Q6qvUGf6VJFhzPZtVHsAfUbVnlNFpo0yI7Oa1vW0qdzPpPEhGyPHpLpD2cc9&amp;#43;5FA5/QqZ3o9KHEthVFLe0cBgWPz6dN8/JKTUFcrOkzMOXx6f&amp;#43;589EugI6tU5WRrqTX/gchxQtdW6KBMJjwxQFZOqP66JrEYHfUYrx/VD2tU356bzjsAdQOBBwtec85ewXcAhe9cqZa4y66NFPUCedDoaidxdWbsPJtA91ZKiRKdaXCBtBotpGHZUOSquPLEaZpi6pXz687hLEEQXKfucSPM4iShTKMqz9WGrWbIdBtekEtYovRKoLzyUohWO0z3mVJVc81B7mQ0psWoxtAYL6mQdPKfD2GINBAKe7qRSSzt7QAQvNrjw1F8TqDw6svqMm14Y5rOKhsz4p44Oa2OTCsUE2IqJytDf2ianswNvZHvQyS5IvUex0hdVsn&amp;#43;X3SJgcaTLxuqqD5RH28UPurwwfac/uPouJMANxsAR50E3HjQi6/h8ukvROrI76EjQJOdTVg/PMIK6LBg/CwsvHj1CgORaWcXkMURs32YVLD4Nxu9ucLTtx83YoSit4psbxdpliVWqDl68QTaGyT84ccoteqeU5kMldEda9Vs2pSZuuQhzevx5gogR0LC3QQMKdnTmBPIbbFDRhOu&amp;#43;uAiNh7er8Si1XjvkIGxCGS6QtzGHRkYnUkINjqrv5tS9d0&amp;#43;tXQA4wQQJZB7mY0KvfsfD&amp;#43;jtNwcBZZusUMdzxemszw2ZMtYLLNK8EJzhhgjDwKSu1MYwwPWD7fyz35dM/b5LozgmqzZmWQ5aCI6MmiV6buydyAfKZDpA0XcaHW0QQUhW8vD1/AXHSxy&amp;#43;jmszQ4LGqA1GGqiTqQVxUc2it7HSXrvJECZ7E4jlQzUn72LSrz7pQy9Y8HMlaoXqXoU6JjKGLLJqhmzgThkbJa/KejhorFKogKKAkI5wfq4Dp4GKqVQqpw7eHlXcCQnJ6RiGQhrxWJJVTfu2p3eIvRVilCfAVHmhalI1p7BXkdUIn0B//xZPmW4fe3lNDHk&amp;#43;1ECnP8p2rTznZbKbqU&amp;#43;UbT9MJbj3JZ6G35kMvacJAr1/Kc67y2TDXpnsDUVY6Mmm&amp;#43;7b1NX&amp;#43;dVrpC/eZoGovZbfba976463mrvv756LNfZutooO6uOeqxft1GtuaXWfDvE5mj1rTmTSM9t41b9d3vSzt1RT3TYgV839RWQyPE&amp;#43;2EUB3fq6r8EMWqZD5TbGPFjF73TI8b9D8Jt/&amp;#43;X/AAAA//8bib2wK0CNjAAAAABJRU5ErkJggg=="
+src="/about/profile_hu_6a715c5956f12c51.png"
 data-src="/about/profile_hu_c80af297f4462462.png"
-data-sizes="auto"
+srcset="/about/profile_hu_6a715c5956f12c51.png"
+data-srcset="/about/profile_hu_c80af297f4462462.png 160w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 width="160"
 height="160"
-data-srcset="/about/profile_hu_c80af297f4462462.png 160w"
+loading="lazy"
+decoding="async"
 />
+&lt;/picture>
 &lt;/a>
 &lt;/div>
 &lt;ul class="not-prose list-none p-0 mx-0 my-3 sm:my-6 font-article grid xs:grid-cols-3 gap-4 content-center">
@@ -1098,31 +1094,27 @@ Brett Gardiner is passionate at writing enterprise software fit for solving prob
 Recently, Brett has been hard at work optimizing realtime communication with hundreds of thousands of devices.
 &lt;/p></summary><content type="html">&lt;div class="not-prose flex flex-col items-center justify-center container mb-6 sm:mb-12 mx-auto">
 &lt;a href="/">
-&lt;noscript>
-&lt;style>
-figure.lazy {
-display: none;
-}
-&lt;/style>
-&lt;img
-class="rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
-src="/about/profile_hu_c80af297f4462462.png"
-width="160"
-height="160"
-alt="Brett Gardiner"
+&lt;picture>
+&lt;source
+type="image/webp"
+srcset="/about/profile_hu_2eef663adb0258d6.webp"
+data-srcset="/about/profile_hu_a37a9af8b11298de.webp 160w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
-&lt;/noscript>
 &lt;img
-class="lazysizes lazyload transition-all duration-200 opacity-100 rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
+class="transition-all duration-200 opacity-100 rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
 alt="Brett Gardiner"
-src="/about/profile_hu_c80af297f4462462.png"
-srcset="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAAHzElEQVR4nGyZDX7jOgjEAfndZ&amp;#43;9/tbXg/ZgBCbebJorjtPbfw7f7/PnzR0Q0X6q15Ip30do5fgG/jS9D&amp;#43;Ih&amp;#43;BT9Fb9SB&amp;#43;/dUZPzF2Y7xHvL0qX&amp;#43;gKCEOkBRW7RcJPSfQCNHEyCX3Bp65kWx1/HERqoMGH/COv3kGgAwUrEeegVJr/lwdUhbQBA4dRyccYUpVl6EtlP4QLx7jmcsQ/6QpFFP5ydQsIBEHTkR47iXWxzp9Yv1lw/t41Gy4zj9oyGHYZcJt0Xu0gGU0OcDiYGksfq3RThFfptYPG/jw2PCaAVRMxQEg641mOtaCrwDIFasHsVKzwgITjl0WvB44mEQfM/uHPK2NzdV0FZNQLTlRFc2hvl1cZXueSXO/hCrcS2O4xg1DZUSUt3&amp;#43;BOvJtApED67JJSZEKB0C&amp;#43;Xc1973TxHaGehy2m1iYa6KgU5TKJVUDa0WW/5FmJosuwMeBaJAK5e2zXvf3N/aHq6rJbh/Zxjb5qCnKMBcvnN88yk4/3HHnUTIDCZ7rbMsVarEpHTH1spzD6qupOUTrMgy7tMq1W60ekTm&amp;#43;PrdUunV8XDU4JAxXEs7SBiqyBIsJSINAcD4M4wHItMG2R&amp;#43;vLlmqxTSJRTT3cerkO/SRQj03&amp;#43;XDL9DH4L7bHOzbcMvuqRQGfFQ0sSh0W9tQXZNkw3vYUi3vdpGj9l/6wAZRaIYSIXuru&amp;#43;uS&amp;#43;7cI8hDHlCqPUaP1ZpJYwgVIjBZKfShgeeWHgnRNP9xD9xLFQkx1F3TE2fQWTz5pSF7n7qrIfYBSu/RY7aQKIV&amp;#43;28sUplkQCUDJdIEQaPQhV68KvYpmwYypj7vIKtNNk9k/gIRAa8lIykpHPj5Ej1mpY26TrBRiAfHIwII0Fo&amp;#43;ZW6z0p/zzHbawH50AYk2tfcg6zjQmEKPs2EsrEzYQmRoFWOlDlZCkqmpuWri5G9W1pbE1loqbmFfd6Kxov93oFKHfJusqcYHMGuXuTIWCB3PEK60MHq9ts4QMMaMPpSr/BDpNXptMpjynXGBdlCqTw/kIl5f24jx3ZApQu2ExEmwqxCLPlGgfoONJbbUnL3949DHZUOhul79bFTKUDvU&amp;#43;8ujjJlPqDYWsgY5I9jsVPWt1AjoVY&amp;#43;hkq9b&amp;#43;os5xGlkpF9WffVgdL9G9/8LIcUW6QEekXybDBZ1M3XpUIhhKsNTf1vMDcwvVEQwOlC4HGjOt4P8FNEw2FGKn0UBqR8LThWYkaw0bEdW81vDQNZzd2LSnSTmb3d2/FDK5db69kqa5qugIiDqr9smZiNnVx89GWnt0ueWgm3P7EWXaCp2TyqweCkt18PTFjC66xanGvkcOmc/pVnUUs9ZJ69BI1trjwjCZfGOtrqHbKT2nqbN6sBlilUCH371sm0&amp;#43;qMoTKD50Ze/1Rb0s02g85HAjaORSezH5QqhX17qazbNX6Q6qvUGf6VJFhzPZtVHsAfUbVnlNFpo0yI7Oa1vW0qdzPpPEhGyPHpLpD2cc9&amp;#43;5FA5/QqZ3o9KHEthVFLe0cBgWPz6dN8/JKTUFcrOkzMOXx6f&amp;#43;589EugI6tU5WRrqTX/gchxQtdW6KBMJjwxQFZOqP66JrEYHfUYrx/VD2tU356bzjsAdQOBBwtec85ewXcAhe9cqZa4y66NFPUCedDoaidxdWbsPJtA91ZKiRKdaXCBtBotpGHZUOSquPLEaZpi6pXz687hLEEQXKfucSPM4iShTKMqz9WGrWbIdBtekEtYovRKoLzyUohWO0z3mVJVc81B7mQ0psWoxtAYL6mQdPKfD2GINBAKe7qRSSzt7QAQvNrjw1F8TqDw6svqMm14Y5rOKhsz4p44Oa2OTCsUE2IqJytDf2ianswNvZHvQyS5IvUex0hdVsn&amp;#43;X3SJgcaTLxuqqD5RH28UPurwwfac/uPouJMANxsAR50E3HjQi6/h8ukvROrI76EjQJOdTVg/PMIK6LBg/CwsvHj1CgORaWcXkMURs32YVLD4Nxu9ucLTtx83YoSit4psbxdpliVWqDl68QTaGyT84ccoteqeU5kMldEda9Vs2pSZuuQhzevx5gogR0LC3QQMKdnTmBPIbbFDRhOu&amp;#43;uAiNh7er8Si1XjvkIGxCGS6QtzGHRkYnUkINjqrv5tS9d0&amp;#43;tXQA4wQQJZB7mY0KvfsfD&amp;#43;jtNwcBZZusUMdzxemszw2ZMtYLLNK8EJzhhgjDwKSu1MYwwPWD7fyz35dM/b5LozgmqzZmWQ5aCI6MmiV6buydyAfKZDpA0XcaHW0QQUhW8vD1/AXHSxy&amp;#43;jmszQ4LGqA1GGqiTqQVxUc2it7HSXrvJECZ7E4jlQzUn72LSrz7pQy9Y8HMlaoXqXoU6JjKGLLJqhmzgThkbJa/KejhorFKogKKAkI5wfq4Dp4GKqVQqpw7eHlXcCQnJ6RiGQhrxWJJVTfu2p3eIvRVilCfAVHmhalI1p7BXkdUIn0B//xZPmW4fe3lNDHk&amp;#43;1ECnP8p2rTznZbKbqU&amp;#43;UbT9MJbj3JZ6G35kMvacJAr1/Kc67y2TDXpnsDUVY6Mmm&amp;#43;7b1NX&amp;#43;dVrpC/eZoGovZbfba976463mrvv756LNfZutooO6uOeqxft1GtuaXWfDvE5mj1rTmTSM9t41b9d3vSzt1RT3TYgV839RWQyPE&amp;#43;2EUB3fq6r8EMWqZD5TbGPFjF73TI8b9D8Jt/&amp;#43;X/AAAA//8bib2wK0CNjAAAAABJRU5ErkJggg=="
+src="/about/profile_hu_6a715c5956f12c51.png"
 data-src="/about/profile_hu_c80af297f4462462.png"
-data-sizes="auto"
+srcset="/about/profile_hu_6a715c5956f12c51.png"
+data-srcset="/about/profile_hu_c80af297f4462462.png 160w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 width="160"
 height="160"
-data-srcset="/about/profile_hu_c80af297f4462462.png 160w"
+loading="lazy"
+decoding="async"
 />
+&lt;/picture>
 &lt;/a>
 &lt;/div>
 &lt;ul class="not-prose list-none p-0 mx-0 my-3 sm:my-6 font-article grid xs:grid-cols-3 gap-4 content-center">

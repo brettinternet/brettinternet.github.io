@@ -17,7 +17,7 @@
       {{ $build_version := getenv "HUGO_BUILD_VERSION" }}
       {{ if $build_version }}
       <a href="https://github.com/brettinternet/brettinternet.github.io/commit/{{ $build_version }}"
-        class="inline-flex font-sans font-thin hover:underline">
+        class="inline-flex font-sans font-thin text-xs hover:underline">
         (<span class="font-mono text-gray-500">
           {{ $build_version }}
         </span>)

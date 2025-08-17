@@ -1,8 +1,8 @@
 {
   "name": "brettinternet.github.io",
   "scripts": {
-    "check": "biome check && tsc --noEmit",
-    "fix": "biome check --write"
+    "check": "biome check assets && tsc --noEmit",
+    "fix": "biome check --write assets"
   },
   "dependencies": {
     "@fontsource/fira-code": "^5.2.6",

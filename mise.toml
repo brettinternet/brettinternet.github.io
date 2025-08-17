@@ -3,8 +3,9 @@ biome = "latest"
 bun = "latest"
 hugo = "latest"
 node = "latest"
-pre-commit = "latest"
-yamllint = "latest"
+dprint = "latest"
+gitleaks = "latest"
+lefthook = "latest"
 
 [settings]
 npm.bun = true

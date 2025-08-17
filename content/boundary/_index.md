@@ -437,18 +437,18 @@ end
 The web layer should also define its own boundary in `my_app_web.ex`.
 
 ```elixir
-  deps: [
-    Absinthe.Subscription,
-    Absinthe,
-    MyApp.Billing,
-    MyApp.Catalog,
-    MyApp.Orders,
-    MyApp.Users,
-    Phoenix,
-  ],
-  exports: [
-    Endpoint
-  ]
+deps: [
+  Absinthe.Subscription,
+  Absinthe,
+  MyApp.Billing,
+  MyApp.Catalog,
+  MyApp.Orders,
+  MyApp.Users,
+  Phoenix,
+],
+exports: [
+  Endpoint
+]
 ```
 
 Keep controllers or resolvers thin. For example, a GraphQL endpoint's resolver should only handle request-specific concerns. Similarly, controllers should delegate business logic to contexts.
@@ -468,9 +468,9 @@ Database queries that span boundaries become more complex and may require bounda
 ```
 
 ```elixir
-  deps: [
-    MyApp.Orders.OrderProcessing.Schemas
-  ]
+deps: [
+  MyApp.Orders.OrderProcessing.Schemas
+]
 ```
 
 We may eventually have to decouple some domains that need to become their own microservices. This needs to be balanced against architectural benefits.

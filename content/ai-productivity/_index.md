@@ -17,16 +17,19 @@ My experience with AI has been that it augments my abilities. It can consolidate
 Some people might feel like we're at a moment like this:
 
 <!-- https://x.com/RyanEls4/status/1879978018204184582 -->
+
 {{< x user="RyanEls4" id="1879978018204184582" >}}
 
 And we could be. But, we're absolutely not at a moment like this:
 
 <!-- https://x.com/amritwt/status/1941460667946713311 -->
+
 {{< x user="amritwt" id="1941460667946713311" >}}
 
 Then, there's this:
 
 <!-- https://x.com/paulg/status/1953289830982664236 -->
+
 {{< x user="paulg" id="1953289830982664236" >}}
 
 Who in this scenario is actually confirming that it's not 10k lines of slop?
@@ -36,10 +39,9 @@ I've seen software engineers sometimes get defensive on the topic of AI, because
 The reality is somewhere between the extremes. AI isn't replacing engineers, but it's also not just a fancy autocomplete. When used thoughtfully, it can genuinely accelerate development workflows by taking on specific, well-defined roles in the programming process.
 
 {{< card
-  title="brettinternet/ai"
-  description="AI tools, research & playground"
-  href="https://github.com/brettinternet/ai" >}}
-
+title="brettinternet/ai"
+description="AI tools, research & playground"
+href="https://github.com/brettinternet/ai" >}}
 
 ## Usage
 
@@ -81,6 +83,7 @@ The answer benefits onboarding, knowledge transfer, and debugging regardless of 
 AI can accomplish more sophisticated tasks when it's steered towards a very specific context. I have a coworker that calls these "surgical updates". This is where you pave a precise path for the agent to make specific changes. You might build up a context from a discovery or planning stage with an agent. In large enterprise codebases, this is how you manage context.
 
 <!-- https://x.com/vasumanmoza/status/1926487201463832863 -->
+
 {{< x user="vasumanmoza" id="1926487201463832863" >}}
 
 Writing code is rarely the bottleneck. The real challenges in software development are understanding requirements, designing systems, debugging complex interactions, and making architectural decisions. Even with AI assistance, these cognitive tasks require human judgment, domain expertise, and the ability to reason about trade-offs. AI can help you write code faster, but it can't replace the critical thinking needed to determine what code should be written in the first place.
@@ -140,6 +143,7 @@ There was a GPT 4o update a few months ago where OpenAI released a personality u
 We need self-awareness about what using AI does to our psychology and good reviewing practices to avoid problematic code getting onto `main`.
 
 <!-- https://x.com/Steve8708/status/1856896071433424982 -->
+
 {{< x user="Steve8708" id="1856896071433424982" >}}
 
 I noticed a coworker published a PR for review that had invalid code and the engineer blamed it on AI.

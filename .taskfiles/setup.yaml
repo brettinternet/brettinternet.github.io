@@ -7,6 +7,8 @@ tasks:
     desc: Install dependencies
     cmds:
       - task: mise
+      - task: lefthook
+      - task: node-modules-install
 
   mise:
     desc: Install workstation dependencies
@@ -16,3 +18,17 @@ tasks:
     preconditions:
       - sh: command -v mise
         msg: Mise is not installed
+
+  lefthook:
+    desc: Install Lefthook
+    cmds:
+      - lefthook install
+    preconditions:
+      - command -v lefthook
+      - test -f lefthook.yaml
+
+  node-modules-install:
+    cmds:
+      - bun install
+    status:
+      - test -d node_modules

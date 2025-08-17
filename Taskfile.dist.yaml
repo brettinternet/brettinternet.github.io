@@ -8,6 +8,9 @@ vars:
 
 env:
   ROOT_DIR: "{{.PROJECT_DIR}}"
+  HUGO_BUILD_VERSION: dev
+  HUGO_BUILD_TIME:
+    sh: date -u +"%Y-%m-%dT%H:%M:%SZ"
 
 includes:
   setup: .taskfiles/setup.yaml

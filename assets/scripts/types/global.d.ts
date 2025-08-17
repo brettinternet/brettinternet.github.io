@@ -1,5 +1,3 @@
-import type { LazySizesConfigPartial } from 'lazysizes'
-
 declare global {
   type Options = {
     startOnLoad: boolean
@@ -11,8 +9,7 @@ declare global {
     mermaid?: {
       initialize: (options: Options) => void
     }
-    lazysizes: {
-      cfg: LazySizesConfigPartial
-    }
   }
 }
+
+export {}

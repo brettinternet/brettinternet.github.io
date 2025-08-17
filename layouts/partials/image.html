@@ -7,75 +7,56 @@
 {{ $figure := .figure | default false }}
 
 {{ $placeholder := ($image.Resize "48x q20") | images.Filter (images.GaussianBlur 6) }}
-{{ $src_set := (print $image.RelPermalink " " $image.Width "w") }}
+{{ $webp_placeholder := $placeholder.Process "webp" }}
 
-{{ if ge $image.Width "500"}}
-{{ $x_small := $image.Resize "500x" }}
-{{ $src_set = (print $src_set ", "  $x_small.RelPermalink " 500w") }}
+{{ $sizes := slice }}
+{{ $webp_sizes := slice }}
+
+{{ range $width := slice 500 800 1200 1500 }}
+  {{ if ge $image.Width $width }}
+    {{ $resized := $image.Resize (printf "%dx" $width) }}
+    {{ $webp := $resized.Process "webp" }}
+    {{ $sizes = $sizes | append (printf "%s %dw" $resized.RelPermalink $resized.Width) }}
+    {{ $webp_sizes = $webp_sizes | append (printf "%s %dw" $webp.RelPermalink $webp.Width) }}
+  {{ end }}
 {{ end }}
 
-{{ if ge $image.Width "800"}}
-{{ $small := $image.Resize "800x" }}
-{{ $src_set = (print $src_set ", " $small.RelPermalink " 800w") }}
-{{ end }}
+{{ $original_webp := $image.Process "webp" }}
+{{ $sizes = $sizes | append (printf "%s %dw" $image.RelPermalink $image.Width) }}
+{{ $webp_sizes = $webp_sizes | append (printf "%s %dw" $original_webp.RelPermalink $original_webp.Width) }}
 
-{{ if ge $image.Width "1200"}}
-{{ $medium := $image.Resize "1200x" }}
-{{ $src_set = (print $src_set ", " $medium.RelPermalink " 1200w") }}
-{{ end }}
+{{ $srcset := delimit $sizes ", " }}
+{{ $webp_srcset := delimit $webp_sizes ", " }}
 
-{{ if gt $image.Width "1500"}}
-{{ $large := $image.Resize "1500x" }}
-{{ $src_set = (print $src_set ", " $large.RelPermalink " 1500w") }}
-{{ end }}
-
-<noscript>
-  <style>
-    figure.lazy {
-      display: none;
-    }
-  </style>
 {{ if $figure }}
 <figure {{with $figure_class}}class="{{.}}"{{end}}>
-  {{ end }}
-  <img
-      {{with $image_class}}
-      class="{{.}}"
-      {{end}}
-      src="{{ $image.RelPermalink }}"
+{{ end }}
+  <picture>
+    <source
+      type="image/webp"
+      srcset="{{ $webp_placeholder.RelPermalink }}"
+      data-srcset="{{ $webp_srcset }}"
+      sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+    />
+    <img
+      class="transition-all duration-200 opacity-100{{with $image_class}} {{.}}{{end}}"
+      alt="{{ $alt }}"
+      src="{{ $placeholder.RelPermalink }}"
+      data-src="{{ $image.RelPermalink }}"
+      srcset="{{ $placeholder.RelPermalink }}"
+      data-srcset="{{ $srcset }}"
+      sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
       width="{{ $image.Width }}"
       height="{{ $image.Height }}"
-      alt="{{ $alt }}"
+      loading="lazy"
+      decoding="async"
     />
-    {{ if $figure }}
-    {{ with $caption }}
-    <figcaption>
-      {{ . }}
-    </figcaption>
-    {{ end }}
-  </figure>
-  {{ end }}
-</noscript>
-
-{{ if .figure }}
-<figure {{with $figure_class}}class="{{.}}"{{end}}>
-  {{ end }}
-  <img
-    class="lazysizes lazyload transition-all duration-200 opacity-100{{with $image_class}} {{.}}{{end}}"
-    alt="{{ $alt }}"
-    src="{{ .image.RelPermalink }}"
-    srcset="data:image/jpeg;base64,{{ $placeholder.Content | base64Encode }}"
-    data-src="{{ $image.RelPermalink }}"
-    data-sizes="auto"
-    width="{{ $image.Width }}"
-    height="{{ $image.Height }}"
-    data-srcset="{{ $src_set }}"
-  />
-  {{ if $figure }}
-  {{ with $caption }}
+  </picture>
+  {{ if and $figure $caption }}
   <figcaption class="text-center">
-    {{ . }}
+    {{ $caption }}
   </figcaption>
   {{ end }}
+{{ if $figure }}
 </figure>
 {{ end }}

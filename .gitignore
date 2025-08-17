@@ -27,6 +27,8 @@ _testmain.go
 *.exe
 *.test
 
+jsconfig.json
+
 .DS_Store
 /tmp
 

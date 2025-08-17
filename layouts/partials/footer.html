@@ -11,17 +11,19 @@
   <ul class="flex justify-center gap-4">
     <li>
       <a href="https://github.com/brettinternet/brettinternet.github.io"
-        class="font-bold hover:underline">
+        class="inline-flex font-bold hover:underline">
         source
       </a>
       {{ $build_version := getenv "HUGO_BUILD_VERSION" }}
       {{ if $build_version }}
-      <a href="https://github.com/brettinternet/brettinternet.github.io/commit/{{ $build_version }}"
-        class="inline-flex font-sans font-thin text-xs hover:underline">
-        (<span class="font-mono text-gray-500">
+      <span class="inline-flex font-sans font-thin text-xs text-gray-500 ml-[1px]">
+        (<a href="https://github.com/brettinternet/brettinternet.github.io/commit/{{ $build_version }}"
+        class="hover:underline">
+        <span class="font-mono">
           {{ $build_version }}
-        </span>)
-      </a>
+        </span>
+      </a>)
+      </span>
       {{ end }}
     </li>
   </ul>

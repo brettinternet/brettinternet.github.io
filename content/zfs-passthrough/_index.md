@@ -2,11 +2,13 @@
 type: post
 publishDate: 2023-12-09
 title: The Stages of ZFS Grief
-description: Recovery from ZFS oops
+description: A short story about recovering from a ZFS oops
 comments: true
 ---
 
-Disk passthrough to a VM managing my ZFS array. What could go wrong?
+I used a widely-known and inexpensive method to add additional SATA storage via a Host Bus Adapter (HBA). I purchased a [Dell Perc H310](https://www.ebay.com/sch/i.html?_nkw=Dell+Perc+H310+SATA) a long while back. This HBA can be flashed to IT mode to bypass the hardware RAID. <sup>[1](#flash-instructions)</sup>
+
+Since moving my home servers to Proxmox to manage virtualization, I setup disk passthrough to a VM managing my ZFS array. What could go wrong?
 
 ```sh
 $ qm set 100 -scsi1 /dev/disk/by-id/…
@@ -171,8 +173,14 @@ Immediately:
 $ rsync -ahP /mnt/tank elsewhere:/mnt/pond/tank
 ```
 
+I later find out that some folks on forums recommend against disk passthrough for ZFS pools in VMs, but this may depend on the HBA controller.
+
 Now, I pass the entire HBA controller to guest VMs instead of individual disks when using ZFS. Lesson learned.
 
 The end.
 
 Thank you FreeBSD, Truenas, and r/zfs communities.
+
+---
+
+<a id="flash-instructions" href="#flash-instructions">1</a>: There are several instructions to flash the Dell Perc H310 HBA to IT mode: [video walkthrough](https://www.youtube.com/watch?v=EOcpp-GdhKo), [ServeTheHome post](https://www.servethehome.com/ibm-serveraid-m1015-part-4/), and [TrueNAS forum thread](https://www.truenas.com/community/threads/confused-about-that-lsi-card-join-the-crowd.11901/)

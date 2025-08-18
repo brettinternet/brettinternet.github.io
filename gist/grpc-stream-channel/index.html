@@ -1,0 +1,269 @@
+<!doctype html><html lang=en-us data-build-version=c1df88 data-build-time=2025-08-18T19:32:02+00:00><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><title>gRPC Stream to Channel • brett.cloud</title><meta name=viewport content="width=device-width,initial-scale=1"><meta name=twitter:card content="summary"><meta name=description content="Put gRPC stream values in a channel for a `select` statement"><meta property="og:description" content="Put gRPC stream values in a channel for a `select` statement"><meta property="og:title" content="gRPC Stream to Channel"><meta property="og:type" content="website"><meta property="og:url" content="https://brett.cloud/gist/grpc-stream-channel/">
+  
+    
+    
+      
+        
+          <link rel="stylesheet" href="/styles/main.83769e26b9fb280a25dc7bc6f61f08da9c2d0884dcf4ffb9e812bd1743a7b4d0.css" integrity="sha256-g3aeJrn7KAol3HvG9h8I2pwtCITc9P&#43;56BK9F0OntNA=" crossorigin="anonymous">
+        
+      
+    
+  
+
+<link rel=icon type=image/png href=/favicon.png></head><body class="min-h-screen flex flex-col text-slate-800 bg-orange-50"><header class="w-full flex flex-col items-center justify-center px-4 py-8 text-center"><p class="font-serif font-bold text-xl"><a href=https://brett.cloud/ class=hover:underline>brett</a></p></header><main class="flex-1 flex flex-col"><article class="max-w-5xl w-full mx-auto prose prose-slate mb-8 px-4"><p class="font-light my-0"><a href=/gist/ class="text-slate-600 hover:text-slate-800 inline-flex flex-row items-center gap-1"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
+Gists</a></p><h1 class=font-serif>gRPC Stream to Channel</h1><p class=font-light>Put gRPC stream values in a channel for a `select` statement</p><details open class="group/codeblock relative border-4 border-slate-600 rounded-md my-6"><summary class="relative px-3 py-2 text-sm font-medium bg-slate-600 text-slate-200 font-mono"><span>stream.go</span>
+<button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-[50%] -translate-y-[50%] right-2 px-2 py-1 bg-slate-700 hover:bg-slate-800 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy</button></summary><div class="relative overflow-x-auto py-2 bg-slate-900 rounded-md rounded-t-none"><div class=highlight title=stream.go><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!rounded-none !m-0 !bg-slate-900 !p-1 !text-[14px]"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">72
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">73
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">74
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">75
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">76
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">77
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">78
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">79
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">80
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">81
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">82
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">83
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">84
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">85
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">86
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">87
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">88
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">89
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!rounded-none !m-0 !bg-slate-900 !p-1 !text-[14px]"><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>package</span> <span style=color:#a6e22e>stream</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;context&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;errors&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;io&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;strings&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;go.uber.org/zap&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;google.golang.org/grpc/codes&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;google.golang.org/grpc/status&#34;</span>
+</span></span><span style=display:flex><span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>StreamValueReceiver</span>[<span style=color:#a6e22e>Recv</span> <span style=color:#66d9ef>any</span>] <span style=color:#66d9ef>interface</span> {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>Recv</span>() (<span style=color:#f92672>*</span><span style=color:#a6e22e>Recv</span>, <span style=color:#66d9ef>error</span>)
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// stream to chan discussion: https://github.com/grpc/grpc-go/issues/847</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>StreamValueListener</span>[<span style=color:#a6e22e>Recv</span> <span style=color:#66d9ef>any</span>] <span style=color:#66d9ef>struct</span> {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>log</span>     <span style=color:#f92672>*</span><span style=color:#a6e22e>zap</span>.<span style=color:#a6e22e>Logger</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>recv</span>    <span style=color:#66d9ef>chan</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>Recv</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>err</span>     <span style=color:#66d9ef>chan</span> <span style=color:#66d9ef>error</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>running</span> <span style=color:#66d9ef>bool</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>label</span>   <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>CreateStreamValueListener</span>[<span style=color:#a6e22e>Recv</span> <span style=color:#66d9ef>any</span>](<span style=color:#a6e22e>log</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>zap</span>.<span style=color:#a6e22e>Logger</span>, <span style=color:#a6e22e>r</span> <span style=color:#a6e22e>StreamValueReceiver</span>[<span style=color:#a6e22e>Recv</span>], <span style=color:#a6e22e>label</span> <span style=color:#66d9ef>string</span>) <span style=color:#f92672>*</span><span style=color:#a6e22e>StreamValueListener</span>[<span style=color:#a6e22e>Recv</span>] {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>o</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&amp;</span><span style=color:#a6e22e>StreamValueListener</span>[<span style=color:#a6e22e>Recv</span>]{
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>log</span>:     <span style=color:#a6e22e>log</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>recv</span>:    make(<span style=color:#66d9ef>chan</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>Recv</span>),
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>err</span>:     make(<span style=color:#66d9ef>chan</span> <span style=color:#66d9ef>error</span>),
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>running</span>: <span style=color:#66d9ef>false</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>label</span>:   <span style=color:#a6e22e>label</span>,
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>start</span>(<span style=color:#a6e22e>r</span>)
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>o</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>o</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>StreamValueListener</span>[<span style=color:#a6e22e>Recv</span>]) <span style=color:#a6e22e>start</span>(<span style=color:#a6e22e>r</span> <span style=color:#a6e22e>StreamValueReceiver</span>[<span style=color:#a6e22e>Recv</span>]) {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>r</span> <span style=color:#f92672>==</span> <span style=color:#66d9ef>nil</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>err</span> <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>errors</span>.<span style=color:#a6e22e>New</span>(<span style=color:#e6db74>&#34;output receiver is nil&#34;</span>)
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>running</span> {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>go</span> <span style=color:#66d9ef>func</span>() {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>running</span> = <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>for</span> {
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Debug</span>(<span style=color:#e6db74>&#34;Waiting for message from stream.&#34;</span>)
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>resp</span>, <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>r</span>.<span style=color:#a6e22e>Recv</span>()
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>==</span> <span style=color:#a6e22e>io</span>.<span style=color:#a6e22e>EOF</span> {
+</span></span><span style=display:flex><span>					<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Debug</span>(<span style=color:#e6db74>&#34;End of stream.&#34;</span>)
+</span></span><span style=display:flex><span>					<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>running</span> = <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>					<span style=color:#66d9ef>return</span>
+</span></span><span style=display:flex><span>				}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>st</span>, <span style=color:#a6e22e>ok</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>status</span>.<span style=color:#a6e22e>FromError</span>(<span style=color:#a6e22e>err</span>)
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>ok</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>st</span>.<span style=color:#a6e22e>Code</span>() <span style=color:#f92672>==</span> <span style=color:#a6e22e>codes</span>.<span style=color:#a6e22e>Canceled</span>) <span style=color:#f92672>||</span> <span style=color:#a6e22e>errors</span>.<span style=color:#a6e22e>Is</span>(<span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>Canceled</span>) <span style=color:#f92672>||</span> <span style=color:#a6e22e>errors</span>.<span style=color:#a6e22e>Is</span>(<span style=color:#a6e22e>err</span>, <span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>DeadlineExceeded</span>) {
+</span></span><span style=display:flex><span>					<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Debug</span>(<span style=color:#e6db74>&#34;Stream disconnected by client.&#34;</span>)
+</span></span><span style=display:flex><span>					<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>running</span> = <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>					<span style=color:#66d9ef>return</span>
+</span></span><span style=display:flex><span>				}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Contains</span>(<span style=color:#a6e22e>err</span>.<span style=color:#a6e22e>Error</span>(), <span style=color:#e6db74>&#34;EOF&#34;</span>) <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>strings</span>.<span style=color:#a6e22e>Contains</span>(<span style=color:#a6e22e>err</span>.<span style=color:#a6e22e>Error</span>(), <span style=color:#e6db74>&#34;NO_ERROR&#34;</span>) {
+</span></span><span style=display:flex><span>					<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Warn</span>(<span style=color:#e6db74>&#34;Stream disconnected by server.&#34;</span>)
+</span></span><span style=display:flex><span>					<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>running</span> = <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>					<span style=color:#66d9ef>return</span>
+</span></span><span style=display:flex><span>				}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Debug</span>(<span style=color:#e6db74>&#34;Failed to receive message from stream.&#34;</span>)
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>err</span> <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>err</span>
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>running</span> = <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>return</span>
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Debug</span>(<span style=color:#e6db74>&#34;Received message from stream.&#34;</span>)
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>recv</span> <span style=color:#f92672>&lt;-</span> <span style=color:#a6e22e>resp</span>
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}()
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>o</span> <span style=color:#a6e22e>StreamValueListener</span>[<span style=color:#a6e22e>Recv</span>]) <span style=color:#a6e22e>ListenRecv</span>() <span style=color:#66d9ef>chan</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>Recv</span> {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>recv</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> (<span style=color:#a6e22e>o</span> <span style=color:#a6e22e>StreamValueListener</span>[<span style=color:#a6e22e>Recv</span>]) <span style=color:#a6e22e>ListenErr</span>() <span style=color:#66d9ef>chan</span> <span style=color:#66d9ef>error</span> {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>err</span>
+</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></div></details><details open class="group/codeblock relative border-4 border-slate-600 rounded-md my-6"><summary class="relative px-3 py-2 text-sm font-medium bg-slate-600 text-slate-200 font-mono"><span>watch.go</span>
+<button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-[50%] -translate-y-[50%] right-2 px-2 py-1 bg-slate-700 hover:bg-slate-800 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy</button></summary><div class="relative overflow-x-auto py-2 bg-slate-900 rounded-md rounded-t-none"><div class=highlight title=watch.go><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!rounded-none !m-0 !bg-slate-900 !p-1 !text-[14px]"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!rounded-none !m-0 !bg-slate-900 !p-1 !text-[14px]"><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>package</span> <span style=color:#a6e22e>stream</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;context&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;go.uber.org/zap&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;google.golang.org/grpc&#34;</span>
+</span></span><span style=display:flex><span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>watchStream</span>(<span style=color:#a6e22e>ctx</span> <span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>Context</span>, <span style=color:#a6e22e>log</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>zap</span>.<span style=color:#a6e22e>Logger</span>, <span style=color:#a6e22e>stream</span> <span style=color:#a6e22e>pb</span>.<span style=color:#a6e22e>MyRPCStream</span>, <span style=color:#a6e22e>handle</span> <span style=color:#66d9ef>func</span>(<span style=color:#a6e22e>context</span>.<span style=color:#a6e22e>Context</span>, <span style=color:#f92672>*</span><span style=color:#a6e22e>pb</span>.<span style=color:#a6e22e>Response</span>) <span style=color:#66d9ef>error</span>) {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>o</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>CreateStreamValueListener</span>(<span style=color:#a6e22e>log</span>, <span style=color:#a6e22e>stream</span>)
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>go</span> <span style=color:#66d9ef>func</span>() {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>for</span> {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>select</span> {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>case</span> <span style=color:#f92672>&lt;-</span><span style=color:#a6e22e>ctx</span>.<span style=color:#a6e22e>Done</span>():
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Debug</span>(<span style=color:#e6db74>&#34;Context for stream cancelled.&#34;</span>, <span style=color:#a6e22e>zap</span>.<span style=color:#a6e22e>Error</span>(<span style=color:#a6e22e>ctx</span>.<span style=color:#a6e22e>Err</span>()))
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>return</span>
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>case</span> <span style=color:#f92672>&lt;-</span><span style=color:#a6e22e>sctx</span>.<span style=color:#a6e22e>Done</span>():
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Debug</span>(<span style=color:#e6db74>&#34;Stream context cancelled.&#34;</span>, <span style=color:#a6e22e>zap</span>.<span style=color:#a6e22e>Error</span>(<span style=color:#a6e22e>sctx</span>.<span style=color:#a6e22e>Err</span>()))
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>return</span>
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>case</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&lt;-</span><span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>ListenErr</span>():
+</span></span><span style=display:flex><span>				<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Error</span>(<span style=color:#e6db74>&#34;Failed to receive message from stream.&#34;</span>, <span style=color:#a6e22e>zap</span>.<span style=color:#a6e22e>Error</span>(<span style=color:#a6e22e>err</span>))
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>return</span>
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>case</span> <span style=color:#a6e22e>resp</span> <span style=color:#f92672>:=</span> <span style=color:#f92672>&lt;-</span><span style=color:#a6e22e>o</span>.<span style=color:#a6e22e>ListenRecv</span>():
+</span></span><span style=display:flex><span>				<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>resp</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
+</span></span><span style=display:flex><span>					<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Debug</span>(<span style=color:#e6db74>&#34;Received response from stream.&#34;</span>)
+</span></span><span style=display:flex><span>					<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>err</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>handle</span>(<span style=color:#a6e22e>ctx</span>, <span style=color:#a6e22e>resp</span>); <span style=color:#a6e22e>err</span> <span style=color:#f92672>!=</span> <span style=color:#66d9ef>nil</span> {
+</span></span><span style=display:flex><span>						<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Error</span>(<span style=color:#e6db74>&#34;Failed to handle response from stream.&#34;</span>, <span style=color:#a6e22e>zap</span>.<span style=color:#a6e22e>Error</span>(<span style=color:#a6e22e>err</span>))
+</span></span><span style=display:flex><span>					}
+</span></span><span style=display:flex><span>				} <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>					<span style=color:#a6e22e>log</span>.<span style=color:#a6e22e>Warn</span>(<span style=color:#e6db74>&#34;Received nil response from stream.&#34;</span>)
+</span></span><span style=display:flex><span>				}
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}()
+</span></span><span style=display:flex><span>}</span></span></code></pre></td></tr></table></div></div></div></details></article><div class="container mx-auto max-w-xl mt-24 px-4 md:px-0"><giscus-widget id=comments repo=brettinternet/brettinternet.github.io repoid="MDEwOlJlcG9zaXRvcnk5OTE5MDk3Mw==" category=comments categoryid=DIC_kwDOBemIvc4CUC0- mapping=pathname reactionsenabled=1 emitmetadata=0 inputposition=top theme=light lang=en loading=lazy></giscus-widget></div></main><footer class="container mx-auto flex flex-row items-center justify-center gap-3 py-12 px-8 font-serif text-sm"><ul class="flex justify-center gap-4"><li><a href=/ class="font-bold hover:underline">home</a></li><li><a href=/about class="font-bold hover:underline">about</a></li></ul><span>•</span><ul class="flex justify-center gap-4"><li><a href=https://github.com/brettinternet/brettinternet.github.io class="inline-flex font-bold hover:underline">source
+</a><span class="inline-flex font-sans font-thin text-xs text-gray-500 ml-1">(<a href=https://github.com/brettinternet/brettinternet.github.io/commit/c1df88 class=hover:underline>
+<span class=font-mono>c1df88
+</span></a>)</span></li></ul></footer><script src=https://brett.cloud/scripts/main.812fc2ba584b599105787f733c99c70035f1c9e5985191c43dfc859314e12e8e.min.js defer></script></body></html>

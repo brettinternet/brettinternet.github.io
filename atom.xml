@@ -80,11 +80,12 @@ d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0
 &lt;/figure>
 &lt;p>&lt;a href="https://github.com/BurntSushi/ripgrep/">Ripgrep&lt;/a> is a CLI tool for finding filenames and text in files with regex. A major differentiator between agents right now is how well they &lt;em>find&lt;/em> relevant information and fill their context with precisely what&amp;rsquo;s needed.&lt;/p>
 &lt;h3 id="4-iterative-edit-test-loops">4. Iterative Edit-Test Loops&lt;/h3>
-&lt;pre class="mermaid">flowchart LR
-A[🤖 Code] --> B[🧪 Test]
-B --> C[🔧 Fix]
-C --> A
-B --> D[✅ Done]
+&lt;pre class="mermaid">
+flowchart LR
+A[🤖 Code] --&amp;gt; B[🧪 Test]
+B --&amp;gt; C[🔧 Fix]
+C --&amp;gt; A
+B --&amp;gt; D[✅ Done]
 style A fill:#1e3a8a,stroke:#3b82f6,stroke-width:2px,color:#ffffff
 style B fill:#92400e,stroke:#f59e0b,stroke-width:2px,color:#ffffff
 style C fill:#991b1b,stroke:#ef4444,stroke-width:2px,color:#ffffff
@@ -144,14 +145,28 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;p>One approach to dealing with readability is to address organizational patterns for code, such as well-defined and enforceable &amp;ldquo;boundaries&amp;rdquo;.&lt;/p>
 &lt;h2 id="the-boundary-library">The Boundary Library&lt;/h2>
 &lt;p>&lt;a href="https://github.com/sasa1977/boundary">Boundary&lt;/a> by Saša Jurić provides compile-time warnings of architectural boundaries in Elixir applications. It transforms organizational guidelines into compiler checks, catching boundary violations before they reach production.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>mix clean &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ae81ff">\ &lt;/span> &lt;span style="color:#75715e"># Cleaning prevents false positives&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mix compile --warnings-as-errors
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># count boundary errors&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mix compile | grep -E &lt;span style="color:#e6db74">&amp;#39;warning:.*(boundary|forbidden reference)&amp;#39;&lt;/span> | wc -l
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="how-boundary-works">How Boundary Works&lt;/h3>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>mix clean &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#ae81ff">\ &lt;/span> &lt;span style="color:#75715e"># Cleaning prevents false positives&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mix compile --warnings-as-errors&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># count boundary errors&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mix compile | grep -E &lt;span style="color:#e6db74">&amp;#39;warning:.*(boundary|forbidden reference)&amp;#39;&lt;/span> | wc -l&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;h3 id="how-boundary-works">How Boundary Works&lt;/h3>
 &lt;p>The library operates through registering module attributes that define named groups of modules called boundaries. These boundaries can export inner modules from within a boundary and make them publicly accessible. Boundaries have dependencies from other boundary exports.&lt;/p>
 &lt;p>Here&amp;rsquo;s a simple example:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> This boundary can use MyApp.Users
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> and exports Products and Categories modules
@@ -172,22 +187,32 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Internal.PriceCalculator&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#e6db74">&amp;#34;This module is internal and cannot be used outside the boundary&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>If module functions in another boundary try to call &lt;code>MyApp.Catalog.Internal.PriceCalculator&lt;/code>, the compiler will raise an error.&lt;/p>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>If module functions in another boundary try to call &lt;code>MyApp.Catalog.Internal.PriceCalculator&lt;/code>, the compiler will raise an error.&lt;/p>
 &lt;h3 id="setting-up-boundary">Setting Up Boundary&lt;/h3>
 &lt;p>Add &lt;a href="https://hexdocs.pm/boundary/Boundary.html">Boundary&lt;/a> to your &lt;code>mix.exs&lt;/code>:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defp&lt;/span> deps &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defp&lt;/span> deps &lt;span style="color:#66d9ef">do&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:boundary&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;~&amp;gt; 0.10&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">runtime&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>},
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>runtime: false&lt;/code> option is important. Boundary is a compile-time tool and doesn&amp;rsquo;t need to be included in your production release.&lt;/p>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>The &lt;code>runtime: false&lt;/code> option is important. Boundary is a compile-time tool and doesn&amp;rsquo;t need to be included in your production release.&lt;/p>
 &lt;h2 id="context-boundaries">Context Boundaries&lt;/h2>
 &lt;p>On my Elixir team, we&amp;rsquo;ve extended the ideas from the Boundary library into an opinionated design pattern we call &amp;ldquo;Context Boundaries&amp;rdquo;.&lt;/p>
 &lt;h3 id="what-are-context-boundaries">What Are Context Boundaries?&lt;/h3>
 &lt;p>Context boundaries are architectural constraints that group related functionality together and define explicit interfaces for interaction between different parts of your application. Think of them as microservices within a monolith. Each boundary owns a specific business domain and exposes a well-defined API.&lt;/p>
 &lt;p>In an e-commerce application, you might have top-level boundaries like:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>lib/
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>lib/
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── my_app/
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ billing/ &lt;span style="color:#75715e"># Payment processing, invoicing, subscriptions&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ catalog/ &lt;span style="color:#75715e"># Product management, categories, pricing&lt;/span>
@@ -196,8 +221,9 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ billing.ex
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ catalog.ex
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├─ orders.ex
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └─ users.ex
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Each boundary would have its own schemas, business logic, and database concerns, but could only interact with other boundaries through their public interfaces defined in the outer context file.&lt;/p>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └─ users.ex&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>Each boundary would have its own schemas, business logic, and database concerns, but could only interact with other boundaries through their public interfaces defined in the outer context file.&lt;/p>
 &lt;p>In larger organizations, boundaries naturally form around teams and interfaces would likely be used by other teams, so design them thoughtfully.&lt;/p>
 &lt;h3 id="benefits-of-context-boundaries">Benefits of Context Boundaries&lt;/h3>
 &lt;ol>
@@ -215,7 +241,11 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;h3 id="directory-structure">Directory Structure&lt;/h3>
 &lt;details open>
 &lt;summary>A well-organized boundary-based application follows a consistent directory structure.&lt;/summary>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>lib/
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>lib/
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> my_app/
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> catalog/
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> products/
@@ -258,11 +288,16 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> user.ex
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> actions/
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> update_profile.ex
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> users.ex
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/details>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> users.ex&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;/details>
 &lt;h3 id="context-interface-design">Context Interface Design&lt;/h3>
 &lt;p>Each context exposes a clean public interface through its main module. Here&amp;rsquo;s how you might structure the &lt;code>Catalog&lt;/code> context:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> Context for managing product catalog.
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
@@ -302,8 +337,9 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@impl&lt;/span> &lt;span style="color:#a6e22e">Actions.CreateCategory&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">defdelegate&lt;/span> create_category(attrs), &lt;span style="color:#e6db74">to&lt;/span>: &lt;span style="color:#a6e22e">CategoryActions.CreateCategory&lt;/span>, &lt;span style="color:#e6db74">as&lt;/span>: &lt;span style="color:#e6db74">:create_category&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This interface provides several benefits:&lt;/p>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>This interface provides several benefits:&lt;/p>
 &lt;ol>
 &lt;li>&lt;strong>Discoverability&lt;/strong>: All public operations are visible in one place&lt;/li>
 &lt;li>&lt;strong>Delegation&lt;/strong>: Implementation details are hidden in specialized modules&lt;/li>
@@ -313,7 +349,11 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/ol>
 &lt;h3 id="action-modules">Action Modules&lt;/h3>
 &lt;p>Action modules contain the actual business logic and should follow a consistent pattern. They expose and implement a callback for their interface. At the org I work at now, we generally have one file contain only one action so that an action has one public function but can have unlimited private functions.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Actions.CreateProduct&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Actions.CreateProduct&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@behaviour&lt;/span> __MODULE__
@@ -357,8 +397,9 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">Product&lt;/span>&lt;span style="color:#f92672">.&lt;/span>changeset(params)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">Repo&lt;/span>&lt;span style="color:#f92672">.&lt;/span>insert()
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>@behaviour __MODULE__&lt;/code> is a self-referencing behavior that replaces &lt;code>@spec&lt;/code> with &lt;code>@callback&lt;/code> to provide compile-time documentation of our action functions in our context API. Each action module is now a swappable backend that can be easily mocked in tests or refactored.&lt;/p>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>The &lt;code>@behaviour __MODULE__&lt;/code> is a self-referencing behavior that replaces &lt;code>@spec&lt;/code> with &lt;code>@callback&lt;/code> to provide compile-time documentation of our action functions in our context API. Each action module is now a swappable backend that can be easily mocked in tests or refactored.&lt;/p>
 &lt;p>Key principles for action modules that we&amp;rsquo;ve implemented with our large Elixir monolith:&lt;/p>
 &lt;ul>
 &lt;li>&lt;strong>Single Responsibility&lt;/strong>: One action per module with self-referencing behavior&lt;/li>
@@ -368,7 +409,11 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/ul>
 &lt;h3 id="schema-organization">Schema Organization&lt;/h3>
 &lt;p>Schemas should be pure data definitions with minimal logic and only pure functions:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Schemas.Product&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Schemas.Product&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">use&lt;/span> &lt;span style="color:#a6e22e">Ecto.Schema&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">import&lt;/span> &lt;span style="color:#a6e22e">Ecto.Changeset&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
@@ -399,9 +444,14 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|&amp;gt;&lt;/span> validate_number(&lt;span style="color:#e6db74">:price&lt;/span>, &lt;span style="color:#e6db74">greater_than&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span>)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|&amp;gt;&lt;/span> foreign_key_constraint(&lt;span style="color:#e6db74">:category_id&lt;/span>)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Schemas are typically exported by boundaries since they&amp;rsquo;re part of the public interface. Other contexts will likely need to pattern match on them and pass them around. You may want to bulk export schemas in an inner boundary.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lib/my_app/catalog/products/schemas.ex&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>Schemas are typically exported by boundaries since they&amp;rsquo;re part of the public interface. Other contexts will likely need to pattern match on them and pass them around. You may want to bulk export schemas in an inner boundary.&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lib/my_app/catalog/products/schemas.ex&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Catalog.Products.Schemas&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> Product schemas boundary
@@ -413,12 +463,17 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">exports&lt;/span>: [
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Product&lt;/span> &lt;span style="color:#75715e"># Ecto schema definition&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This is one example of how boundaries interface with each other.&lt;/p>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>This is one example of how boundaries interface with each other.&lt;/p>
 &lt;h2 id="cross-boundary-communication">Cross-Boundary Communication&lt;/h2>
 &lt;h3 id="synchronous-communication">Synchronous Communication&lt;/h3>
 &lt;p>For synchronous operations where you need immediate results, call through the boundary&amp;rsquo;s public interface:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Orders.Actions.CreateOrder&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Orders.Actions.CreateOrder&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@behaviour&lt;/span> __MODULE__
@@ -448,10 +503,15 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:error&lt;/span>, &lt;span style="color:#e6db74">:invalid_products&lt;/span>}
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="asynchronous-communication">Asynchronous Communication&lt;/h3>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;h3 id="asynchronous-communication">Asynchronous Communication&lt;/h3>
 &lt;p>For side effects that don&amp;rsquo;t need immediate consistency, use event-driven communication:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Orders.Actions.CompleteOrder&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">defmodule&lt;/span> &lt;span style="color:#a6e22e">MyApp.Orders.Actions.CompleteOrder&lt;/span> &lt;span style="color:#66d9ef">do&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@moduledoc&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">@behaviour&lt;/span> __MODULE__
@@ -474,10 +534,15 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">:ok&lt;/span>, updated_order}
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="web-layer-organization">Web Layer Organization&lt;/h2>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;h2 id="web-layer-organization">Web Layer Organization&lt;/h2>
 &lt;p>The web layer should also define its own boundary in &lt;code>my_app_web.ex&lt;/code>.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">deps&lt;/span>: [
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">deps&lt;/span>: [
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Absinthe.Subscription&lt;/span>,
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Absinthe&lt;/span>,
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">MyApp.Billing&lt;/span>,
@@ -488,20 +553,31 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>],
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">exports&lt;/span>: [
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Endpoint&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>]
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Keep controllers or resolvers thin. For example, a GraphQL endpoint&amp;rsquo;s resolver should only handle request-specific concerns. Similarly, controllers should delegate business logic to contexts.&lt;/p>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>]&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>Keep controllers or resolvers thin. For example, a GraphQL endpoint&amp;rsquo;s resolver should only handle request-specific concerns. Similarly, controllers should delegate business logic to contexts.&lt;/p>
 &lt;h2 id="challenges">Challenges&lt;/h2>
 &lt;p>There are a few non-trivial challenges we encountered at our org with our implementation. The initial refactor was significant overhead since moving files around and function calls was so wide-spread. We were all hands on deck for a few weeks to make this work. Following our initial refactor, continuing education and discipline became a priority for us.&lt;/p>
 &lt;p>Database queries that span boundaries become more complex and may require boundary coupling, duplication or event-driven updates. We&amp;rsquo;ve elected to use a controlled coupling approach for interdependent schemas and joins. Each domain has a dedicated schemas module that acts as a child boundary that exports all of its schemas.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lib/my_app/orders/order_processing/schemas.ex&lt;/span>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># lib/my_app/orders/order_processing/schemas.ex&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">exports&lt;/span>: [
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Order&lt;/span>, &lt;span style="color:#75715e"># Ecto schema definition&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">LineItem&lt;/span> &lt;span style="color:#75715e"># Ecto schema definition&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">deps&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-elixir" data-lang="elixir">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">deps&lt;/span>: [
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">MyApp.Orders.OrderProcessing.Schemas&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>]
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>We may eventually have to decouple some domains that need to become their own microservices. This needs to be balanced against architectural benefits.&lt;/p>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>]&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>We may eventually have to decouple some domains that need to become their own microservices. This needs to be balanced against architectural benefits.&lt;/p>
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>The dynamic nature and loose conventions of Elixir makes it challenging to navigate large codebases. Context boundaries enforced through the Boundary library provide a practical path for scaling Elixir applications beyond small teams.&lt;/p>
 &lt;p>Whether you&amp;rsquo;re currently feeling the pain of a growing monolith or planning for future scale, context boundaries offer a pragmatic solution that preserves the benefits of monolithic deployment while providing the organizational clarity of business domains and microservices.&lt;/p></content></entry><entry><title>Appresize</title><link rel="alternate" href="https://brett.cloud/appresize/"/><id>https://brett.cloud/appresize/</id><published>2025-07-25T00:00:00+0000</published><updated>2025-07-25T00:00:00+0000</updated><summary>&lt;div class="flex justify-center">
@@ -531,7 +607,195 @@ People are accountable for code. AI can&amp;rsquo;t be accountable.&lt;/p>
 &lt;figcaption>Custom modifiers &amp;amp; other behaviors&lt;/figcaption>
 &lt;/figure>
 &lt;p>One of my favorite abandonware apps on macOS was an old closed-source Objective C application called &lt;a href="https://bahoom.com/hyperdock">Hyperdock&lt;/a> that had a small secondary feature to resize and move windows by a modifier from anywhere on the window.&lt;/p>
-&lt;p>There are various window utilities on Mac, but none of them satisfied my very specific expectation. Now, this demand lives on with Swift in a small utility &lt;a href="https://github.com/brettinternet/Appresize">here&lt;/a>.&lt;/p></content></entry><entry><title>Tabbed extension</title><link rel="alternate" href="https://brett.cloud/tabbed/"/><id>https://brett.cloud/tabbed/</id><published>2023-04-03T00:00:00+0000</published><updated>2023-04-03T00:00:00+0000</updated><summary>&lt;div class="flex justify-center">
+&lt;p>There are various window utilities on Mac, but none of them satisfied my very specific expectation. Now, this demand lives on with Swift in a small utility &lt;a href="https://github.com/brettinternet/Appresize">here&lt;/a>.&lt;/p></content></entry><entry><title>The Stages of ZFS Grief</title><link rel="alternate" href="https://brett.cloud/zfs-passthrough/"/><id>https://brett.cloud/zfs-passthrough/</id><published>2023-12-09T00:00:00+0000</published><updated>2023-12-09T00:00:00+0000</updated><summary>&lt;p>I used a widely-known and inexpensive method to add additional SATA storage via a Host Bus Adapter (HBA). I purchased a &lt;a href="https://www.ebay.com/sch/i.html?_nkw=Dell+Perc+H310+SATA">Dell Perc H310&lt;/a> a long while back. This HBA can be flashed to IT mode to bypass the hardware RAID. &lt;sup>&lt;a href="#flash-instructions">1&lt;/a>&lt;/sup>&lt;/p>
+&lt;p>Since moving my home servers to Proxmox to manage virtualization, I setup disk passthrough to a VM managing my ZFS array. What could go wrong?&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ qm set &lt;span style="color:#ae81ff">100&lt;/span> -scsi1 /dev/disk/by-id/…
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ qm set &lt;span style="color:#ae81ff">100&lt;/span> -scsi2 /dev/disk/by-id/…
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ …&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>I&amp;rsquo;m sure this is fine.&lt;/p></summary><content type="html">&lt;p>I used a widely-known and inexpensive method to add additional SATA storage via a Host Bus Adapter (HBA). I purchased a &lt;a href="https://www.ebay.com/sch/i.html?_nkw=Dell+Perc+H310+SATA">Dell Perc H310&lt;/a> a long while back. This HBA can be flashed to IT mode to bypass the hardware RAID. &lt;sup>&lt;a href="#flash-instructions">1&lt;/a>&lt;/sup>&lt;/p>
+&lt;p>Since moving my home servers to Proxmox to manage virtualization, I setup disk passthrough to a VM managing my ZFS array. What could go wrong?&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ qm set &lt;span style="color:#ae81ff">100&lt;/span> -scsi1 /dev/disk/by-id/…
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ qm set &lt;span style="color:#ae81ff">100&lt;/span> -scsi2 /dev/disk/by-id/…
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ …&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>I&amp;rsquo;m sure this is fine.&lt;/p>
+&lt;p>&lt;em>Hours later, after a seemingly innocent reboot…&lt;/em>&lt;/p>
+&lt;p>On the guest:&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ zpool list
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>no pools available&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;h2 id="1-denial">1. Denial&lt;/h2>
+&lt;p>On the host:&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ zpool list
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>no pools available&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>Hmm.&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ zpool import tank
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cannot import &lt;span style="color:#e6db74">&amp;#39;tank&amp;#39;&lt;/span>: I/O error
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Destroy and re-create the pool from
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a backup source.&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>Uh oh.&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ zpool import -F tank
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cannot import &lt;span style="color:#e6db74">&amp;#39;tank&amp;#39;&lt;/span>: one or more devices is currently unavailable&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>This is not good.&lt;/p>
+&lt;h2 id="2-anger">2. Anger&lt;/h2>
+&lt;p>My restic backups are stale because of some issues with my homelab. 🤦‍♂️&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ zpool import -N -o readonly&lt;span style="color:#f92672">=&lt;/span>on -f tank
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cannot import &lt;span style="color:#e6db74">&amp;#39;tank&amp;#39;&lt;/span>: I/O error
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Destroy and re-create the pool from
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a backup source.&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;blockquote>
+&lt;p>Destroy and re-create the pool from a backup source.&lt;/p>&lt;/blockquote>
+&lt;p>At this point, most forums appear to suggest that the pool is lost forever.&lt;/p>
+&lt;h2 id="3-bargaining">3. Bargaining&lt;/h2>
+&lt;p>Readonly should have worked 🤔&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ zpool import -N -o readonly&lt;span style="color:#f92672">=&lt;/span>on -f -R tank
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pool: tank
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> id: …
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> state: ONLINE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>status: Some supported features are not enabled on the pool.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">(&lt;/span>Note that they may be intentionally disabled &lt;span style="color:#66d9ef">if&lt;/span> the
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;compatibility&amp;#39;&lt;/span> property is set.&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> action: The pool can be imported using its name or numeric identifier, though
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> some features will not be available without an explicit &lt;span style="color:#e6db74">&amp;#39;zpool upgrade&amp;#39;&lt;/span>.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> config:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> tank ONLINE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> raidz2-0 ONLINE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> … ONLINE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> … ONLINE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> … ONLINE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> … ONLINE&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ zpool import -F&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>Same output as above.&lt;/p>
+&lt;p>Online seems good, right?&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ zpool status
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>no pools available&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ zpool import -F -m tank
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cannot import &lt;span style="color:#e6db74">&amp;#39;tank&amp;#39;&lt;/span>: one or more devices is currently unavailable&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>Well, here we go. Let&amp;rsquo;s find the txg to use for a rollback.&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ zpool import -FX tank
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># seemingly hanging for a while…&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>^C^C^C^C&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>That option must not work the way I expected (forgive my impatience, dear reader).&lt;/p>
+&lt;h2 id="4-depression">4. Depression&lt;/h2>
+&lt;p>At this point I pull down the latest snapshot from Backblaze and assess the damage.&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ zdb tank
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>zdb: can&lt;span style="color:#e6db74">&amp;#39;t open &amp;#39;&lt;/span>tank&lt;span style="color:#960050;background-color:#1e0010">&amp;#39;&lt;/span>: No such file or directory
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ZFS_DBGMSG&lt;span style="color:#f92672">(&lt;/span>zdb&lt;span style="color:#f92672">)&lt;/span> START:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ZFS_DBGMSG&lt;span style="color:#f92672">(&lt;/span>zdb&lt;span style="color:#f92672">)&lt;/span> END&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>What have I done to myself.&lt;/p>
+&lt;h2 id="5-acceptance">5. Acceptance&lt;/h2>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ restic snapshots
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>repository … opened &lt;span style="color:#f92672">(&lt;/span>version 2, compression level auto&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ID Time Host Tags Paths
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>--------------------------------------------------------------------------
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>20ee6d7b … restic-remote restic /data&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>Deep breath.&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ restic restore 20ee6d7b --target ./data&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;h2 id="6-">6. ?&lt;/h2>
+&lt;p>Ok, wait a minute. Let&amp;rsquo;s try that mysterious -X flag again, but with more patience.&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ zpool import -FX tank
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># … waiting … staring … go get dinner … waiting … put baby to bed …&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>Exit 0! It worked!&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ ls /mnt/tank
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>files files files!&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>Immediately:&lt;/p>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ rsync -ahP /mnt/tank elsewhere:/mnt/pond/tank&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>I later find out that some folks on forums recommend against disk passthrough for ZFS pools in VMs, but this may depend on the HBA controller.&lt;/p>
+&lt;p>Now, I pass the entire HBA controller to guest VMs instead of individual disks when using ZFS. Lesson learned.&lt;/p>
+&lt;p>The end.&lt;/p>
+&lt;p>Thank you FreeBSD, Truenas, and r/zfs communities.&lt;/p>
+&lt;hr>
+&lt;p>&lt;a id="flash-instructions" href="#flash-instructions">1&lt;/a>: There are several instructions to flash the Dell Perc H310 HBA to IT mode: &lt;a href="https://www.youtube.com/watch?v=EOcpp-GdhKo">video walkthrough&lt;/a>, &lt;a href="https://www.servethehome.com/ibm-serveraid-m1015-part-4/">ServeTheHome post&lt;/a>, and &lt;a href="https://www.truenas.com/community/threads/confused-about-that-lsi-card-join-the-crowd.11901/">TrueNAS forum thread&lt;/a>&lt;/p></content></entry><entry><title>Tabbed extension</title><link rel="alternate" href="https://brett.cloud/tabbed/"/><id>https://brett.cloud/tabbed/</id><published>2023-04-03T00:00:00+0000</published><updated>2023-04-03T00:00:00+0000</updated><summary>&lt;div class="flex justify-center">
 &lt;img width="128" src="./icon.png" alt="session manager extension icon" class="my-3" />
 &lt;/div>
 &lt;h1 align="center">Tabbed&lt;/h1>
@@ -640,7 +904,11 @@ foreign functions in Rust. I&amp;rsquo;m still able to use the hotkey &lt;kbd>�
 I&amp;rsquo;ve also mapped it to a macropad that uses &lt;kbd>F13&lt;/kbd>. My script also
 supports Push To Talk.&lt;/p>
 &lt;p>Here&amp;rsquo;s the solution:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>muteAlertId &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">nil&lt;/span>
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-lua" data-lang="lua">&lt;span style="display:flex;">&lt;span>muteAlertId &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">nil&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- Clear the alert if exists to avoid notifications stacking&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">local&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">clearMuteAlert&lt;/span>()
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> muteAlertId &lt;span style="color:#66d9ef">then&lt;/span>
@@ -683,8 +951,9 @@ supports Push To Talk.&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">end&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- `⌘ ⇧ A` but you could also map to F13 for a macropad&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hs.hotkey.bind({&lt;span style="color:#e6db74">&amp;#34;cmd&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;shift&amp;#34;&lt;/span>}, &lt;span style="color:#e6db74">&amp;#34;a&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">nil&lt;/span>, toggleMuteOrPTT, pushToTalk)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Hammerspoon also makes it incredibly easy to add other utilities, such as making
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hs.hotkey.bind({&lt;span style="color:#e6db74">&amp;#34;cmd&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;shift&amp;#34;&lt;/span>}, &lt;span style="color:#e6db74">&amp;#34;a&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">nil&lt;/span>, toggleMuteOrPTT, pushToTalk)&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>Hammerspoon also makes it incredibly easy to add other utilities, such as making
 a hotkey to change the default audio output or input. Find the latest
 &lt;a href="https://github.com/brettinternet/dotfiles/tree/9ff9cdaba6358b16fc0efa4f2fd3f0617f038dcb/mac/.hammerspoon">source in my dotfiles&lt;/a>.&lt;/p>
 &lt;div class='text-center mt-12'>
@@ -736,16 +1005,17 @@ and the Livebook app. Cloudflare DNS is automated with CNAME creation from
 Traefik routes. There&amp;rsquo;s no port forwarding required to host this app on a domain
 you own.&lt;/p>
 &lt;p>Here&amp;rsquo;s a sketch of the architecture:&lt;/p>
-&lt;pre class="mermaid">graph TB
+&lt;pre class="mermaid">
+graph TB
 tf(Terraform) -.- dns
 tf -.- argo
-dns{Cloudflare DNS} --> argo
-argo((Cloudflare Tunnels)) == Tunnel ==> cloudflared
+dns{Cloudflare DNS} --&amp;gt; argo
+argo((Cloudflare Tunnels)) == Tunnel ==&amp;gt; cloudflared
 ddns -.- dns
 subgraph lan[Docker Network]
 style lan stroke-dasharray: 5 5
-cloudflared --> traefik[Traefik reverse proxy]
-traefik --> livebook[Livebook]
+cloudflared --&amp;gt; traefik[Traefik reverse proxy]
+traefik --&amp;gt; livebook[Livebook]
 ddns[cloudflare-companion] -. service discovery .- livebook
 end
 &lt;/pre>
@@ -757,8 +1027,13 @@ end
 to see what each one does.&lt;/p>
 &lt;h3 id="setup">Setup&lt;/h3>
 &lt;p>First, initialize the config file and terraform project.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>make setup
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This creates a &lt;code>.env&lt;/code> file which you should edit with your own secrets.
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>make setup&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>This creates a &lt;code>.env&lt;/code> file which you should edit with your own secrets.
 &lt;code>CLOUDFLARE_API_TOKEN&lt;/code> needs Zone.DNS and Account.Cloudflare Tunnel write
 permissions for the domain in use. Use an API token, not an API key. The value
 for &lt;code>CLOUDFLARE_TUNNEL_TOKEN&lt;/code> will come later.&lt;/p>
@@ -767,16 +1042,26 @@ from the &lt;a href="https://one.dash.cloudflare.com/">Cloudflare Zero Trust das
 Note, using the dashboard setup, point the tunnel endpoint to
 &lt;code>http://traefik:80&lt;/code> as the cloudflared image sees the host within the docker
 network.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>make terraform
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This plans and applies the terraform tunnel configuration. It creates a CNAME
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>make terraform&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>This plans and applies the terraform tunnel configuration. It creates a CNAME
 record tunnel.example.com that points to the Cloudflared tunnel URL.&lt;/p>
 &lt;p>Find the &lt;code>tunnel_token&lt;/code> value in the terraform output file
 &lt;code>./tunnel/terraform.tfstate&lt;/code> and add it as the value of
 &lt;code>CLOUDFLARE_TUNNEL_TOKEN&lt;/code>.&lt;/p>
 &lt;h3 id="run">Run&lt;/h3>
 &lt;p>Start the docker compose.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>make start
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This runs &lt;code>docker-compose --compatibility up&lt;/code>. The compatibility flag appears to
+&lt;div class="group/codeblock relative overflow-x-auto my-6">
+&lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy
+&lt;/button>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="!bg-slate-900 !m-0">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>make start&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>This runs &lt;code>docker-compose --compatibility up&lt;/code>. The compatibility flag appears to
 be required in order to
 &lt;a href="https://github.com/docker/compose/issues/4513">set resource limits in docker-compose&lt;/a>.&lt;/p>
 &lt;h2 id="you-can-self-host">You can self-host&lt;/h2>

@@ -1,8 +1,12 @@
 <header class="w-full flex flex-col items-center justify-center px-4 py-8 text-center">
+  {{ if not .Params.hide_logo }}
   <div class="flex justify-center">
     <a href="{{ .Site.BaseURL }}">
       <span role="img" class="flex justify-center">{{ partial "icons/logo.svg" (dict "class" "w-12") }}</span>
     </a>
   </div>
-  <p class="font-serif font-bold text-xl"><a href="{{ "about" | relURL }}" class="hover:underline">brett</a></p>
+  {{ end }}
+  <p class="font-serif font-bold text-xl">
+    <a href="{{ if .Params.hide_logo }}{{ .Site.BaseURL }}{{else}}{{ "about" | relURL }}{{end}}" class="hover:underline">brett</a>
+  </p>
 </header>

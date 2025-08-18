@@ -1,0 +1,21 @@
+{{ $result := transform.HighlightCodeBlock . }}
+{{ $title := .Attributes.title }}
+{{ $open := .Attributes.open | default true }}
+{{ if .Attributes.closed }}
+{{ $open = false }}
+{{ end }}
+{{ if $title }}
+<details {{if $open}}open {{end}}class="relative{{if $title }} border-4 border-slate-600 rounded-md{{ end }} my-6">
+  {{ $lang := .Type }}
+  <summary class="px-3 py-2 text-sm font-medium bg-slate-600 text-slate-200 font-mono">
+    {{ $title }}
+  </summary>
+  <div class="relative bg-slate-900 rounded-md {{ if $title }}rounded-t-none{{ end }}">
+    {{ $wrapped := $result.Wrapped | replaceRE `<pre([^>]*)>` `<pre$1 class="!rounded-none !m-0 !bg-slate-900">` }}
+    {{ $wrapped | safeHTML }}
+  </div>
+</details>
+{{ else }}
+{{ $wrapped := $result.Wrapped | replaceRE `<pre([^>]*)>` `<pre$1 class="!bg-slate-900">` }}
+{{ $wrapped | safeHTML }}
+{{ end }}

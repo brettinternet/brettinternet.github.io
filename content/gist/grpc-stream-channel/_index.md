@@ -5,7 +5,7 @@ description: Put gRPC stream values in a channel for a `select` statement
 comments: true
 ---
 
-```go {title="stream.go" lineNos=inline}
+```go {title="stream.go" lineNos=true}
 package stream
 
 import (
@@ -97,7 +97,7 @@ func (o StreamValueListener[Recv]) ListenErr() chan error {
 }
 ```
 
-```go {title="watch.go" lineNos=inline}
+```go {title="watch.go" lineNos=true}
 package stream
 
 import (

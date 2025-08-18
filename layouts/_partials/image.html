@@ -18,32 +18,9 @@
   {{ $webp_still := $image.Process "webp" }}
   {{ $webp_placeholder := $placeholder.Process "webp" }}
 
-  {{ $gif_srcset := "" }}
-  {{ $webp_srcset := "" }}
-
-  {{ range $index, $width := slice 500 800 1200 1500 }}
-    {{ if ge $image.Width $width }}
-      {{ $gif_resized := $image.Resize (printf "%dx" $width) }}
-      {{ $webp_resized := $gif_resized.Process "webp" }}
-
-      {{ if ne $gif_srcset "" }}
-        {{ $gif_srcset = printf "%s, %s %dw" $gif_srcset $gif_resized.RelPermalink $gif_resized.Width }}
-        {{ $webp_srcset = printf "%s, %s %dw" $webp_srcset $webp_resized.RelPermalink $webp_resized.Width }}
-      {{ else }}
-        {{ $gif_srcset = printf "%s %dw" $gif_resized.RelPermalink $gif_resized.Width }}
-        {{ $webp_srcset = printf "%s %dw" $webp_resized.RelPermalink $webp_resized.Width }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-
-  {{/* Add original size */}}
-  {{ if ne $gif_srcset "" }}
-    {{ $gif_srcset = printf "%s, %s %dw" $gif_srcset $image.RelPermalink $image.Width }}
-    {{ $webp_srcset = printf "%s, %s %dw" $webp_srcset $webp_still.RelPermalink $webp_still.Width }}
-  {{ else }}
-    {{ $gif_srcset = printf "%s %dw" $image.RelPermalink $image.Width }}
-    {{ $webp_srcset = printf "%s %dw" $webp_still.RelPermalink $webp_still.Width }}
-  {{ end }}
+  {{/* Use original GIF size only - no resizing */}}
+  {{ $gif_srcset := printf "%s %dw" $image.RelPermalink $image.Width }}
+  {{ $webp_srcset := printf "%s %dw" $webp_still.RelPermalink $webp_still.Width }}
 
   {{ $html := printf `<picture>
     <source

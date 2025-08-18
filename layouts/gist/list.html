@@ -1,0 +1,20 @@
+{{ define "main" }}
+  <article class="prose max-w-4xl mx-auto w-full mb-4">
+    {{ if not .Params.hide_title }}
+    <h1 class="text-center">{{ .Title }}</h1>
+    {{ end }}
+    {{ if not .Params.hide_description }}
+    {{ with .Description }}
+    <p class="font-light">{{.}}</p>
+    {{ end }}
+    {{ end }}
+    {{ .Content }}
+  </article>
+  <ul class="mx-auto mb-8 flex flex-wrap justify-center items-center max-w-4xl 2xl:max-w-[96rem] 2xl:px-3">
+    {{ range where .Pages "Type" "gist" }}
+    <li class="p-3 flex items-center justify-center w-full min-w-full md:w-1/2 2xl:w-1/4">
+      {{ partial "card" . }}
+    </li>
+    {{ end }}
+  </ul>
+{{ end }}

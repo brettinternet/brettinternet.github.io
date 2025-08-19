@@ -51,3 +51,9 @@ tasks:
     cmds:
       - bun run fix
       - dprint fmt
+
+  remote:
+    desc: Open the remote GitHub repository in default browser
+    cmd: >
+      {{if eq OS "darwin"}}open{{else if eq OS "linux"}}xdg-open{{else if eq OS "windows"}}start{{else}}open{{end}}
+      $(git remote get-url origin | sed 's/\.git$//' | sed 's|git@github.com:|https://github.com/|')

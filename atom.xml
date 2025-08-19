@@ -79,6 +79,31 @@ d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0
 &lt;figcaption>@anthropic/claude-code&lt;/figcaption>
 &lt;/figure>
 &lt;p>&lt;a href="https://github.com/BurntSushi/ripgrep/">Ripgrep&lt;/a> is a CLI tool for finding filenames and text in files with regex. A major differentiator between agents right now is how well they &lt;em>find&lt;/em> relevant information and fill their context with precisely what&amp;rsquo;s needed.&lt;/p>
+&lt;p>The workflow might look like this:&lt;/p>
+&lt;ol>
+&lt;li>Build up the context for what you&amp;rsquo;re working on, this is the rewind checkpoint&lt;/li>
+&lt;li>Perform a task, but at a stopping point you should rewind (double escape) the context checkpoint
+&lt;ul>
+&lt;li>You can do this with multiple chats (for Claude Code, run &lt;code>/resume&lt;/code> and select the context checkpoint)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Describe to the agent that your developer finished the task and to &lt;a href="https://github.com/brettinternet/ai/blob/aa150ea920b92779992c885af3d83b76eddaae8d/.claude/commands/feedback.md">provide feedback&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;div class="border-l-4 border-blue-500 p-2 my-5" role="alert">
+&lt;div class="not-prose flex items-center gap-1 text-blue-700 mb-1">
+&lt;svg
+class="h-5 w-5"
+xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+stroke="currentColor">
+&lt;path stroke-linecap="round" stroke-linejoin="round"
+d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+&lt;/svg>
+&lt;span class="font-semibold">Tip&lt;/span>
+&lt;/div>
+&lt;div>
+It appears LLMs provide more honest with feedback to a third party (e.g. &amp;ldquo;my developer&amp;rdquo;)
+&lt;/div>
+&lt;/div>
 &lt;h3 id="4-iterative-edit-test-loops">4. Iterative Edit-Test Loops&lt;/h3>
 &lt;pre class="mermaid">
 flowchart LR

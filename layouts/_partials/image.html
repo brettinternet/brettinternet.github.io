@@ -7,52 +7,33 @@
 {{ $figure := .figure | default false }}
 
 {{ $isGif := eq (path.Ext $image.RelPermalink) ".gif" }}
-{{ $placeholder := ($image.Resize "48x q20") | images.Filter (images.GaussianBlur 6) }}
+{{ $placeholder := "" }}
+{{ if not $isGif }}
+  {{ $placeholder = ($image.Resize "48x q20") | images.Filter (images.GaussianBlur 6) }}
+{{ end }}
 
 {{ if $figure }}
 <figure {{with $figure_class}}class="{{.}}"{{end}}>
 {{ end }}
 
 {{ if $isGif }}
-  {{/* Create WebP still frame for initial display */}}
-  {{ $webp_still := $image.Process "webp" }}
-  {{ $webp_placeholder := $placeholder.Process "webp" }}
-
-  {{/* Use original GIF size only - no resizing */}}
+  {{/* Skip all processing for GIFs - use original files only */}}
   {{ $gif_srcset := printf "%s %dw" $image.RelPermalink $image.Width }}
-  {{ $webp_srcset := printf "%s %dw" $webp_still.RelPermalink $webp_still.Width }}
+  {{ $webp_srcset := "" }}
 
-  {{ $html := printf `<picture>
-    <source
-      type="image/webp"
-      srcset="%s"
-      data-srcset="%s"
-      sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
-    />
-    <img
-      class="transition-all duration-300 opacity-100 gif-progressive%s"
+  {{ $html := printf `<img
+      class="transition-all duration-300 opacity-100%s"
       alt="%s"
       src="%s"
       srcset="%s"
-      data-webp-src="%s"
-      data-webp-srcset="%s"
-      data-gif-src="%s"
-      data-gif-srcset="%s"
       sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
       width="%d"
       height="%d"
       loading="lazy"
       decoding="async"
-    />
-  </picture>`
-    $webp_placeholder.RelPermalink
-    $webp_srcset
+    />`
     (cond $image_class (printf " %s" $image_class) "")
     $alt
-    $placeholder.RelPermalink
-    $placeholder.RelPermalink
-    $webp_still.RelPermalink
-    $webp_srcset
     $image.RelPermalink
     $gif_srcset
     $image.Width

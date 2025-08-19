@@ -18,7 +18,10 @@
 <meta property="og:url" content="{{ .Permalink }}"/>
 {{ $image := index (.Resources.ByType "image") 0 }}
 {{ if $image }}
-  {{ $image = $image.Resize "600x Lanczos" }}
+  {{ $isGif := eq (path.Ext $image.RelPermalink) ".gif" }}
+  {{ if not $isGif }}
+    {{ $image = $image.Resize "600x Lanczos" }}
+  {{ end }}
   <meta property="og:image" content="{{ $image.Permalink | absURL }}"/>
 {{ end }}
 

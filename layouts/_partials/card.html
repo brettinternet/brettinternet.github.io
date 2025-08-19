@@ -18,7 +18,10 @@
 >
   {{ if $image }}
     <div class="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center rounded-md -z-10 brightness-50">
-    {{ $image = $image.Resize "x300 Lanczos" }}
+    {{ $isGif := eq (path.Ext $image.RelPermalink) ".gif" }}
+    {{ if not $isGif }}
+      {{ $image = $image.Resize "x300 Lanczos" }}
+    {{ end }}
     {{ $alt := $image.Params.Alt | default $image.Title }}
     {{ $caption := $image.Params.Caption }}
     {{ $params := dict

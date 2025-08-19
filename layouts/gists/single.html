@@ -24,7 +24,10 @@
   {{ if not .Params.hide_image }}
     {{ $image := index (.Resources.ByType "image") 0 }}
     {{ if $image }}
-      {{ $image = $image.Resize "600x Lanczos" }}
+      {{ $isGif := eq (path.Ext $image.RelPermalink) ".gif" }}
+      {{ if not $isGif }}
+        {{ $image = $image.Resize "600x Lanczos" }}
+      {{ end }}
       {{ $alt := $image.Params.Alt }}
       {{ $caption := $image.Params.Caption }}
       {{ $params := dict

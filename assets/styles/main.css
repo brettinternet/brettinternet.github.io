@@ -32,8 +32,7 @@
     @apply font-serif;
   }
 
-  article p,
-  article ul {
+  article {
     @apply font-article;
   }
 

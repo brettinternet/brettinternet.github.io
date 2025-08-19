@@ -96,6 +96,17 @@ Claude code is closed-source but after some inspection you'll find it ships with
 
 [Ripgrep](https://github.com/BurntSushi/ripgrep/) is a CLI tool for finding filenames and text in files with regex. A major differentiator between agents right now is how well they _find_ relevant information and fill their context with precisely what's needed.
 
+The workflow might look like this:
+
+1. Build up the context for what you're working on, this is the rewind checkpoint
+2. Perform a task, but at a stopping point you should rewind (double escape) the context checkpoint
+   - You can do this with multiple chats (for Claude Code, run `/resume` and select the context checkpoint)
+3. Describe to the agent that your developer finished the task and to [provide feedback](https://github.com/brettinternet/ai/blob/aa150ea920b92779992c885af3d83b76eddaae8d/.claude/commands/feedback.md)
+
+{{< note title="Tip" >}}
+It appears LLMs provide more honest with feedback to a third party (e.g. "my developer")
+{{< /note >}}
+
 ### 4. Iterative Edit-Test Loops
 
 ```mermaid

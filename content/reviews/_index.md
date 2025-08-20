@@ -1,5 +1,4 @@
 ---
-layout: "404"
 cascade:
   params:
     hide_header: true

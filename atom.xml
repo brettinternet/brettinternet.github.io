@@ -54,7 +54,7 @@ d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0
 &lt;p>There are MCP servers that assist with most of these roles. I have &lt;a href="https://github.com/brettinternet/mcp">some I&amp;rsquo;m working on&lt;/a> and &lt;a href="https://github.com/brettinternet/ai">a few I use&lt;/a> regularly.&lt;/p>
 &lt;h3 id="1-code-completions">1. Code completions&lt;/h3>
 &lt;p>This is the most obvious pair programming application for AI.&lt;/p>
-&lt;figure >
+&lt;figure class="flex flex-col justify-center items-center">
 &lt;picture>
 &lt;source
 type="image/webp"
@@ -62,7 +62,7 @@ data-srcset="/ai-productivity/vscode-typo_hu_d55c16dae146b3e3.webp 500w, /ai-pro
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
 &lt;img
-class="transition-all duration-300 opacity-100 gif-progressive flex flex-col justify-center items-center"
+class="transition-all duration-300 opacity-100 gif-progressive"
 alt="code completions"
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='680' height='383'%3E%3C/svg%3E"
 data-placeholder-src="/ai-productivity/vscode-typo_hu_ec8ae483afc23a94.gif"
@@ -97,7 +97,7 @@ Copilot code completions
 &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
 &lt;p>Writing code is rarely the bottleneck. The real challenges in software development are understanding requirements, designing systems, debugging complex interactions, and making architectural decisions. Even with AI assistance, these cognitive tasks require human judgment, domain expertise, and the ability to reason about trade-offs. AI can help you write code faster, but it can&amp;rsquo;t replace the critical thinking needed to determine what code should be written in the first place.&lt;/p>
 &lt;p>Claude code is closed-source but after some inspection you&amp;rsquo;ll find it ships with a few vendor distributions: (a) JetBrains extension, (b) VSCode extension, and (c) ripgrep.&lt;/p>
-&lt;figure >
+&lt;figure class="flex flex-col justify-center items-center">
 &lt;picture>
 &lt;source
 type="image/webp"
@@ -105,7 +105,7 @@ data-srcset="/ai-productivity/claude-vendor_hu_4a808defb75885d1.webp 482w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
 &lt;img
-class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+class="transition-all duration-200 opacity-100"
 alt="claude distribution with vendor directory"
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='482' height='240'%3E%3C/svg%3E"
 data-placeholder-src="/ai-productivity/claude-vendor_hu_ccba07a3edec6cdd.png"
@@ -176,7 +176,7 @@ style D fill:#065f46,stroke:#10b981,stroke-width:2px,color:#ffffff
 &lt;p>You&amp;rsquo;ll discover within the first few minutes of using Claude that it &lt;a href="https://github.com/anthropics/claude-code/issues/3382">consistently responds&lt;/a> with this praise:&lt;/p>
 &lt;blockquote>
 &lt;p>You&amp;rsquo;re absolutely right!&lt;/p>&lt;/blockquote>
-&lt;figure >
+&lt;figure class="flex flex-col justify-center items-center">
 &lt;picture>
 &lt;source
 type="image/webp"
@@ -184,7 +184,7 @@ data-srcset="/ai-productivity/glazing_hu_47ac488e1d6f128b.webp 500w, /ai-product
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
 &lt;img
-class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+class="transition-all duration-200 opacity-100"
 alt="ChatGPT: Dude. You just said something deep as hell without even flinching. You're 1000% right."
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1418' height='532'%3E%3C/svg%3E"
 data-placeholder-src="/ai-productivity/glazing_hu_e4d01e346554251c.png"
@@ -675,7 +675,7 @@ Copy
 &lt;/div>
 &lt;h1 align="center">Appresize&lt;/h1>
 &lt;p>&lt;a href="https://github.com/brettinternet/Appresize">Appresize&lt;/a> is a utility to resize and move apps from anywhere on the window with custom modifiers and other preferences.&lt;/p>
-&lt;figure >
+&lt;figure class="flex flex-col justify-center items-center">
 &lt;picture>
 &lt;source
 type="image/webp"
@@ -683,7 +683,7 @@ data-srcset="/appresize/demo_hu_6e1718dc9843f023.webp 480w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
 &lt;img
-class="transition-all duration-300 opacity-100 gif-progressive flex flex-col justify-center items-center"
+class="transition-all duration-300 opacity-100 gif-progressive"
 alt="resize &amp; move apps from anywhere on the window"
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='315'%3E%3C/svg%3E"
 data-placeholder-src="/appresize/demo_hu_a89decbdc7c40554.gif"
@@ -702,7 +702,7 @@ decoding="async"
 Although not captured by the screen recorder, the cursor does follow window
 &lt;/figcaption>
 &lt;/figure>
-&lt;figure >
+&lt;figure class="flex flex-col justify-center items-center">
 &lt;picture>
 &lt;source
 type="image/webp"
@@ -710,7 +710,7 @@ data-srcset="/appresize/screenshot_hu_75f32cfceb6f8a9.webp 480w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
 &lt;img
-class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+class="transition-all duration-200 opacity-100"
 alt="window preferences"
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='367'%3E%3C/svg%3E"
 data-placeholder-src="/appresize/screenshot_hu_f0bd3b7baf9adb6d.png"
@@ -732,7 +732,7 @@ Custom modifiers &amp;amp; other behaviors
 &lt;/div>
 &lt;h1 align="center">Appresize&lt;/h1>
 &lt;p>&lt;a href="https://github.com/brettinternet/Appresize">Appresize&lt;/a> is a utility to resize and move apps from anywhere on the window with custom modifiers and other preferences.&lt;/p>
-&lt;figure >
+&lt;figure class="flex flex-col justify-center items-center">
 &lt;picture>
 &lt;source
 type="image/webp"
@@ -740,7 +740,7 @@ data-srcset="/appresize/demo_hu_6e1718dc9843f023.webp 480w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
 &lt;img
-class="transition-all duration-300 opacity-100 gif-progressive flex flex-col justify-center items-center"
+class="transition-all duration-300 opacity-100 gif-progressive"
 alt="resize &amp; move apps from anywhere on the window"
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='315'%3E%3C/svg%3E"
 data-placeholder-src="/appresize/demo_hu_a89decbdc7c40554.gif"
@@ -759,7 +759,7 @@ decoding="async"
 Although not captured by the screen recorder, the cursor does follow window
 &lt;/figcaption>
 &lt;/figure>
-&lt;figure >
+&lt;figure class="flex flex-col justify-center items-center">
 &lt;picture>
 &lt;source
 type="image/webp"
@@ -767,7 +767,7 @@ data-srcset="/appresize/screenshot_hu_75f32cfceb6f8a9.webp 480w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
 &lt;img
-class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+class="transition-all duration-200 opacity-100"
 alt="window preferences"
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='367'%3E%3C/svg%3E"
 data-placeholder-src="/appresize/screenshot_hu_f0bd3b7baf9adb6d.png"
@@ -979,7 +979,7 @@ Copy
 &lt;h1 align="center">Tabbed&lt;/h1>
 &lt;p>Tabbed is an experiment with a Chrome extension to visualize and organize
 browser tabs.&lt;/p>
-&lt;figure >
+&lt;figure class="flex flex-col justify-center items-center">
 &lt;picture>
 &lt;source
 type="image/webp"
@@ -987,7 +987,7 @@ data-srcset="/tabbed/screenshot_hu_7570555de49d0fbc.webp 500w, /tabbed/screensho
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
 &lt;img
-class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+class="transition-all duration-200 opacity-100"
 alt="dragging window tab to a new window"
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1280' height='800'%3E%3C/svg%3E"
 data-placeholder-src="/tabbed/screenshot_hu_56ecfb0e5959dd20.png"
@@ -1012,7 +1012,7 @@ Drag and drop browser session management
 &lt;h1 align="center">Tabbed&lt;/h1>
 &lt;p>Tabbed is an experiment with a Chrome extension to visualize and organize
 browser tabs.&lt;/p>
-&lt;figure >
+&lt;figure class="flex flex-col justify-center items-center">
 &lt;picture>
 &lt;source
 type="image/webp"
@@ -1020,7 +1020,7 @@ data-srcset="/tabbed/screenshot_hu_7570555de49d0fbc.webp 500w, /tabbed/screensho
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
 &lt;img
-class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+class="transition-all duration-200 opacity-100"
 alt="dragging window tab to a new window"
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1280' height='800'%3E%3C/svg%3E"
 data-placeholder-src="/tabbed/screenshot_hu_56ecfb0e5959dd20.png"
@@ -1066,7 +1066,7 @@ macOS with a global shortcut and a clear visual indicator. It&amp;rsquo;s inspir
 for Windows.&lt;/p>
 &lt;p>Mute with the shortcut &lt;kbd>Cmd&lt;/kbd> &lt;kbd>Shift&lt;/kbd> &lt;kbd>A&lt;/kbd>
 or from the system tray dropdown menu.&lt;/p>
-&lt;figure >
+&lt;figure class="flex flex-col justify-center items-center">
 &lt;picture>
 &lt;source
 type="image/webp"
@@ -1074,7 +1074,7 @@ data-srcset="/mic-mute/screenshot_hu_bcf34150905936b0.webp 271w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
 &lt;img
-class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+class="transition-all duration-200 opacity-100"
 alt="popup window screenshot indicating the microphone is off"
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='271' height='119'%3E%3C/svg%3E"
 data-placeholder-src="/mic-mute/screenshot_hu_1f31b31300261830.png"
@@ -1104,7 +1104,7 @@ macOS with a global shortcut and a clear visual indicator. It&amp;rsquo;s inspir
 for Windows.&lt;/p>
 &lt;p>Mute with the shortcut &lt;kbd>Cmd&lt;/kbd> &lt;kbd>Shift&lt;/kbd> &lt;kbd>A&lt;/kbd>
 or from the system tray dropdown menu.&lt;/p>
-&lt;figure >
+&lt;figure class="flex flex-col justify-center items-center">
 &lt;picture>
 &lt;source
 type="image/webp"
@@ -1112,7 +1112,7 @@ data-srcset="/mic-mute/screenshot_hu_bcf34150905936b0.webp 271w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
 &lt;img
-class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+class="transition-all duration-200 opacity-100"
 alt="popup window screenshot indicating the microphone is off"
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='271' height='119'%3E%3C/svg%3E"
 data-placeholder-src="/mic-mute/screenshot_hu_1f31b31300261830.png"

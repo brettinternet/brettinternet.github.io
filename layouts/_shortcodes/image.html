@@ -1,8 +1,8 @@
 {{ $src := .Get "src" }}
 {{ $alt := .Get "alt" | default "" }}
 {{ $caption := .Get "caption" | default "" }}
-{{ $class := .Get "class" | default "flex flex-col justify-center items-center" }}
-{{ $figure_class := .Get "figure_class" | default "" }}
+{{ $class := .Get "class" | default "" }}
+{{ $figure_class := .Get "figure_class" | default "flex flex-col justify-center items-center" }}
 
 {{ if not $src }}
   {{ errorf "image shortcode requires src parameter" }}
@@ -21,7 +21,7 @@
   ) }}
 {{ else }}
   {{/* Fallback for images that cannot be processed */}}
-  <figure>
+  <figure class="flex flex-col justify-center items-center">
     <img
       src="{{ $src | relURL }}"
       alt="{{ $alt }}"

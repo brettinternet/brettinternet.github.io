@@ -1,0 +1,239 @@
+<!doctype html><html lang=en-us data-build-version=3065bd data-build-time=2025-08-20T04:25:46+00:00><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><title>Archlinux + Btrfs + dm-crypt • brett.cloud</title><meta name=viewport content="width=device-width,initial-scale=1"><meta name=twitter:card content="summary"><meta name=description content="Setup guide"><meta property="og:description" content="Setup guide"><meta property="og:title" content="Archlinux + Btrfs + dm-crypt"><meta property="og:type" content="website"><meta property="og:url" content="https://brett.cloud/gists/archlinux-btrfs-dmcrypt/">
+  
+    
+    
+      
+        
+          <link rel="stylesheet" href="/styles/main.29fc909766797b66f06fc508a59ea9755cfa05b2ad162980f38b4d415683d2cd.css" integrity="sha256-KfyQl2Z5e2bwb8UIpZ6pdVz6BbKtFimA84tNQVaD0s0=" crossorigin="anonymous">
+        
+      
+    
+  
+
+<link rel=icon type=image/png href=/favicon.png></head><body class="min-h-screen flex flex-col text-slate-800 bg-orange-50"><header class="w-full flex flex-col items-center justify-center px-4 py-8 text-center"><p class="font-serif font-bold text-xl"><a href=https://brett.cloud/ class=hover:underline>brett</a></p></header><main class="flex-1 flex flex-col"><article class="w-full mx-auto prose prose-slate mb-8 px-4 md:px-0"><h1 class=font-serif>Archlinux + Btrfs + dm-crypt</h1><h2 id=features>Features</h2><ul><li>encryption</li><li>btrfs</li><li>swap and hibernate</li><li>rEFInd bootloader</li></ul><h2 id=resources>Resources</h2><ul><li><a href=https://wiki.archlinux.org/title/User:Altercation/Bullet_Proof_Arch_Install>User:Altercation/Bullet Proof Arch Install</a></li><li><a href=https://gist.github.com/Th3Whit3Wolf/0150bd13f4b2667437c55b71bfb073e4>arch_sec_install.sh</a></li></ul><p>Enable ssh.</p><div class="group/codeblock relative overflow-x-auto my-6"><button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy</button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!bg-slate-900 !m-0"><code class=language-sh data-lang=sh><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>set -xe
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> passwd -S root | grep -q <span style=color:#e6db74>&#34;NP&#34;</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Set root password:&#34;</span>
+</span></span><span style=display:flex><span>  passwd
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>systemctl start sshd.service</span></span></code></pre></div></div><p>Setup partitions.</p><div class="group/codeblock relative overflow-x-auto my-6"><button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy</button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!bg-slate-900 !m-0"><code class=language-sh data-lang=sh><span style=display:flex><span><span style=color:#75715e># https://wiki.archlinux.org/title/Dm-crypt/Drive_preparation</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>DRIVE<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/dev/nvme0n1&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sgdisk --zap-all $DRIVE
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sgdisk --clear <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>       --new<span style=color:#f92672>=</span>1:0:+550MiB --typecode<span style=color:#f92672>=</span>1:ef00 --change-name<span style=color:#f92672>=</span>1:EFI <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>       --new<span style=color:#f92672>=</span>2:0:0       --typecode<span style=color:#f92672>=</span>2:8300 --change-name<span style=color:#f92672>=</span>2:cryptsystem <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>       $DRIVE
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>lsblk -o +PARTLABEL
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>mkfs.fat -F32 -n EFI /dev/disk/by-partlabel/EFI
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>cryptsetup luksFormat <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --perf-no_read_workqueue <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --perf-no_write_workqueue <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --type luks2 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --cipher aes-xts-plain64 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --key-size <span style=color:#ae81ff>512</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --iter-time <span style=color:#ae81ff>2000</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --pbkdf argon2id <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --hash sha3-512 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    /dev/disk/by-partlabel/cryptsystem</span></span></code></pre></div></div><p>Unlock the encrypted partition.</p><div class="group/codeblock relative overflow-x-auto my-6"><button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy</button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!bg-slate-900 !m-0"><code class=language-sh data-lang=sh><span style=display:flex><span>cryptsetup <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --allow-discards <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --perf-no_read_workqueue <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --perf-no_write_workqueue <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --persistent <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    open /dev/disk/by-partlabel/cryptsystem system</span></span></code></pre></div></div><p>Setup Btrfs volumes.</p><div class="group/codeblock relative overflow-x-auto my-6"><button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy</button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!bg-slate-900 !m-0"><code class=language-sh data-lang=sh><span style=display:flex><span>mkfs.btrfs --force --label system /dev/mapper/system
+</span></span><span style=display:flex><span>mount -t btrfs LABEL<span style=color:#f92672>=</span>system /mnt
+</span></span><span style=display:flex><span>btrfs subvolume create /mnt/@root
+</span></span><span style=display:flex><span>btrfs subvolume create /mnt/@home
+</span></span><span style=display:flex><span>btrfs subvolume create /mnt/@snapshots
+</span></span><span style=display:flex><span>btrfs subvolume create /mnt/@swap
+</span></span><span style=display:flex><span>umount -R /mnt</span></span></code></pre></div></div><p>Mount volumes.</p><div class="group/codeblock relative overflow-x-auto my-6"><button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy</button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!bg-slate-900 !m-0"><code class=language-sh data-lang=sh><span style=display:flex><span>BASE_DIR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/mnt&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># autodefrag option not recommended for now: https://lore.kernel.org/linux-btrfs/87k0cvnklg.fsf@vps.thesusis.net/T/#m6c5617d6088879d825af4321735046ef20277dc7</span>
+</span></span><span style=display:flex><span>o<span style=color:#f92672>=</span>defaults,x-mount.mkdir,noatime,nodiratime,discard<span style=color:#f92672>=</span>async
+</span></span><span style=display:flex><span>o_btrfs<span style=color:#f92672>=</span>$o,compress<span style=color:#f92672>=</span>zstd,ssd
+</span></span><span style=display:flex><span>o_swap<span style=color:#f92672>=</span>x-mount.mkdir,space_cache,ssd,discard<span style=color:#f92672>=</span>async,compress<span style=color:#f92672>=</span>no
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>mount -t btrfs -o subvol<span style=color:#f92672>=</span>@root,$o_btrfs LABEL<span style=color:#f92672>=</span>system $BASE_DIR
+</span></span><span style=display:flex><span>mount -t btrfs -o subvol<span style=color:#f92672>=</span>@home,$o_btrfs LABEL<span style=color:#f92672>=</span>system $BASE_DIR/home
+</span></span><span style=display:flex><span>mount -t btrfs -o subvol<span style=color:#f92672>=</span>@snapshots,$o_btrfs LABEL<span style=color:#f92672>=</span>system $BASE_DIR/.snapshots
+</span></span><span style=display:flex><span>mount -t btrfs -o subvol<span style=color:#f92672>=</span>@swap,$o_swap LABEL<span style=color:#f92672>=</span>system $BASE_DIR/.swap
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -f $BASE_DIR/.swap/swapfile <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Create swapfile</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># https://wiki.archlinux.org/title/Btrfs#Swap_file</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># https://wiki.archlinux.org/title/Swap#Swap_file_creation</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># https://askubuntu.com/questions/1017309/fallocate-vs-dd-for-swapfile</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># OR use this method: https://btrfs.readthedocs.io/en/latest/Swapfile.html</span>
+</span></span><span style=display:flex><span>  SWAP_SIZE<span style=color:#f92672>=</span><span style=color:#ae81ff>24096</span>
+</span></span><span style=display:flex><span>  chattr +C /mnt/.swap
+</span></span><span style=display:flex><span>  dd <span style=color:#66d9ef>if</span><span style=color:#f92672>=</span>/dev/zero of<span style=color:#f92672>=</span>$BASE_DIR/.swap/swapfile bs<span style=color:#f92672>=</span>1M count<span style=color:#f92672>=</span>$SWAP_SIZE status<span style=color:#f92672>=</span>progress
+</span></span><span style=display:flex><span>  chmod <span style=color:#ae81ff>0600</span> $BASE_DIR/.swap/swapfile
+</span></span><span style=display:flex><span>  mkswap -U clear $BASE_DIR/.swap/swapfile
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>swapon $BASE_DIR/.swap/swapfile
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>mount --mkdir /dev/disk/by-partlabel/EFI /mnt/boot
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>btrfs subvolume list $BASE_DIR
+</span></span><span style=display:flex><span>ls $BASE_DIR</span></span></code></pre></div></div><p>Install packages.</p><div class="group/codeblock relative overflow-x-auto my-6"><button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy</button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!bg-slate-900 !m-0"><code class=language-sh data-lang=sh><span style=display:flex><span>pacman -Sy --noconfirm archlinux-keyring
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>PACKAGES<span style=color:#f92672>=(</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># arch</span>
+</span></span><span style=display:flex><span>  base
+</span></span><span style=display:flex><span>  base-devel
+</span></span><span style=display:flex><span>  linux
+</span></span><span style=display:flex><span>  linux-firmware
+</span></span><span style=display:flex><span>  linux-headers
+</span></span><span style=display:flex><span>  <span style=color:#75715e># vendor</span>
+</span></span><span style=display:flex><span>  intel-ucode
+</span></span><span style=display:flex><span>  <span style=color:#75715e># filesystem</span>
+</span></span><span style=display:flex><span>  btrfs-progs
+</span></span><span style=display:flex><span>  <span style=color:#75715e># net</span>
+</span></span><span style=display:flex><span>  iwd
+</span></span><span style=display:flex><span>  dhcpcd
+</span></span><span style=display:flex><span>  networkmanager
+</span></span><span style=display:flex><span>  <span style=color:#75715e># utility</span>
+</span></span><span style=display:flex><span>  vim
+</span></span><span style=display:flex><span>  git
+</span></span><span style=display:flex><span>  curl
+</span></span><span style=display:flex><span>  openssh
+</span></span><span style=display:flex><span>  sudo
+</span></span><span style=display:flex><span>  gptfdisk
+</span></span><span style=display:flex><span>  btop
+</span></span><span style=display:flex><span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>pacstrap /mnt <span style=color:#e6db74>${</span>PACKAGES[@]<span style=color:#e6db74>}</span></span></span></code></pre></div></div><p>Generate <code>/etc/fstab</code>.</p><div class="group/codeblock relative overflow-x-auto my-6"><button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy</button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!bg-slate-900 !m-0"><code class=language-sh data-lang=sh><span style=display:flex><span>BASE_DIR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/mnt&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>genfstab -L -p /mnt &gt;&gt; $BASE_DIR/etc/fstab
+</span></span><span style=display:flex><span>sed -i s/LABEL<span style=color:#f92672>=</span>system<span style=color:#ae81ff>\s\/</span>boot/<span style=color:#ae81ff>\/</span>dev<span style=color:#ae81ff>\/</span>disk<span style=color:#ae81ff>\/</span>by<span style=color:#ae81ff>\-</span>partlabel<span style=color:#ae81ff>\/</span>EFI/g /mnt/etc/fstab
+</span></span><span style=display:flex><span>cat <span style=color:#e6db74>&#34;LABEL=system        /.swap/swapfile    swap        defaults,space_cache,ssd,discard=async,compress=no,subvol=/@swap 0 0&#34;</span> &gt;&gt; $BASE_DIR/etc/fstab
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>cat $BASE_DIR/etc/fstab</span></span></code></pre></div></div><p>Create initial ramdisk environment.</p><div class="group/codeblock relative overflow-x-auto my-6"><button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy</button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!bg-slate-900 !m-0"><code class=language-sh data-lang=sh><span style=display:flex><span>BASE_DIR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/mnt&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># vconsole</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># https://wiki.archlinux.org/title/Linux_console/Keyboard_configuration</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>cat &gt; $BASE_DIR/etc/vconsole.conf <span style=color:#e6db74>&lt;&lt;EOF
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>KEYMAP=us
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>keycode 1 = Caps_Lock
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>keycode 58 = Escape
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOF</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># mkinitcpio</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># https://wiki.archlinux.org/title/mkinitcpio</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>SCRIPT<span style=color:#f92672>=</span>/root/setup-mkinitcpio.sh
+</span></span><span style=display:flex><span>cat &gt; $BASE_DIR$SCRIPT <span style=color:#e6db74>&lt;&lt;EOF
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>sed -i &#39;s/^HOOKS/HOOKS=(base systemd autodetect keyboard sd-vconsole modconf block sd-encrypt resume filesystems fsck)/&#39; /etc/mkinitcpio.conf
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>mkinitcpio -p linux
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOF</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>chmod +x $BASE_DIR$SCRIPT
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>arch-chroot /mnt $SCRIPT
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>rm $BASE_DIR$SCRIPT
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>cat $BASE_DIR/etc/mkinitcpio.conf</span></span></code></pre></div></div><p>Setup bootloader.</p><div class="group/codeblock relative overflow-x-auto my-6"><button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy</button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!bg-slate-900 !m-0"><code class=language-sh data-lang=sh><span style=display:flex><span>BASE_DIR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/mnt&#34;</span>
+</span></span><span style=display:flex><span>EFI_MOUNT_DIR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$BASE_DIR<span style=color:#e6db74>/boot&#34;</span>
+</span></span><span style=display:flex><span>CONF_DIR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$EFI_MOUNT_DIR<span style=color:#e6db74>/EFI/refind&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>run_in_system<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>  arch-chroot /mnt /bin/bash -c <span style=color:#e6db74>&#34;</span>$@<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>pacstrap /mnt refind
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># install refind</span>
+</span></span><span style=display:flex><span>refind-install
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># install drivers</span>
+</span></span><span style=display:flex><span>mkdir -p $CONF_DIR/drivers_x64
+</span></span><span style=display:flex><span>DRIVER<span style=color:#f92672>=</span>btrfs_x64.efi
+</span></span><span style=display:flex><span>DRIVER_INSTALL_PATH<span style=color:#f92672>=</span>$CONF_DIR/drivers_x64/$DRIVER
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -f $DRIVER_INSTALL_PATH <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>  cp /usr/share/refind/drivers_x64/$DRIVER $DRIVER_INSTALL_PATH
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># get resume offset for swapfile</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Hibernation_into_swap_file_on_Btrfs</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># https://github.com/osandov/osandov-linux/blob/master/scripts/btrfs_map_physical.c</span>
+</span></span><span style=display:flex><span>MAP_PHYSICAL_C<span style=color:#f92672>=</span>/usr/local/bin/btrfs_map_physical.c
+</span></span><span style=display:flex><span>MAP_PHYSICAL<span style=color:#f92672>=</span>/usr/local/bin/btrfs_map_physical
+</span></span><span style=display:flex><span>curl -sLJo $BASE_DIR$MAP_PHYSICAL_C https://raw.githubusercontent.com/osandov/osandov-linux/master/scripts/btrfs_map_physical.c
+</span></span><span style=display:flex><span>run_in_system <span style=color:#e6db74>&#34;gcc -O2 -o </span>$MAP_PHYSICAL<span style=color:#e6db74> </span>$MAP_PHYSICAL_C<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>rm $BASE_DIR$MAP_PHYSICAL_C
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># theme setup</span>
+</span></span><span style=display:flex><span>THEME_NAME<span style=color:#f92672>=</span>refind-theme-regular
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -d <span style=color:#e6db74>&#34;</span>$CONF_DIR<span style=color:#e6db74>/themes/</span>$THEME_NAME<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>  mkdir -p $CONF_DIR/themes
+</span></span><span style=display:flex><span>  run_in_system <span style=color:#e6db74>&#34;git clone https://github.com/bobafetthotmail/refind-theme-regular.git /boot/EFI/refind/themes/</span>$THEME_NAME<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>  rm -rf $CONF_DIR/themes/$THEME_NAME/<span style=color:#f92672>{</span>src,.git<span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>  rm $CONF_DIR/themes/$THEME_NAME/install.sh
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>BACKUP_CONF_PATH<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$CONF_DIR<span style=color:#e6db74>/refind.conf.bak&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -f <span style=color:#e6db74>&#34;</span>$BACKUP_CONF_PATH<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>  mv $CONF_DIR/refind.conf $BACKUP_CONF_PATH
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>DRIVE<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/dev/nvme0n1&#34;</span>
+</span></span><span style=display:flex><span>DRIVE_SYSTEM_PARTITION<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/dev/nvme0n1p2&#34;</span>
+</span></span><span style=display:flex><span>DRIVE_PART_UUID<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>blkid $DRIVE_SYSTEM_PARTITION | cut -d <span style=color:#e6db74>&#34; &#34;</span> -f2 | cut -d <span style=color:#e6db74>&#39;=&#39;</span> -f2 | sed <span style=color:#e6db74>&#39;s/\&#34;//g&#39;</span><span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>RESUME_OFFSET<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>echo <span style=color:#66d9ef>$(</span>/mnt/usr/local/bin/btrfs_map_physical /mnt/.swap/swapfile | head -n2 | tail -n1 | awk <span style=color:#e6db74>&#39;{print $6}&#39;</span><span style=color:#66d9ef>)</span> / <span style=color:#66d9ef>$(</span>run_in_system <span style=color:#e6db74>&#34;getconf PAGESIZE&#34;</span><span style=color:#66d9ef>)</span> | bc<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>cat &gt; $CONF_DIR/refind.conf <span style=color:#e6db74>&lt;&lt;EOF
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>menuentry &#34;Arch Linux&#34; {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    icon     /EFI/refind/themes/$THEME_NAME/icons/128-48/os_arch.png
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    volume   &#34;Arch Linux&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    loader   /vmlinuz-linux
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    initrd   /initramfs-linux.img
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    options  &#34;rd.luks.name=$DRIVE_PART_UUID=system root=/dev/mapper/system rootflags=subvol=@root resume=/dev/mapper/system resume_offset=$RESUME_OFFSET rw quiet nmi_watchdog=0 add_efi_memmap initrd=/intel-ucode.img&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    submenuentry &#34;Boot using fallback initramfs&#34; {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        initrd /boot/initramfs-linux-fallback.img
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>timeout         5
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>include         themes/$THEME_NAME/theme.conf
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>also_scan_dirs  +,@root/
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>resolution     1920 1080
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOF</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>cat $CONF_DIR/refind.conf</span></span></code></pre></div></div><p>Setup system.</p><div class="group/codeblock relative overflow-x-auto my-6"><button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
+Copy</button><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4 class="!bg-slate-900 !m-0"><code class=language-sh data-lang=sh><span style=display:flex><span>BASE_DIR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/mnt&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>PASSWORD_STATUS<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>./run-chrooted.sh passwd -S root<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> echo $PASSWORD_STATUS | grep -q <span style=color:#e6db74>&#34;NP&#34;</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Set root password:&#34;</span>
+</span></span><span style=display:flex><span>  ./run-chrooted.sh passwd
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>TIMEZONE<span style=color:#f92672>=</span><span style=color:#e6db74>${</span>TZ<span style=color:#66d9ef>:-</span>America/Denver<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;en_US.UTF-8 UTF-8&#34;</span> &gt; $BASE_DIR/etc/locale.gen
+</span></span><span style=display:flex><span>./run-chrooted.sh locale-gen
+</span></span><span style=display:flex><span>echo LANG<span style=color:#f92672>=</span>en_US.UTF-8 &gt; $BASE_DIR/etc/locale.conf
+</span></span><span style=display:flex><span>ln -nsf $BASE_DIR/usr/share/zoneinfo/$TIMEZONE $BASE_DIR/etc/localtime
+</span></span><span style=display:flex><span>./run-chrooted.sh hwclock --systohc --utc</span></span></code></pre></div></div><ul><li><code>echo "myhostname" > /etc/hostname</code></li><li>uncomment locale in <code>/etc/locale.gen</code></li><li>exec <code>locale-gen && echo LANG=en_US.UTF-8 > /etc/locale.conf && export LANG=en_US.UTF-8</code></li><li><code>ln -s /usr/share/zoneinfo/America/New_York /etc/localtime</code></li><li>use UTC for hwclock <code>hwclock --systohc --utc</code></li></ul></article><div class="container mx-auto max-w-xl mt-24 px-4 md:px-0"><giscus-widget id=comments repo=brettinternet/brettinternet.github.io repoid="MDEwOlJlcG9zaXRvcnk5OTE5MDk3Mw==" category=comments categoryid=DIC_kwDOBemIvc4CUC0- mapping=pathname reactionsenabled=1 emitmetadata=0 inputposition=top theme=light lang=en loading=lazy></giscus-widget></div></main><footer class="container mx-auto flex flex-row items-center justify-center gap-3 py-12 px-8 font-serif text-sm"><ul class="flex justify-center gap-4"><li><a href=/ class="font-bold hover:underline">home</a></li><li><a href=/about class="font-bold hover:underline">about</a></li></ul><span>•</span><ul class="flex justify-center gap-4"><li><a href=https://github.com/brettinternet/brettinternet.github.io class="inline-flex font-bold hover:underline">source
+</a><span class="inline-flex font-sans font-thin text-xs text-gray-500 ml-1">(<a href=https://github.com/brettinternet/brettinternet.github.io/commit/3065bd class=hover:underline>
+<span class=font-mono>3065bd
+</span></a>)</span></li></ul></footer><script src=https://brett.cloud/scripts/main.812fc2ba584b599105787f733c99c70035f1c9e5985191c43dfc859314e12e8e.min.js defer></script></body></html>

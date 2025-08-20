@@ -1,0 +1,37 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "" }}
+{{ $caption := .Get "caption" | default "" }}
+{{ $class := .Get "class" | default "flex flex-col justify-center items-center" }}
+{{ $figure_class := .Get "figure_class" | default "" }}
+
+{{ if not $src }}
+  {{ errorf "image shortcode requires src parameter" }}
+{{ end }}
+
+{{ $image := .Page.Resources.GetMatch $src }}
+
+{{ if $image }}
+  {{ partial "image-processor.html" (dict
+    "image" $image
+    "alt" $alt
+    "class" $class
+    "figure" (ne $caption "")
+    "figure_class" $figure_class
+    "caption" $caption
+  ) }}
+{{ else }}
+  {{/* Fallback for images that cannot be processed */}}
+  <figure>
+    <img
+      src="{{ $src | relURL }}"
+      alt="{{ $alt }}"
+      {{with $class}}class="{{.}}"{{end}}
+      loading="lazy"
+    />
+    {{with $caption}}
+    <figcaption class="text-center">
+      {{ . }}
+    </figcaption>
+    {{end}}
+  </figure>
+{{ end }}

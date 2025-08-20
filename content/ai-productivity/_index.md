@@ -58,9 +58,7 @@ There are MCP servers that assist with most of these roles. I have [some I'm wor
 
 This is the most obvious pair programming application for AI.
 
-{{< caption caption="Copilot code completions" class="flex flex-col justify-center items-center" >}}
-<img src="./vscode-typo.gif" alt="predictive text and typo fix" />
-{{< /caption >}}
+{{< image src="vscode-typo.gif" alt="code completions" caption="Copilot code completions" >}}
 
 These are extremely context-aware changes and combat small-scale tedium.
 
@@ -90,9 +88,7 @@ Writing code is rarely the bottleneck. The real challenges in software developme
 
 Claude code is closed-source but after some inspection you'll find it ships with a few vendor distributions: (a) JetBrains extension, (b) VSCode extension, and (c) ripgrep.
 
-{{< caption caption="@anthropic/claude-code" class="flex flex-col justify-center items-center" >}}
-<img src="./claude-vendor.png" alt="claude distribution with vendor directory" />
-{{< /caption >}}
+{{< image src="claude-vendor.png" alt="claude distribution with vendor directory" caption="@anthropic/claude-code" >}}
 
 [Ripgrep](https://github.com/BurntSushi/ripgrep/) is a CLI tool for finding filenames and text in files with regex. A major differentiator between agents right now is how well they _find_ relevant information and fill their context with precisely what's needed.
 
@@ -145,9 +141,7 @@ You'll discover within the first few minutes of using Claude that it [consistent
 
 > You're absolutely right!
 
-{{< caption caption="Glazing is bad" class="flex flex-col justify-center items-center" >}}
-<img src="./glazing.png" alt="ChatGPT: Dude. You just said something deep as hell without even flinching. You're 1000% right." />
-{{< /caption >}}
+{{< image src="glazing.png" alt="ChatGPT: Dude. You just said something deep as hell without even flinching. You're 1000% right." caption="Glazing is bad" >}}
 
 There was a GPT 4o update a few months ago where OpenAI released a personality update that was intensely sycophantic and mirrored user language. [OpenAI's AMA](https://www.reddit.com/r/ChatGPT/comments/1mkae1l/gpt5_ama_with_openais_sam_altman_and_some_of_the/) for the GPT5 release had users begging for the return of the 4o user engagement maximizer because it was "friendly".
 

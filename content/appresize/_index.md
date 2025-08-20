@@ -25,13 +25,9 @@ resources:
 
 [Appresize](https://github.com/brettinternet/Appresize) is a utility to resize and move apps from anywhere on the window with custom modifiers and other preferences.
 
-{{< caption caption="Although not captured by the screen recorder, the cursor does follow window" class="flex flex-col justify-center items-center" >}}
-<img src="./demo.gif" alt="move and resize window from anywhere" />
-{{< /caption >}}
+{{< image src="demo.gif" alt="resize & move apps from anywhere on the window" caption="Although not captured by the screen recorder, the cursor does follow window" >}}
 
-{{< caption caption="Custom modifiers & other behaviors" class="flex flex-col justify-center items-center" >}}
-<img src="./screenshot.png" alt="window preferences" class="border-none" />
-{{< /caption >}}
+{{< image src="screenshot.png" alt="window preferences" caption="Custom modifiers & other behaviors" >}}
 
 One of my favorite abandonware apps on macOS was an old closed-source Objective C application called [Hyperdock](https://bahoom.com/hyperdock) that had a small secondary feature to resize and move windows by a modifier from anywhere on the window.
 

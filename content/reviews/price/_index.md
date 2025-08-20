@@ -11,7 +11,8 @@ comments: false
 # Highway Patrol in Price, Utah
 
 {{< caption caption="39° 36' 4.2912'' N, 110° 48' 35.3592'' W" >}}
-{{< map mapName="price_1084815" >}} {{< /caption >}}
+{{< map mapName="price_1084815" >}}
+{{< /caption >}}
 
 Price's town brothel is legalized under the facade of this so called "public
 service".

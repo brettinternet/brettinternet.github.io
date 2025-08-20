@@ -31,9 +31,7 @@ for Windows.
 Mute with the shortcut {{< raw >}} <kbd>Cmd</kbd> <kbd>Shift</kbd> <kbd>A</kbd>
 {{< /raw >}} or from the system tray dropdown menu.
 
-{{< caption caption="Mute window follows cursor to screens and monitors" class="flex flex-col justify-center items-center" >}}
-<img src="./screenshot.png" alt="popup window screenshot indicating the microphone is off" />
-{{< /caption >}}
+{{< image src="screenshot.png" alt="popup window screenshot indicating the microphone is off" caption="Mute window follows cursor to screens and monitors" >}}
 
 The mute indicator window will follow the cursor to desktops or screens and
 monitors. The system tray icon will also indicate the mute status. Once

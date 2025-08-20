@@ -34,6 +34,12 @@ export const setup = () => {
       img: HTMLImageElement,
       sources: NodeListOf<HTMLSourceElement>,
     ): void {
+      // First load placeholder if available
+      if (img.dataset.placeholderSrc) {
+        img.src = img.dataset.placeholderSrc
+        img.removeAttribute('data-placeholder-src')
+      }
+
       // Update sources if they exist (for picture element)
       sources?.forEach((source: HTMLSourceElement) => {
         if (source.dataset.srcset) {
@@ -57,12 +63,19 @@ export const setup = () => {
       img: HTMLImageElement,
       sources: NodeListOf<HTMLSourceElement>,
     ): void {
+      const placeholderSrc = img.dataset.placeholderSrc
       const webpSrc = img.dataset.webpSrc
       const webpSrcset = img.dataset.webpSrcset
       const gifSrc = img.dataset.gifSrc
       const gifSrcset = img.dataset.gifSrcset
 
-      // Step 1: Load WebP still frame first
+      // Step 0: Load placeholder first if available
+      if (placeholderSrc) {
+        img.src = placeholderSrc
+        img.removeAttribute('data-placeholder-src')
+      }
+
+      // Step 1: Load WebP still frame
       if (webpSrc && webpSrcset) {
         // Update sources to WebP
         sources?.forEach((source: HTMLSourceElement) => {

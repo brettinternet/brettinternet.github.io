@@ -54,9 +54,32 @@ d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0
 &lt;p>There are MCP servers that assist with most of these roles. I have &lt;a href="https://github.com/brettinternet/mcp">some I&amp;rsquo;m working on&lt;/a> and &lt;a href="https://github.com/brettinternet/ai">a few I use&lt;/a> regularly.&lt;/p>
 &lt;h3 id="1-code-completions">1. Code completions&lt;/h3>
 &lt;p>This is the most obvious pair programming application for AI.&lt;/p>
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./vscode-typo.gif" alt="predictive text and typo fix" />
-&lt;figcaption>Copilot code completions&lt;/figcaption>
+&lt;figure >
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/ai-productivity/vscode-typo_hu_d55c16dae146b3e3.webp 500w, /ai-productivity/vscode-typo_hu_342df8d5d1f3ac26.webp 680w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-300 opacity-100 gif-progressive flex flex-col justify-center items-center"
+alt="code completions"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='680' height='383'%3E%3C/svg%3E"
+data-placeholder-src="/ai-productivity/vscode-typo_hu_ec8ae483afc23a94.gif"
+data-webp-src="/ai-productivity/vscode-typo_hu_342df8d5d1f3ac26.webp"
+data-webp-srcset="/ai-productivity/vscode-typo_hu_d55c16dae146b3e3.webp 500w, /ai-productivity/vscode-typo_hu_342df8d5d1f3ac26.webp 680w"
+data-gif-src="/ai-productivity/vscode-typo.gif"
+data-gif-srcset="/ai-productivity/vscode-typo_hu_eb10e78f53db2ea8.gif 500w, /ai-productivity/vscode-typo.gif 680w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="680"
+height="383"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Copilot code completions
+&lt;/figcaption>
 &lt;/figure>
 &lt;p>These are extremely context-aware changes and combat small-scale tedium.&lt;/p>
 &lt;h3 id="2-discovery">2. Discovery&lt;/h3>
@@ -74,9 +97,30 @@ d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0
 &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8">&lt;/script>
 &lt;p>Writing code is rarely the bottleneck. The real challenges in software development are understanding requirements, designing systems, debugging complex interactions, and making architectural decisions. Even with AI assistance, these cognitive tasks require human judgment, domain expertise, and the ability to reason about trade-offs. AI can help you write code faster, but it can&amp;rsquo;t replace the critical thinking needed to determine what code should be written in the first place.&lt;/p>
 &lt;p>Claude code is closed-source but after some inspection you&amp;rsquo;ll find it ships with a few vendor distributions: (a) JetBrains extension, (b) VSCode extension, and (c) ripgrep.&lt;/p>
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./claude-vendor.png" alt="claude distribution with vendor directory" />
-&lt;figcaption>@anthropic/claude-code&lt;/figcaption>
+&lt;figure >
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/ai-productivity/claude-vendor_hu_4a808defb75885d1.webp 482w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+alt="claude distribution with vendor directory"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='482' height='240'%3E%3C/svg%3E"
+data-placeholder-src="/ai-productivity/claude-vendor_hu_ccba07a3edec6cdd.png"
+data-src="/ai-productivity/claude-vendor.png"
+data-srcset="/ai-productivity/claude-vendor.png 482w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="482"
+height="240"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+@anthropic/claude-code
+&lt;/figcaption>
 &lt;/figure>
 &lt;p>&lt;a href="https://github.com/BurntSushi/ripgrep/">Ripgrep&lt;/a> is a CLI tool for finding filenames and text in files with regex. A major differentiator between agents right now is how well they &lt;em>find&lt;/em> relevant information and fill their context with precisely what&amp;rsquo;s needed.&lt;/p>
 &lt;p>The workflow might look like this:&lt;/p>
@@ -132,9 +176,30 @@ style D fill:#065f46,stroke:#10b981,stroke-width:2px,color:#ffffff
 &lt;p>You&amp;rsquo;ll discover within the first few minutes of using Claude that it &lt;a href="https://github.com/anthropics/claude-code/issues/3382">consistently responds&lt;/a> with this praise:&lt;/p>
 &lt;blockquote>
 &lt;p>You&amp;rsquo;re absolutely right!&lt;/p>&lt;/blockquote>
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./glazing.png" alt="ChatGPT: Dude. You just said something deep as hell without even flinching. You're 1000% right." />
-&lt;figcaption>Glazing is bad&lt;/figcaption>
+&lt;figure >
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/ai-productivity/glazing_hu_47ac488e1d6f128b.webp 500w, /ai-productivity/glazing_hu_29184512d6cb90bc.webp 800w, /ai-productivity/glazing_hu_2af9dbdc9b2ea63e.webp 1200w, /ai-productivity/glazing_hu_dbb19f8667228bce.webp 1418w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+alt="ChatGPT: Dude. You just said something deep as hell without even flinching. You're 1000% right."
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1418' height='532'%3E%3C/svg%3E"
+data-placeholder-src="/ai-productivity/glazing_hu_e4d01e346554251c.png"
+data-src="/ai-productivity/glazing.png"
+data-srcset="/ai-productivity/glazing_hu_c909596c820473f5.png 500w, /ai-productivity/glazing_hu_f2ffcad58ea99ebf.png 800w, /ai-productivity/glazing_hu_87adf84c63f22e1a.png 1200w, /ai-productivity/glazing.png 1418w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="1418"
+height="532"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Glazing is bad
+&lt;/figcaption>
 &lt;/figure>
 &lt;p>There was a GPT 4o update a few months ago where OpenAI released a personality update that was intensely sycophantic and mirrored user language. &lt;a href="https://www.reddit.com/r/ChatGPT/comments/1mkae1l/gpt5_ama_with_openais_sam_altman_and_some_of_the/">OpenAI&amp;rsquo;s AMA&lt;/a> for the GPT5 release had users begging for the return of the 4o user engagement maximizer because it was &amp;ldquo;friendly&amp;rdquo;.&lt;/p>
 &lt;p>We need self-awareness about what using AI does to our psychology and good reviewing practices to avoid problematic code getting onto &lt;code>main&lt;/code>.&lt;/p>
@@ -610,26 +675,114 @@ Copy
 &lt;/div>
 &lt;h1 align="center">Appresize&lt;/h1>
 &lt;p>&lt;a href="https://github.com/brettinternet/Appresize">Appresize&lt;/a> is a utility to resize and move apps from anywhere on the window with custom modifiers and other preferences.&lt;/p>
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./demo.gif" alt="move and resize window from anywhere" />
-&lt;figcaption>Although not captured by the screen recorder, the cursor does follow window&lt;/figcaption>
+&lt;figure >
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/appresize/demo_hu_6e1718dc9843f023.webp 480w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-300 opacity-100 gif-progressive flex flex-col justify-center items-center"
+alt="resize &amp; move apps from anywhere on the window"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='315'%3E%3C/svg%3E"
+data-placeholder-src="/appresize/demo_hu_a89decbdc7c40554.gif"
+data-webp-src="/appresize/demo_hu_6e1718dc9843f023.webp"
+data-webp-srcset="/appresize/demo_hu_6e1718dc9843f023.webp 480w"
+data-gif-src="/appresize/demo.gif"
+data-gif-srcset="/appresize/demo.gif 480w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="480"
+height="315"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Although not captured by the screen recorder, the cursor does follow window
+&lt;/figcaption>
 &lt;/figure>
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./screenshot.png" alt="window preferences" class="border-none" />
-&lt;figcaption>Custom modifiers &amp;amp; other behaviors&lt;/figcaption>
+&lt;figure >
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/appresize/screenshot_hu_75f32cfceb6f8a9.webp 480w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+alt="window preferences"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='367'%3E%3C/svg%3E"
+data-placeholder-src="/appresize/screenshot_hu_f0bd3b7baf9adb6d.png"
+data-src="/appresize/screenshot.png"
+data-srcset="/appresize/screenshot.png 480w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="480"
+height="367"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Custom modifiers &amp;amp; other behaviors
+&lt;/figcaption>
 &lt;/figure>
 &lt;p>One of my favorite abandonware apps on macOS was an old closed-source Objective C application called &lt;a href="https://bahoom.com/hyperdock">Hyperdock&lt;/a> that had a small secondary feature to resize and move windows by a modifier from anywhere on the window.&lt;/p></summary><content type="html">&lt;div class="flex justify-center">
 &lt;img width="128" src="./icon.png" alt="resize" class="my-3" />
 &lt;/div>
 &lt;h1 align="center">Appresize&lt;/h1>
 &lt;p>&lt;a href="https://github.com/brettinternet/Appresize">Appresize&lt;/a> is a utility to resize and move apps from anywhere on the window with custom modifiers and other preferences.&lt;/p>
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./demo.gif" alt="move and resize window from anywhere" />
-&lt;figcaption>Although not captured by the screen recorder, the cursor does follow window&lt;/figcaption>
+&lt;figure >
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/appresize/demo_hu_6e1718dc9843f023.webp 480w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-300 opacity-100 gif-progressive flex flex-col justify-center items-center"
+alt="resize &amp; move apps from anywhere on the window"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='315'%3E%3C/svg%3E"
+data-placeholder-src="/appresize/demo_hu_a89decbdc7c40554.gif"
+data-webp-src="/appresize/demo_hu_6e1718dc9843f023.webp"
+data-webp-srcset="/appresize/demo_hu_6e1718dc9843f023.webp 480w"
+data-gif-src="/appresize/demo.gif"
+data-gif-srcset="/appresize/demo.gif 480w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="480"
+height="315"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Although not captured by the screen recorder, the cursor does follow window
+&lt;/figcaption>
 &lt;/figure>
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./screenshot.png" alt="window preferences" class="border-none" />
-&lt;figcaption>Custom modifiers &amp;amp; other behaviors&lt;/figcaption>
+&lt;figure >
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/appresize/screenshot_hu_75f32cfceb6f8a9.webp 480w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+alt="window preferences"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='367'%3E%3C/svg%3E"
+data-placeholder-src="/appresize/screenshot_hu_f0bd3b7baf9adb6d.png"
+data-src="/appresize/screenshot.png"
+data-srcset="/appresize/screenshot.png 480w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="480"
+height="367"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Custom modifiers &amp;amp; other behaviors
+&lt;/figcaption>
 &lt;/figure>
 &lt;p>One of my favorite abandonware apps on macOS was an old closed-source Objective C application called &lt;a href="https://bahoom.com/hyperdock">Hyperdock&lt;/a> that had a small secondary feature to resize and move windows by a modifier from anywhere on the window.&lt;/p>
 &lt;p>There are various window utilities on Mac, but none of them satisfied my very specific expectation. Now, this demand lives on with Swift in a small utility &lt;a href="https://github.com/brettinternet/Appresize">here&lt;/a>.&lt;/p></content></entry><entry><title>The Stages of ZFS Grief</title><link rel="alternate" href="https://brett.cloud/zfs-passthrough/"/><id>https://brett.cloud/zfs-passthrough/</id><published>2023-12-09T00:00:00+0000</published><updated>2023-12-09T00:00:00+0000</updated><summary>&lt;p>I used a widely-known and inexpensive method to add additional SATA storage via a Host Bus Adapter (HBA). I purchased a &lt;a href="https://www.ebay.com/sch/i.html?_nkw=Dell+Perc+H310+SATA">Dell Perc H310&lt;/a> a long while back. This HBA can be flashed to IT mode to bypass the hardware RAID. &lt;sup>&lt;a href="#flash-instructions">1&lt;/a>&lt;/sup>&lt;/p>
@@ -826,38 +979,63 @@ Copy
 &lt;h1 align="center">Tabbed&lt;/h1>
 &lt;p>Tabbed is an experiment with a Chrome extension to visualize and organize
 browser tabs.&lt;/p>
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./screenshot.png" alt="dragging window tab to a new window" />
-&lt;figcaption>Drag and drop browser session management&lt;/figcaption>
+&lt;figure >
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/tabbed/screenshot_hu_7570555de49d0fbc.webp 500w, /tabbed/screenshot_hu_6b338cc066e07bbc.webp 800w, /tabbed/screenshot_hu_24a7d1c4cd30ca97.webp 1200w, /tabbed/screenshot_hu_fce4340133293a25.webp 1280w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+alt="dragging window tab to a new window"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1280' height='800'%3E%3C/svg%3E"
+data-placeholder-src="/tabbed/screenshot_hu_56ecfb0e5959dd20.png"
+data-src="/tabbed/screenshot.png"
+data-srcset="/tabbed/screenshot_hu_af1359be148b9e15.png 500w, /tabbed/screenshot_hu_78e7f1f164da42ba.png 800w, /tabbed/screenshot_hu_536dddf732aa224.png 1200w, /tabbed/screenshot.png 1280w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="1280"
+height="800"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Drag and drop browser session management
+&lt;/figcaption>
 &lt;/figure>
 &lt;p>Tabbed was built with accessibility in mind. See the full
 &lt;a href="https://github.com/brettinternet/tabbed">feature list and source&lt;/a> or
-&lt;a href="https://github.com/brettinternet/tabbed/releases">the latest releases&lt;/a>.&lt;/p>
-&lt;div class='text-center mt-12'>
-&lt;a
-href="https://chrome.google.com/webstore/detail/tabbed/paejpihjkfoijpmicndggfpgnnccfggg"
-target="_blank"
-rel="noopener noreferrer"
-class='group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full inline-flex no-underline pl-4' role="alert">
-&lt;span class="text-slate-700 font-serif font-semibold text-left flex-auto">View in Chrome Web Store&lt;/span>
-&lt;span class="group-hover:translate-x-0.5 transition-transform">
-&lt;svg
-class="opacity-75 h-4 w-4"
-xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-stroke="currentColor">
-&lt;path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-&lt;/svg>
-&lt;/span>
-&lt;/a>
-&lt;/div></summary><content type="html">&lt;div class="flex justify-center">
+&lt;a href="https://github.com/brettinternet/tabbed/releases">the latest releases&lt;/a>.&lt;/p></summary><content type="html">&lt;div class="flex justify-center">
 &lt;img width="128" src="./icon.png" alt="session manager extension icon" class="my-3" />
 &lt;/div>
 &lt;h1 align="center">Tabbed&lt;/h1>
 &lt;p>Tabbed is an experiment with a Chrome extension to visualize and organize
 browser tabs.&lt;/p>
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./screenshot.png" alt="dragging window tab to a new window" />
-&lt;figcaption>Drag and drop browser session management&lt;/figcaption>
+&lt;figure >
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/tabbed/screenshot_hu_7570555de49d0fbc.webp 500w, /tabbed/screenshot_hu_6b338cc066e07bbc.webp 800w, /tabbed/screenshot_hu_24a7d1c4cd30ca97.webp 1200w, /tabbed/screenshot_hu_fce4340133293a25.webp 1280w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+alt="dragging window tab to a new window"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1280' height='800'%3E%3C/svg%3E"
+data-placeholder-src="/tabbed/screenshot_hu_56ecfb0e5959dd20.png"
+data-src="/tabbed/screenshot.png"
+data-srcset="/tabbed/screenshot_hu_af1359be148b9e15.png 500w, /tabbed/screenshot_hu_78e7f1f164da42ba.png 800w, /tabbed/screenshot_hu_536dddf732aa224.png 1200w, /tabbed/screenshot.png 1280w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="1280"
+height="800"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Drag and drop browser session management
+&lt;/figcaption>
 &lt;/figure>
 &lt;p>Tabbed was built with accessibility in mind. See the full
 &lt;a href="https://github.com/brettinternet/tabbed">feature list and source&lt;/a> or
@@ -888,9 +1066,30 @@ macOS with a global shortcut and a clear visual indicator. It&amp;rsquo;s inspir
 for Windows.&lt;/p>
 &lt;p>Mute with the shortcut &lt;kbd>Cmd&lt;/kbd> &lt;kbd>Shift&lt;/kbd> &lt;kbd>A&lt;/kbd>
 or from the system tray dropdown menu.&lt;/p>
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./screenshot.png" alt="popup window screenshot indicating the microphone is off" />
-&lt;figcaption>Mute window follows cursor to screens and monitors&lt;/figcaption>
+&lt;figure >
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/mic-mute/screenshot_hu_bcf34150905936b0.webp 271w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+alt="popup window screenshot indicating the microphone is off"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='271' height='119'%3E%3C/svg%3E"
+data-placeholder-src="/mic-mute/screenshot_hu_1f31b31300261830.png"
+data-src="/mic-mute/screenshot.png"
+data-srcset="/mic-mute/screenshot.png 271w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="271"
+height="119"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Mute window follows cursor to screens and monitors
+&lt;/figcaption>
 &lt;/figure>
 &lt;p>The mute indicator window will follow the cursor to desktops or screens and
 monitors. The system tray icon will also indicate the mute status. Once
@@ -905,9 +1104,30 @@ macOS with a global shortcut and a clear visual indicator. It&amp;rsquo;s inspir
 for Windows.&lt;/p>
 &lt;p>Mute with the shortcut &lt;kbd>Cmd&lt;/kbd> &lt;kbd>Shift&lt;/kbd> &lt;kbd>A&lt;/kbd>
 or from the system tray dropdown menu.&lt;/p>
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;img src="./screenshot.png" alt="popup window screenshot indicating the microphone is off" />
-&lt;figcaption>Mute window follows cursor to screens and monitors&lt;/figcaption>
+&lt;figure >
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/mic-mute/screenshot_hu_bcf34150905936b0.webp 271w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100 flex flex-col justify-center items-center"
+alt="popup window screenshot indicating the microphone is off"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='271' height='119'%3E%3C/svg%3E"
+data-placeholder-src="/mic-mute/screenshot_hu_1f31b31300261830.png"
+data-src="/mic-mute/screenshot.png"
+data-srcset="/mic-mute/screenshot.png 271w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="271"
+height="119"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Mute window follows cursor to screens and monitors
+&lt;/figcaption>
 &lt;/figure>
 &lt;p>The mute indicator window will follow the cursor to desktops or screens and
 monitors. The system tray icon will also indicate the mute status. Once
@@ -1044,9 +1264,6 @@ traefik --&amp;gt; livebook[Livebook]
 ddns[cloudflare-companion] -. service discovery .- livebook
 end
 &lt;/pre>
-&lt;figure >
-&lt;figcaption>Mermaid.js diagram of the architecture&lt;/figcaption>
-&lt;/figure>
 &lt;p>The phony make targets below are used to simplify each step. Look at the
 &lt;a href="https://github.com/brettinternet/docker-compose-hosted-demo/blob/main/Makefile">Makefile&lt;/a>
 to see what each one does.&lt;/p>
@@ -1368,16 +1585,15 @@ optimal workflow and the stage of life I&amp;rsquo;m in calls for it.
 &lt;picture>
 &lt;source
 type="image/webp"
-srcset="/about/profile_hu_2eef663adb0258d6.webp"
 data-srcset="/about/profile_hu_a37a9af8b11298de.webp 160w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
 &lt;img
 class="transition-all duration-200 opacity-100 rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
 alt="Brett Gardiner"
-src="/about/profile_hu_6a715c5956f12c51.png"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3C/svg%3E"
+data-placeholder-src="/about/profile_hu_6a715c5956f12c51.png"
 data-src="/about/profile_hu_c80af297f4462462.png"
-srcset="/about/profile_hu_6a715c5956f12c51.png"
 data-srcset="/about/profile_hu_c80af297f4462462.png 160w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 width="160"
@@ -1407,16 +1623,15 @@ Recently, Brett has been hard at work optimizing realtime communication with hun
 &lt;picture>
 &lt;source
 type="image/webp"
-srcset="/about/profile_hu_2eef663adb0258d6.webp"
 data-srcset="/about/profile_hu_a37a9af8b11298de.webp 160w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 />
 &lt;img
 class="transition-all duration-200 opacity-100 rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
 alt="Brett Gardiner"
-src="/about/profile_hu_6a715c5956f12c51.png"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3C/svg%3E"
+data-placeholder-src="/about/profile_hu_6a715c5956f12c51.png"
 data-src="/about/profile_hu_c80af297f4462462.png"
-srcset="/about/profile_hu_6a715c5956f12c51.png"
 data-srcset="/about/profile_hu_c80af297f4462462.png 160w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
 width="160"

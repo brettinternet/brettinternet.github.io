@@ -5,7 +5,7 @@
     {{ end }}
     {{ .Content }}
   </article>
-  <ul class="mx-auto mb-8 flex flex-wrap justify-center items-center max-w-4xl 2xl:max-w-[96rem] 2xl:px-3">
+  <ul class="mx-auto mb-8 w-full flex flex-wrap justify-center items-center max-w-4xl 2xl:max-w-[96rem] 2xl:px-3">
     {{ range where .Pages "Type" "in" site.Params.postTypes }}
     <li class="p-3 flex items-center justify-center w-full md:w-1/2 2xl:w-1/4">
       {{ partial "card" . }}

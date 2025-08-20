@@ -1,6 +1,7 @@
 baseURL: https://brett.cloud
 languageCode: en-us
 title: brett.cloud
+
 params:
   author:
     name: Brett Gardiner
@@ -9,6 +10,7 @@ params:
   postTypes:
     - post
     - link
+
 cascade:
   layout: single
   comments: false
@@ -20,6 +22,7 @@ mediaTypes:
   application/json:
     suffixes:
       - json
+
 outputFormats:
   Atom:
     name: Atom

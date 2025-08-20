@@ -14,8 +14,7 @@
       {{ partial "header.html" . }}
     {{ end }}
     <main class="flex-1 flex flex-col{{if .Params.hide_header}} pt-12{{end}}{{if .Params.hide_footer}} pb-12{{end}}{{with .Params.main_class}} {{.}}{{end}}{{if .Params.center_article}} items-center justify-center{{end}}">
-      {{ block "main" . }}
-      {{ end }}
+      {{ block "main" . }}{{ end }}
     </main>
     {{ if not .Params.hide_footer }}
       {{ partial "footer.html" . }}

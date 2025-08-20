@@ -10,9 +10,9 @@
     {{ end }}
     {{ .Content }}
   </article>
-  <ul class="mx-auto mb-8 flex flex-wrap justify-center items-center max-w-4xl 2xl:max-w-[96rem] 2xl:px-3">
+  <ul class="mx-auto w-full mb-8 flex flex-wrap justify-center items-center max-w-4xl 2xl:max-w-[96rem] 2xl:px-3">
     {{ range where .Pages "Type" "gist" }}
-    <li class="p-3 flex items-center justify-center w-full min-w-full md:w-1/2 2xl:w-1/4">
+    <li class="p-3 flex items-center justify-center w-full md:w-1/2 2xl:w-1/4">
       {{ partial "card" . }}
     </li>
     {{ end }}

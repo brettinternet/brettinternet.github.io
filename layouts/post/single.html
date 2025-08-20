@@ -1,7 +1,12 @@
 {{ define "main" }}
-  <article class="max-w-5xl w-full mx-auto prose prose-slate mb-8 px-4 md:px-0{{with .Params.article_class}} {{.}}{{end}}">
+  <article class="w-full mx-auto prose prose-slate mb-8 px-4 md:px-0{{with .Params.article_class}} {{.}}{{end}}">
     {{ if not .Params.hide_title }}
     <h1 class="font-serif">{{.Title}}</h1>
+    {{ end }}
+    {{ if not .Params.hide_date }}
+    {{ with .PublishDate }}
+    <p class="font-light"><time>{{ .Format "2006-01-02" }}</time></p>
+    {{ end }}
     {{ end }}
     {{ if not .Params.hide_image }}
       {{ $image := index (.Resources.ByType "image") 0 }}
@@ -22,4 +27,9 @@
     {{ end }}
     {{.Content}}
   </article>
+  {{ if .Params.comments }}
+  <div class="container mx-auto max-w-xl mt-24 px-4 md:px-0">
+    {{ partial "giscus.html" }}
+  </div>
+  {{ end }}
 {{ end }}

@@ -1093,7 +1093,7 @@ be required in order to
 &lt;p>Self-hosting is a satisfying hobby with amazing utility. These methods also
 provide ways to try out new technologies, host a simple blog, or make use of
 existing services that you find on GitHub. Let me know if the demo has helped
-you along with your own homelab.&lt;/p></content></entry><entry><title>Homelab</title><link rel="alternate" href="https://brett.cloud/homelab/"/><id>https://brett.cloud/homelab/</id><published>2022-11-02T00:00:00+0000</published><updated>2022-11-02T00:00:00+0000</updated><summary>&lt;p>Don&amp;rsquo;t be fooled, having a home server is really just hundreds of hours of
+you along with your own homelab.&lt;/p></content></entry><entry><title>Homeops</title><link rel="alternate" href="https://brett.cloud/homeops/"/><id>https://brett.cloud/homeops/</id><published>2022-11-02T00:00:00+0000</published><updated>2022-11-02T00:00:00+0000</updated><summary>&lt;p>Don&amp;rsquo;t be fooled, having a home server is really just hundreds of hours of
 &lt;a href="https://wiki.archlinux.org/index.php/Badblocks">badblocks&lt;/a>.&lt;/p>
 &lt;p>I&amp;rsquo;ve been hard at work recently converting my architecture to support
 orchestrated deployments with multiple nodes. I haven&amp;rsquo;t quite achieved

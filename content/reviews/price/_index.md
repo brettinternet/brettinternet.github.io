@@ -1,11 +1,6 @@
 ---
 title: Price, UT
 description: Highway Robbery
-hide_header: true
-hide_footer: true
-hide_title: true
-center_article: true
-comments: false
 ---
 
 # Highway Patrol in Price, Utah

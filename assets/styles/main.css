@@ -55,6 +55,9 @@
   article figure img {
     @apply rounded-lg border-1 border-slate-300;
   }
+  article video {
+    @apply rounded-lg;
+  }
 }
 
 @font-face {

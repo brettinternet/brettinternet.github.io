@@ -21,3 +21,8 @@ I've simplifed my nvim and emacs configurations by just using Astronvim and Doom
 respectively. While I love [i3](https://i3wm.org/), I'm in the process of
 configuring [Sway](https://swaywm.org/) to see if I can match my productivity on
 Wayland.
+
+{{< card
+title="Dotfiles"
+description="MacOS & Linux environments"
+href="https://github.com/brettinternet/dotfiles" >}}

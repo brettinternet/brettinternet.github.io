@@ -1,5 +1,6 @@
 {{ $src := .Get "src" }}
 {{ $alt := .Get "alt" | default "" }}
+{{ $figure := .Get "figure" | default true }}
 {{ $caption := .Get "caption" | default "" }}
 {{ $class := .Get "class" | default "" }}
 {{ $figure_class := .Get "figure_class" | default "flex flex-col justify-center items-center" }}
@@ -15,7 +16,7 @@
     "image" $image
     "alt" $alt
     "class" $class
-    "figure" (ne $caption "")
+    "figure" $figure
     "figure_class" $figure_class
     "caption" $caption
   ) }}

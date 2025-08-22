@@ -12,7 +12,7 @@ comments: false
 
 ## Features
 
-- "Obituaries" to get notified when users removed (or added) from the Slack organization
+- "Obituaries" to get notified when users are removed (or added) from the Slack organization
 - Configurable chat responses and reactions
 - AI Chat with a variety of prompted, unhinged, and sticky personas per user
 - Configurable by environment variables and yaml; secrets can also be mounted to a file

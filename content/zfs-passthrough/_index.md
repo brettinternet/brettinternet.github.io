@@ -6,7 +6,7 @@ description: A short story about recovering from a ZFS oops
 comments: true
 ---
 
-I used a widely-known and inexpensive method to add additional SATA storage via a Host Bus Adapter (HBA). I purchased a [Dell Perc H310](https://www.ebay.com/sch/i.html?_nkw=Dell+Perc+H310+SATA) a long while back. This HBA can be flashed to IT mode to bypass the hardware RAID. <sup>[1](#flash-instructions)</sup>
+I use a widely-known and inexpensive method to add additional SATA storage with the [Dell Perc H310](https://www.ebay.com/sch/i.html?_nkw=Dell+Perc+H310+SATA). I found this old Host Bus Adapter (HBA) a long while back. This HBA can be flashed to IT mode by taping over a couple PCI pins to bypass the hardware RAID and use software RAID. <sup>[1](#flash-instructions)</sup>
 
 Since moving my home servers to Proxmox to manage virtualization, I setup disk passthrough to a VM managing my ZFS array. What could go wrong?
 

@@ -1,7 +1,7 @@
 {{ define "main" }}
   <article class="max-w-5xl w-full mx-auto prose prose-slate mb-8 px-4{{with .Params.article_class}} {{.}}{{end}}">
     {{ with .Parent }}
-    <p class="font-light my-0 text-xs">
+    <p class="font-light my-0">
       <a href="{{ .RelPermalink }}" class="text-slate-600 hover:text-slate-800 inline-flex flex-row items-center gap-1">
         {{ partial "icons/chevron-left.svg" (dict "class" "h-4 w-4") }}
         Gists

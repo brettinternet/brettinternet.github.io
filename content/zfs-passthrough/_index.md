@@ -1,7 +1,7 @@
 ---
 type: post
 publishDate: 2023-12-09
-title: The Stages of ZFS Grief
+title: The Stages of ZFS Data Loss Grief
 description: A short story about recovering from a ZFS oops
 comments: true
 ---
@@ -27,8 +27,6 @@ $ zpool list
 no pools available
 ```
 
-## 1. Denial
-
 On the host:
 
 ```sh
@@ -37,6 +35,8 @@ no pools available
 ```
 
 Hmm.
+
+## 1. Denial
 
 ```sh
 $ zpool import tank
@@ -173,13 +173,11 @@ Immediately:
 $ rsync -ahP /mnt/tank elsewhere:/mnt/pond/tank
 ```
 
-I later find out that some folks on forums recommend against disk passthrough for ZFS pools in VMs, but this may depend on the HBA controller.
+I later discovered from some folks on a ZFS forum that's better to avoid disk passthrough for ZFS pools in VMs, but this may depend on the HBA controller.
 
 Now, I pass the entire HBA controller to guest VMs instead of individual disks when using ZFS. Lesson learned.
 
-The end.
-
-Thank you FreeBSD, Truenas, and r/zfs communities.
+Thank you FreeBSD, Truenas, r/zfs communities and datahoarders.
 
 ---
 

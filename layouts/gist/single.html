@@ -18,7 +18,7 @@
     {{ end }}
     {{ if not .Params.hide_date }}
     {{ with .PublishDate }}
-    <p class="font-light"><time>{{ .Format "2006-01-02" }}</time></p>
+    <p class="font-light text-xs"><time>{{ .Format "2006-01-02" }}</time></p>
     {{ end }}
     {{ end }}
     {{ if not .Params.hide_image }}

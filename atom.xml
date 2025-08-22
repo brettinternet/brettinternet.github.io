@@ -787,7 +787,7 @@ Custom modifiers &amp;amp; other behaviors
 &lt;p>One of my favorite abandonware apps on macOS was an old closed-source Objective C application called &lt;a href="https://bahoom.com/hyperdock">Hyperdock&lt;/a> that had a small secondary feature to resize and move windows by a modifier from anywhere on the window.&lt;/p>
 &lt;p>There are various window utilities on Mac, but none of them satisfied my very specific expectation. Now, this demand lives on with Swift in a small utility &lt;a href="https://github.com/brettinternet/Appresize">here&lt;/a>.&lt;/p></content></entry><entry><title>Slackbot</title><link rel="alternate" href="https://brett.cloud/slackbot/"/><id>https://brett.cloud/slackbot/</id><published>2024-05-19T00:00:00+0000</published><updated>2024-05-19T00:00:00+0000</updated><summary>&lt;h2 id="features">Features&lt;/h2>
 &lt;ul>
-&lt;li>&amp;ldquo;Obituaries&amp;rdquo; to get notified when users removed (or added) from the Slack organization&lt;/li>
+&lt;li>&amp;ldquo;Obituaries&amp;rdquo; to get notified when users are removed (or added) from the Slack organization&lt;/li>
 &lt;li>Configurable chat responses and reactions&lt;/li>
 &lt;li>AI Chat with a variety of prompted, unhinged, and sticky personas per user&lt;/li>
 &lt;li>Configurable by environment variables and yaml; secrets can also be mounted to a file&lt;/li>
@@ -807,7 +807,7 @@ brettinternet/slackbot
 &lt;/div>
 &lt;p class="font-sans text-slate-500">Slack utilities for the workplace&lt;/p></summary><content type="html">&lt;h2 id="features">Features&lt;/h2>
 &lt;ul>
-&lt;li>&amp;ldquo;Obituaries&amp;rdquo; to get notified when users removed (or added) from the Slack organization&lt;/li>
+&lt;li>&amp;ldquo;Obituaries&amp;rdquo; to get notified when users are removed (or added) from the Slack organization&lt;/li>
 &lt;li>Configurable chat responses and reactions&lt;/li>
 &lt;li>AI Chat with a variety of prompted, unhinged, and sticky personas per user&lt;/li>
 &lt;li>Configurable by environment variables and yaml; secrets can also be mounted to a file&lt;/li>

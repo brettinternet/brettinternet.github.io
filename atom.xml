@@ -23,11 +23,11 @@
 href="https://github.com/brettinternet/ai"
 target="_blank"
 rel="noopener noreferrer"
-class="group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 h-60 w-full max-w-[422px] mx-auto my-8"
+class=" w-full max-w-[422px] group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 mx-auto my-8"
 >
-&lt;div class="flex flex-col min-h-full p-8">
+&lt;div class="flex flex-col min-h-full p-6">
 &lt;div class="flex-1">
-&lt;h2 class="leading-tight font-serif text-lg mb-2 font-bold text-slate-900">
+&lt;h2 class="leading-tight font-serif text-lg mb-3 font-bold text-slate-900">
 brettinternet/ai
 &lt;/h2>
 &lt;/div>
@@ -785,7 +785,119 @@ Custom modifiers &amp;amp; other behaviors
 &lt;/figcaption>
 &lt;/figure>
 &lt;p>One of my favorite abandonware apps on macOS was an old closed-source Objective C application called &lt;a href="https://bahoom.com/hyperdock">Hyperdock&lt;/a> that had a small secondary feature to resize and move windows by a modifier from anywhere on the window.&lt;/p>
-&lt;p>There are various window utilities on Mac, but none of them satisfied my very specific expectation. Now, this demand lives on with Swift in a small utility &lt;a href="https://github.com/brettinternet/Appresize">here&lt;/a>.&lt;/p></content></entry><entry><title>Slackbot</title><link rel="alternate" href="https://brett.cloud/slackbot/"/><id>https://brett.cloud/slackbot/</id><published>2024-05-19T00:00:00+0000</published><updated>2024-05-19T00:00:00+0000</updated><summary>&lt;h2 id="features">Features&lt;/h2>
+&lt;p>There are various window utilities on Mac, but none of them satisfied my very specific expectation. Now, this demand lives on with Swift in a small utility &lt;a href="https://github.com/brettinternet/Appresize">here&lt;/a>.&lt;/p></content></entry><entry><title>Magnetic Stream Deck mount for 1/4-inch screw</title><link rel="alternate" href="https://brett.cloud/stream-deck-mount/"/><id>https://brett.cloud/stream-deck-mount/</id><published>2024-12-18T00:00:00+0000</published><updated>2024-12-18T00:00:00+0000</updated><summary>&lt;figure class="flex flex-col justify-center items-center">
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/stream-deck-mount/streamdeck_hu_b5c7f97f71f14468.webp 500w, /stream-deck-mount/streamdeck_hu_777225d68fc31367.webp 800w, /stream-deck-mount/streamdeck_hu_b3908f730655da68.webp 1200w, /stream-deck-mount/streamdeck_hu_f450ce973a592dca.webp 1500w, /stream-deck-mount/streamdeck_hu_7f4791b8aba65877.webp 2670w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100"
+alt="mounted stream deck"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2670' height='1648'%3E%3C/svg%3E"
+data-placeholder-src="/stream-deck-mount/streamdeck_hu_1d5ca6a14c6c7b7.jpg"
+data-src="/stream-deck-mount/streamdeck.jpg"
+data-srcset="/stream-deck-mount/streamdeck_hu_6bb3bb3335a7f73b.jpg 500w, /stream-deck-mount/streamdeck_hu_a9c07ccff0d2b2bb.jpg 800w, /stream-deck-mount/streamdeck_hu_fabde985607b787c.jpg 1200w, /stream-deck-mount/streamdeck_hu_9401207ec041f3d0.jpg 1500w, /stream-deck-mount/streamdeck.jpg 2670w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="2670"
+height="1648"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Stream Deck
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>The Stream Deck is an excellent tool to invoke shortcuts. Check out &lt;a href="https://github.com/brettinternet/dotfiles/blob/10ca81a59c4363c27f6796a80781188e6fe7032d/darwin/.hammerspoon/http.lua">my Hammerspoon config&lt;/a> which I use to extend the Stream Deck scripting capabilities.&lt;/p></summary><content type="html">
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/stream-deck-mount/streamdeck_hu_b5c7f97f71f14468.webp 500w, /stream-deck-mount/streamdeck_hu_777225d68fc31367.webp 800w, /stream-deck-mount/streamdeck_hu_b3908f730655da68.webp 1200w, /stream-deck-mount/streamdeck_hu_f450ce973a592dca.webp 1500w, /stream-deck-mount/streamdeck_hu_7f4791b8aba65877.webp 2670w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100"
+alt="mounted stream deck"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2670' height='1648'%3E%3C/svg%3E"
+data-placeholder-src="/stream-deck-mount/streamdeck_hu_1d5ca6a14c6c7b7.jpg"
+data-src="/stream-deck-mount/streamdeck.jpg"
+data-srcset="/stream-deck-mount/streamdeck_hu_6bb3bb3335a7f73b.jpg 500w, /stream-deck-mount/streamdeck_hu_a9c07ccff0d2b2bb.jpg 800w, /stream-deck-mount/streamdeck_hu_fabde985607b787c.jpg 1200w, /stream-deck-mount/streamdeck_hu_9401207ec041f3d0.jpg 1500w, /stream-deck-mount/streamdeck.jpg 2670w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="2670"
+height="1648"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Stream Deck
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>The Stream Deck is an excellent tool to invoke shortcuts. Check out &lt;a href="https://github.com/brettinternet/dotfiles/blob/10ca81a59c4363c27f6796a80781188e6fe7032d/darwin/.hammerspoon/http.lua">my Hammerspoon config&lt;/a> which I use to extend the Stream Deck scripting capabilities.&lt;/p>
+&lt;h2 id="build">Build&lt;/h2>
+&lt;p>Add a pause to the layer to add the magnetics just before the last layer of the enclosure. Add 12 of the 6x3mm round magnets into place before continuing the print.&lt;/p>
+&lt;video
+width="100%"
+height="auto"
+controls
+autoplay
+loop
+muted
+>
+&lt;source src="print.mp4" type="video/mp4">
+Your browser does not support the video tag.
+&lt;/video>
+&lt;p>When the print is complete, use a soldering iron to heat the threaded insert and melt into the center hole. I&amp;rsquo;ve included a smaller print with the hole to practice putting in the threaded insert.&lt;/p>
+&lt;a
+href="https://makerworld.com/en/models/1724207-magnetic-streamdeck-mount"
+target="_blank"
+rel="noopener noreferrer"
+class=" w-full max-w-[422px] group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 mx-auto my-8"
+>
+&lt;div class="flex flex-col min-h-full p-6">
+&lt;div class="flex-1">
+&lt;h2 class="leading-tight font-serif text-lg mb-3 font-bold text-slate-900">
+MakerWorld 3D model
+&lt;/h2>
+&lt;/div>
+&lt;p class="font-sans text-slate-500">STL/CAD Files and instructions&lt;/p>
+&lt;div class="absolute top-0 right-0 m-3 text-slate-500">
+&lt;svg
+class="w-4 h-4"
+xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+stroke="currentColor">
+&lt;path stroke-linecap="round" stroke-linejoin="round"
+d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+&lt;/svg>
+&lt;/div>
+&lt;/div>
+&lt;/a>
+&lt;h2 id="result">Result&lt;/h2>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/stream-deck-mount/mount_hu_5bc22cf2884d5b0a.webp 500w, /stream-deck-mount/mount_hu_8bee02cbcbe94c0.webp 800w, /stream-deck-mount/mount_hu_776cdbaa8eb4225.webp 1086w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100"
+alt="mounted stream deck"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1086' height='872'%3E%3C/svg%3E"
+data-placeholder-src="/stream-deck-mount/mount_hu_46dcc7e5c0c6e532.jpg"
+data-src="/stream-deck-mount/mount.jpg"
+data-srcset="/stream-deck-mount/mount_hu_35caef13b58ac1bb.jpg 500w, /stream-deck-mount/mount_hu_ddbb8fb6ae4bd36a.jpg 800w, /stream-deck-mount/mount.jpg 1086w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="1086"
+height="872"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;/figure></content></entry><entry><title>Slackbot</title><link rel="alternate" href="https://brett.cloud/slackbot/"/><id>https://brett.cloud/slackbot/</id><published>2024-05-19T00:00:00+0000</published><updated>2024-05-19T00:00:00+0000</updated><summary>&lt;h2 id="features">Features&lt;/h2>
 &lt;ul>
 &lt;li>&amp;ldquo;Obituaries&amp;rdquo; to get notified when users are removed (or added) from the Slack organization&lt;/li>
 &lt;li>Configurable chat responses and reactions&lt;/li>
@@ -797,11 +909,11 @@ Custom modifiers &amp;amp; other behaviors
 href="https://github.com/brettinternet/slackbot"
 target="_blank"
 rel="noopener noreferrer"
-class="group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 h-60 w-full max-w-[422px] mx-auto my-8"
+class=" w-full max-w-[422px] group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 mx-auto my-8"
 >
-&lt;div class="flex flex-col min-h-full p-8">
+&lt;div class="flex flex-col min-h-full p-6">
 &lt;div class="flex-1">
-&lt;h2 class="leading-tight font-serif text-lg mb-2 font-bold text-slate-900">
+&lt;h2 class="leading-tight font-serif text-lg mb-3 font-bold text-slate-900">
 brettinternet/slackbot
 &lt;/h2>
 &lt;/div>
@@ -817,11 +929,11 @@ brettinternet/slackbot
 href="https://github.com/brettinternet/slackbot"
 target="_blank"
 rel="noopener noreferrer"
-class="group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 h-60 w-full max-w-[422px] mx-auto my-8"
+class=" w-full max-w-[422px] group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 mx-auto my-8"
 >
-&lt;div class="flex flex-col min-h-full p-8">
+&lt;div class="flex flex-col min-h-full p-6">
 &lt;div class="flex-1">
-&lt;h2 class="leading-tight font-serif text-lg mb-2 font-bold text-slate-900">
+&lt;h2 class="leading-tight font-serif text-lg mb-3 font-bold text-slate-900">
 brettinternet/slackbot
 &lt;/h2>
 &lt;/div>
@@ -1463,7 +1575,31 @@ features suited for different environments.&lt;/p>
 &lt;p>I&amp;rsquo;ve simplifed my nvim and emacs configurations by just using Astronvim and Doom
 respectively. While I love &lt;a href="https://i3wm.org/">i3&lt;/a>, I&amp;rsquo;m in the process of
 configuring &lt;a href="https://swaywm.org/">Sway&lt;/a> to see if I can match my productivity on
-Wayland.&lt;/p></content></entry><entry><title>Building a Hackintosh</title><link rel="alternate" href="https://brett.cloud/hackintosh/"/><id>https://brett.cloud/hackintosh/</id><published>2017-04-23T00:00:00+0000</published><updated>2017-04-23T00:00:00+0000</updated><summary>&lt;p>Apple&amp;rsquo;s overpriced offering is moving away from modular, upgradable hardware.
+Wayland.&lt;/p>
+&lt;a
+href="https://github.com/brettinternet/dotfiles"
+target="_blank"
+rel="noopener noreferrer"
+class=" w-full max-w-[422px] group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 mx-auto my-8"
+>
+&lt;div class="flex flex-col min-h-full p-6">
+&lt;div class="flex-1">
+&lt;h2 class="leading-tight font-serif text-lg mb-3 font-bold text-slate-900">
+Dotfiles
+&lt;/h2>
+&lt;/div>
+&lt;p class="font-sans text-slate-500">MacOS &amp;amp; Linux environments&lt;/p>
+&lt;div class="absolute top-0 right-0 m-3 text-slate-500">
+&lt;svg
+class="w-4 h-4"
+xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+stroke="currentColor">
+&lt;path stroke-linecap="round" stroke-linejoin="round"
+d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+&lt;/svg>
+&lt;/div>
+&lt;/div>
+&lt;/a></content></entry><entry><title>Building a Hackintosh</title><link rel="alternate" href="https://brett.cloud/hackintosh/"/><id>https://brett.cloud/hackintosh/</id><published>2017-04-23T00:00:00+0000</published><updated>2017-04-23T00:00:00+0000</updated><summary>&lt;p>Apple&amp;rsquo;s overpriced offering is moving away from modular, upgradable hardware.
 Some recent unveils of the iMac, Mac Pro, and MacBook Pro failed to meet the
 expectations of many professionals that demand improved specifications. Using
 the more powerful hardware available with macOS can be the ultimate environment

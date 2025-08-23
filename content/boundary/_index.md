@@ -3,6 +3,11 @@ type: post
 title: Scaling Elixir Applications with Context Boundaries
 publishDate: 2025-08-07
 description: Improve readability, testing, compile times and organization in an Elixir monolith
+card_image: pdq.png
+resources:
+  - src: pdq.png
+    params:
+      alt: people standing in crowded room with drinks and food
 comments: true
 ---
 
@@ -91,6 +96,8 @@ The `runtime: false` option is important. Boundary is a compile-time tool and do
 ## Context Boundaries
 
 On my Elixir team, we've extended the ideas from the Boundary library into an opinionated design pattern we call "Context Boundaries".
+
+{{< image src="accounts.png" alt="whiteboard with diagrams" >}}
 
 ### What Are Context Boundaries?
 

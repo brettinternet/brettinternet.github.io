@@ -3,6 +3,7 @@ type: post
 title: Dotfiles
 publishDate: 2021-10-27
 description: Config files for X11, i3wm, sway, macOS, Arch Linux, zsh and bash
+card_image: thinkpad.png
 resources:
   - src: i3.png
     params:

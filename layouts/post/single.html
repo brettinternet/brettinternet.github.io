@@ -13,7 +13,13 @@
         {{ end }}
       </div>
       {{ if not .Params.hide_image }}
-        {{ $image := index (.Resources.ByType "image") 0 }}
+        {{ $image := .Resources.GetMatch .Params.post_image }}
+        {{ if not $image }}
+          {{ $image = .Resources.GetMatch .Params.card_image }}
+        {{ end }}
+        {{ if not $image }}
+          {{ $image = index (.Resources.ByType "image") 0 }}
+        {{ end }}
         {{ if $image }}
           {{ $maxWidth := 900 }}
           {{ $width := cond (lt $image.Width $maxWidth) $image.Width $maxWidth }}

@@ -3,6 +3,7 @@
 {{ $figure := .Get "figure" | default true }}
 {{ $caption := .Get "caption" | default "" }}
 {{ $class := .Get "class" | default "" }}
+{{ $width := .Get "width" }}
 {{ $figure_class := .Get "figure_class" | default "flex flex-col justify-center items-center" }}
 
 {{ if not $src }}
@@ -19,6 +20,7 @@
     "figure" $figure
     "figure_class" $figure_class
     "caption" $caption
+    "width" $width
   ) }}
 {{ else }}
   {{/* Fallback for images that cannot be processed */}}

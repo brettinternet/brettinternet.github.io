@@ -2,16 +2,23 @@
 type: post
 title: Manage notes with markdown and git
 publishDate: 2017-02-06
-description: "'Everything not saved will be lost.'"
+description: '"Everything not saved will be lost."'
 comments: true
-renderer:
-  unsafe: true
+hide_image: true
+resources:
+  - src: notes.png
+    params:
+      alt: organic chemistry diagram sketches in a notebook
 ---
 
 In school, to keep up with my peers, I took meticulous notes. I read and reread
 assignments, and I constantly evaluated my priorities to stay on task. I became
 obsessed with managing my productivity. I've used feature-rich apps like
 OmniFocus or Wunderlist and simpler tools like Apple Reminders.
+
+{{< image src="notes.png" alt="organic chemistry diagram sketches in a notebook" caption="Organic chemistry notes from college" >}}
+
+## Tools
 
 For a while I used Evernote for note-taking, then I tried OneNote, Apple Notes
 and even Google Keep. I left Evernote because they'd seemed to have lost their
@@ -81,15 +88,15 @@ offers free repository cloning and viewing, with push capabilities available thr
 SSH key support, syntax highlighting, and markdown preview. It's an
 excellent mobile git client for iOS.
 
-### Save Menu
+## Save Menu
 
 > Everything not saved will be lost.
 >
 > \- _Nintendo "Quit Screen" message_
 
 Like an accessible save menu, I keep everything in markdown. I record Docker
-commands and obscure command-line arguments, JavaScript problems, or
-directions to set up Postgres permissions. I also
+commands and obscure command-line arguments, programming problems, or
+devops directions. I also
 [create slides](https://github.com/brettinternet/slides) with markdown.
 I'll only note something if it's easier to reference my notes than
 search for it online. I also take

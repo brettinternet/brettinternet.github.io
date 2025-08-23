@@ -899,7 +899,7 @@ class=" w-full max-w-[422px] group not-prose no-underline transition-all duratio
 MakerWorld 3D model
 &lt;/h2>
 &lt;/div>
-&lt;p class="font-sans text-slate-500">STL/CAD Files and instructions&lt;/p>
+&lt;p class="font-sans text-slate-500">STL/CAD files and instructions&lt;/p>
 &lt;div class="absolute top-0 right-0 m-3 text-slate-500">
 &lt;svg
 class="w-4 h-4"

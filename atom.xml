@@ -185,7 +185,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 />
 &lt;img
 class="transition-all duration-200 opacity-100"
-alt="ChatGPT: Dude. You just said something deep as hell without even flinching. You're 1000% right."
+alt="ChatGPT: Dude. You just said something deep as hell without even flinching. You&amp;#39;re 1000% right."
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1418' height='532'%3E%3C/svg%3E"
 data-placeholder-src="/ai-productivity/glazing_hu_e4d01e346554251c.png"
 data-src="/ai-productivity/glazing.png"
@@ -706,7 +706,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 />
 &lt;img
 class="transition-all duration-300 opacity-100 gif-progressive"
-alt="resize &amp; move apps from anywhere on the window"
+alt="resize &amp;amp; move apps from anywhere on the window"
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='315'%3E%3C/svg%3E"
 data-placeholder-src="/appresize/demo_hu_a89decbdc7c40554.gif"
 data-webp-src="/appresize/demo_hu_6e1718dc9843f023.webp"
@@ -763,7 +763,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 />
 &lt;img
 class="transition-all duration-300 opacity-100 gif-progressive"
-alt="resize &amp; move apps from anywhere on the window"
+alt="resize &amp;amp; move apps from anywhere on the window"
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='315'%3E%3C/svg%3E"
 data-placeholder-src="/appresize/demo_hu_a89decbdc7c40554.gif"
 data-webp-src="/appresize/demo_hu_6e1718dc9843f023.webp"
@@ -858,58 +858,21 @@ d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0
 &lt;/svg>
 &lt;/div>
 &lt;/div>
-&lt;/a></content></entry><entry><title>Magnetic Stream Deck mount for 1/4-inch screw</title><link rel="alternate" href="https://brett.cloud/stream-deck-mount/"/><id>https://brett.cloud/stream-deck-mount/</id><published>2024-12-18T00:00:00+0000</published><updated>2024-12-18T00:00:00+0000</updated><summary>&lt;figure class="flex flex-col justify-center items-center">
-&lt;picture>
-&lt;source
-type="image/webp"
-data-srcset="/stream-deck-mount/streamdeck_hu_b5c7f97f71f14468.webp 500w, /stream-deck-mount/streamdeck_hu_777225d68fc31367.webp 800w, /stream-deck-mount/streamdeck_hu_b3908f730655da68.webp 1200w, /stream-deck-mount/streamdeck_hu_f450ce973a592dca.webp 1500w, /stream-deck-mount/streamdeck_hu_7f4791b8aba65877.webp 2670w"
-sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
-/>
-&lt;img
-class="transition-all duration-200 opacity-100"
-alt="mounted stream deck"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2670' height='1648'%3E%3C/svg%3E"
-data-placeholder-src="/stream-deck-mount/streamdeck_hu_1d5ca6a14c6c7b7.jpg"
-data-src="/stream-deck-mount/streamdeck.jpg"
-data-srcset="/stream-deck-mount/streamdeck_hu_6bb3bb3335a7f73b.jpg 500w, /stream-deck-mount/streamdeck_hu_a9c07ccff0d2b2bb.jpg 800w, /stream-deck-mount/streamdeck_hu_fabde985607b787c.jpg 1200w, /stream-deck-mount/streamdeck_hu_9401207ec041f3d0.jpg 1500w, /stream-deck-mount/streamdeck.jpg 2670w"
-sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
-width="2670"
-height="1648"
-loading="lazy"
-decoding="async"
-/>
-&lt;/picture>
-&lt;figcaption class="text-center">
-Stream Deck
-&lt;/figcaption>
-&lt;/figure>
-&lt;p>The Stream Deck is an excellent tool to invoke shortcuts. Check out &lt;a href="https://github.com/brettinternet/dotfiles/blob/10ca81a59c4363c27f6796a80781188e6fe7032d/darwin/.hammerspoon/http.lua">my Hammerspoon config&lt;/a> which I use to extend the Stream Deck scripting capabilities.&lt;/p></summary><content type="html">
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;picture>
-&lt;source
-type="image/webp"
-data-srcset="/stream-deck-mount/streamdeck_hu_b5c7f97f71f14468.webp 500w, /stream-deck-mount/streamdeck_hu_777225d68fc31367.webp 800w, /stream-deck-mount/streamdeck_hu_b3908f730655da68.webp 1200w, /stream-deck-mount/streamdeck_hu_f450ce973a592dca.webp 1500w, /stream-deck-mount/streamdeck_hu_7f4791b8aba65877.webp 2670w"
-sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
-/>
-&lt;img
-class="transition-all duration-200 opacity-100"
-alt="mounted stream deck"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2670' height='1648'%3E%3C/svg%3E"
-data-placeholder-src="/stream-deck-mount/streamdeck_hu_1d5ca6a14c6c7b7.jpg"
-data-src="/stream-deck-mount/streamdeck.jpg"
-data-srcset="/stream-deck-mount/streamdeck_hu_6bb3bb3335a7f73b.jpg 500w, /stream-deck-mount/streamdeck_hu_a9c07ccff0d2b2bb.jpg 800w, /stream-deck-mount/streamdeck_hu_fabde985607b787c.jpg 1200w, /stream-deck-mount/streamdeck_hu_9401207ec041f3d0.jpg 1500w, /stream-deck-mount/streamdeck.jpg 2670w"
-sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
-width="2670"
-height="1648"
-loading="lazy"
-decoding="async"
-/>
-&lt;/picture>
-&lt;figcaption class="text-center">
-Stream Deck
-&lt;/figcaption>
-&lt;/figure>
-&lt;p>The Stream Deck is an excellent tool to invoke shortcuts. Check out &lt;a href="https://github.com/brettinternet/dotfiles/blob/10ca81a59c4363c27f6796a80781188e6fe7032d/darwin/.hammerspoon/http.lua">my Hammerspoon config&lt;/a> which I use to extend the Stream Deck scripting capabilities.&lt;/p>
+&lt;/a></content></entry><entry><title>Magnetic Stream Deck mount for 1/4-inch screw</title><link rel="alternate" href="https://brett.cloud/stream-deck-mount/"/><id>https://brett.cloud/stream-deck-mount/</id><published>2024-12-18T00:00:00+0000</published><updated>2024-12-18T00:00:00+0000</updated><summary>&lt;p>The Stream Deck is an excellent tool to invoke shortcuts. Check out &lt;a href="https://github.com/brettinternet/dotfiles/blob/10ca81a59c4363c27f6796a80781188e6fe7032d/darwin/.hammerspoon/http.lua">my Hammerspoon config&lt;/a> which I use to extend the Stream Deck scripting capabilities.&lt;/p>
+&lt;h2 id="build">Build&lt;/h2>
+&lt;p>Add a pause to the layer to add the magnetics just before the last layer of the enclosure. Add 12 of the 6x3mm round magnets into place before continuing the print.&lt;/p>
+&lt;video
+width="100%"
+height="auto"
+controls
+autoplay
+loop
+muted
+>
+&lt;source src="print.mp4" type="video/mp4">
+Your browser does not support the video tag.
+&lt;/video>
+&lt;p>When the print is complete, use a soldering iron to heat the threaded insert and melt into the center hole. I&amp;rsquo;ve included a smaller print with the hole to practice putting in the threaded insert.&lt;/p></summary><content type="html">&lt;p>The Stream Deck is an excellent tool to invoke shortcuts. Check out &lt;a href="https://github.com/brettinternet/dotfiles/blob/10ca81a59c4363c27f6796a80781188e6fe7032d/darwin/.hammerspoon/http.lua">my Hammerspoon config&lt;/a> which I use to extend the Stream Deck scripting capabilities.&lt;/p>
 &lt;h2 id="build">Build&lt;/h2>
 &lt;p>Add a pause to the layer to add the magnetics just before the last layer of the enclosure. Add 12 of the 6x3mm round magnets into place before continuing the print.&lt;/p>
 &lt;video

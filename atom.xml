@@ -785,7 +785,58 @@ Custom modifiers &amp;amp; other behaviors
 &lt;/figcaption>
 &lt;/figure>
 &lt;p>One of my favorite abandonware apps on macOS was an old closed-source Objective C application called &lt;a href="https://bahoom.com/hyperdock">Hyperdock&lt;/a> that had a small secondary feature to resize and move windows by a modifier from anywhere on the window.&lt;/p>
-&lt;p>There are various window utilities on Mac, but none of them satisfied my very specific expectation. Now, this demand lives on with Swift in a small utility &lt;a href="https://github.com/brettinternet/Appresize">here&lt;/a>.&lt;/p></content></entry><entry><title>Magnetic Stream Deck mount for 1/4-inch screw</title><link rel="alternate" href="https://brett.cloud/stream-deck-mount/"/><id>https://brett.cloud/stream-deck-mount/</id><published>2024-12-18T00:00:00+0000</published><updated>2024-12-18T00:00:00+0000</updated><summary>&lt;figure class="flex flex-col justify-center items-center">
+&lt;p>There are various window utilities on Mac, but none of them satisfied my very specific expectation. Now, this demand lives on with Swift in a small utility &lt;a href="https://github.com/brettinternet/Appresize">here&lt;/a>.&lt;/p></content></entry><entry><title>Slackbot</title><link rel="alternate" href="https://brett.cloud/slackbot/"/><id>https://brett.cloud/slackbot/</id><published>2025-05-19T00:00:00+0000</published><updated>2025-05-19T00:00:00+0000</updated><summary>&lt;h2 id="features">Features&lt;/h2>
+&lt;ul>
+&lt;li>&amp;ldquo;Obituaries&amp;rdquo; to get notified when users are removed (or added) from the Slack organization&lt;/li>
+&lt;li>Configurable chat responses and reactions&lt;/li>
+&lt;li>AI Chat with a variety of prompted, unhinged, and sticky personas per user&lt;/li>
+&lt;li>Configurable by environment variables and yaml; secrets can also be mounted to a file&lt;/li>
+&lt;li>Prebuilt containers ready for deployment and example docker deployment to handle public event endpoint&lt;/li>
+&lt;/ul>
+&lt;a
+href="https://github.com/brettinternet/slackbot"
+target="_blank"
+rel="noopener noreferrer"
+class=" w-full max-w-[422px] group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 mx-auto my-8"
+>
+&lt;div class="flex flex-col min-h-full p-6">
+&lt;div class="flex-1">
+&lt;h2 class="leading-tight font-serif text-lg mb-3 font-bold text-slate-900">
+brettinternet/slackbot
+&lt;/h2>
+&lt;/div>
+&lt;p class="font-sans text-slate-500">Slack utilities for the workplace&lt;/p></summary><content type="html">&lt;h2 id="features">Features&lt;/h2>
+&lt;ul>
+&lt;li>&amp;ldquo;Obituaries&amp;rdquo; to get notified when users are removed (or added) from the Slack organization&lt;/li>
+&lt;li>Configurable chat responses and reactions&lt;/li>
+&lt;li>AI Chat with a variety of prompted, unhinged, and sticky personas per user&lt;/li>
+&lt;li>Configurable by environment variables and yaml; secrets can also be mounted to a file&lt;/li>
+&lt;li>Prebuilt containers ready for deployment and example docker deployment to handle public event endpoint&lt;/li>
+&lt;/ul>
+&lt;a
+href="https://github.com/brettinternet/slackbot"
+target="_blank"
+rel="noopener noreferrer"
+class=" w-full max-w-[422px] group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 mx-auto my-8"
+>
+&lt;div class="flex flex-col min-h-full p-6">
+&lt;div class="flex-1">
+&lt;h2 class="leading-tight font-serif text-lg mb-3 font-bold text-slate-900">
+brettinternet/slackbot
+&lt;/h2>
+&lt;/div>
+&lt;p class="font-sans text-slate-500">Slack utilities for the workplace&lt;/p>
+&lt;div class="absolute top-0 right-0 m-3 text-slate-500">
+&lt;svg
+class="w-4 h-4"
+xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+stroke="currentColor">
+&lt;path stroke-linecap="round" stroke-linejoin="round"
+d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+&lt;/svg>
+&lt;/div>
+&lt;/div>
+&lt;/a></content></entry><entry><title>Magnetic Stream Deck mount for 1/4-inch screw</title><link rel="alternate" href="https://brett.cloud/stream-deck-mount/"/><id>https://brett.cloud/stream-deck-mount/</id><published>2024-12-18T00:00:00+0000</published><updated>2024-12-18T00:00:00+0000</updated><summary>&lt;figure class="flex flex-col justify-center items-center">
 &lt;picture>
 &lt;source
 type="image/webp"
@@ -897,58 +948,7 @@ loading="lazy"
 decoding="async"
 />
 &lt;/picture>
-&lt;/figure></content></entry><entry><title>Slackbot</title><link rel="alternate" href="https://brett.cloud/slackbot/"/><id>https://brett.cloud/slackbot/</id><published>2024-05-19T00:00:00+0000</published><updated>2024-05-19T00:00:00+0000</updated><summary>&lt;h2 id="features">Features&lt;/h2>
-&lt;ul>
-&lt;li>&amp;ldquo;Obituaries&amp;rdquo; to get notified when users are removed (or added) from the Slack organization&lt;/li>
-&lt;li>Configurable chat responses and reactions&lt;/li>
-&lt;li>AI Chat with a variety of prompted, unhinged, and sticky personas per user&lt;/li>
-&lt;li>Configurable by environment variables and yaml; secrets can also be mounted to a file&lt;/li>
-&lt;li>Prebuilt containers ready for deployment and example docker deployment to handle public event endpoint&lt;/li>
-&lt;/ul>
-&lt;a
-href="https://github.com/brettinternet/slackbot"
-target="_blank"
-rel="noopener noreferrer"
-class=" w-full max-w-[422px] group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 mx-auto my-8"
->
-&lt;div class="flex flex-col min-h-full p-6">
-&lt;div class="flex-1">
-&lt;h2 class="leading-tight font-serif text-lg mb-3 font-bold text-slate-900">
-brettinternet/slackbot
-&lt;/h2>
-&lt;/div>
-&lt;p class="font-sans text-slate-500">Slack utilities for the workplace&lt;/p></summary><content type="html">&lt;h2 id="features">Features&lt;/h2>
-&lt;ul>
-&lt;li>&amp;ldquo;Obituaries&amp;rdquo; to get notified when users are removed (or added) from the Slack organization&lt;/li>
-&lt;li>Configurable chat responses and reactions&lt;/li>
-&lt;li>AI Chat with a variety of prompted, unhinged, and sticky personas per user&lt;/li>
-&lt;li>Configurable by environment variables and yaml; secrets can also be mounted to a file&lt;/li>
-&lt;li>Prebuilt containers ready for deployment and example docker deployment to handle public event endpoint&lt;/li>
-&lt;/ul>
-&lt;a
-href="https://github.com/brettinternet/slackbot"
-target="_blank"
-rel="noopener noreferrer"
-class=" w-full max-w-[422px] group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 mx-auto my-8"
->
-&lt;div class="flex flex-col min-h-full p-6">
-&lt;div class="flex-1">
-&lt;h2 class="leading-tight font-serif text-lg mb-3 font-bold text-slate-900">
-brettinternet/slackbot
-&lt;/h2>
-&lt;/div>
-&lt;p class="font-sans text-slate-500">Slack utilities for the workplace&lt;/p>
-&lt;div class="absolute top-0 right-0 m-3 text-slate-500">
-&lt;svg
-class="w-4 h-4"
-xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-stroke="currentColor">
-&lt;path stroke-linecap="round" stroke-linejoin="round"
-d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-&lt;/svg>
-&lt;/div>
-&lt;/div>
-&lt;/a></content></entry><entry><title>The Stages of ZFS Data Loss Grief</title><link rel="alternate" href="https://brett.cloud/zfs-passthrough/"/><id>https://brett.cloud/zfs-passthrough/</id><published>2023-12-09T00:00:00+0000</published><updated>2023-12-09T00:00:00+0000</updated><summary>&lt;p>I use a widely-known and inexpensive method to add additional SATA storage with the &lt;a href="https://www.ebay.com/sch/i.html?_nkw=Dell+Perc+H310+SATA">Dell Perc H310&lt;/a>. I found this old Host Bus Adapter (HBA) a long while back. This HBA can be flashed to IT mode by taping over a couple PCI pins to bypass the hardware RAID and use software RAID. &lt;sup>&lt;a href="#flash-instructions">1&lt;/a>&lt;/sup>&lt;/p>
+&lt;/figure></content></entry><entry><title>The Stages of ZFS Data Loss Grief</title><link rel="alternate" href="https://brett.cloud/zfs-passthrough/"/><id>https://brett.cloud/zfs-passthrough/</id><published>2023-12-09T00:00:00+0000</published><updated>2023-12-09T00:00:00+0000</updated><summary>&lt;p>I use a widely-known and inexpensive method to add additional SATA storage with the &lt;a href="https://www.ebay.com/sch/i.html?_nkw=Dell+Perc+H310+SATA">Dell Perc H310&lt;/a>. I found this old Host Bus Adapter (HBA) a long while back. This HBA can be flashed to IT mode by taping over a couple PCI pins to bypass the hardware RAID and use software RAID. &lt;sup>&lt;a href="#flash-instructions">1&lt;/a>&lt;/sup>&lt;/p>
 &lt;p>Since moving my home servers to Proxmox to manage virtualization, I setup disk passthrough to a VM managing my ZFS array. What could go wrong?&lt;/p></summary><content type="html">&lt;p>I use a widely-known and inexpensive method to add additional SATA storage with the &lt;a href="https://www.ebay.com/sch/i.html?_nkw=Dell+Perc+H310+SATA">Dell Perc H310&lt;/a>. I found this old Host Bus Adapter (HBA) a long while back. This HBA can be flashed to IT mode by taping over a couple PCI pins to bypass the hardware RAID and use software RAID. &lt;sup>&lt;a href="#flash-instructions">1&lt;/a>&lt;/sup>&lt;/p>
 &lt;p>Since moving my home servers to Proxmox to manage virtualization, I setup disk passthrough to a VM managing my ZFS array. What could go wrong?&lt;/p>
 &lt;div class="group/codeblock relative overflow-x-auto my-6">

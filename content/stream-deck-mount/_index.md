@@ -26,7 +26,7 @@ When the print is complete, use a soldering iron to heat the threaded insert and
 
 {{< card
 title="MakerWorld 3D model"
-description="STL/CAD Files and instructions"
+description="STL/CAD files and instructions"
 href="https://makerworld.com/en/models/1724207-magnetic-streamdeck-mount" >}}
 
 ## Result

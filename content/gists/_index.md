@@ -1,7 +1,7 @@
 ---
 layout: list
 title: Gists
-meta_title: Brett Gardiner
+meta_title: Gists
 hide_logo: true
 cascade:
   params:

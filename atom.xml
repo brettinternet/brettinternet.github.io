@@ -295,6 +295,28 @@ Copy
 &lt;p>The &lt;code>runtime: false&lt;/code> option is important. Boundary is a compile-time tool and doesn&amp;rsquo;t need to be included in your production release.&lt;/p>
 &lt;h2 id="context-boundaries">Context Boundaries&lt;/h2>
 &lt;p>On my Elixir team, we&amp;rsquo;ve extended the ideas from the Boundary library into an opinionated design pattern we call &amp;ldquo;Context Boundaries&amp;rdquo;.&lt;/p>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/boundary/accounts_hu_ee1a582da41cbbad.webp 500w, /boundary/accounts_hu_e7e3a53abe264b6.webp 577w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100"
+alt="whiteboard with diagrams"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='577' height='434'%3E%3C/svg%3E"
+data-placeholder-src="/boundary/accounts_hu_326d43c22091e6b4.png"
+data-src="/boundary/accounts.png"
+data-srcset="/boundary/accounts_hu_d6ef0e82a9281b37.png 500w, /boundary/accounts.png 577w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="577"
+height="434"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;/figure>
 &lt;h3 id="what-are-context-boundaries">What Are Context Boundaries?&lt;/h3>
 &lt;p>Context boundaries are architectural constraints that group related functionality together and define explicit interfaces for interaction between different parts of your application. Think of them as microservices within a monolith. Each boundary owns a specific business domain and exposes a well-defined API.&lt;/p>
 &lt;p>In an e-commerce application, you might have top-level boundaries like:&lt;/p>
@@ -1643,6 +1665,32 @@ light. I&amp;rsquo;ve archived my personal Hackintosh project and moved on to
 assignments, and I constantly evaluated my priorities to stay on task. I became
 obsessed with managing my productivity. I&amp;rsquo;ve used feature-rich apps like
 OmniFocus or Wunderlist and simpler tools like Apple Reminders.&lt;/p>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/notes/notes_hu_d64370ecfe9015ef.webp 500w, /notes/notes_hu_f41f8e275e6dbbac.webp 800w, /notes/notes_hu_8d4291639a2b74c8.webp 930w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100"
+alt="organic chemistry diagram sketches in a notebook"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='930' height='709'%3E%3C/svg%3E"
+data-placeholder-src="/notes/notes_hu_2b74d3032ce9a319.png"
+data-src="/notes/notes.png"
+data-srcset="/notes/notes_hu_4db7be4ff58c7132.png 500w, /notes/notes_hu_8ae98ef671c60a66.png 800w, /notes/notes.png 930w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="930"
+height="709"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Organic chemistry notes from college
+&lt;/figcaption>
+&lt;/figure>
+&lt;h2 id="tools">Tools&lt;/h2>
 &lt;p>For a while I used Evernote for note-taking, then I tried OneNote, Apple Notes
 and even Google Keep. I left Evernote because they&amp;rsquo;d seemed to have lost their
 way with gimmicky features. I liked that OneNote didn&amp;rsquo;t force-feed a premium
@@ -1652,6 +1700,32 @@ better for anything other than lists or using the touch draw feature.&lt;/p></su
 assignments, and I constantly evaluated my priorities to stay on task. I became
 obsessed with managing my productivity. I&amp;rsquo;ve used feature-rich apps like
 OmniFocus or Wunderlist and simpler tools like Apple Reminders.&lt;/p>
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;picture>
+&lt;source
+type="image/webp"
+data-srcset="/notes/notes_hu_d64370ecfe9015ef.webp 500w, /notes/notes_hu_f41f8e275e6dbbac.webp 800w, /notes/notes_hu_8d4291639a2b74c8.webp 930w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+/>
+&lt;img
+class="transition-all duration-200 opacity-100"
+alt="organic chemistry diagram sketches in a notebook"
+src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='930' height='709'%3E%3C/svg%3E"
+data-placeholder-src="/notes/notes_hu_2b74d3032ce9a319.png"
+data-src="/notes/notes.png"
+data-srcset="/notes/notes_hu_4db7be4ff58c7132.png 500w, /notes/notes_hu_8ae98ef671c60a66.png 800w, /notes/notes.png 930w"
+sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
+width="930"
+height="709"
+loading="lazy"
+decoding="async"
+/>
+&lt;/picture>
+&lt;figcaption class="text-center">
+Organic chemistry notes from college
+&lt;/figcaption>
+&lt;/figure>
+&lt;h2 id="tools">Tools&lt;/h2>
 &lt;p>For a while I used Evernote for note-taking, then I tried OneNote, Apple Notes
 and even Google Keep. I left Evernote because they&amp;rsquo;d seemed to have lost their
 way with gimmicky features. I liked that OneNote didn&amp;rsquo;t force-feed a premium
@@ -1706,13 +1780,13 @@ There are equally good options on Android like &lt;a href="https://github.com/ma
 offers free repository cloning and viewing, with push capabilities available through in-app purchase. The app includes
 SSH key support, syntax highlighting, and markdown preview. It&amp;rsquo;s an
 excellent mobile git client for iOS.&lt;/p>
-&lt;h3 id="save-menu">Save Menu&lt;/h3>
+&lt;h2 id="save-menu">Save Menu&lt;/h2>
 &lt;blockquote>
 &lt;p>Everything not saved will be lost.&lt;/p>
 &lt;p>- &lt;em>Nintendo &amp;ldquo;Quit Screen&amp;rdquo; message&lt;/em>&lt;/p>&lt;/blockquote>
 &lt;p>Like an accessible save menu, I keep everything in markdown. I record Docker
-commands and obscure command-line arguments, JavaScript problems, or
-directions to set up Postgres permissions. I also
+commands and obscure command-line arguments, programming problems, or
+devops directions. I also
 &lt;a href="https://github.com/brettinternet/slides">create slides&lt;/a> with markdown.
 I&amp;rsquo;ll only note something if it&amp;rsquo;s easier to reference my notes than
 search for it online. I also take
@@ -1875,6 +1949,18 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="r
 &lt;/a>
 &lt;/li>
 &lt;/ul>
+&lt;!--
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;img
+src="/discussion.png"
+alt="three people having a discussion, one person is pointing"
+loading="lazy"
+/>
+&lt;figcaption class="text-center">
+Cody, Gaia and I discussing shareholder value
+&lt;/figcaption>
+&lt;/figure>
+-->
 &lt;div class="px-0">
 &lt;div class="grid sm:grid-cols-2 gap-4">
 &lt;details open>
@@ -1889,4 +1975,16 @@ stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="r
 &lt;summary class="font-serif">How do we get in touch?&lt;/summary>
 &lt;p>Please try one of the channels linked above.&lt;br />You may also reach me at:&lt;br />&lt;code>hi@[this website's domain]&lt;/code>&lt;/p>
 &lt;/details>
-&lt;/div></content></entry></feed>
+&lt;/div>
+&lt;!--
+&lt;figure class="flex flex-col justify-center items-center">
+&lt;img
+src="/mri.png"
+alt="man with bicycle standing in front of wrapped MRI machine still in freight"
+loading="lazy"
+/>
+&lt;figcaption class="text-center">
+Standing in front of my university&amp;#39;s new MRI machine
+&lt;/figcaption>
+&lt;/figure>
+--></content></entry></feed>

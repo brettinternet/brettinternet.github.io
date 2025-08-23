@@ -1,7 +1,7 @@
 ---
 type: post
 title: Slackbot
-publishDate: 2024-05-19
+publishDate: 2025-05-19
 description: Slack utilities for the workplace
 resources:
   - src: user-status.gif

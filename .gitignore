@@ -47,3 +47,7 @@ node_modules
 /Taskfile.yml
 
 mise.local.toml
+
+.serena
+.claude/settings.local.json
+CLAUDE.local.md

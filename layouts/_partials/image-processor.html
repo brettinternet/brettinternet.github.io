@@ -81,7 +81,7 @@
   </picture>`
     $webp_srcset
     (cond $image_class (printf " %s" $image_class) "")
-    $alt
+    (htmlEscape $alt)
     $image.Width
     $image.Height
     $placeholder.RelPermalink
@@ -148,7 +148,7 @@
   </picture>`
     $webp_srcset
     (cond $image_class (printf " %s" $image_class) "")
-    $alt
+    (htmlEscape $alt)
     $image.Width
     $image.Height
     $placeholder.RelPermalink

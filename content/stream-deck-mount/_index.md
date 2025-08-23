@@ -3,15 +3,16 @@ type: post
 title: Magnetic Stream Deck mount for 1/4-inch screw
 description: Magnetic mount for 1/4"-20 threaded insert
 publishDate: 2024-12-18
-hide_image: true
+post_image: streamdeck.jpg
 resources:
   - src: mount.gif
     params:
       alt: stream deck mount 3D printing
+  - src: streamdeck.jpg
+    params:
+      alt: mounted stream deck suspended over desk
 comments: false
 ---
-
-{{< image src="streamdeck.jpg" alt="mounted stream deck" caption="Stream Deck" >}}
 
 The Stream Deck is an excellent tool to invoke shortcuts. Check out [my Hammerspoon config](https://github.com/brettinternet/dotfiles/blob/10ca81a59c4363c27f6796a80781188e6fe7032d/darwin/.hammerspoon/http.lua) which I use to extend the Stream Deck scripting capabilities.
 

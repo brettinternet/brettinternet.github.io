@@ -109,5 +109,7 @@
 }
 
 img[loading="lazy"]:not(.image-loaded) {
-  @apply blur-lg;
+  @apply blur-sm;
+  /* define edges along with border radius: https://stackoverflow.com/questions/12224320/defined-edges-with-css3-filter-blur */
+  clip-path: inset(0 round 8px);
 }

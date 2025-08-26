@@ -64,8 +64,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-300 opacity-100 gif-progressive"
 alt="code completions"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='680' height='383'%3E%3C/svg%3E"
-data-placeholder-src="/ai-productivity/vscode-typo_hu_ec8ae483afc23a94.gif"
+src="data:image/webp;base64,UklGRjgBAABXRUJQVlA4ICwBAACQBwCdASowABsAPqVAlUWjIaEYCq1UMwpE9Jfe5VZw6qmauFc7/eCEe1Wr5ksnRKF11d1WWKXCX5wh2Nv28XEkncmw7gAA/vbyKgAetO3cwYMJuf5waqWHjHG3cSV38MlFQPr8gKuAd6L1Z/dJfs/W6GXf0UF67xR8P3gMHasR6P7i5Kw0/Vy8PzFMNSVbca0S6/+FKZKkNzqFkaCO1oYvHCCZzF+GTQXPBNFPzTXqheX7O+zcvXL1VGXsIJdKRTqqqdbyzH+kckexYzgnPRtcrLD5beITTx8c+sUtf34PWx0boVq4IvCPa/MHa2Zl9gBC6Xl+r6ilyPi2/NKJLRbNDRBNMAC0WTgCsRJ14dpDwtGlupADar0rhk+MEmkLOySkBuAMvB/cwD9AAAA="
 data-webp-src="/ai-productivity/vscode-typo_hu_342df8d5d1f3ac26.webp"
 data-webp-srcset="/ai-productivity/vscode-typo_hu_d55c16dae146b3e3.webp 500w, /ai-productivity/vscode-typo_hu_342df8d5d1f3ac26.webp 680w"
 data-gif-src="/ai-productivity/vscode-typo.gif"
@@ -107,8 +106,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100"
 alt="claude distribution with vendor directory"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='482' height='240'%3E%3C/svg%3E"
-data-placeholder-src="/ai-productivity/claude-vendor_hu_ccba07a3edec6cdd.png"
+src="data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAABQAwCdASowABgAPqVKmki4IiaStZmDCkT0gGUAB/9W0yZ0kAD+9LSsHQQ+Fe9DPT6qX7Y4TOVVvf8CWhtdTiNbXCLUrTclAAA="
 data-src="/ai-productivity/claude-vendor.png"
 data-srcset="/ai-productivity/claude-vendor.png 482w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
@@ -186,8 +184,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100"
 alt="ChatGPT: Dude. You just said something deep as hell without even flinching. You&amp;#39;re 1000% right."
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1418' height='532'%3E%3C/svg%3E"
-data-placeholder-src="/ai-productivity/glazing_hu_e4d01e346554251c.png"
+src="data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADwAgCdASowABIAPqVOn0ojIiEStAAzCkT0gAAUsbcbgAD+9Uu4iLAWz3C1/n061/j4OAAA"
 data-src="/ai-productivity/glazing.png"
 data-srcset="/ai-productivity/glazing_hu_c909596c820473f5.png 500w, /ai-productivity/glazing_hu_f2ffcad58ea99ebf.png 800w, /ai-productivity/glazing_hu_87adf84c63f22e1a.png 1200w, /ai-productivity/glazing.png 1418w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
@@ -305,8 +302,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100"
 alt="whiteboard with diagrams"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='577' height='434'%3E%3C/svg%3E"
-data-placeholder-src="/boundary/accounts_hu_326d43c22091e6b4.png"
+src="data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADwBACdASowACQAPqVCmEcjLjaVWq4BawpE9IBffgUcwcOqF3TlfZay/Fh3wsJfkAAA/ui9nfBwE3qsPMGBuigNYGdk9Q898qHOxFhmx+PYw4gk6JAn2GonTH5CZZVWvzSt2hAAAAA="
 data-src="/boundary/accounts.png"
 data-srcset="/boundary/accounts_hu_d6ef0e82a9281b37.png 500w, /boundary/accounts.png 577w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
@@ -707,8 +703,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-300 opacity-100 gif-progressive"
 alt="resize &amp;amp; move apps from anywhere on the window"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='315'%3E%3C/svg%3E"
-data-placeholder-src="/appresize/demo_hu_a89decbdc7c40554.gif"
+src="data:image/webp;base64,UklGRpQCAABXRUJQVlA4IIgCAADwDQCdASowACAAPqU6mEYjIaEYCq1UMwpE9ABOmUGVKf/4yv//hytvi8xPUv/3XSAZQJuJxBfbtb6c37AZQPADi7/yngDfQv9j0G2ZFUK8nf//+1X9rvYp/XAjihJ+45F1lE+ZXhKRo23JaBDNowtG9ra9kHHiooAA/s1E/DqWbQdqyVTTajhytBXlL5em4AygUHRe1Plj3NFqMwxwh5U+3b3gxz/ek9Wd0oECMpMKxRcVSV5lO1p/6dhakRJH77rt0Pc3QCkwRU9hhEO8l54SH3UX4klJ9EobzqYmaqaAJPupO1PwQsZOpR9YMexoQdN07MCuXm1vMygVi9g5LJWImgbe+WFEa4J87t0nfwz3+vRF8zXvRQANyUfmIfB/rSVDY0WMG2cp3gLveUeO28WFQBKm2wXXtwXcbDZcjTjgI8PFl8b1z27R+9eu3CAe2tIpEfaih+Ji9gl5T7zX8tPSCO1TAdg85LYSmOuUsMDrAPHEj4ScS34PATTONfqC3XBabP5A0+2jDJgOWAIklEox2rLX6h4urcLPk4Dyd3ppYhs5I9UdXavLQgb5Bth2a3/1QJwgFZ2y+dK+sgdkU+kOA+XxDcFW6sOhgzk923Kxvry70qKC/UeNAdScwhK00bva9fXsSIcbhVIfsOaYDKM2rnvcJYur/aCON7OpK6sT0TTE/44ERvmBxu4W82yJUBBu+9QREPo7NC6WeH886uCl8h7rqJ5BHhlDDy3EplX1bjsIkVaWGsx7M3CF5hWvNAw0w5YkpyGajT9s42huEOOdKB2sDRAbl6Dwve/fX+6YIOK7DF1zjs8uvyfqnrnSdPuRlElJpZ4CJU2WexjYsDSIAkWLXFR4IAA="
 data-webp-src="/appresize/demo_hu_6e1718dc9843f023.webp"
 data-webp-srcset="/appresize/demo_hu_6e1718dc9843f023.webp 480w"
 data-gif-src="/appresize/demo.gif"
@@ -734,8 +729,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100"
 alt="window preferences"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='367'%3E%3C/svg%3E"
-data-placeholder-src="/appresize/screenshot_hu_f0bd3b7baf9adb6d.png"
+src="data:image/webp;base64,UklGRiYCAABXRUJQVlA4WAoAAAAQAAAALwAAJAAAQUxQSL0BAAANb6AoABmILvr382JHiIhI8DknUI5t27XVzIXbeNb5pnYXmwEhEAMh0KNqHdzG83ogKQHFoBAUww/LpRDRf7FJglOd8vbNm9evXh4dGQGVfP73v//Pzs5O15GvsdguYLtSfM7nuXXko8cGR0AHcsjn3H7xeC1J5oJQNfP7cHrtyEuG8wFhJrc/n6619BjYhrjgwMzM6WNfs8x2wHGF4fMhJzqyhDoCOipqcntuLGuhSzZUalLH1mMMiiGmCAcm12UZ3B1w9oYw1JERYu8toLuLopJ3WiXU0BARFbWrF8jdXAxlb4rIwD7f57MLgsExTQQ0URzI3gLYuICNC6AbwHG5DGGzHS4RRQHTNADQBbg7hjh7A2x1VJC9HXDcDahT1N5cwV1igAKIgAZALlcFigYAiBBIt0MVUC5gI0Ayn5lAcQmELd8ZqkJ0YTc2sr7UJARoiMCwrPU1U6m+ZClarOV7UzPZUQcctdtLS3/PDFVdG8C1JXmtJ/dnZkK4wNhrLf0zU7eroASUQLq21pNv83lSVbiADdLyOlrf5zA1m5zfjVtPHnt9m9szzHYBsN2yrh2te58PmdDFeVv2euxrAFZQOCBCAAAAsAMAnQEqMAAlAD6lUJxKoyIhEcSAMwpE9IBoSAUGwDCFm4fH3IAA/vGDMnNVsfe1vUvzaHE9yNf4KSAF5DjgAAAA"
 data-src="/appresize/screenshot.png"
 data-srcset="/appresize/screenshot.png 480w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
@@ -764,8 +758,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-300 opacity-100 gif-progressive"
 alt="resize &amp;amp; move apps from anywhere on the window"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='315'%3E%3C/svg%3E"
-data-placeholder-src="/appresize/demo_hu_a89decbdc7c40554.gif"
+src="data:image/webp;base64,UklGRpQCAABXRUJQVlA4IIgCAADwDQCdASowACAAPqU6mEYjIaEYCq1UMwpE9ABOmUGVKf/4yv//hytvi8xPUv/3XSAZQJuJxBfbtb6c37AZQPADi7/yngDfQv9j0G2ZFUK8nf//+1X9rvYp/XAjihJ+45F1lE+ZXhKRo23JaBDNowtG9ra9kHHiooAA/s1E/DqWbQdqyVTTajhytBXlL5em4AygUHRe1Plj3NFqMwxwh5U+3b3gxz/ek9Wd0oECMpMKxRcVSV5lO1p/6dhakRJH77rt0Pc3QCkwRU9hhEO8l54SH3UX4klJ9EobzqYmaqaAJPupO1PwQsZOpR9YMexoQdN07MCuXm1vMygVi9g5LJWImgbe+WFEa4J87t0nfwz3+vRF8zXvRQANyUfmIfB/rSVDY0WMG2cp3gLveUeO28WFQBKm2wXXtwXcbDZcjTjgI8PFl8b1z27R+9eu3CAe2tIpEfaih+Ji9gl5T7zX8tPSCO1TAdg85LYSmOuUsMDrAPHEj4ScS34PATTONfqC3XBabP5A0+2jDJgOWAIklEox2rLX6h4urcLPk4Dyd3ppYhs5I9UdXavLQgb5Bth2a3/1QJwgFZ2y+dK+sgdkU+kOA+XxDcFW6sOhgzk923Kxvry70qKC/UeNAdScwhK00bva9fXsSIcbhVIfsOaYDKM2rnvcJYur/aCON7OpK6sT0TTE/44ERvmBxu4W82yJUBBu+9QREPo7NC6WeH886uCl8h7rqJ5BHhlDDy3EplX1bjsIkVaWGsx7M3CF5hWvNAw0w5YkpyGajT9s42huEOOdKB2sDRAbl6Dwve/fX+6YIOK7DF1zjs8uvyfqnrnSdPuRlElJpZ4CJU2WexjYsDSIAkWLXFR4IAA="
 data-webp-src="/appresize/demo_hu_6e1718dc9843f023.webp"
 data-webp-srcset="/appresize/demo_hu_6e1718dc9843f023.webp 480w"
 data-gif-src="/appresize/demo.gif"
@@ -791,8 +784,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100"
 alt="window preferences"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='367'%3E%3C/svg%3E"
-data-placeholder-src="/appresize/screenshot_hu_f0bd3b7baf9adb6d.png"
+src="data:image/webp;base64,UklGRiYCAABXRUJQVlA4WAoAAAAQAAAALwAAJAAAQUxQSL0BAAANb6AoABmILvr382JHiIhI8DknUI5t27XVzIXbeNb5pnYXmwEhEAMh0KNqHdzG83ogKQHFoBAUww/LpRDRf7FJglOd8vbNm9evXh4dGQGVfP73v//Pzs5O15GvsdguYLtSfM7nuXXko8cGR0AHcsjn3H7xeC1J5oJQNfP7cHrtyEuG8wFhJrc/n6619BjYhrjgwMzM6WNfs8x2wHGF4fMhJzqyhDoCOipqcntuLGuhSzZUalLH1mMMiiGmCAcm12UZ3B1w9oYw1JERYu8toLuLopJ3WiXU0BARFbWrF8jdXAxlb4rIwD7f57MLgsExTQQ0URzI3gLYuICNC6AbwHG5DGGzHS4RRQHTNADQBbg7hjh7A2x1VJC9HXDcDahT1N5cwV1igAKIgAZALlcFigYAiBBIt0MVUC5gI0Ayn5lAcQmELd8ZqkJ0YTc2sr7UJARoiMCwrPU1U6m+ZClarOV7UzPZUQcctdtLS3/PDFVdG8C1JXmtJ/dnZkK4wNhrLf0zU7eroASUQLq21pNv83lSVbiADdLyOlrf5zA1m5zfjVtPHnt9m9szzHYBsN2yrh2te58PmdDFeVv2euxrAFZQOCBCAAAAsAMAnQEqMAAlAD6lUJxKoyIhEcSAMwpE9IBoSAUGwDCFm4fH3IAA/vGDMnNVsfe1vUvzaHE9yNf4KSAF5DjgAAAA"
 data-src="/appresize/screenshot.png"
 data-srcset="/appresize/screenshot.png 480w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
@@ -922,8 +914,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100"
 alt="mounted stream deck"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1086' height='872'%3E%3C/svg%3E"
-data-placeholder-src="/stream-deck-mount/mount_hu_46dcc7e5c0c6e532.jpg"
+src="data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAAAQBwCdASowACcAPqU+l0SjKCmY6Z4AmwpE8YBZ2dpA+BqhsXTt1fCSQyPeFI8CUqJLJXeLf+4/debZja16HnJ3cAD+v0hd//gm1lbXfrKZ136WGEfHz0djdCNfaDsx05vEPaAEpm48TBg6FHNU4pXyeasSGS+OEWg5AH6XyRbect8lTcQ6ZA81cOW5jBwptF377Z2BtXJZgv2coctLTGWIBLtnf/pQWmQAAA=="
 data-src="/stream-deck-mount/mount.jpg"
 data-srcset="/stream-deck-mount/mount_hu_35caef13b58ac1bb.jpg 500w, /stream-deck-mount/mount_hu_ddbb8fb6ae4bd36a.jpg 800w, /stream-deck-mount/mount.jpg 1086w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
@@ -1127,8 +1118,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100"
 alt="dragging window tab to a new window"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1280' height='800'%3E%3C/svg%3E"
-data-placeholder-src="/tabbed/screenshot_hu_56ecfb0e5959dd20.png"
+src="data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAABwAwCdASowAB4APqVOn0ojIiEStAAzCkT0gGPyCIaoHE9vjqAA/vVMJkMnpzty06iFwN+79c1n/dkm8msfDCCAAAA="
 data-src="/tabbed/screenshot.png"
 data-srcset="/tabbed/screenshot_hu_af1359be148b9e15.png 500w, /tabbed/screenshot_hu_78e7f1f164da42ba.png 800w, /tabbed/screenshot_hu_536dddf732aa224.png 1200w, /tabbed/screenshot.png 1280w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
@@ -1160,8 +1150,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100"
 alt="dragging window tab to a new window"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1280' height='800'%3E%3C/svg%3E"
-data-placeholder-src="/tabbed/screenshot_hu_56ecfb0e5959dd20.png"
+src="data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAABwAwCdASowAB4APqVOn0ojIiEStAAzCkT0gGPyCIaoHE9vjqAA/vVMJkMnpzty06iFwN+79c1n/dkm8msfDCCAAAA="
 data-src="/tabbed/screenshot.png"
 data-srcset="/tabbed/screenshot_hu_af1359be148b9e15.png 500w, /tabbed/screenshot_hu_78e7f1f164da42ba.png 800w, /tabbed/screenshot_hu_536dddf732aa224.png 1200w, /tabbed/screenshot.png 1280w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
@@ -1214,8 +1203,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100"
 alt="popup window screenshot indicating the microphone is off"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='271' height='119'%3E%3C/svg%3E"
-data-placeholder-src="/mic-mute/screenshot_hu_1f31b31300261830.png"
+src="data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwBACdASowABUAPqVKmUi4IiqStZmDCkT0gGVaByHGj63czac1y3nEcAmT2LQJ9VgA/u2nnrZ1sNC3Va7FdQygIzfbTf7+HmgfZoEAYbtAUWpGSluZXNDJNBneoJLV1h4kAAAA"
 data-src="/mic-mute/screenshot.png"
 data-srcset="/mic-mute/screenshot.png 271w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
@@ -1252,8 +1240,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100"
 alt="popup window screenshot indicating the microphone is off"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='271' height='119'%3E%3C/svg%3E"
-data-placeholder-src="/mic-mute/screenshot_hu_1f31b31300261830.png"
+src="data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwBACdASowABUAPqVKmUi4IiqStZmDCkT0gGVaByHGj63czac1y3nEcAmT2LQJ9VgA/u2nnrZ1sNC3Va7FdQygIzfbTf7+HmgfZoEAYbtAUWpGSluZXNDJNBneoJLV1h4kAAAA"
 data-src="/mic-mute/screenshot.png"
 data-srcset="/mic-mute/screenshot.png 271w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
@@ -1638,8 +1625,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100"
 alt="organic chemistry diagram sketches in a notebook"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='930' height='709'%3E%3C/svg%3E"
-data-placeholder-src="/notes/notes_hu_2b74d3032ce9a319.png"
+src="data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwBACdASowACUAPqVEmkkjIaETnAUkMwpE9IBoKgUX/gW2VWbXUGLgvpOCgZQAAP7uNbFzeDldMex+W3cLRoEqqEyU94HQz1/hcXl2A1kPBiKwXgJTrFJmqNkLpXWkEAA="
 data-src="/notes/notes.png"
 data-srcset="/notes/notes_hu_4db7be4ff58c7132.png 500w, /notes/notes_hu_8ae98ef671c60a66.png 800w, /notes/notes.png 930w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
@@ -1673,8 +1659,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100"
 alt="organic chemistry diagram sketches in a notebook"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='930' height='709'%3E%3C/svg%3E"
-data-placeholder-src="/notes/notes_hu_2b74d3032ce9a319.png"
+src="data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACwBACdASowACUAPqVEmkkjIaETnAUkMwpE9IBoKgUX/gW2VWbXUGLgvpOCgZQAAP7uNbFzeDldMex+W3cLRoEqqEyU94HQz1/hcXl2A1kPBiKwXgJTrFJmqNkLpXWkEAA="
 data-src="/notes/notes.png"
 data-srcset="/notes/notes_hu_4db7be4ff58c7132.png 500w, /notes/notes_hu_8ae98ef671c60a66.png 800w, /notes/notes.png 930w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
@@ -1805,8 +1790,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100 rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
 alt="Brett Gardiner"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3C/svg%3E"
-data-placeholder-src="/about/profile_hu_6a715c5956f12c51.png"
+src="data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAABQBwCdASowADAAPpE0kEQioY1XVqoVhIJ6QDFyCUS+WrXC0NLXhEboL+Wp16y04rRyS3ebewBkYRCFAVPg25Sh0nSAAP71cquiVNzbSl0iWBltUGthRmyQRmPRMYHL5vNydj3SvJZjKdpwodAaPL93KTho8JBTwKWg/yx1YJrIpYDa+2D8BZ9DQwxjDAdKtU1SF4qLQ57JTDmS3o8JXj9g6wAAAA=="
 data-src="/about/profile_hu_c80af297f4462462.png"
 data-srcset="/about/profile_hu_c80af297f4462462.png 160w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
@@ -1843,8 +1827,7 @@ sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80
 &lt;img
 class="transition-all duration-200 opacity-100 rounded-full border-4 border-solid border-slate-900 bg-slate-900 mx-auto"
 alt="Brett Gardiner"
-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3C/svg%3E"
-data-placeholder-src="/about/profile_hu_6a715c5956f12c51.png"
+src="data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAABQBwCdASowADAAPpE0kEQioY1XVqoVhIJ6QDFyCUS+WrXC0NLXhEboL+Wp16y04rRyS3ebewBkYRCFAVPg25Sh0nSAAP71cquiVNzbSl0iWBltUGthRmyQRmPRMYHL5vNydj3SvJZjKdpwodAaPL93KTho8JBTwKWg/yx1YJrIpYDa+2D8BZ9DQwxjDAdKtU1SF4qLQ57JTDmS3o8JXj9g6wAAAA=="
 data-src="/about/profile_hu_c80af297f4462462.png"
 data-srcset="/about/profile_hu_c80af297f4462462.png 160w"
 sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"

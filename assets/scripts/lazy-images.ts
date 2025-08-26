@@ -34,12 +34,6 @@ export const setup = () => {
       img: HTMLImageElement,
       sources: NodeListOf<HTMLSourceElement>,
     ): void {
-      // First load placeholder if available
-      if (img.dataset.placeholderSrc) {
-        img.src = img.dataset.placeholderSrc
-        img.removeAttribute('data-placeholder-src')
-      }
-
       // Update sources if they exist (for picture element)
       sources?.forEach((source: HTMLSourceElement) => {
         if (source.dataset.srcset) {
@@ -54,8 +48,16 @@ export const setup = () => {
         img.removeAttribute('data-srcset')
       }
       if (img.dataset.src) {
-        img.src = img.dataset.src
-        img.removeAttribute('data-src')
+        // Load the full resolution image
+        const finalImg = new Image()
+        finalImg.onload = () => {
+          if (img.dataset.src) {
+            img.src = img.dataset.src
+          }
+          img.removeAttribute('data-src')
+          img.classList.add('image-loaded')
+        }
+        finalImg.src = img.dataset.src
       }
     }
 
@@ -63,17 +65,10 @@ export const setup = () => {
       img: HTMLImageElement,
       sources: NodeListOf<HTMLSourceElement>,
     ): void {
-      const placeholderSrc = img.dataset.placeholderSrc
       const webpSrc = img.dataset.webpSrc
       const webpSrcset = img.dataset.webpSrcset
       const gifSrc = img.dataset.gifSrc
       const gifSrcset = img.dataset.gifSrcset
-
-      // Step 0: Load placeholder first if available
-      if (placeholderSrc) {
-        img.src = placeholderSrc
-        img.removeAttribute('data-placeholder-src')
-      }
 
       // Step 1: Load WebP still frame
       if (webpSrc && webpSrcset) {
@@ -85,9 +80,16 @@ export const setup = () => {
           }
         })
 
-        // Update img to WebP still
-        img.srcset = webpSrcset
-        img.src = webpSrc
+        // Load WebP still and remove blur when loaded
+        const webpImg = new Image()
+        webpImg.onload = () => {
+          img.srcset = webpSrcset
+          img.src = webpSrc
+          // Remove blur when WebP still is loaded
+          img.classList.remove('blur-sm')
+          img.classList.add('image-loaded')
+        }
+        webpImg.src = webpSrc
 
         // Step 2: Preload GIF in background
         if (gifSrc && gifSrcset) {

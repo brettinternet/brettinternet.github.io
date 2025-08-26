@@ -107,3 +107,7 @@
 .twitter-tweet {
   justify-self: center;
 }
+
+img[loading="lazy"]:not(.image-loaded) {
+  @apply blur-lg;
+}

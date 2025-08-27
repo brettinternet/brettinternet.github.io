@@ -16,7 +16,13 @@
 <meta property="og:title" content="{{ .Params.meta_title | default .Title }}"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="{{ .Permalink }}"/>
-{{ $image := index (.Resources.ByType "image") 0 }}
+{{ $image := .Resources.GetMatch .Params.post_image }}
+{{ if not $image }}
+  {{ $image = .Resources.GetMatch .Params.card_image }}
+{{ end }}
+{{ if not $image }}
+  {{ $image = index (.Resources.ByType "image") 0 }}
+{{ end }}
 {{ if $image }}
   {{ $isGif := eq (path.Ext $image.RelPermalink) ".gif" }}
   {{ if not $isGif }}

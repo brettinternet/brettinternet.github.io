@@ -1,33 +1,47 @@
-<footer class="container mx-auto flex flex-row items-center justify-center gap-3 py-12 px-8 font-serif text-sm">
-  <ul class="flex justify-center gap-4">
-    <li>
-      <a href="/" class="font-bold hover:underline">home</a>
-    </li>
-    <li>
-      <a href="/gists" class="font-bold hover:underline">gists</a>
-    </li>
-    <li>
-      <a href="/about" class="font-bold hover:underline">about</a>
-    </li>
-  </ul>
-  <span>•</span>
-  <ul class="flex justify-center gap-4">
-    <li>
-      <a href="https://github.com/brettinternet/brettinternet.github.io"
-        class="inline-flex font-bold hover:underline">
-        source
-      </a>
-      {{ $build_version := getenv "HUGO_BUILD_VERSION" }}
-      {{ if $build_version }}
-      <span class="inline-flex font-sans font-thin text-xs text-gray-500 ml-1">
-        (<a href="https://github.com/brettinternet/brettinternet.github.io/commit/{{ $build_version }}"
+<div class="relative">
+  <footer class="container mx-auto flex flex-row items-center justify-center gap-3 py-12 px-8 font-serif text-sm">
+    <ul class="flex justify-center gap-4">
+      <li>
+        <a href="/" class="font-bold hover:underline">home</a>
+      </li>
+      <li>
+        <a href="/gists" class="font-bold hover:underline">gists</a>
+      </li>
+      <li>
+        <a href="/about" class="font-bold hover:underline">about</a>
+      </li>
+    </ul>
+    <span>•</span>
+    <ul class="flex justify-center gap-4">
+      <li>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/brettinternet/brettinternet.github.io"
+          class="inline-flex font-bold hover:underline">
+          source
+        </a>
+      </li>
+      <li>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/brettinternet"
+          class="inline-flex font-bold hover:underline">
+          github
+        </a>
+      </li>
+      <li>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/brettinternet"
+          class="inline-flex font-bold hover:underline">
+          linkedin
+        </a>
+      </li>
+    </ul>
+    {{ $build_version := getenv "HUGO_BUILD_VERSION" }}
+    {{ if $build_version }}
+    <span class="absolute right-0 bottom-0 p-4 flex font-sans text-xs text-gray-500 ml-1">
+      <a href="https://github.com/brettinternet/brettinternet.github.io/commit/{{ $build_version }}"
         class="hover:underline">
         <span class="font-mono">
           {{ $build_version }}
         </span>
-      </a>)
-      </span>
-      {{ end }}
-    </li>
-  </ul>
-</footer>
+      </a>
+    </span>
+    {{ end }}
+  </footer>
+</div>

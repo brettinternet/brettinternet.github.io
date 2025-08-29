@@ -1,6 +1,6 @@
 {{ define "main" }}
   <article class="w-full mx-auto mb-8 px-4 md:px-0{{with .Params.article_class}} {{.}}{{end}}">
-    {{ if not (or .Params.hide_title .Params.hide_date .Params.hide_image) }}
+    {{ if not (and .Params.hide_title .Params.hide_date .Params.hide_image) }}
     <div class="mb-8 space-y-4">
       {{ $hasImage := and (not .Params.hide_image) (gt (len (.Resources.ByType "image")) 0) }}
       <div class="{{if $hasImage}}text-center {{end}}max-w-prose mx-auto w-full">

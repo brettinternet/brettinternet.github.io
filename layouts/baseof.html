@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{{ $build_version := default "dev" (getenv "HUGO_BUILD_VERSION") }}
+{{ $build_version := default "main" (getenv "HUGO_BUILD_VERSION") }}
 {{ $build_time := default "now" (getenv "HUGO_BUILD_TIME") }}
 <html lang="{{ .Site.LanguageCode }}"
   data-build-version="{{ $build_version }}" data-build-time="{{ $build_time }}">

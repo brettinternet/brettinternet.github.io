@@ -131,7 +131,7 @@ decoding="async"
 &lt;/li>
 &lt;li>Describe to the agent that your developer finished the task and to &lt;a href="https://github.com/brettinternet/ai/blob/aa150ea920b92779992c885af3d83b76eddaae8d/.claude/commands/feedback.md">provide feedback&lt;/a>&lt;/li>
 &lt;/ol>
-&lt;div class="border-l-4 border-blue-500 p-2 my-5" role="alert">
+&lt;div class="border-l-4 border-blue-500 pr-2 pl-4 my-5" role="alert">
 &lt;div class="not-prose flex items-center gap-1 text-blue-700 mb-1">
 &lt;svg
 class="h-5 w-5"
@@ -1102,7 +1102,45 @@ Copy
 &lt;p>Now, I pass the entire HBA controller to guest VMs instead of individual disks when using ZFS. Lesson learned.&lt;/p>
 &lt;p>Thank you FreeBSD, Truenas, r/zfs communities and datahoarders.&lt;/p>
 &lt;hr>
-&lt;p>&lt;a id="flash-instructions" href="#flash-instructions">1&lt;/a>: There are several instructions to flash the Dell Perc H310 HBA to IT mode: &lt;a href="https://www.youtube.com/watch?v=EOcpp-GdhKo">video walkthrough&lt;/a>, &lt;a href="https://www.servethehome.com/ibm-serveraid-m1015-part-4/">ServeTheHome post&lt;/a>, and &lt;a href="https://www.truenas.com/community/threads/confused-about-that-lsi-card-join-the-crowd.11901/">TrueNAS forum thread&lt;/a>&lt;/p></content></entry><entry><title>Tabbed extension</title><link rel="alternate" href="https://brett.cloud/tabbed/"/><id>https://brett.cloud/tabbed/</id><published>2023-04-03T00:00:00+0000</published><updated>2023-04-03T00:00:00+0000</updated><summary>&lt;div class="flex justify-center">
+&lt;p>&lt;a id="flash-instructions" href="#flash-instructions">1&lt;/a>: There are several instructions to flash the Dell Perc H310 HBA to IT mode: &lt;a href="https://www.youtube.com/watch?v=EOcpp-GdhKo">video walkthrough&lt;/a>, &lt;a href="https://www.servethehome.com/ibm-serveraid-m1015-part-4/">ServeTheHome post&lt;/a>, and &lt;a href="https://www.truenas.com/community/threads/confused-about-that-lsi-card-join-the-crowd.11901/">TrueNAS forum thread&lt;/a>&lt;/p></content></entry><entry><title>Elixir</title><link rel="alternate" href="https://brett.cloud/elixir/"/><id>https://brett.cloud/elixir/</id><published>2023-10-14T00:00:00+0000</published><updated>2023-10-14T00:00:00+0000</updated><summary>&lt;p>A couple years ago I happened to find myself at predominantly C# shop that decidedly pivoted to take on a new stack with Elixir with TypeScript and React. For a greenfield project, this was exciting, fast, and uninhibited. I was grateful to work with a technology that ranks as highly desired in every StackOverflow Developer Survey. However, as our codebase scales, some of the realities of a dynamically typed language began to set in.&lt;/p></summary><content type="html">&lt;p>A couple years ago I happened to find myself at predominantly C# shop that decidedly pivoted to take on a new stack with Elixir with TypeScript and React. For a greenfield project, this was exciting, fast, and uninhibited. I was grateful to work with a technology that ranks as highly desired in every StackOverflow Developer Survey. However, as our codebase scales, some of the realities of a dynamically typed language began to set in.&lt;/p>
+&lt;h3 id="what-works">What Works&lt;/h3>
+&lt;p>Elixir excels in specific contexts such as personal projects and small teams with stable membership, concurrent systems leveraging BEAM&amp;rsquo;s actor model and the versatility of the GenServer, fault-tolerant applications using OTP supervision trees, and high development velocity on well-understood codebases.&lt;/p>
+&lt;p>So much is available out of the box with Elixir and Phoenix. Green threads, websockets, pubsub, caching, memory store, concurrency, and clustering are huge wins in the language that small teams can spin up without much additional effort.&lt;/p>
+&lt;p>I believe Ecto is the best database library available to the open source community with a SQL DSL and Query Result Mapping. Elixir&amp;rsquo;s powerful metaprogramming makes Ecto appear as close to SQL as I&amp;rsquo;ve seen in any language, while being dynamic and composable, declarative, and adaptable.&lt;/p>
+&lt;h3 id="limitations">Limitations&lt;/h3>
+&lt;p>Code comprehension and issue tracing becomes difficult at scale with dynamic typing. For some code changes in large codebases, it&amp;rsquo;s difficult to ascertain how code paths are affected. Refactors require excess caution and testing. Dialyzer helps but it doesn&amp;rsquo;t solve the fundamental typing gap.&lt;/p>
+&lt;p>There is also organizational friction with adopting Elixir. There can be a learning curve for functional programming concepts and there&amp;rsquo;s a limited hiring pool compared to mainstream languages.&lt;/p>
+&lt;p>Other minor issues include slower compile times, especially without strict avoidance of circular dependencies, and a weak language ecosystem. The community is very small. Also, the local development experience can be &lt;em>very&lt;/em> frustrating with language server crashes.&lt;/p>
+&lt;h2 id="conclusions">Conclusions&lt;/h2>
+&lt;p>Elixir provides genuine technical advantages for concurrent, fault-tolerant systems. It&amp;rsquo;s an excellent solution to reach for with many features such as concurrency, clustering, pubsub, websocket messaging, memory storage, and other enterprise features out of the box with Phoenix. However, these benefits come with significant organizational costs: harder hiring, steeper onboarding, and maintenance challenges from dynamic typing.&lt;/p>
+&lt;p>Elixir is an excellent choice for purpose-built microservices for specific concurrent jobs such as handling websockets.&lt;/p>
+&lt;p>Success with Elixir could depend on:&lt;/p>
+&lt;ul>
+&lt;li>Team stability and functional programming expertise&lt;/li>
+&lt;li>Specific technical requirements that justify the adoption overhead&lt;/li>
+&lt;li>Organizational commitment to the learning curve&lt;/li>
+&lt;li>Language server improvements and IDE support&lt;/li>
+&lt;/ul>
+&lt;p>For most teams, engineers should evaluate whether Elixir&amp;rsquo;s features outweigh its dynamic typing drawbacks and niche ecosystem.&lt;/p>
+&lt;hr>
+&lt;div class="border-l-4 border-blue-500 pr-2 pl-4 my-5" role="alert">
+&lt;div class="not-prose flex items-center gap-1 text-blue-700 mb-1">
+&lt;svg
+class="h-5 w-5"
+xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+stroke="currentColor">
+&lt;path stroke-linecap="round" stroke-linejoin="round"
+d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+&lt;/svg>
+&lt;span class="font-semibold">Improvements (2025)&lt;/span>
+&lt;/div>
+&lt;div>
+&lt;p>Recently at my org, we&amp;rsquo;ve been iterating on certain &lt;a href="/boundary">design patterns that improve readability and organization&lt;/a>.&lt;/p>
+&lt;p>Gleam offers static typing while maintaining Erlang ecosystem compatibility. This language looks very promising, but it isn&amp;rsquo;t a practical decision for the enterprise world until the language matures.&lt;/p>
+&lt;p>Elixir itself will soon become a &lt;a href="https://hexdocs.pm/elixir/main/gradual-set-theoretic-types.html">gradually typed language&lt;/a>.&lt;/p>
+&lt;p>An &lt;a href="https://github.com/elixir-lang/expert">official language server&lt;/a> is also in progress now.&lt;/p>
+&lt;/div>
+&lt;/div></content></entry><entry><title>Tabbed extension</title><link rel="alternate" href="https://brett.cloud/tabbed/"/><id>https://brett.cloud/tabbed/</id><published>2023-04-03T00:00:00+0000</published><updated>2023-04-03T00:00:00+0000</updated><summary>&lt;div class="flex justify-center">
 &lt;img width="128" src="./icon.png" alt="session manager extension icon" class="my-3" />
 &lt;/div>
 &lt;h1 align="center">Tabbed&lt;/h1>
@@ -1747,7 +1785,7 @@ for my public notes. I believe this method is the strongest embrace of
 trustworthy technology. Git and markdown are two timeless tools that are sure to
 be around for a long time.&lt;/p>
 &lt;hr>
-&lt;div class="border-l-4 border-blue-500 p-2 my-5" role="alert">
+&lt;div class="border-l-4 border-blue-500 pr-2 pl-4 my-5" role="alert">
 &lt;div class="not-prose flex items-center gap-1 text-blue-700 mb-1">
 &lt;svg
 class="h-5 w-5"
@@ -1763,7 +1801,7 @@ I began experimenting with a much
 simpler approach for tracking work-in-progress: &lt;code>todo.txt&lt;/code> format.
 &lt;/div>
 &lt;/div>
-&lt;div class="border-l-4 border-blue-500 p-2 my-5" role="alert">
+&lt;div class="border-l-4 border-blue-500 pr-2 pl-4 my-5" role="alert">
 &lt;div class="not-prose flex items-center gap-1 text-blue-700 mb-1">
 &lt;svg
 class="h-5 w-5"

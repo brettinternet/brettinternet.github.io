@@ -39,21 +39,17 @@ The Ecto library is my favorite Elixir library. Ecto interfaces with databases t
 
 ### Limitations
 
-Code comprehension and issue tracing becomes difficult at scale with dynamic typing. Code changes in large codebases make it difficult to ascertain affected code paths. Refactors are cumbersome without typing and require more manual verification. Dialyzer helps but it doesn't solve the fundamental typing gap.
+Code comprehension and issue tracing becomes difficult at scale with dynamic typing. Changes in large codebases make it difficult to ascertain affected code paths. Refactors are cumbersome without typing and require more manual verification. Dialyzer helps but it doesn't solve the fundamental typing gap.
 
 There is also organizational friction with adopting Elixir. There can be a learning curve for functional programming concepts and there's a limited hiring pool compared to mainstream languages.
 
-Other issues include slower compile times without strict avoidance of circular dependencies and a smaller ecosystem compared to mainstream languages. Elixir generally isn't ideal for CPU-intensive tasks. The local development experience can be frustrating with language server crashes.
+Other issues include slower compile times without strict avoidance of circular dependencies and a smaller ecosystem compared to mainstream languages. Elixir generally isn't ideal for CPU-intensive tasks. The local development experience can be frustrating with language server instability.
 
 ## Conclusions
 
-Elixir provides genuine technical advantages for concurrent, fault-tolerant systems. It's an excellent solution to reach for with many features such as concurrency, clustering, pubsub, websocket messaging, memory storage, and other enterprise features out of the box with Phoenix. However, these benefits come with significant organizational costs: harder hiring, steeper onboarding, and maintenance challenges from dynamic typing.
+Elixir provides genuine technical advantages for concurrent, fault-tolerant systems. It's an excellent solution to reach for with many enterprise features out of the box with Phoenix. However, these benefits come with significant organizational costs: harder hiring, steeper onboarding, and maintenance challenges from dynamic typing. Elixir could be one of the best choices for purpose-built microservices for specific concurrent jobs such as handling websockets.
 
-Elixir is an excellent choice for purpose-built microservices for specific concurrent jobs such as handling websockets.
-
-Success with Elixir depends on team stability with functional programming expertise, specific technical requirements that justify adoption overhead, organizational commitment to the learning curve, and improved language server support.
-
-For most teams, engineers should evaluate whether Elixir's features outweigh its dynamic typing drawbacks and niche ecosystem.
+Success with Elixir depends on team stability with functional programming expertise, specific technical requirements that justify adoption overhead, organizational commitment to the learning curve, and improved language server support. For most teams, engineers should evaluate whether Elixir's features outweigh its dynamic typing drawbacks and niche ecosystem.
 
 ---
 

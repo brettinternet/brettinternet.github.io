@@ -3,11 +3,6 @@ type: post
 title: Elixir
 publishDate: 2023-10-14
 description: The Elixir programming language
-hide_image: true
-resources:
-  - src: pdq.png
-    params:
-      alt: two people standing in front of construction of a business office
 comments: true
 ---
 
@@ -16,6 +11,8 @@ Working at a C# shop that moved to Elixir for a greenfield project was exciting 
 ### What Works
 
 Elixir excels in concurrent systems leveraging the Erlang VM (BEAM) and an actor model to facilitate message passing even across nodes. GenServers are extremely versatile and provide a unique way to manage state asynchronously. The "let it crash" paradigm using OTP supervision trees is valuable for creating fault-tolerant servers. So many other features are available out of the box with Elixir and Phoenix. Websockets, pubsub, caching, memory store, concurrency, built-in observability, and clustering are huge wins in the language that small teams can spin up without much additional effort.
+
+Elixir concurrency works with the Actor Model, using extremely lightweight, isolated processes managed by the BEAM that communicate solely through asynchronous message passing, preventing shared state issues with immutability. These processes are essentially lightweight green threads managed by the runtime.
 
 Pattern matching is my favorite Elixir feature. It allows destructuring complex data and directing control flow based on the shape of the data.
 

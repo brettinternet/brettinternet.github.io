@@ -5,8 +5,9 @@
 &lt;th>Drive&lt;/th>
 &lt;th>Qty&lt;/th>
 &lt;th>Size&lt;/th>
-&lt;th>Unit price&lt;/th>
+&lt;th>Price/unit&lt;/th>
 &lt;th>Date&lt;/th>
+&lt;th>Active&lt;/th>
 &lt;th>Notes&lt;/th>
 &lt;/tr>
 &lt;/thead>
@@ -17,6 +18,7 @@
 &lt;td>3TB&lt;/td>
 &lt;td>$81&lt;/td>
 &lt;td>5/11/2016&lt;/td>
+&lt;td>❌&lt;/td>
 &lt;td>My first drive in the terabyte range and the first to retire on 12/21/2025&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -25,6 +27,7 @@
 &lt;td>3TB&lt;/td>
 &lt;td>$119.99&lt;/td>
 &lt;td>8/24/2016&lt;/td>
+&lt;td>✅&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -33,6 +36,7 @@
 &lt;td>6TB&lt;/td>
 &lt;td>$129.99&lt;/td>
 &lt;td>6/27/2019&lt;/td>
+&lt;td>✅&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -41,6 +45,7 @@
 &lt;td>6TB&lt;/td>
 &lt;td>$174.99&lt;/td>
 &lt;td>6/27/2019&lt;/td>
+&lt;td>✅&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -49,6 +54,7 @@
 &lt;td>10TB&lt;/td>
 &lt;td>$169.99&lt;/td>
 &lt;td>1/10/2021&lt;/td>
+&lt;td>✅&lt;/td>
 &lt;td>My first time &amp;ldquo;shucking&amp;rdquo;&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -57,6 +63,7 @@
 &lt;td>10TB&lt;/td>
 &lt;td>$159.99&lt;/td>
 &lt;td>11/24/2022&lt;/td>
+&lt;td>✅&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -65,6 +72,7 @@
 &lt;td>4TB&lt;/td>
 &lt;td>free&lt;/td>
 &lt;td>2024&lt;/td>
+&lt;td>✅&lt;/td>
 &lt;td>Salvaged from IT dept&lt;/td>
 &lt;/tr>
 &lt;/tbody>
@@ -78,8 +86,9 @@
 &lt;th>Drive&lt;/th>
 &lt;th>Qty&lt;/th>
 &lt;th>Size&lt;/th>
-&lt;th>Unit price&lt;/th>
+&lt;th>Price/unit&lt;/th>
 &lt;th>Date&lt;/th>
+&lt;th>Active&lt;/th>
 &lt;th>Notes&lt;/th>
 &lt;/tr>
 &lt;/thead>
@@ -90,6 +99,7 @@
 &lt;td>3TB&lt;/td>
 &lt;td>$81&lt;/td>
 &lt;td>5/11/2016&lt;/td>
+&lt;td>❌&lt;/td>
 &lt;td>My first drive in the terabyte range and the first to retire on 12/21/2025&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -98,6 +108,7 @@
 &lt;td>3TB&lt;/td>
 &lt;td>$119.99&lt;/td>
 &lt;td>8/24/2016&lt;/td>
+&lt;td>✅&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -106,6 +117,7 @@
 &lt;td>6TB&lt;/td>
 &lt;td>$129.99&lt;/td>
 &lt;td>6/27/2019&lt;/td>
+&lt;td>✅&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -114,6 +126,7 @@
 &lt;td>6TB&lt;/td>
 &lt;td>$174.99&lt;/td>
 &lt;td>6/27/2019&lt;/td>
+&lt;td>✅&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -122,6 +135,7 @@
 &lt;td>10TB&lt;/td>
 &lt;td>$169.99&lt;/td>
 &lt;td>1/10/2021&lt;/td>
+&lt;td>✅&lt;/td>
 &lt;td>My first time &amp;ldquo;shucking&amp;rdquo;&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -130,6 +144,7 @@
 &lt;td>10TB&lt;/td>
 &lt;td>$159.99&lt;/td>
 &lt;td>11/24/2022&lt;/td>
+&lt;td>✅&lt;/td>
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -138,6 +153,7 @@
 &lt;td>4TB&lt;/td>
 &lt;td>free&lt;/td>
 &lt;td>2024&lt;/td>
+&lt;td>✅&lt;/td>
 &lt;td>Salvaged from IT dept&lt;/td>
 &lt;/tr>
 &lt;/tbody>
@@ -155,7 +171,7 @@ Copy
 &lt;/div>
 &lt;p>🫡 Thank you for your service.&lt;/p>
 &lt;hr>
-&lt;p>If you&amp;rsquo;re shopping for new storage, check out &lt;a href="https://diskprices.com/">DiskPrices&lt;/a>.&lt;/p></content></entry><entry><title>Productivity with AI</title><link rel="alternate" href="https://brett.cloud/ai-productivity/"/><id>https://brett.cloud/ai-productivity/</id><published>2025-08-11T00:00:00+0000</published><updated>2025-08-11T00:00:00+0000</updated><summary>&lt;p>My experience with AI has been that it augments my abilities. It can consolidate information and automate tedium to make me more productive. For more sophisticated tasks related to programming, AI cannot replace a hardworking and fully engaged engineer.&lt;/p>
+&lt;p>If you&amp;rsquo;re shopping for new storage, check out &lt;a href="https://diskprices.com/">DiskPrices.com&lt;/a>.&lt;/p></content></entry><entry><title>Productivity with AI</title><link rel="alternate" href="https://brett.cloud/ai-productivity/"/><id>https://brett.cloud/ai-productivity/</id><published>2025-08-11T00:00:00+0000</published><updated>2025-08-11T00:00:00+0000</updated><summary>&lt;p>My experience with AI has been that it augments my abilities. It can consolidate information and automate tedium to make me more productive. For more sophisticated tasks related to programming, AI cannot replace a hardworking and fully engaged engineer.&lt;/p>
 &lt;p>Some people might feel like we&amp;rsquo;re at a moment like this:&lt;/p>
 &lt;!-- https://x.com/RyanEls4/status/1879978018204184582 -->
 &lt;blockquote class="twitter-tweet">&lt;p lang="en" dir="ltr">Software developers in the 60s 🤭 &lt;a href="https://t.co/eZZYTmzl0E">pic.twitter.com/eZZYTmzl0E&lt;/a>&lt;/p>&amp;mdash; Ryan Els (@RyanEls4) &lt;a href="https://twitter.com/RyanEls4/status/1879978018204184582?ref_src=twsrc%5Etfw">January 16, 2025&lt;/a>&lt;/blockquote>

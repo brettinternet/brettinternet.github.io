@@ -4,9 +4,9 @@ publishDate: 2023-12-09
 title: The Stages of ZFS Data Loss Grief
 description: A short story about recovering from a ZFS oops
 resources:
-  - src: disks.png
+  - src: homelab-2019.png
     params:
-      alt: hard drives stacked in a small computer
+      alt: drives stacked in a small computer
 comments: true
 ---
 

@@ -1,5 +1,5 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2025-12-21T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>Drives</title><link rel="alternate" href="https://brett.cloud/drives/"/><id>https://brett.cloud/drives/</id><published>2025-12-21T00:00:00+0000</published><updated>2025-12-21T00:00:00+0000</updated><summary>&lt;h2 id="hdd">HDD&lt;/h2>
-&lt;p>Here are the drives that survive my &lt;a href="/homelab/">homelab&lt;/a>. These drives run XFS with MergerFS to combine the JBOD pool into a single filesystem and SnapRAID for parity. I&amp;rsquo;ve had good luck so far. Managing your own storage is not without &lt;a href="/zfs-passthrough/">some risk&lt;/a>, but overall this has been a fairly easy endeavor.&lt;/p>
+&lt;p>Here are the hard drives used in my &lt;a href="/homelab/">homelab&lt;/a>. These drives use XFS with MergerFS to combine the JBOD pool into a single filesystem and SnapRAID for software parity. Managing your own storage is not without &lt;a href="/zfs-passthrough/">some risk&lt;/a>, but overall this has been a fairly easy endeavor.&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -89,7 +89,7 @@
 &lt;/table>
 &lt;h2 id="case">Case&lt;/h2>
 &lt;p>Originally I could fit 8x 3.5&amp;quot; drives in a &lt;a href="https://www.fractal-design.com/products/cases/node/node-804/">Node 804&lt;/a> which was a great apartment server. Later, I moved into a hotswappable Supermicro 2U rackmounted case.&lt;/p></summary><content type="html">&lt;h2 id="hdd">HDD&lt;/h2>
-&lt;p>Here are the drives that survive my &lt;a href="/homelab/">homelab&lt;/a>. These drives run XFS with MergerFS to combine the JBOD pool into a single filesystem and SnapRAID for parity. I&amp;rsquo;ve had good luck so far. Managing your own storage is not without &lt;a href="/zfs-passthrough/">some risk&lt;/a>, but overall this has been a fairly easy endeavor.&lt;/p>
+&lt;p>Here are the hard drives used in my &lt;a href="/homelab/">homelab&lt;/a>. These drives use XFS with MergerFS to combine the JBOD pool into a single filesystem and SnapRAID for software parity. Managing your own storage is not without &lt;a href="/zfs-passthrough/">some risk&lt;/a>, but overall this has been a fairly easy endeavor.&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>

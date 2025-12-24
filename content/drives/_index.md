@@ -10,6 +10,8 @@ resources:
 comments: true
 ---
 
+## HDD
+
 Here are the drives that survive my [homelab](/homelab/). These drives run XFS with MergerFS to combine the JBOD pool into a single filesystem and SnapRAID for parity. I've had good luck so far. Managing your own storage is not without [some risk](/zfs-passthrough/), but overall this has been a fairly easy endeavor.
 
 | Drive                                                                             | Qty | Size | Price/unit | Date       | Active | Notes                                                                      |
@@ -27,9 +29,15 @@ Here are the drives that survive my [homelab](/homelab/). These drives run XFS w
 
 Originally I could fit 8x 3.5" drives in a [Node 804](https://www.fractal-design.com/products/cases/node/node-804/) which was a great apartment server. Later, I moved into a hotswappable Supermicro 2U rackmounted case.
 
+{{< note title="Price watch" >}}
+If you're shopping for new storage, check out [DiskPrices.com](https://diskprices.com/).
+{{< /note >}}
+
 ---
 
-## Update 12/21/2025: Drive failure
+## History
+
+### Update 12/21/2025: Drive failure
 
 After some SnapRAID and SMART errors, I retired my first single-owner disk from my NAS.
 
@@ -40,7 +48,3 @@ $ sudo smartctl -a /dev/sdb | grep -E "Reallocated_Sector|Current_Pending"
 ```
 
 🫡
-
----
-
-If you're shopping for new storage, check out [DiskPrices.com](https://diskprices.com/).

@@ -1,4 +1,5 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2025-12-21T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>Drives</title><link rel="alternate" href="https://brett.cloud/drives/"/><id>https://brett.cloud/drives/</id><published>2025-12-21T00:00:00+0000</published><updated>2025-12-21T00:00:00+0000</updated><summary>&lt;p>Here are the drives that survive my &lt;a href="/homelab/">homelab&lt;/a>. These drives run XFS with MergerFS to combine the JBOD pool into a single filesystem and SnapRAID for parity. I&amp;rsquo;ve had good luck so far. Managing your own storage is not without &lt;a href="/zfs-passthrough/">some risk&lt;/a>, but overall this has been a fairly easy endeavor.&lt;/p>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2025-12-21T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>Drives</title><link rel="alternate" href="https://brett.cloud/drives/"/><id>https://brett.cloud/drives/</id><published>2025-12-21T00:00:00+0000</published><updated>2025-12-21T00:00:00+0000</updated><summary>&lt;h2 id="hdd">HDD&lt;/h2>
+&lt;p>Here are the drives that survive my &lt;a href="/homelab/">homelab&lt;/a>. These drives run XFS with MergerFS to combine the JBOD pool into a single filesystem and SnapRAID for parity. I&amp;rsquo;ve had good luck so far. Managing your own storage is not without &lt;a href="/zfs-passthrough/">some risk&lt;/a>, but overall this has been a fairly easy endeavor.&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -87,7 +88,8 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h2 id="case">Case&lt;/h2>
-&lt;p>Originally I could fit 8x 3.5&amp;quot; drives in a &lt;a href="https://www.fractal-design.com/products/cases/node/node-804/">Node 804&lt;/a> which was a great apartment server. Later, I moved into a hotswappable Supermicro 2U rackmounted case.&lt;/p></summary><content type="html">&lt;p>Here are the drives that survive my &lt;a href="/homelab/">homelab&lt;/a>. These drives run XFS with MergerFS to combine the JBOD pool into a single filesystem and SnapRAID for parity. I&amp;rsquo;ve had good luck so far. Managing your own storage is not without &lt;a href="/zfs-passthrough/">some risk&lt;/a>, but overall this has been a fairly easy endeavor.&lt;/p>
+&lt;p>Originally I could fit 8x 3.5&amp;quot; drives in a &lt;a href="https://www.fractal-design.com/products/cases/node/node-804/">Node 804&lt;/a> which was a great apartment server. Later, I moved into a hotswappable Supermicro 2U rackmounted case.&lt;/p></summary><content type="html">&lt;h2 id="hdd">HDD&lt;/h2>
+&lt;p>Here are the drives that survive my &lt;a href="/homelab/">homelab&lt;/a>. These drives run XFS with MergerFS to combine the JBOD pool into a single filesystem and SnapRAID for parity. I&amp;rsquo;ve had good luck so far. Managing your own storage is not without &lt;a href="/zfs-passthrough/">some risk&lt;/a>, but overall this has been a fairly easy endeavor.&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -177,8 +179,24 @@
 &lt;/table>
 &lt;h2 id="case">Case&lt;/h2>
 &lt;p>Originally I could fit 8x 3.5&amp;quot; drives in a &lt;a href="https://www.fractal-design.com/products/cases/node/node-804/">Node 804&lt;/a> which was a great apartment server. Later, I moved into a hotswappable Supermicro 2U rackmounted case.&lt;/p>
+&lt;div class="border-l-4 border-blue-500 pr-2 pl-4 my-5" role="alert">
+&lt;div class="not-prose flex items-center gap-1 text-blue-700 mb-1">
+&lt;svg
+class="h-5 w-5"
+xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+stroke="currentColor">
+&lt;path stroke-linecap="round" stroke-linejoin="round"
+d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+&lt;/svg>
+&lt;span class="font-semibold">Price watch&lt;/span>
+&lt;/div>
+&lt;div>
+If you&amp;rsquo;re shopping for new storage, check out &lt;a href="https://diskprices.com/">DiskPrices.com&lt;/a>.
+&lt;/div>
+&lt;/div>
 &lt;hr>
-&lt;h2 id="update-12212025-drive-failure">Update 12/21/2025: Drive failure&lt;/h2>
+&lt;h2 id="history">History&lt;/h2>
+&lt;h3 id="update-12212025-drive-failure">Update 12/21/2025: Drive failure&lt;/h3>
 &lt;p>After some SnapRAID and SMART errors, I retired my first single-owner disk from my NAS.&lt;/p>
 &lt;div class="group/codeblock relative overflow-x-auto my-6">
 &lt;button class="copy-btn hidden opacity-0 group-hover/codeblock:opacity-100 cursor-pointer absolute top-2 right-2 px-2 py-1 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs rounded border border-slate-600 transition-opacity duration-200" aria-label="Copy code">
@@ -188,9 +206,7 @@ Copy
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">5&lt;/span> Reallocated_Sector_Ct 0x0033 &lt;span style="color:#ae81ff">100&lt;/span> &lt;span style="color:#ae81ff">100&lt;/span> &lt;span style="color:#ae81ff">010&lt;/span> Pre-fail Always - &lt;span style="color:#ae81ff">0&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">197&lt;/span> Current_Pending_Sector 0x0012 &lt;span style="color:#ae81ff">099&lt;/span> &lt;span style="color:#ae81ff">097&lt;/span> &lt;span style="color:#ae81ff">000&lt;/span> Old_age Always - &lt;span style="color:#ae81ff">168&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
 &lt;/div>
-&lt;p>🫡&lt;/p>
-&lt;hr>
-&lt;p>If you&amp;rsquo;re shopping for new storage, check out &lt;a href="https://diskprices.com/">DiskPrices.com&lt;/a>.&lt;/p></content></entry><entry><title>Productivity with AI</title><link rel="alternate" href="https://brett.cloud/ai-productivity/"/><id>https://brett.cloud/ai-productivity/</id><published>2025-08-11T00:00:00+0000</published><updated>2025-08-11T00:00:00+0000</updated><summary>&lt;p>My experience with AI has been that it augments my abilities. It can consolidate information and automate tedium to make me more productive. For more sophisticated tasks related to programming, AI cannot replace a hardworking and fully engaged engineer.&lt;/p>
+&lt;p>🫡&lt;/p></content></entry><entry><title>Productivity with AI</title><link rel="alternate" href="https://brett.cloud/ai-productivity/"/><id>https://brett.cloud/ai-productivity/</id><published>2025-08-11T00:00:00+0000</published><updated>2025-08-11T00:00:00+0000</updated><summary>&lt;p>My experience with AI has been that it augments my abilities. It can consolidate information and automate tedium to make me more productive. For more sophisticated tasks related to programming, AI cannot replace a hardworking and fully engaged engineer.&lt;/p>
 &lt;p>Some people might feel like we&amp;rsquo;re at a moment like this:&lt;/p>
 &lt;!-- https://x.com/RyanEls4/status/1879978018204184582 -->
 &lt;blockquote class="twitter-tweet">&lt;p lang="en" dir="ltr">Software developers in the 60s 🤭 &lt;a href="https://t.co/eZZYTmzl0E">pic.twitter.com/eZZYTmzl0E&lt;/a>&lt;/p>&amp;mdash; Ryan Els (@RyanEls4) &lt;a href="https://twitter.com/RyanEls4/status/1879978018204184582?ref_src=twsrc%5Etfw">January 16, 2025&lt;/a>&lt;/blockquote>

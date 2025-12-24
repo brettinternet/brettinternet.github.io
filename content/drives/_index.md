@@ -12,7 +12,7 @@ comments: true
 
 ## HDD
 
-Here are the drives that survive my [homelab](/homelab/). These drives run XFS with MergerFS to combine the JBOD pool into a single filesystem and SnapRAID for parity. I've had good luck so far. Managing your own storage is not without [some risk](/zfs-passthrough/), but overall this has been a fairly easy endeavor.
+Here are the hard drives used in my [homelab](/homelab/). These drives use XFS with MergerFS to combine the JBOD pool into a single filesystem and SnapRAID for software parity. Managing your own storage is not without [some risk](/zfs-passthrough/), but overall this has been a fairly easy endeavor.
 
 | Drive                                                                             | Qty | Size | Price/unit | Date       | Active | Notes                                                                      |
 | --------------------------------------------------------------------------------- | --- | ---- | ---------- | ---------- | ------ | -------------------------------------------------------------------------- |

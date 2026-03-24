@@ -38,16 +38,6 @@ monitors. The system tray icon will also indicate the mute status. Once
 microphones are on again, the window will hide.
 [View releases](https://github.com/brettinternet/mic-mute/releases).
 
-Muted and unmuted indicators:
-
-{{< raw >}}
-
-<div class="flex flex-row items-center">
-<img src="./alert-on.png" alt="popup window screenshot indicating the microphone is off" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
-<img src="./alert-off.png" alt="popup window screenshot indicating the microphone is on" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
-</div>
-{{< /raw >}}
-
 ---
 
 ## Update: What I use now
@@ -109,6 +99,16 @@ end
 -- `⌘ ⇧ A` but you could also map to F13 for a macropad
 hs.hotkey.bind({"cmd", "shift"}, "a", nil, toggleMuteOrPTT, pushToTalk)
 ```
+
+Muted and unmuted indicators:
+
+{{< raw >}}
+
+<div class="flex flex-row items-center">
+<img src="./alert-on.png" alt="popup window screenshot indicating the microphone is off" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
+<img src="./alert-off.png" alt="popup window screenshot indicating the microphone is on" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
+</div>
+{{< /raw >}}
 
 Hammerspoon also makes it incredibly easy to add other utilities, such as making
 a hotkey to change the default audio output or input. Find the latest

@@ -1517,11 +1517,6 @@ Mute window follows cursor to screens and monitors
 monitors. The system tray icon will also indicate the mute status. Once
 microphones are on again, the window will hide.
 &lt;a href="https://github.com/brettinternet/mic-mute/releases">View releases&lt;/a>.&lt;/p>
-&lt;p>Muted and unmuted indicators:&lt;/p>
-&lt;div class="flex flex-row items-center">
-&lt;img src="./alert-on.png" alt="popup window screenshot indicating the microphone is off" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
-&lt;img src="./alert-off.png" alt="popup window screenshot indicating the microphone is on" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
-&lt;/div>
 &lt;hr>
 &lt;h2 id="update-what-i-use-now">Update: What I use now&lt;/h2>
 &lt;p>My journey finding the best solution for this has evolved. I now use
@@ -1581,6 +1576,11 @@ Copy
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">-- `⌘ ⇧ A` but you could also map to F13 for a macropad&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>hs.hotkey.bind({&lt;span style="color:#e6db74">&amp;#34;cmd&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;shift&amp;#34;&lt;/span>}, &lt;span style="color:#e6db74">&amp;#34;a&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">nil&lt;/span>, toggleMuteOrPTT, pushToTalk)&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>Muted and unmuted indicators:&lt;/p>
+&lt;div class="flex flex-row items-center">
+&lt;img src="./alert-on.png" alt="popup window screenshot indicating the microphone is off" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
+&lt;img src="./alert-off.png" alt="popup window screenshot indicating the microphone is on" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
 &lt;/div>
 &lt;p>Hammerspoon also makes it incredibly easy to add other utilities, such as making
 a hotkey to change the default audio output or input. Find the latest

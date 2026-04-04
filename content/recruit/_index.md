@@ -52,4 +52,6 @@ Please share with me some details before we connect on a call:
   roles)? What does a Pull Request on the team look like?
 - What problems are you trying to solve with your product?
 
-{{< cta href="https://www.linkedin.com/in/brettinternet/" message="Connect with Brett" new_window=true root_class="mt-12" >}}
+<!-- {{< cta href="https://www.linkedin.com/in/brettinternet/" message="Connect with Brett" new_window=true root_class="mt-12" >}} -->
+
+{{< cta href="/email" message="Email" root_class="mt-12" >}}

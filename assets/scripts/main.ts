@@ -21,3 +21,15 @@ if (params.mermaid && window.mermaid) {
     theme: 'dark',
   })
 }
+
+// https://spencermortensen.com/articles/email-obfuscation/
+document
+  .querySelectorAll<HTMLAnchorElement>('a.href-conversion')
+  .forEach((anchor) => {
+    const value = anchor.dataset.href
+    if (value) {
+      anchor.setAttribute('href', value)
+    }
+    delete anchor.dataset.href
+    anchor.classList.remove('href-conversion')
+  })

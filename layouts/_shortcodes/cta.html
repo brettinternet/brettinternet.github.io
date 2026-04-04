@@ -5,7 +5,13 @@
     target="_blank"
     rel="noopener noreferrer"
     {{end}}
-    class='group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full inline-flex no-underline{{if not (.Get "notice")}} pl-4{{end}}' role="alert">
+    {{ $reserved := slice "href" "new_window" "class" "root_class" "notice" "icon_class" "icon" "message" }}
+    {{ range $k, $v := .Params }}
+      {{ if not (in $reserved $k) }}
+        {{ printf "%s=%q" $k $v | safeHTMLAttr }}
+      {{ end }}
+    {{ end }}
+    class='group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full inline-flex no-underline{{if not (.Get "notice")}} pl-4{{end}}{{with .Get "class"}} {{.}}{{end}}' role="alert">
     {{ $icon_class := .Get "icon_class" | default "" }}
     {{ with .Get "icon" }}
     {{ $svg := printf "%s%s" (.) ".svg" }}

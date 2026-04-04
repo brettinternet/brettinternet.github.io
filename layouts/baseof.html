@@ -9,7 +9,7 @@
 <body
   class="min-h-screen flex flex-col text-slate-800 bg-orange-50"
 >
-  {{ if not .Params.redirect_url }}
+  {{ if or (not .Params.redirect_url) (.Params.show_main_on_redirect) }}
     {{ if not .Params.hide_header }}
       {{ partial "header.html" . }}
     {{ end }}

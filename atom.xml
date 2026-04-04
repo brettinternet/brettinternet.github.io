@@ -2061,20 +2061,21 @@ decoding="async"
 &lt;/picture>
 &lt;/a>
 &lt;/div>
-&lt;ul class="not-prose list-none p-0 mx-0 my-3 sm:my-6 font-article grid xs:grid-cols-3 gap-4 content-center">
-&lt;li class="text-center xs:text-left">
+&lt;ul class="not-prose list-none p-0 mx-0 my-3 sm:my-6 font-article grid xs:grid-cols-2 gap-4 content-center">
+&lt;li class="text-center">
 &lt;a href="https://github.com/brettinternet" class="underline">code with me&lt;/a>
 &lt;/li>
-&lt;li class="text-center xs:text-center">
+&lt;li class="text-center">
 &lt;a href="/recruit" class="underline">recruit me&lt;/a>
 &lt;/li>
+&lt;!--
 &lt;li class="text-center xs:text-right">
 &lt;a href="https://linkedin.com/in/brettinternet" class="underline">work with me&lt;/a>
 &lt;/li>
+-->
 &lt;/ul>
 &lt;p>
 Brett Gardiner is passionate at writing enterprise software fit for solving problems at different scales and velocities.
-Recently, Brett has been hard at work optimizing realtime communication with hundreds of thousands of devices.
 &lt;/p></summary><content type="html">&lt;div class="not-prose flex flex-col items-center justify-center container mb-6 sm:mb-12 mx-auto">
 &lt;a href="/">
 &lt;picture>
@@ -2098,20 +2099,21 @@ decoding="async"
 &lt;/picture>
 &lt;/a>
 &lt;/div>
-&lt;ul class="not-prose list-none p-0 mx-0 my-3 sm:my-6 font-article grid xs:grid-cols-3 gap-4 content-center">
-&lt;li class="text-center xs:text-left">
+&lt;ul class="not-prose list-none p-0 mx-0 my-3 sm:my-6 font-article grid xs:grid-cols-2 gap-4 content-center">
+&lt;li class="text-center">
 &lt;a href="https://github.com/brettinternet" class="underline">code with me&lt;/a>
 &lt;/li>
-&lt;li class="text-center xs:text-center">
+&lt;li class="text-center">
 &lt;a href="/recruit" class="underline">recruit me&lt;/a>
 &lt;/li>
+&lt;!--
 &lt;li class="text-center xs:text-right">
 &lt;a href="https://linkedin.com/in/brettinternet" class="underline">work with me&lt;/a>
 &lt;/li>
+-->
 &lt;/ul>
 &lt;p>
 Brett Gardiner is passionate at writing enterprise software fit for solving problems at different scales and velocities.
-Recently, Brett has been hard at work optimizing realtime communication with hundreds of thousands of devices.
 &lt;/p>
 &lt;ul class="not-prose list-none mt-3 sm:mt-6 mb-6 sm:mb-12 p-0 mx-0 font-article flex flex-row items-center justify-center space-x-9">
 &lt;li class="text-center xs:text-left">
@@ -2134,6 +2136,7 @@ d="M5.315 2.1c.791 -.113 1.9 .145 3.333 .966l.272 .161l.16 .1l.397 -.083a13.3 13
 &lt;span class="group-hover:underline underline">GitHub&lt;/span>
 &lt;/a>
 &lt;/li>
+&lt;!--
 &lt;li class="text-center xs:text-right">
 &lt;a
 href="https://linkedin.com/in/brettinternet"
@@ -2154,19 +2157,8 @@ d="M17 2a5 5 0 0 1 5 5v10a5 5 0 0 1 -5 5h-10a5 5 0 0 1 -5 -5v-10a5 5 0 0 1 5 -5z
 &lt;span class="group-hover:underline underline">LinkedIn&lt;/span>
 &lt;/a>
 &lt;/li>
-&lt;/ul>
-&lt;!--
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;img
-src="/discussion.png"
-alt="three people having a discussion, one person is pointing"
-loading="lazy"
-/>
-&lt;figcaption class="text-center">
-Cody, Gaia and I discussing shareholder value
-&lt;/figcaption>
-&lt;/figure>
 -->
+&lt;/ul>
 &lt;div class="px-0">
 &lt;div class="grid sm:grid-cols-2 gap-4">
 &lt;details open>
@@ -2177,20 +2169,12 @@ Cody, Gaia and I discussing shareholder value
 &lt;summary class="font-serif">What are my hobbies?&lt;/summary>
 &lt;p>I play pickleball, hike and camp. I also have numerous ongoing projects such as a self-hosted kubernetes homelab and moonlighting programming projects.&lt;/p>
 &lt;/details>
-&lt;details>
+&lt;details open>
 &lt;summary class="font-serif">How do we get in touch?&lt;/summary>
-&lt;p>Please try one of the channels linked above.&lt;br />You may also reach me at:&lt;br />&lt;code>hi@[this website's domain]&lt;/code>&lt;/p>
+&lt;p>
+&lt;a rel="nofollow, noindex" href="#" data-href="/email" class="href-conversion">
+&amp;#x68;&amp;#x69;&amp;#x40;&amp;#x62;&amp;#x72;&amp;#x65;&amp;#x74;&amp;#x74;&lt;span class="hidden">Don't spam me :)&lt;/span>&amp;#x2e;&amp;#x63;&amp;#x6c;&amp;#x6f;&amp;#x75;&amp;#x64;
+&lt;/a>
+&lt;/p>
 &lt;/details>
-&lt;/div>
-&lt;!--
-&lt;figure class="flex flex-col justify-center items-center">
-&lt;img
-src="/mri.png"
-alt="man with bicycle standing in front of wrapped MRI machine still in freight"
-loading="lazy"
-/>
-&lt;figcaption class="text-center">
-Standing in front of my university&amp;#39;s new MRI machine
-&lt;/figcaption>
-&lt;/figure>
---></content></entry></feed>
+&lt;/div></content></entry></feed>

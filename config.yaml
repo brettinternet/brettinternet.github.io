@@ -1,6 +1,9 @@
 baseURL: https://brett.cloud
-languageCode: en-us
+locale: en-us
 title: brett.cloud
+security:
+  allowContent:
+    - ^text/(html|markdown)$
 
 params:
   author:

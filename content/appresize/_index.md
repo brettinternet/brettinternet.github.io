@@ -9,9 +9,9 @@ hide_title: true
 comments: false
 card_image: demo.gif
 resources:
-  - src: demo.gif
-    params:
-      alt: resize & move apps from anywhere on the window
+    - src: demo.gif
+      params:
+          alt: resize & move apps from anywhere on the window
 ---
 
 {{< raw >}}
@@ -23,12 +23,19 @@ resources:
 <h1 align="center">Appresize</h1>
 {{< /raw >}}
 
-[Appresize](https://github.com/brettinternet/Appresize) is a utility to resize and move apps from anywhere on the window with custom modifiers and other preferences.
+[Appresize](https://github.com/brettinternet/Appresize) is a utility to resize
+and move apps from anywhere on the window with custom modifiers and other
+preferences.
 
 {{< image src="demo.gif" alt="resize & move apps from anywhere on the window" caption="Although not captured by the screen recorder, the cursor does follow window" >}}
 
 {{< image src="screenshot.png" alt="window preferences" caption="Custom modifiers & other behaviors" >}}
 
-One of my favorite abandonware apps on macOS was an old closed-source Objective C application called [Hyperdock](https://bahoom.com/hyperdock) that had a small secondary feature to resize and move windows by a modifier from anywhere on the window.
+One of my favorite abandonware apps on macOS was an old closed-source Objective
+C application called [Hyperdock](https://bahoom.com/hyperdock) that had a small
+secondary feature to resize and move windows by a modifier from anywhere on the
+window.
 
-There are various window utilities on Mac, but none of them satisfied my very specific expectation. Now, this demand lives on with Swift in a small utility [here](https://github.com/brettinternet/Appresize).
+There are various window utilities on Mac, but none of them satisfied my very
+specific expectation. Now, this demand lives on with Swift in a small utility
+[here](https://github.com/brettinternet/Appresize).

@@ -4,10 +4,10 @@ title: You can self-host
 publishDate: 2023-01-13
 description: Here's an easy way to self-host your own application
 resources:
-  - src: stay_at_home_server.jpg
-    params:
-      alt: Book cover for "Mommy, Why is There a Server in the House?"
-      caption: This old Microsoft publication is no longer in print
+    - src: stay_at_home_server.jpg
+      params:
+          alt: Book cover for "Mommy, Why is There a Server in the House?"
+          caption: This old Microsoft publication is no longer in print
 comments: true
 ---
 

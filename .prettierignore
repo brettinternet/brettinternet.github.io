@@ -1,5 +1,8 @@
 package-lock.json
 node_modules
+/assets
 /public
 /resources
 .hugo_build.lock
+/layouts
+/content/**/*.html

@@ -4,15 +4,20 @@ publishDate: 2023-12-09
 title: The Stages of ZFS Data Loss Grief
 description: A short story about recovering from a ZFS oops
 resources:
-  - src: homelab-2019.png
-    params:
-      alt: drives stacked in a small computer
+    - src: homelab-2019.png
+      params:
+          alt: drives stacked in a small computer
 comments: true
 ---
 
-I use a widely-known and inexpensive method to add additional SATA storage with the [Dell Perc H310](https://www.ebay.com/sch/i.html?_nkw=Dell+Perc+H310+SATA). I found this old Host Bus Adapter (HBA) a long while back. This HBA can be flashed to IT mode by taping over a couple PCI pins to bypass the hardware RAID and use software RAID. <sup>[1](#flash-instructions)</sup>
+I use a widely-known and inexpensive method to add additional SATA storage with
+the [Dell Perc H310](https://www.ebay.com/sch/i.html?_nkw=Dell+Perc+H310+SATA).
+I found this old Host Bus Adapter (HBA) a long while back. This HBA can be
+flashed to IT mode by taping over a couple PCI pins to bypass the hardware RAID
+and use software RAID. <sup>[1](#flash-instructions)</sup>
 
-Since moving my home servers to Proxmox to manage virtualization, I setup disk passthrough to a VM managing my ZFS array. What could go wrong?
+Since moving my home servers to Proxmox to manage virtualization, I setup disk
+passthrough to a VM managing my ZFS array. What could go wrong?
 
 ```sh
 $ qm set 100 -scsi1 /dev/disk/by-id/…
@@ -69,7 +74,7 @@ cannot import 'tank': I/O error
 	a backup source.
 ```
 
-> Destroy and re-create the pool from	a backup source.
+> Destroy and re-create the pool from a backup source.
 
 At this point, most forums appear to suggest that the pool is lost forever.
 
@@ -123,11 +128,13 @@ $ zpool import -FX tank
 ^C^C^C^C
 ```
 
-That option must not work the way I expected (forgive my impatience, dear reader).
+That option must not work the way I expected (forgive my impatience, dear
+reader).
 
 ## 4. Depression
 
-At this point I pull down the latest snapshot from Backblaze and assess the damage.
+At this point I pull down the latest snapshot from Backblaze and assess the
+damage.
 
 ```sh
 $ zdb tank
@@ -157,7 +164,8 @@ $ restic restore 20ee6d7b --target ./data
 
 ## 6. ?
 
-Ok, wait a minute. Let's try that mysterious -X flag again, but with more patience.
+Ok, wait a minute. Let's try that mysterious -X flag again, but with more
+patience.
 
 ```sh
 $ zpool import -FX tank
@@ -177,12 +185,19 @@ Immediately:
 $ rsync -ahP /mnt/tank elsewhere:/mnt/pond/tank
 ```
 
-I later discovered from some folks on a ZFS forum that's better to avoid disk passthrough for ZFS pools in VMs, but this may depend on the HBA controller.
+I later discovered from some folks on a ZFS forum that's better to avoid disk
+passthrough for ZFS pools in VMs, but this may depend on the HBA controller.
 
-Now, I pass the entire HBA controller to guest VMs instead of individual disks when using ZFS. Lesson learned.
+Now, I pass the entire HBA controller to guest VMs instead of individual disks
+when using ZFS. Lesson learned.
 
 Thank you FreeBSD, Truenas, r/zfs communities and datahoarders.
 
 ---
 
-<a id="flash-instructions" href="#flash-instructions">1</a>: There are several instructions to flash the Dell Perc H310 HBA to IT mode: [video walkthrough](https://www.youtube.com/watch?v=EOcpp-GdhKo), [ServeTheHome post](https://www.servethehome.com/ibm-serveraid-m1015-part-4/), and [TrueNAS forum thread](https://www.truenas.com/community/threads/confused-about-that-lsi-card-join-the-crowd.11901/)
+<a id="flash-instructions" href="#flash-instructions">1</a>: There are several
+instructions to flash the Dell Perc H310 HBA to IT mode:
+[video walkthrough](https://www.youtube.com/watch?v=EOcpp-GdhKo),
+[ServeTheHome post](https://www.servethehome.com/ibm-serveraid-m1015-part-4/),
+and
+[TrueNAS forum thread](https://www.truenas.com/community/threads/confused-about-that-lsi-card-join-the-crowd.11901/)

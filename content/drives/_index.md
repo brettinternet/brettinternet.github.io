@@ -4,15 +4,19 @@ title: Drives
 publishDate: 2025-12-21
 description: Here are the HDDs that have survived my storage pool
 resources:
-  - src: drives.png
-    params:
-      alt: hard drives stacked in a small computer
+    - src: drives.png
+      params:
+          alt: hard drives stacked in a small computer
 comments: true
 ---
 
 ## HDD
 
-Here are the hard drives used in my [homelab](/homelab/). These drives use XFS with MergerFS to combine the JBOD pool into a single filesystem and SnapRAID for software parity. Managing your own storage is not without [some risk](/zfs-passthrough/), but overall this has been a fairly easy endeavor.
+Here are the hard drives used in my [homelab](/homelab/). These drives use XFS
+with MergerFS to combine the JBOD pool into a single filesystem and SnapRAID for
+software parity. Managing your own storage is not without
+[some risk](/zfs-passthrough/), but overall this has been a fairly easy
+endeavor.
 
 | Drive                                                                             | Qty | Size | Price/unit | Date       | Active | Notes                                                                      |
 | --------------------------------------------------------------------------------- | --- | ---- | ---------- | ---------- | ------ | -------------------------------------------------------------------------- |
@@ -27,11 +31,13 @@ Here are the hard drives used in my [homelab](/homelab/). These drives use XFS w
 
 ## Case
 
-Originally I could fit 8x 3.5" drives in a [Node 804](https://www.fractal-design.com/products/cases/node/node-804/) which was a great apartment server. Later, I moved into a hotswappable Supermicro 2U rackmounted case.
+Originally I could fit 8x 3.5" drives in a
+[Node 804](https://www.fractal-design.com/products/cases/node/node-804/) which
+was a great apartment server. Later, I moved into a hotswappable Supermicro 2U
+rackmounted case.
 
-{{< note title="Price watch" >}}
-If you're shopping for new storage, check out [DiskPrices.com](https://diskprices.com/).
-{{< /note >}}
+{{< note title="Price watch" >}} If you're shopping for new storage, check out
+[DiskPrices.com](https://diskprices.com/). {{< /note >}}
 
 ---
 
@@ -39,7 +45,8 @@ If you're shopping for new storage, check out [DiskPrices.com](https://diskprice
 
 ### Update 12/21/2025: Drive failure
 
-After some SnapRAID and SMART errors, I retired my first single-owner disk from my NAS.
+After some SnapRAID and SMART errors, I retired my first single-owner disk from
+my NAS.
 
 ```sh
 $ sudo smartctl -a /dev/sdb | grep -E "Reallocated_Sector|Current_Pending"

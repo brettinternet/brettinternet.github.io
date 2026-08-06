@@ -4,9 +4,9 @@ title: Building a Hackintosh
 publishDate: 2017-04-23
 description: PC hardware + macOS
 resources:
-  - src: system-info.png
-    params:
-      alt: MacOS system information
+    - src: system-info.png
+      params:
+          alt: MacOS system information
 comments: true
 ---
 

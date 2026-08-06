@@ -6,15 +6,32 @@ description: The Elixir programming language
 comments: true
 ---
 
-Working at a C# shop that moved to Elixir for a greenfield project was exciting and uninhibited. Elixir is an effective language and allowed us to maintain a very high development velocity. Elixir ranks as highly desired in every StackOverflow Developer Survey for good reasons. However, as our codebase scaled, the realities of a dynamically typed language became a significant challenge.
+Working at a C# shop that moved to Elixir for a greenfield project was exciting
+and uninhibited. Elixir is an effective language and allowed us to maintain a
+very high development velocity. Elixir ranks as highly desired in every
+StackOverflow Developer Survey for good reasons. However, as our codebase
+scaled, the realities of a dynamically typed language became a significant
+challenge.
 
 ### What Works
 
-Elixir excels in concurrent systems leveraging the Erlang VM (BEAM) and an actor model to facilitate message passing even across nodes. GenServers are extremely versatile and provide a unique way to manage state asynchronously. The "let it crash" paradigm using OTP supervision trees is valuable for creating fault-tolerant servers. So many other features are available out of the box with Elixir and Phoenix. Websockets, pubsub, caching, memory store, concurrency, built-in observability, and clustering are huge wins in the language that small teams can spin up without much additional effort.
+Elixir excels in concurrent systems leveraging the Erlang VM (BEAM) and an actor
+model to facilitate message passing even across nodes. GenServers are extremely
+versatile and provide a unique way to manage state asynchronously. The "let it
+crash" paradigm using OTP supervision trees is valuable for creating
+fault-tolerant servers. So many other features are available out of the box with
+Elixir and Phoenix. Websockets, pubsub, caching, memory store, concurrency,
+built-in observability, and clustering are huge wins in the language that small
+teams can spin up without much additional effort.
 
-Elixir concurrency works with the Actor Model, using extremely lightweight, isolated processes managed by the BEAM that communicate solely through asynchronous message passing, preventing shared state issues with immutability. These processes are essentially lightweight green threads managed by the runtime.
+Elixir concurrency works with the Actor Model, using extremely lightweight,
+isolated processes managed by the BEAM that communicate solely through
+asynchronous message passing, preventing shared state issues with immutability.
+These processes are essentially lightweight green threads managed by the
+runtime.
 
-Pattern matching is my favorite Elixir feature. It allows destructuring complex data and directing control flow based on the shape of the data.
+Pattern matching is my favorite Elixir feature. It allows destructuring complex
+data and directing control flow based on the shape of the data.
 
 ```elixir
 case Jason.decode(json_string) do
@@ -32,30 +49,55 @@ case Jason.decode(json_string) do
 end
 ```
 
-The Ecto library is my favorite Elixir library. Ecto interfaces with databases through a powerful SQL DSL and Query Result Mapping. Elixir's metaprogramming allows Ecto to appear as close to SQL as I've seen in any language, while being composable, declarative, and adaptable.
+The Ecto library is my favorite Elixir library. Ecto interfaces with databases
+through a powerful SQL DSL and Query Result Mapping. Elixir's metaprogramming
+allows Ecto to appear as close to SQL as I've seen in any language, while being
+composable, declarative, and adaptable.
 
 ### Limitations
 
-Code comprehension and issue tracing becomes difficult at scale with dynamic typing. Changes in large codebases make it difficult to ascertain affected code paths. Refactors are cumbersome without typing and require more manual verification. Dialyzer helps but it doesn't solve the fundamental typing gap.
+Code comprehension and issue tracing becomes difficult at scale with dynamic
+typing. Changes in large codebases make it difficult to ascertain affected code
+paths. Refactors are cumbersome without typing and require more manual
+verification. Dialyzer helps but it doesn't solve the fundamental typing gap.
 
-There is also organizational friction with adopting Elixir. There can be a learning curve for functional programming concepts and there's a limited hiring pool compared to mainstream languages.
+There is also organizational friction with adopting Elixir. There can be a
+learning curve for functional programming concepts and there's a limited hiring
+pool compared to mainstream languages.
 
-Other issues include slower compile times without strict avoidance of circular dependencies and a smaller ecosystem compared to mainstream languages. Elixir generally isn't ideal for CPU-intensive tasks. The local development experience can be frustrating with language server instability.
+Other issues include slower compile times without strict avoidance of circular
+dependencies and a smaller ecosystem compared to mainstream languages. Elixir
+generally isn't ideal for CPU-intensive tasks. The local development experience
+can be frustrating with language server instability.
 
 ## Conclusions
 
-Elixir provides genuine technical advantages for concurrent, fault-tolerant systems. It's an excellent solution to reach for with many enterprise features out of the box with Phoenix. However, these benefits come with significant organizational costs: harder hiring, steeper onboarding, and maintenance challenges from dynamic typing. Elixir could be one of the best choices for purpose-built microservices for specific concurrent jobs such as handling websockets.
+Elixir provides genuine technical advantages for concurrent, fault-tolerant
+systems. It's an excellent solution to reach for with many enterprise features
+out of the box with Phoenix. However, these benefits come with significant
+organizational costs: harder hiring, steeper onboarding, and maintenance
+challenges from dynamic typing. Elixir could be one of the best choices for
+purpose-built microservices for specific concurrent jobs such as handling
+websockets.
 
-Success with Elixir depends on team stability with functional programming expertise, specific technical requirements that justify adoption overhead, organizational commitment to the learning curve, and improved language server support. For most teams, engineers should evaluate whether Elixir's features outweigh its dynamic typing drawbacks and niche ecosystem.
+Success with Elixir depends on team stability with functional programming
+expertise, specific technical requirements that justify adoption overhead,
+organizational commitment to the learning curve, and improved language server
+support. For most teams, engineers should evaluate whether Elixir's features
+outweigh its dynamic typing drawbacks and niche ecosystem.
 
 ---
 
-{{< note title="Improvements (2025)" >}}
-We've been iterating on [design patterns that improve readability and organization](/boundary) at my org.
+{{< note title="Improvements (2025)" >}} We've been iterating on
+[design patterns that improve readability and organization](/boundary) at my
+org.
 
-Gleam offers static typing while maintaining Erlang ecosystem compatibility. This language looks very promising, but it isn't a practical decision for the enterprise world until the language matures.
+Gleam offers static typing while maintaining Erlang ecosystem compatibility.
+This language looks very promising, but it isn't a practical decision for the
+enterprise world until the language matures.
 
-Elixir itself will soon become a [gradually typed language](https://hexdocs.pm/elixir/main/gradual-set-theoretic-types.html).
+Elixir itself will soon become a
+[gradually typed language](https://hexdocs.pm/elixir/main/gradual-set-theoretic-types.html).
 
-An [official language server](https://github.com/elixir-lang/expert) is also in progress now.
-{{< /note >}}
+An [official language server](https://github.com/elixir-lang/expert) is also in
+progress now. {{< /note >}}

@@ -1,4 +1,75 @@
-<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2026-07-24T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>PanelCtl</title><link rel="alternate" href="https://brett.cloud/panelctl/"/><id>https://brett.cloud/panelctl/</id><published>2026-07-24T00:00:00+0000</published><updated>2026-07-24T00:00:00+0000</updated><summary>&lt;div class="flex justify-center"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>brett.cloud</title><link rel="self" href="https://brett.cloud/"/><updated>2026-08-01T00:00:00+0000</updated><author><name>Brett Gardiner</name><email>hi@[domain]</email><uri>https://brett.cloud/</uri></author><id>https://brett.cloud/</id><entry><title>PR Watch</title><link rel="alternate" href="https://brett.cloud/pr-watch/"/><id>https://brett.cloud/pr-watch/</id><published>2026-08-01T00:00:00+0000</published><updated>2026-08-01T00:00:00+0000</updated><summary>&lt;p&gt;&lt;a href="https://github.com/brettinternet/pr-watch"&gt;PR Watch&lt;/a&gt; is an experiment in using
+agent orchestrators to watch pull requests and help authors refine their work. I
+built the same two workflows on two runtimes:
+&lt;a href="https://github.com/gastownhall/gascity"&gt;Gas City&lt;/a&gt; and
+&lt;a href="https://github.com/awslabs/cli-agent-orchestrator"&gt;CAO&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class="mermaid"&gt;
+flowchart LR
+D[Discover eligible PRs] --&amp;gt; G{Safety gate}
+G --&amp;gt;|review request| R[Fresh reviewer session]
+G --&amp;gt;|owned PR| B[Long-lived babysitter session]
+R --&amp;gt; V[Validated review or local draft]
+B --&amp;gt; F[Fix CI and review feedback]
+&lt;/pre&gt;
+&lt;p&gt;Rather than using an agent to orchestrate, the workflows programmatically search
+pull requests and react to them by setting up tooling, bare clones, and
+additional context. The first workflow finds pull requests that need my review
+and starts a clean review for the current head revision. The second watches my
+open pull requests with agent instructions to keep CI green, handle review
+feedback, and request approval from an optional reviewer.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://github.com/brettinternet/pr-watch"&gt;PR Watch&lt;/a&gt; is an experiment in using
+agent orchestrators to watch pull requests and help authors refine their work. I
+built the same two workflows on two runtimes:
+&lt;a href="https://github.com/gastownhall/gascity"&gt;Gas City&lt;/a&gt; and
+&lt;a href="https://github.com/awslabs/cli-agent-orchestrator"&gt;CAO&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class="mermaid"&gt;
+flowchart LR
+D[Discover eligible PRs] --&amp;gt; G{Safety gate}
+G --&amp;gt;|review request| R[Fresh reviewer session]
+G --&amp;gt;|owned PR| B[Long-lived babysitter session]
+R --&amp;gt; V[Validated review or local draft]
+B --&amp;gt; F[Fix CI and review feedback]
+&lt;/pre&gt;
+&lt;p&gt;Rather than using an agent to orchestrate, the workflows programmatically search
+pull requests and react to them by setting up tooling, bare clones, and
+additional context. The first workflow finds pull requests that need my review
+and starts a clean review for the current head revision. The second watches my
+open pull requests with agent instructions to keep CI green, handle review
+feedback, and request approval from an optional reviewer.&lt;/p&gt;
+&lt;p&gt;CAO has been the better fit. Its project-local server, profiles, sessions, work
+directories, and dashboard make the long-running agent model easier to reason
+about and inspect. The setup is also a straightforward interface for a task
+runner instead of a collection of custom process glue.&lt;/p&gt;
+&lt;p&gt;The automation still has hard limits. Pull-request titles, diffs, comments,
+logs, and linked content are untrusted. Reviewers only publish validated
+reviews. Babysitters can make small verified fixes and push to the PR branch,
+but cannot merge, force-push, dismiss reviews, or approve for someone else.&lt;/p&gt;
+&lt;p&gt;In CAO, you have workflows that inherit an environment with agents running in
+OpenCode, in a terminal multiplexer like Herdr, between python scripts, in a web
+dashboard. It sounds like spaghetti but it actually comes together very nicely.&lt;/p&gt;
+&lt;a
+href="https://github.com/brettinternet/pr-watch"
+target="_blank"
+rel="noopener noreferrer"
+class=" w-full max-w-[422px] group not-prose no-underline transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-300 bg-slate-200 mx-auto my-8"
+&gt;
+&lt;div class="flex flex-col min-h-full p-6"&gt;
+&lt;div class="flex-1"&gt;
+&lt;h2 class="leading-tight font-serif text-lg mb-3 font-bold text-slate-900"&gt;
+brettinternet/pr-watch
+&lt;/h2&gt;
+&lt;/div&gt;
+&lt;p class="font-sans text-slate-500"&gt;Compare agent orchestrators for PR review and babysitting&lt;/p&gt;
+&lt;div class="absolute top-0 right-0 m-3 text-slate-500"&gt;
+&lt;svg
+class="w-4 h-4"
+xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+stroke="currentColor"&gt;
+&lt;path stroke-linecap="round" stroke-linejoin="round"
+d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/a&gt;</content></entry><entry><title>PanelCtl</title><link rel="alternate" href="https://brett.cloud/panelctl/"/><id>https://brett.cloud/panelctl/</id><published>2026-07-24T00:00:00+0000</published><updated>2026-07-24T00:00:00+0000</updated><summary>&lt;div class="flex justify-center"&gt;
 &lt;img width="128" src="./app-icon.png" alt="PanelCtl app icon" class="my-3 rounded-xl" /&gt;
 &lt;/div&gt;
 &lt;h1 align="center"&gt;PanelCtl&lt;/h1&gt;

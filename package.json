@@ -1,7 +1,7 @@
 {
   "name": "brettinternet.github.io",
   "scripts": {
-    "check": "biome check assets && prettier --check . && tsc --noEmit",
+    "check": "biome check assets && git ls-files -z | xargs -0 prettier --check --ignore-unknown && tsc --noEmit",
     "fix": "biome check --write assets && prettier --write ."
   },
   "dependencies": {

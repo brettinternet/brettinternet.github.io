@@ -17,8 +17,5 @@
     "noUncheckedIndexedAccess": true,
     "typeRoots": ["./node_modules/@types", "./assets/scripts/types"]
   },
-  "include": [
-    "assets/**/*",
-    "assets/scripts/types/**/*"
-  ]
+  "include": ["assets/**/*", "assets/scripts/types/**/*"]
 }

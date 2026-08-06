@@ -6,12 +6,12 @@ description: Config files for X11, i3wm, sway, macOS, Arch Linux, zsh and bash
 card_image: thinkpad.png
 post_image: i3.png
 resources:
-  - src: i3.png
-    params:
-      alt: X11 with i3 windows manager screenshot
-  - src: thinkpad.png
-    params:
-      alt: Thinkpad laptop on person's lap with terminal open
+    - src: i3.png
+      params:
+          alt: X11 with i3 windows manager screenshot
+    - src: thinkpad.png
+      params:
+          alt: Thinkpad laptop on person's lap with terminal open
 comments: true
 ---
 

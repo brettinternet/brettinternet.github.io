@@ -1,13 +1,13 @@
 ---
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
-version: "3"
+version: '3'
 
 vars:
   PROJECT_DIR:
     sh: git rev-parse --show-toplevel
 
 env:
-  ROOT_DIR: "{{.PROJECT_DIR}}"
+  ROOT_DIR: '{{.PROJECT_DIR}}'
   HUGO_BUILD_VERSION: main
   HUGO_BUILD_TIME:
     sh: date -u +"%Y-%m-%dT%H:%M:%SZ"
@@ -44,16 +44,15 @@ tasks:
     desc: Run all checks
     cmds:
       - bun run check
-      - dprint check
 
   fix:
     desc: Run all checks
     cmds:
       - bun run fix
-      - dprint fmt
 
   remote:
     desc: Open the remote GitHub repository in default browser
     cmd: >
-      {{if eq OS "darwin"}}open{{else if eq OS "linux"}}xdg-open{{else if eq OS "windows"}}start{{else}}open{{end}}
-      $(git remote get-url origin | sed 's/\.git$//' | sed 's|git@github.com:|https://github.com/|')
+      {{if eq OS "darwin"}}open{{else if eq OS "linux"}}xdg-open{{else if eq OS
+      "windows"}}start{{else}}open{{end}} $(git remote get-url origin | sed
+      's/\.git$//' | sed 's|git@github.com:|https://github.com/|')

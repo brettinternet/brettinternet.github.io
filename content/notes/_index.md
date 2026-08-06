@@ -6,9 +6,9 @@ description: '"Everything not saved will be lost."'
 comments: true
 hide_image: true
 resources:
-  - src: notes.png
-    params:
-      alt: organic chemistry diagram sketches in a notebook
+    - src: notes.png
+      params:
+          alt: organic chemistry diagram sketches in a notebook
 ---
 
 In school, to keep up with my peers, I took meticulous notes. I read and reread
@@ -37,9 +37,10 @@ made markdown previewing so accessible. Even this blog is made using markdown.
 
 ### Markdown
 
-I love markdown. I like how widely supported it is, and I like how clear the markdown
-format is for conveying information. Markdown has become the ubiquitous plain text
-format for the GitHub community. My own blog posts are written in markdown
+I love markdown. I like how widely supported it is, and I like how clear the
+markdown format is for conveying information. Markdown has become the ubiquitous
+plain text format for the GitHub community. My own blog posts are written in
+markdown
 ([brettinternet.github.io](https://github.com/brettinternet/brettinternet.github.io/)).
 Composing markdown is a timeless method that isn't tied to any third-party tools
 except a modern text editor (which isn't going anywhere).
@@ -48,18 +49,18 @@ It's true, this method isn't perfect. I need separate tools for sketches and PDF
 markups. But these mediums make up about 0.5% of all my notes. I just use my
 NextCloud for storing files or Keybase for my public documents.
 
-GitHub has formalized their [CommonMark specification](https://github.github.com/gfm/)
-to standardize GitHub's flavor of markdown.
-Commonmark was put together by a few representatives of some major companies
-that use markdown like GitHub, Reddit, and Stack Exchange. Some nonconforming
-markdown features have added some very nice features such as task lists,
-autolinking, diff and code block improvements.
+GitHub has formalized their
+[CommonMark specification](https://github.github.com/gfm/) to standardize
+GitHub's flavor of markdown. Commonmark was put together by a few
+representatives of some major companies that use markdown like GitHub, Reddit,
+and Stack Exchange. Some nonconforming markdown features have added some very
+nice features such as task lists, autolinking, diff and code block improvements.
 
 ### Git
 
-I maintain a separate GitHub repository for my private notes and
-another for my [public notes](https://github.com/brettinternet/public-notes).
-Eventually, I'd like to self-host my own GitLab within
+I maintain a separate GitHub repository for my private notes and another for my
+[public notes](https://github.com/brettinternet/public-notes). Eventually, I'd
+like to self-host my own GitLab within
 [my homelab](https://github.com/brettinternet/homelab).
 
 My commit messages are short, but I attempt to make them meaningful so I can see
@@ -69,24 +70,25 @@ git commands to make pushing to master very fast.
 
 ### Desktop
 
-I use Vim and VS Code for note-taking. Taking notes in my editor environment is ideal
-since I'm most comfortable with the shortcuts. VS Code offers
-a markdown previewer out of the box with `Ctrl` + `Shift` + `V`. Markdown's
-lifespan on desktop will exceed my own, so I'm no longer bound to an app's
-survival on a platform to access my notes.
+I use Vim and VS Code for note-taking. Taking notes in my editor environment is
+ideal since I'm most comfortable with the shortcuts. VS Code offers a markdown
+previewer out of the box with `Ctrl` + `Shift` + `V`. Markdown's lifespan on
+desktop will exceed my own, so I'm no longer bound to an app's survival on a
+platform to access my notes.
 
 [ShareX](https://github.com/ShareX/ShareX) is a good option for screenshots on
-Windows, while [Flameshot](https://flameshot.org/) works well on Linux. I tend to think that a simple
-bookmark is better than web clippings for most use cases.
+Windows, while [Flameshot](https://flameshot.org/) works well on Linux. I tend
+to think that a simple bookmark is better than web clippings for most use cases.
 
 ### Mobile
 
 Before I found [Working Copy](https://workingcopyapp.com/), a solid mobile git
 solution for iOS was _the_ missing piece for keeping notes in a git repository.
-There are equally good options on Android like [MGit](https://github.com/maks/MGit) or [Termux](https://termux.dev/). Working Copy
-offers free repository cloning and viewing, with push capabilities available through in-app purchase. The app includes
-SSH key support, syntax highlighting, and markdown preview. It's an
-excellent mobile git client for iOS.
+There are equally good options on Android like
+[MGit](https://github.com/maks/MGit) or [Termux](https://termux.dev/). Working
+Copy offers free repository cloning and viewing, with push capabilities
+available through in-app purchase. The app includes SSH key support, syntax
+highlighting, and markdown preview. It's an excellent mobile git client for iOS.
 
 ## Save Menu
 
@@ -95,12 +97,10 @@ excellent mobile git client for iOS.
 > \- _Nintendo "Quit Screen" message_
 
 Like an accessible save menu, I keep everything in markdown. I record Docker
-commands and obscure command-line arguments, programming problems, or
-devops directions. I also
-[create slides](https://github.com/brettinternet/slides) with markdown.
-I'll only note something if it's easier to reference my notes than
-search for it online. I also take
-notes to help students I mentor.
+commands and obscure command-line arguments, programming problems, or devops
+directions. I also [create slides](https://github.com/brettinternet/slides) with
+markdown. I'll only note something if it's easier to reference my notes than
+search for it online. I also take notes to help students I mentor.
 
 I use a combination of Apple Reminders and private GitHub issues with task lists
 for short term personal tasks, and GitHub Projects to visualize Kanban project
@@ -112,13 +112,10 @@ be around for a long time.
 
 ---
 
-{{< note title="June 2020 update" >}}
-I began experimenting with a much
-simpler approach for tracking work-in-progress: `todo.txt` format.
-{{< /note >}}
+{{< note title="June 2020 update" >}} I began experimenting with a much simpler
+approach for tracking work-in-progress: `todo.txt` format. {{< /note >}}
 
-{{< note title="Aug. 2024 update" >}}
-As a parent with limited time, I've simplified to using
-my phone's built-in notes app for quick capture. Sometimes convenience trumps
-optimal workflow and the stage of life I'm in calls for it.
+{{< note title="Aug. 2024 update" >}} As a parent with limited time, I've
+simplified to using my phone's built-in notes app for quick capture. Sometimes
+convenience trumps optimal workflow and the stage of life I'm in calls for it.
 {{< /note >}}

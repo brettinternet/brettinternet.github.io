@@ -9,9 +9,9 @@ hide_title: true
 comments: false
 card_image: app.png
 resources:
-  - src: app.png
-    params:
-      alt: muted microphone icon with blurred background
+    - src: app.png
+      params:
+          alt: muted microphone icon with blurred background
 ---
 
 {{< raw >}}

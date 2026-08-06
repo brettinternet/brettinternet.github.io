@@ -4,9 +4,9 @@ title: Homeops
 publishDate: 2022-11-02
 description: Kubernetes at home
 resources:
-  - src: k8s.gif
-    params:
-      alt: k9s shell tour
+    - src: k8s.gif
+      params:
+          alt: k9s shell tour
 comments: true
 ---
 
@@ -70,9 +70,9 @@ Here have been some of my goals:
 ### Some questions
 
 - [Why use ECC RAM?](https://danluu.com/why-ecc/)
-  - [Hacker News discussion](https://news.ycombinator.com/item?id=14206635)
-  - [If you love your data, use ECC RAM](https://arstechnica.com/civis/threads/ars-walkthrough-using-the-zfs-next-gen-filesystem-on-linux.1235679/#p26303271)
-  - [Error rates increase rapidly with rising altitude](https://en.wikipedia.org/wiki/ECC_memory#Description)
+    - [Hacker News discussion](https://news.ycombinator.com/item?id=14206635)
+    - [If you love your data, use ECC RAM](https://arstechnica.com/civis/threads/ars-walkthrough-using-the-zfs-next-gen-filesystem-on-linux.1235679/#p26303271)
+    - [Error rates increase rapidly with rising altitude](https://en.wikipedia.org/wiki/ECC_memory#Description)
 
 ## Hardware
 

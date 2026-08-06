@@ -9,9 +9,9 @@ hide_title: true
 comments: false
 card_image: screenshot.png
 resources:
-  - src: screenshot.png
-    params:
-      alt: dragging window tab to a new window
+    - src: screenshot.png
+      params:
+          alt: dragging window tab to a new window
 ---
 
 {{< raw >}}

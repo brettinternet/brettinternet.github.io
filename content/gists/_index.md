@@ -4,8 +4,8 @@ title: Gists
 meta_title: Gists
 hide_logo: true
 cascade:
-  params:
-    type: gist
-    layout: single
-    hide_logo: true
+    params:
+        type: gist
+        layout: single
+        hide_logo: true
 ---

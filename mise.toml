@@ -3,7 +3,6 @@ biome = "latest"
 bun = "latest"
 hugo-extended = "latest"
 node = "latest"
-dprint = "latest"
 gitleaks = "latest"
 lefthook = "latest"
 

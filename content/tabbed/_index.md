@@ -17,7 +17,7 @@ resources:
 {{< raw >}}
 
 <div class="flex justify-center">
-  <img width="128" src="./icon.png" alt="session manager extension icon" class="my-3" />
+  <img width="128" height="128" loading="lazy" decoding="async" src="./icon.png" alt="session manager extension icon" class="my-3" />
 </div>
 
 <h1 align="center">Tabbed</h1>

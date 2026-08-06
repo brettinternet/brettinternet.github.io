@@ -10,10 +10,13 @@
   class="min-h-screen flex flex-col text-slate-800 bg-orange-50"
 >
   {{ if or (not .Params.redirect_url) (.Params.show_main_on_redirect) }}
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-2 focus:rounded focus:bg-orange-50 focus:px-3 focus:py-2 focus:font-bold focus:underline">
+      Skip to main content
+    </a>
     {{ if not .Params.hide_header }}
       {{ partial "header.html" . }}
     {{ end }}
-    <main class="flex-1 flex flex-col{{if .Params.hide_header}} pt-12{{end}}{{if .Params.hide_footer}} pb-12{{end}}{{with .Params.main_class}} {{.}}{{end}}{{if .Params.center_article}} items-center justify-center{{end}}">
+    <main id="main" class="flex-1 flex flex-col{{if .Params.hide_header}} pt-12{{end}}{{if .Params.hide_footer}} pb-12{{end}}{{with .Params.main_class}} {{.}}{{end}}{{if .Params.center_article}} items-center justify-center{{end}}">
       {{ block "main" . }}{{ end }}
     </main>
     {{ if not .Params.hide_footer }}

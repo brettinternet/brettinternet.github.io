@@ -1,9 +1,15 @@
 baseURL: https://brett.cloud
-locale: en-us
+locale: en-US
+enableRobotsTXT: true
 title: brett.cloud
 security:
   allowContent:
     - ^text/(html|markdown)$
+
+# No content uses tags/categories; disabling avoids thin, indexable term indexes.
+disableKinds:
+  - taxonomy
+  - term
 
 params:
   author:

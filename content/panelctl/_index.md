@@ -17,7 +17,7 @@ resources:
 {{< raw >}}
 
 <div class="flex justify-center">
-  <img width="128" src="./app-icon.png" alt="PanelCtl app icon" class="my-3 rounded-xl" />
+  <img width="128" height="128" loading="lazy" decoding="async" src="./app-icon.png" alt="PanelCtl app icon" class="my-3 rounded-xl" />
 </div>
 
 <h1 align="center">PanelCtl</h1>

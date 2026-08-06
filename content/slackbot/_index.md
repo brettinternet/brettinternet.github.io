@@ -4,7 +4,7 @@ title: Slackbot
 publishDate: 2025-05-19
 description: Slack utilities for the workplace with a containerized Go server
 resources:
-    - src: user-status.gif
+    - src: user-status.png
       params:
           alt: slack bot notifications when user is removed or added
 comments: false

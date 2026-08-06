@@ -8,6 +8,36 @@
 {{ if and (not $image) (not $hideCardImage) }}
   {{ $image = index (.Resources.ByType "image") 0 }}
 {{ end }}
+{{ $backgroundGradients := slice
+  "from-slate-950 to-amber-950"
+  "from-indigo-950 to-rose-950"
+  "from-sky-950 to-teal-950"
+  "from-violet-950 to-fuchsia-950"
+  "from-emerald-950 to-cyan-950"
+  "from-orange-950 to-red-950"
+  "from-blue-950 to-violet-950"
+  "from-teal-950 to-lime-950"
+  "from-rose-950 to-pink-950"
+  "from-cyan-950 to-blue-950"
+  "from-stone-950 to-orange-950"
+  "from-purple-950 to-indigo-950"
+}}
+{{ $gradientDirections := slice
+  "bg-gradient-to-br"
+  "bg-gradient-to-bl"
+  "bg-gradient-to-tr"
+  "bg-gradient-to-tl"
+  "bg-gradient-to-r"
+  "bg-gradient-to-b"
+}}
+{{ $backgroundGradient := "from-slate-950 to-amber-950" }}
+{{ $gradientDirection := "bg-gradient-to-br" }}
+{{ if not $image }}
+  {{ $gradientHash := hash.FNV32a .RelPermalink }}
+  {{ $backgroundGradient = index $backgroundGradients (mod $gradientHash (len $backgroundGradients)) }}
+  {{ $gradientDirection = index $gradientDirections (mod (div $gradientHash (len $backgroundGradients)) (len $gradientDirections)) }}
+{{ end }}
+
 
 <a
   href="{{ $href }}"
@@ -15,7 +45,7 @@
   target="_blank"
   ref="noopener noreferrer"
   {{ end }}
-  class="h-60 w-full max-w-[422px] group transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-900 bg-gradient-to-br from-slate-800 to-amber-950"
+  class="h-60 w-full max-w-[422px] group transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-900 {{ $gradientDirection }} {{ $backgroundGradient }}"
 >
   {{ if $image }}
     <div class="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center rounded-md -z-10 brightness-50">

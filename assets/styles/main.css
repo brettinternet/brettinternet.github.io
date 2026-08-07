@@ -108,8 +108,58 @@
   justify-self: center;
 }
 
-img[loading="lazy"]:not(.image-loaded) {
-  @apply blur-sm;
-  /* define edges along with border radius: https://stackoverflow.com/questions/12224320/defined-edges-with-css3-filter-blur */
-  clip-path: inset(0 round 8px);
+/*
+  Blur-up.
+
+  A build-time LQIP (see layouts/_partials/image-processor.html) is painted as
+  an overlay *above* the image and cross-faded out once the real bitmap has
+  finished painting underneath. Only `opacity` on an empty box is animated, so
+  the transition runs entirely on the compositor: no filter, no clip-path, and
+  no re-raster of a full-resolution image mid-transition.
+
+  The overlay is sized against the <picture>, which shrink-wraps its img by
+  default; callers that give the img an explicit box must pass the same box as
+  `wrapper_class`.
+*/
+@layer base {
+  .blur-up {
+    position: relative;
+    display: inline-block;
+    /* Shrink-wrap the img so the overlay lines up exactly, even where prose
+       styles blockify the <picture>. A `wrapper_class` width overrides this. */
+    width: fit-content;
+    max-width: 100%;
+    line-height: 0;
+  }
+  .blur-up::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: var(--lqip);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Callers put the image's radius on the wrapper so the overlay matches. */
+    border-radius: inherit;
+    /* Ease-out: most of the reveal happens up front, the tail is imperceptible. */
+    transition: opacity 400ms cubic-bezier(0.33, 1, 0.68, 1);
+  }
+
+  .blur-up[data-loaded]::after {
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blur-up::after {
+      transition: none;
+    }
+  }
+
+  /* Without scripting the inline onload never runs, so never cover the image. */
+  @media (scripting: none) {
+    .blur-up::after {
+      content: none;
+    }
+  }
 }

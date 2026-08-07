@@ -1,8 +1,9 @@
-{{ partial "image-processor.html" (dict 
-  "image" .image 
-  "alt" .alt 
-  "class" .image_class 
+{{ partial "image-processor.html" (dict
+  "image" .image
+  "alt" .alt
+  "class" .image_class
+  "wrapper_class" .wrapper_class
   "figure" (.figure | default false)
-  "figure_class" .figure_class 
-  "caption" .caption 
+  "figure_class" .figure_class
+  "caption" .caption
 ) }}

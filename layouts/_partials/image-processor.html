@@ -1,10 +1,18 @@
 {{/*
-  Shared image processing partial
+  Shared image processing partial.
+
+  Emits a <picture class="blur-up"> whose ::after overlay paints a build-time
+  LQIP. The overlay is faded out by an inline onload handler, so the reveal
+  never depends on the JS bundle loading or succeeding. Fetching is native
+  (loading="lazy"); nothing here defers a src behind data attributes.
 
   Parameters:
   - .image: Hugo image resource
   - .alt: Alt text for the image
   - .class: CSS classes for the img element
+  - .wrapper_class: CSS classes for the <picture> element. The overlay is sized
+    against the <picture>, so an img given an explicit box (w-full/h-full plus
+    object-fit) must give the wrapper the same box.
   - .figure: Boolean - whether to wrap in figure
   - .figure_class: CSS classes for figure element
   - .caption: Figure caption text
@@ -12,147 +20,87 @@
 
 {{ $image := .image }}
 {{ $alt := .alt }}
-{{ $image_class := .class }}
+{{ $image_class := .class | default "" }}
+{{ $wrapper_class := .wrapper_class | default "" }}
 {{ $figure := .figure | default false }}
 {{ $figure_class := .figure_class }}
 {{ $caption := .caption }}
 
+{{ $sizes := "(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px" }}
+
+{{/*
+  Animated GIFs are served untouched. Hugo's GIF -> animated-WebP conversion
+  mangles inter-frame disposal (the result renders as speckled garbage), and
+  its GIF resize re-encodes every frame through Go's palette quantizer, which
+  triples the file size. So: no WebP <source> and no resize ladder for GIFs.
+*/}}
 {{ $isGif := eq (path.Ext $image.RelPermalink) ".gif" }}
+
+{{ $srcset := slice }}
+{{ $webp_srcset := slice }}
+{{ if not $isGif }}
+  {{ range $width := slice 500 800 1200 1500 }}
+    {{ if ge $image.Width $width }}
+      {{ $resized := $image.Resize (printf "%dx" $width) }}
+      {{ $resized_webp := $resized.Process "webp" }}
+      {{ $srcset = $srcset | append (printf "%s %dw" $resized.RelPermalink $resized.Width) }}
+      {{ $webp_srcset = $webp_srcset | append (printf "%s %dw" $resized_webp.RelPermalink $resized_webp.Width) }}
+    {{ end }}
+  {{ end }}
+  {{ $image_webp := $image.Process "webp" }}
+  {{ $webp_srcset = $webp_srcset | append (printf "%s %dw" $image_webp.RelPermalink $image_webp.Width) }}
+{{ end }}
+{{ $srcset = $srcset | append (printf "%s %dw" $image.RelPermalink $image.Width) }}
+
+{{ $source := "" }}
+{{ if $webp_srcset }}
+  {{ $source = printf `<source type="image/webp" srcset="%s" sizes="%s" />` (delimit $webp_srcset ", ") $sizes }}
+{{ end }}
+
+{{/* Low quality image placeholder, inlined as a custom property. */}}
 {{ $placeholder := ($image.Resize "48x q20") | images.Filter (images.GaussianBlur 6) }}
 {{ $placeholderWebP := $placeholder.Process "webp" }}
 {{ $placeholderDataURI := printf "data:image/webp;base64,%s" ($placeholderWebP.Content | base64Encode) }}
+
+{{ $pictureClass := printf "blur-up%s" (cond (eq $wrapper_class "") "" (printf " %s" $wrapper_class)) }}
+
+{{/* Reveal by fading the LQIP overlay out. Inline so a failed or blocked
+     bundle can never leave an image stuck behind its placeholder; `error`
+     reveals too, so broken images fall back to their alt text. */}}
+{{ $reveal := "this.parentElement.dataset.loaded=''" }}
 
 {{ if $figure }}
 <figure {{with $figure_class}}class="{{.}}"{{end}}>
 {{ end }}
 
-{{ if $isGif }}
-  {{/* GIF handling with progressive loading */}}
-  {{ $webp_still := $image.Process "webp" }}
-
-  {{/* Build srcset strings manually */}}
-  {{ $gif_srcset := "" }}
-  {{ $webp_srcset := "" }}
-
-  {{ range $index, $width := slice 500 800 1200 1500 }}
-    {{ if ge $image.Width $width }}
-      {{ $gif_resized := $image.Resize (printf "%dx" $width) }}
-      {{ $webp_resized := $gif_resized.Process "webp" }}
-
-      {{ if ne $gif_srcset "" }}
-        {{ $gif_srcset = printf "%s, %s %dw" $gif_srcset $gif_resized.RelPermalink $gif_resized.Width }}
-        {{ $webp_srcset = printf "%s, %s %dw" $webp_srcset $webp_resized.RelPermalink $webp_resized.Width }}
-      {{ else }}
-        {{ $gif_srcset = printf "%s %dw" $gif_resized.RelPermalink $gif_resized.Width }}
-        {{ $webp_srcset = printf "%s %dw" $webp_resized.RelPermalink $webp_resized.Width }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-
-  {{/* Add original size */}}
-  {{ if ne $gif_srcset "" }}
-    {{ $gif_srcset = printf "%s, %s %dw" $gif_srcset $image.RelPermalink $image.Width }}
-    {{ $webp_srcset = printf "%s, %s %dw" $webp_srcset $webp_still.RelPermalink $webp_still.Width }}
-  {{ else }}
-    {{ $gif_srcset = printf "%s %dw" $image.RelPermalink $image.Width }}
-    {{ $webp_srcset = printf "%s %dw" $webp_still.RelPermalink $webp_still.Width }}
-  {{ end }}
-
-  {{ $html := printf `<picture>
-    <source
-      type="image/webp"
-      data-srcset="%s"
-      sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
-    />
-    <img
-      class="transition-all duration-300 opacity-100 gif-progressive%s"
-      alt="%s"
-      src="%s"
-      data-webp-src="%s"
-      data-webp-srcset="%s"
-      data-gif-src="%s"
-      data-gif-srcset="%s"
-      sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
-      width="%d"
-      height="%d"
-      loading="lazy"
-      decoding="async"
-    />
-  </picture>`
-    $webp_srcset
-    (cond $image_class (printf " %s" $image_class) "")
-    (htmlEscape $alt)
-    $placeholderDataURI
-    $webp_still.RelPermalink
-    $webp_srcset
-    $image.RelPermalink
-    $gif_srcset
-    $image.Width
-    $image.Height }}
-  {{ $html | safeHTML }}
-
-{{ else }}
-  {{/* Non-GIF handling with WebP optimization */}}
-  {{ $original_webp := $image.Process "webp" }}
-
-  {{/* Build srcset strings manually */}}
-  {{ $srcset := "" }}
-  {{ $webp_srcset := "" }}
-
-  {{ range $index, $width := slice 500 800 1200 1500 }}
-    {{ if ge $image.Width $width }}
-      {{ $resized := $image.Resize (printf "%dx" $width) }}
-      {{ $webp := $resized.Process "webp" }}
-
-      {{ if ne $srcset "" }}
-        {{ $srcset = printf "%s, %s %dw" $srcset $resized.RelPermalink $resized.Width }}
-        {{ $webp_srcset = printf "%s, %s %dw" $webp_srcset $webp.RelPermalink $webp.Width }}
-      {{ else }}
-        {{ $srcset = printf "%s %dw" $resized.RelPermalink $resized.Width }}
-        {{ $webp_srcset = printf "%s %dw" $webp.RelPermalink $webp.Width }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-
-  {{/* Add original size */}}
-  {{ if ne $srcset "" }}
-    {{ $srcset = printf "%s, %s %dw" $srcset $image.RelPermalink $image.Width }}
-    {{ $webp_srcset = printf "%s, %s %dw" $webp_srcset $original_webp.RelPermalink $original_webp.Width }}
-  {{ else }}
-    {{ $srcset = printf "%s %dw" $image.RelPermalink $image.Width }}
-    {{ $webp_srcset = printf "%s %dw" $original_webp.RelPermalink $original_webp.Width }}
-  {{ end }}
-
-  {{ $html := printf `<picture>
-    <source
-      type="image/webp"
-      data-srcset="%s"
-      sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
-    />
-    <img
-      class="transition-all duration-200 opacity-100%s"
-      alt="%s"
-      src="%s"
-      data-src="%s"
-      data-srcset="%s"
-      sizes="(max-width: 500px) 100vw, (max-width: 800px) 90vw, (max-width: 1200px) 80vw, 1200px"
-      width="%d"
-      height="%d"
-      loading="lazy"
-      decoding="async"
-    />
-  </picture>`
-    $webp_srcset
-    (cond $image_class (printf " %s" $image_class) "")
-    (htmlEscape $alt)
-    $placeholderDataURI
-    $image.RelPermalink
-    $srcset
-    $image.Width
-    $image.Height }}
-  {{ $html | safeHTML }}
-
-{{ end }}
+{{ printf `<picture class="%s" style="--lqip:url('%s')">
+  %s
+  <img
+    class="%s"
+    alt="%s"
+    src="%s"
+    srcset="%s"
+    sizes="%s"
+    width="%d"
+    height="%d"
+    loading="lazy"
+    decoding="async"
+    onload="%s"
+    onerror="%s"
+  />
+</picture>`
+  $pictureClass
+  $placeholderDataURI
+  $source
+  $image_class
+  (htmlEscape $alt)
+  $image.RelPermalink
+  (delimit $srcset ", ")
+  $sizes
+  $image.Width
+  $image.Height
+  $reveal
+  $reveal | safeHTML }}
 
 {{ if and $figure $caption }}
 <figcaption class="text-center">

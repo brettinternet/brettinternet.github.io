@@ -21,7 +21,9 @@
       "title"         : {{ $item.Title   | plainify | chomp | jsonify }},
       "summary"       : {{ $item.Summary | plainify | chomp | jsonify }},
       "content_text"  : {{ $item.Plain              | chomp | jsonify }},
-{{ range first 1 (.Resources.ByType "image") }}{{ $original := . }}{{ $.Scratch.Set "image" ($original.Fit "480x360") }}{{ $image := $.Scratch.Get "image" }}      "banner_image"  : "{{ $image.Permalink }}",{{ end }}
+{{/* Fitting a GIF re-encodes every frame through Go's palette quantizer and
+     balloons the file (3MB -> 10MB), so link animated GIFs as-is. */}}
+{{ range first 1 (.Resources.ByType "image") }}{{ $image := . }}{{ if ne (path.Ext .RelPermalink) ".gif" }}{{ $image = .Fit "480x360" }}{{ end }}      "banner_image"  : "{{ $image.Permalink }}",{{ end }}
       {{ with .Params.tags }}"tags"          : [{{ range $index, $director := . }}{{ if gt $index 0 }},{{ end }}"{{ . }}"{{ end }}],{{ end }}
       "date_published": {{ $item.PublishDate.Format "2006-01-02T15:04:05Z07:00" | jsonify  }},
       "date_modified" : {{ $item.Lastmod.Format "2006-01-02T15:04:05Z07:00" | jsonify  }}

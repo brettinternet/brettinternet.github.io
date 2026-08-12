@@ -6,6 +6,11 @@ on: # yamllint disable-line rule:truthy
     branches:
       - main
 
+  pull_request:
+
+permissions:
+  contents: read
+
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
@@ -14,23 +19,16 @@ jobs:
   client:
     name: Assets CI
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2
 
-      - name: Restore dependencies cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            node_modules
-          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
-          restore-keys: ${{ runner.os }}-bun-
-
       - name: Install dependencies
-        run: bun install
+        run: bun ci
 
       - name: Run project checks
         run: bun run check

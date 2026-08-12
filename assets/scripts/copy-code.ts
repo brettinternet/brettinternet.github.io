@@ -72,7 +72,9 @@ export function setup() {
               if (lineNumberElements.length > 0) {
                 // Clone the pre element and remove line number elements
                 const preClone = pre.cloneNode(true) as HTMLPreElement
-                preClone.querySelectorAll('.ln').forEach((ln) => ln.remove())
+                preClone.querySelectorAll('.ln').forEach((ln) => {
+                  ln.remove()
+                })
                 code = preClone.textContent || ''
               } else {
                 // No line numbers detected, use full text content

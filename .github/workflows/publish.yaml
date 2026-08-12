@@ -36,6 +36,9 @@ jobs:
       - name: Install node module dependencies
         run: bun ci
 
+      - name: Run project checks
+        run: bun run check
+
       # New syntax for setting environment variables:
       # https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-commands-for-github-actions#environment-files
       - name: Set build version & time

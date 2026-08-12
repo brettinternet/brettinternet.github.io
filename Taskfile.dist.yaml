@@ -40,6 +40,11 @@ tasks:
     cmds:
       - hugo
 
+  test:
+    desc: Run tests
+    cmds:
+      - bun run test
+
   check:
     desc: Run all checks
     cmds:

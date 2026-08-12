@@ -26,8 +26,8 @@ should filter out spam and insincerity.
 
 ### Step 2
 
-Email me at `poach@[this site's domain]` with details that I can review about
-the open job position. Include something that will identify your donation.
+Email me at `poach@[this site's domain]` with details about the open job
+position for me to review. Include something that will identify your donation.
 
 ### Step 3
 
@@ -37,7 +37,7 @@ listen to your pitch.
 ### Step 4
 
 I review the position and get back to you within 3 business days with a formal
-response about the positions.
+response about the position.
 
 ## Disclaimer
 

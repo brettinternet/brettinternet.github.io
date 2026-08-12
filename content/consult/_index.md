@@ -13,10 +13,9 @@ comments: false
 ### What you get
 
 - I've been hard at work
-  [writing production code](https://github.com/brettinternet) for years now with
-  an enterprise quality fit to solve problems at different scales and
-  velocities. I work with all kinds of technologies and I'm excited to solve
-  problems.
+  [writing production code](https://github.com/brettinternet) for years, solving
+  problems at different scales and velocities. I work with all kinds of
+  technologies and I'm excited to solve problems.
 - I have [experience](/resume.pdf) mentoring, teaching, and uplifting others.
 - I'm thrilled by what I do. You can tell by what my coworkers say about me, my
   commitment to the products I work on, and the effort I put into my career
@@ -26,7 +25,7 @@ comments: false
 - I'm corrigible and I enjoy being on teams with people of different
   backgrounds, experiences, and viewpoints. I believe it's important to find
   growth in any circumstance and to learn from everyone I work with.
-- [I'm passionate about a variety technologies.](/resume.pdf)
+- [I'm passionate about a variety of technologies.](/resume.pdf)
 - I collaborate really well remotely. _Ask me about some of the techniques I
   employ to engage with remote teams!_
 

@@ -23,33 +23,34 @@ resources:
 <h1 align="center">Mic Mute for macOS</h1>
 {{< /raw >}}
 
-[Mic Mute](https://github.com/brettinternet/mic-mute) is a system-wide mute for
-macOS with a global shortcut and a clear visual indicator. It's inspired by
+[Mic Mute](https://github.com/brettinternet/mic-mute) provides system-wide
+microphone muting on macOS with a global shortcut and a clear visual indicator.
+It's inspired by
 [VCM](https://learn.microsoft.com/en-us/windows/powertoys/video-conference-mute)
 for Windows.
 
 Mute with the shortcut {{< raw >}} <kbd>Cmd</kbd> <kbd>Shift</kbd> <kbd>A</kbd>
-{{< /raw >}} or from the system tray dropdown menu.
+{{< /raw >}} or from the menu bar.
 
-{{< image src="screenshot.png" alt="popup window screenshot indicating the microphone is off" caption="Mute window follows cursor to screens and monitors" >}}
+{{< image src="screenshot.png" alt="popup window screenshot indicating the microphone is off" caption="Mute window follows the cursor across desktops and monitors" >}}
 
-The mute indicator window will follow the cursor to desktops or screens and
-monitors. The system tray icon will also indicate the mute status. Once
-microphones are on again, the window will hide.
+The mute indicator window follows the cursor across desktops and monitors. The
+menu bar icon also shows the mute status. Once the microphone is unmuted, the
+window hides.
 [View releases](https://github.com/brettinternet/mic-mute/releases).
 
 ---
 
-## Update: What I use now
+## Update: What I Use Now
 
-My journey finding the best solution for this has evolved. I now use
-[Hammerspoon](https://www.hammerspoon.org) which is a delightful way to hack
-together MacOS scripts. I store my configuration
+My preferred solution has evolved. I now use
+[Hammerspoon](https://www.hammerspoon.org), which is a delightful way to hack
+together macOS scripts. I store my configuration
 [in my dotfiles](https://github.com/brettinternet/dotfiles/tree/b72aee44e5039fa9f721eeb84c5145dca83e65fa/darwin/.hammerspoon).
 The Lua scripting in Hammerspoon makes maintaining this a lot more fun than
-foreign functions in Rust. I'm still able to use the hotkey <kbd>⌘ ⇧ A</kbd> and
-I've also mapped it to a macropad that uses <kbd>F13</kbd>. My script also
-supports Push To Talk.
+using foreign functions in Rust. I can still use the <kbd>⌘ ⇧ A</kbd> hotkey and
+have also mapped it to a macropad that uses <kbd>F13</kbd>. My script also
+supports push-to-talk.
 
 Here's the solution:
 
@@ -105,13 +106,13 @@ Muted and unmuted indicators:
 {{< raw >}}
 
 <div class="flex flex-row items-center">
-<img width="600" height="200" loading="lazy" decoding="async" src="./alert-on.png" alt="popup window screenshot indicating the microphone is off" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
-<img width="645" height="200" loading="lazy" decoding="async" src="./alert-off.png" alt="popup window screenshot indicating the microphone is on" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
+<img width="600" height="200" loading="lazy" decoding="async" src="./alert-on.png" alt="popup window screenshot indicating the microphone is on" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
+<img width="645" height="200" loading="lazy" decoding="async" src="./alert-off.png" alt="popup window screenshot indicating the microphone is off" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
 </div>
 {{< /raw >}}
 
-Hammerspoon also makes it incredibly easy to add other utilities, such as making
-a hotkey to change the default audio output or input. Find the latest
+Hammerspoon also makes it incredibly easy to add other utilities, such as a
+hotkey to change the default audio output or input. Find the latest
 [source in my dotfiles](https://github.com/brettinternet/dotfiles/tree/9ff9cdaba6358b16fc0efa4f2fd3f0617f038dcb/mac/.hammerspoon).
 
 {{< cta href="https://github.com/brettinternet/dotfiles" message="View dotfiles" new_window=true root_class="mt-12" >}}

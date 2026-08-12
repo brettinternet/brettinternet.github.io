@@ -38,9 +38,9 @@ logs, and linked content are untrusted. Reviewers only publish validated
 reviews. Babysitters can make small verified fixes and push to the PR branch,
 but cannot merge, force-push, dismiss reviews, or approve for someone else.
 
-In CAO, you have workflows that inherit an environment with agents running in
-OpenCode, in a terminal multiplexer like Herdr, between python scripts, in a web
-dashboard. It sounds like spaghetti but it actually comes together very nicely.
+In CAO, workflows inherit one environment across OpenCode agents, a terminal
+multiplexer like Herdr, Python scripts, and the web dashboard. It sounds like
+spaghetti, but it actually comes together very nicely.
 
 {{< card
 title="brettinternet/pr-watch"

@@ -27,14 +27,14 @@ resources:
 and move apps from anywhere on the window with custom modifiers and other
 preferences.
 
-{{< image src="demo.gif" alt="resize & move apps from anywhere on the window" caption="Although not captured by the screen recorder, the cursor does follow window" >}}
+{{< image src="demo.gif" alt="resize & move apps from anywhere on the window" caption="Although not captured by the screen recorder, the cursor does follow the window" >}}
 
 {{< image src="screenshot.png" alt="window preferences" caption="Custom modifiers & other behaviors" class="border-0" >}}
 
-One of my favorite abandonware apps on macOS was an old closed-source Objective
-C application called [Hyperdock](https://bahoom.com/hyperdock) that had a small
-secondary feature to resize and move windows by a modifier from anywhere on the
-window.
+One of my favorite abandonware apps on macOS was an old closed-source
+Objective-C application called [Hyperdock](https://bahoom.com/hyperdock) that
+had a small secondary feature to resize and move windows with a modifier from
+anywhere on the window.
 
 There are various window utilities on Mac, but none of them satisfied my very
 specific expectation. Now, this demand lives on with Swift in a small utility

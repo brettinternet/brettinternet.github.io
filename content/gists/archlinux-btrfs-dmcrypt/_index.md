@@ -1,6 +1,6 @@
 ---
 type: gist
-title: Archlinux + Btrfs + dm-crypt
+title: Arch Linux + Btrfs + dm-crypt
 description: Setup guide
 comments: true
 ---
@@ -19,7 +19,7 @@ comments: true
 
 ## Setup
 
-Enable ssh.
+Enable SSH.
 
 ```sh
 #!/bin/bash
@@ -34,7 +34,7 @@ fi
 systemctl start sshd.service
 ```
 
-Setup partitions.
+Set up partitions.
 
 ```sh
 # https://wiki.archlinux.org/title/Dm-crypt/Drive_preparation
@@ -75,7 +75,7 @@ cryptsetup \
     open /dev/disk/by-partlabel/cryptsystem system
 ```
 
-Setup Btrfs volumes.
+Set up Btrfs volumes.
 
 ```sh
 mkfs.btrfs --force --label system /dev/mapper/system
@@ -167,7 +167,7 @@ cat "LABEL=system        /.swap/swapfile    swap        defaults,space_cache,ssd
 cat $BASE_DIR/etc/fstab
 ```
 
-Create initial ramdisk environment.
+Create the initial ramdisk environment.
 
 ```sh
 BASE_DIR="/mnt"
@@ -200,7 +200,7 @@ rm $BASE_DIR$SCRIPT
 cat $BASE_DIR/etc/mkinitcpio.conf
 ```
 
-Setup bootloader.
+Set up the bootloader.
 
 ```sh
 BASE_DIR="/mnt"
@@ -272,7 +272,7 @@ EOF
 cat $CONF_DIR/refind.conf
 ```
 
-Setup system.
+Set up the system.
 
 ```sh
 BASE_DIR="/mnt"

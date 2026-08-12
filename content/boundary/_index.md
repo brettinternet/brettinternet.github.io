@@ -3,13 +3,13 @@ type: post
 title: Scaling Elixir Applications with Context Boundaries
 publishDate: 2025-08-07
 description:
-    Improve readability, testing, compile times and organization in an Elixir
+    Improve readability, testing, compile times, and organization in an Elixir
     monolith
 card_image: pdq.png
 resources:
     - src: pdq.png
       params:
-          alt: people standing in crowded room with drinks and food
+          alt: people standing in a crowded room with drinks and food
 comments: true
 ---
 
@@ -51,20 +51,20 @@ applications grow, several problems emerge:
 
 ### Reading vs. Writing Code
 
-In mature applications or when onboarding in a new team, I find myself spending
-more time reading code than writing it. This ratio becomes problematic when
-functions are scattered across the codebase with no clear ownership and business
-logic is mixed with infrastructure concerns.
+In mature applications or when joining a new team, I find myself spending more
+time reading code than writing it. This ratio becomes problematic when functions
+are scattered across the codebase with no clear ownership and business logic is
+mixed with infrastructure concerns.
 
-One approach to dealing with readability is to address organizational patterns
+One approach to improving readability is to establish organizational patterns
 for code, such as well-defined and enforceable "boundaries".
 
 ## The Boundary Library
 
 [Boundary](https://github.com/sasa1977/boundary) by Saša Jurić provides
-compile-time warnings of architectural boundaries in Elixir applications. It
-transforms organizational guidelines into compiler checks, catching boundary
-violations before they reach production.
+compile-time warnings for architectural boundary violations in Elixir
+applications. It transforms organizational guidelines into compiler checks,
+catching boundary violations before they reach production.
 
 ```sh
 mix clean && \  # Cleaning prevents false positives
@@ -78,10 +78,10 @@ mix compile | grep -E 'warning:.*(boundary|forbidden reference)'  | wc -l
 
 ### How Boundary Works
 
-The library operates through registering module attributes that define named
-groups of modules called boundaries. These boundaries can export inner modules
-from within a boundary and make them publicly accessible. Boundaries have
-dependencies from other boundary exports.
+The library operates by registering module attributes that define named groups
+of modules called boundaries. These boundaries can export inner modules, making
+them publicly accessible. Boundaries have dependencies on other boundary
+exports.
 
 Here's a simple example:
 
@@ -110,7 +110,7 @@ defmodule MyApp.Catalog.Internal.PriceCalculator do
 end
 ```
 
-If module functions in another boundary try to call
+If functions in another boundary try to call
 `MyApp.Catalog.Internal.PriceCalculator`, the compiler will raise an error.
 
 ### Setting Up Boundary
@@ -162,7 +162,7 @@ Each boundary would have its own schemas, business logic, and database concerns,
 but could only interact with other boundaries through their public interfaces
 defined in the outer context file.
 
-In larger organizations, boundaries naturally form around teams and interfaces
+In larger organizations, boundaries naturally form around teams, and interfaces
 would likely be used by other teams, so design them thoughtfully.
 
 ### Benefits of Context Boundaries
@@ -172,7 +172,7 @@ would likely be used by other teams, so design them thoughtfully.
    the public API. They should also spend less time figuring out where code
    lives.
 1. **Parallel Development**: Teams can shape themselves around business domains
-   and can work independently on different boundaries without merge conflicts.
+   and work independently on different boundaries without merge conflicts.
 1. **Clearer Testing Strategy**: Each boundary can be thoroughly tested in
    isolation, with integration tests covering the interactions between
    boundaries.
@@ -180,7 +180,7 @@ would likely be used by other teams, so design them thoughtfully.
    your monolith, boundaries provide natural seams for extraction.
 1. **Documentation**: The boundary definitions serve as living documentation of
    your system's architecture. Boundaries are also good places to define actual
-   documentation within a more narrow context for both humans and LLMs (e.g.
+   documentation within a narrower context for both humans and LLMs (e.g.,
    `CLAUDE.md`).
 1. **Improved Discoverability**: Public interfaces make it clear what operations
    are available and how to use them.
@@ -194,8 +194,8 @@ stack.
 
 ## Implementing Context Boundaries
 
-There are some additional steps to take to maximize boundaries for larger
-organizations.
+There are some additional steps to take to maximize the benefits of boundaries
+in larger organizations.
 
 ### Directory Structure
 
@@ -307,14 +307,14 @@ This interface provides several benefits:
 1. **Consistency**: All contexts follow the same interface pattern
 1. **Type Safety**: You can use behaviors to ensure implementations match
    `@callback` interfaces
-1. **Mockable**: Behaviour definitions make each action easily mocked
+1. **Mockable**: Behaviour definitions make each action easy to mock
 
 ### Action Modules
 
 Action modules contain the actual business logic and should follow a consistent
-pattern. They expose and implement a callback for their interface. At the org I
-work at now, we generally have one file contain only one action so that an
-action has one public function but can have unlimited private functions.
+pattern. They expose and implement a callback for their interface. At the org
+where I work now, we generally have one action per file, so each action has one
+public function but can have unlimited private functions.
 
 ```elixir
 defmodule MyApp.Catalog.Products.Actions.CreateProduct do
@@ -369,7 +369,7 @@ with `@callback` to provide compile-time documentation of our action functions
 in our context API. Each action module is now a swappable backend that can be
 easily mocked in tests or refactored.
 
-Key principles for action modules that we've implemented with our large Elixir
+Key principles for action modules that we've implemented in our large Elixir
 monolith:
 
 - **Single Responsibility**: One action per module with self-referencing
@@ -377,10 +377,10 @@ monolith:
 - **Public/Private Separation**: One public function that matches the module
   name (a uniform function name such as `call` might also be appropriate)
   alongside private helpers
-- **Type Specifications**: Clear input/output types with `@callback`
+- **Type Specifications**: Clear input/output types with an `@callback`
   specification defining the contract of the action's behaviour
 - **Error Handling**: Consistent error patterns across actions that mask errors
-  which could be useless outside the context
+  that may not be useful outside the context
 
 ### Schema Organization
 
@@ -542,14 +542,14 @@ delegate business logic to contexts.
 
 ## Challenges
 
-There are a few non-trivial challenges we encountered at our org with our
-implementation. The initial refactor was significant overhead since moving files
-around and function calls was so wide-spread. We were all hands on deck for a
-few weeks to make this work. Following our initial refactor, continuing
-education and discipline became a priority for us.
+There are a few non-trivial challenges we encountered at our org while
+implementing this. The initial refactor involved significant overhead because it
+required moving files and updating call sites throughout the codebase. We were
+all hands on deck for a few weeks to make this work. Following our initial
+refactor, continuing education and discipline became a priority for us.
 
 Database queries that span boundaries become more complex and may require
-boundary coupling, duplication or event-driven updates. We've elected to use a
+boundary coupling, duplication, or event-driven updates. We've elected to use a
 controlled coupling approach for interdependent schemas and joins. Each domain
 has a dedicated schemas module that acts as a child boundary that exports all of
 its schemas.
@@ -573,7 +573,7 @@ microservices. This needs to be balanced against architectural benefits.
 
 ## Conclusion
 
-The dynamic nature and loose conventions of Elixir makes it challenging to
+The dynamic nature and loose conventions of Elixir make it challenging to
 navigate large codebases. Context boundaries enforced through the Boundary
 library provide a practical path for scaling Elixir applications beyond small
 teams.

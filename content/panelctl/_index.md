@@ -24,13 +24,12 @@ resources:
 {{< /raw >}}
 
 [PanelCtl](https://github.com/brettinternet/panelctl) started as an experiment
-to see what macOS safely detail and control with external monitors.
+to learn what macOS could safely detect and control on external monitors.
 
-The end result is a pure-black window on selected displays. An idle timeout
-intervenes to protect OLED monitors with a black screen when I step aware from
-my workspace or I'm on a call and don't need my screens. That is useful when a
-long video call leaves static pixels on a side monitor, or when I step away from
-the desk in the middle of a long day.
+The result is a pure-black window on selected displays. An idle timeout shows it
+when I step away from my workspace or am on a call and don't need every screen.
+This helps protect OLED monitors when a long video call would otherwise leave
+static content on a side display.
 
 ```sh
 # Black out one display after five idle minutes, then keep watching.

@@ -9,6 +9,6 @@ hide_image: true
 resources:
     - src: container.gif
       params:
-          alt: docker build output
+          alt: Docker build output
 comments: false
 ---

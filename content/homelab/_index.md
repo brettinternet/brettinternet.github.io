@@ -8,6 +8,6 @@ description: Provisioning resources and experiments around the house
 resources:
     - src: pi-cluster.png
       params:
-          alt: raspberry pi cluster
+          alt: Raspberry Pi cluster
 comments: false
 ---

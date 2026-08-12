@@ -11,37 +11,35 @@ resources:
 comments: true
 ---
 
-Remember the iPhone commercial from the late 2000s which introduced Apple's
-AppStore with the phrase, "There's an app for that"? That's how open source
-services are now. There's a wide selection of useful and mature software that
+Remember the late-2000s iPhone commercial that introduced Apple's App Store with
+the phrase, "There's an app for that"? That's what open-source services are like
+now. There's a wide selection of useful and mature software that
 containerization has made exceptionally portable.
 
 My own [homelab](/homelab) has become a monorepo of DevOps overkill, but
-self-hosting can be simple and easy with Docker. You can securely host
-applications with a cheap desktop in your home with minimal effort and a single
-docker-compose configuration file.
+self-hosting can be simple with Docker. You can securely host applications on a
+cheap desktop in your home with minimal effort and a single Docker Compose
+configuration file.
 
 ## Demo
 
 I've set up a
 [simple demo to host an application](https://github.com/brettinternet/docker-compose-hosted-demo).
 
-Docker compose offers a very simple way to run and maintain self-hosted homelab.
-The configuration is portable, easy to understand, and a container orchestration
-can be run on a single node with just one command. As I demonstrate here, the
-available tooling makes DNS and proxying automation and the service setup very
-easy.
+Docker Compose offers a simple way to run and maintain a self-hosted homelab.
+The configuration is portable and easy to understand, and one command runs the
+container orchestration system on a single node. The available tooling
+simplifies DNS automation, proxying, and service setup.
 
 This demo hosts a simple Elixir notebook application called Livebook. I work in
 an Elixir shop where Livebook is a local favorite. Livebook uses notebooks
-similar to Python's Jupyter except it's built with Elixir and has real-time
-syncing between clients because it's built on the Phoenix framework's library
+similar to Jupyter, but it's built with Elixir and supports real-time syncing
+between clients through Phoenix's
 [LiveView](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html).
 
-This demo will set up a Cloudflared tunnel connection, a Traefik reverse proxy
-and the Livebook app. Cloudflare DNS is automated with CNAME creation from
-Traefik routes. There's no port forwarding required to host this app on a domain
-you own.
+This demo sets up a Cloudflared tunnel connection, a Traefik reverse proxy, and
+the Livebook app. It automates Cloudflare CNAME records from Traefik routes. No
+port forwarding is required to host this app on a domain you own.
 
 Here's a sketch of the architecture:
 
@@ -67,7 +65,7 @@ to see what each one does.
 
 ### Setup
 
-First, initialize the config file and terraform project.
+First, initialize the config file and Terraform project.
 
 ```sh
 make setup
@@ -78,33 +76,33 @@ This creates a `.env` file which you should edit with your own secrets.
 permissions for the domain in use. Use an API token, not an API key. The value
 for `CLOUDFLARE_TUNNEL_TOKEN` will come later.
 
-Then, create the Cloudflared tunnel. You'll need Terraform, unless you create it
-from the [Cloudflare Zero Trust dashboard](https://one.dash.cloudflare.com/).
-Note, using the dashboard setup, point the tunnel endpoint to
-`http://traefik:80` as the cloudflared image sees the host within the docker
-network.
+Then create the Cloudflared tunnel. Unless you create it from the
+[Cloudflare Zero Trust dashboard](https://one.dash.cloudflare.com/), you'll need
+Terraform. When using the dashboard, point the tunnel endpoint to
+`http://traefik:80` because the cloudflared image sees the host within the
+Docker network.
 
 ```sh
 make terraform
 ```
 
-This plans and applies the terraform tunnel configuration. It creates a CNAME
-record tunnel.example.com that points to the Cloudflared tunnel URL.
+This plans and applies the Terraform tunnel configuration. It creates a CNAME
+record for `tunnel.example.com` that points to the Cloudflared tunnel URL.
 
-Find the `tunnel_token` value in the terraform output file
+Find the `tunnel_token` value in the Terraform output file
 `./tunnel/terraform.tfstate` and add it as the value of
 `CLOUDFLARE_TUNNEL_TOKEN`.
 
 ### Run
 
-Start the docker compose.
+Start the Docker Compose stack.
 
 ```sh
 make start
 ```
 
 This runs `docker-compose --compatibility up`. The compatibility flag appears to
-be required in order to
+be required to
 [set resource limits in docker-compose](https://github.com/docker/compose/issues/4513).
 
 ## You can self-host
@@ -112,4 +110,4 @@ be required in order to
 Self-hosting is a satisfying hobby with amazing utility. These methods also
 provide ways to try out new technologies, host a simple blog, or make use of
 existing services that you find on GitHub. Let me know if the demo has helped
-you along with your own homelab.
+you with your own homelab.

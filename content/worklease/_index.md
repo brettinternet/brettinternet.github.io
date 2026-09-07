@@ -5,6 +5,11 @@ publishDate: 2026-07-13
 description:
     Time-limited local ownership for people and agents sharing a machine
 comments: false
+card_image: demo.gif
+resources:
+    - src: demo.gif
+      params:
+          alt: Worklease coordinating a local resource lease
 ---
 
 [Worklease](https://github.com/brettinternet/worklease) keeps two people or

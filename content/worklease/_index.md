@@ -22,7 +22,7 @@ such as an issue tracker or backlog. The provider still decides what work exists
 and whether it is complete.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[Agent A: TASK-42] --> C[Atomic lease]
     B[Agent B: TASK-42] --> C
     C -->|acquired| W[One owner works]

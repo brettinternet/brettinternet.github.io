@@ -16,7 +16,9 @@ if (params.comments) {
 if (params.mermaid && window.mermaid) {
   window.mermaid.initialize({
     startOnLoad: true,
-    theme: 'dark',
+    // The neutral theme keeps text, nodes, edges, and labels high-contrast
+    // across Mermaid diagram types.
+    theme: 'neutral',
   })
 }
 

@@ -51,6 +51,27 @@ release steps. Commands run through it receive receipts and bounded output. If
 an operation has an unknown outcome, the caller stops and checks the
 authoritative system instead of automatically repeating it.
 
+It also keeps retention-bounded local history for each resource:
+
+```console
+$ worklease history --resource local:formatter
+OK history
+RESOURCE    "local:formatter"
+EPOCHS      2
+EPOCH
+SOURCE      "epoch"
+COMPLETENESS    "complete"
+...
+TERMINATION
+REASON      "released"
+CHECKPOINT_PRESENT  true
+```
+
+The token-free view shows ownership epochs, operations, reconciliations, and how
+each lease ended or remains open. It is local diagnostic history, not an audit
+trail or provider record. JSON output is available for export before garbage
+collection.
+
 {{< card
 title="brettinternet/worklease"
 description="CLI, Python API, and portable agent workflow"

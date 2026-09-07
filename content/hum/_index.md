@@ -16,6 +16,8 @@ running between commands for humans and coding agents. It provides bounded logs,
 readiness checks, dependencies, JSON/MCP output, and controlled TTY input so
 humans and agents can watch the same stdin/stdout.
 
+{{< video autoplay="true" src="demo.webm" >}}
+
 Use it to keep dev servers alive across commands, start local stacks in
 dependency order, and let coding agents inspect logs or interact with running
 processes.

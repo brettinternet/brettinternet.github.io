@@ -17,6 +17,8 @@ agents from doing the same local work at once. It gives one contender a
 short-lived lease for one exact resource. Everyone else waits, picks something
 else, or tries again after the lease expires.
 
+{{< video autoplay="true" src="demo.webm" >}}
+
 It is local coordination, not distributed locking, but resources can be remote
 such as an issue tracker or backlog. The provider still decides what work exists
 and whether it is complete.

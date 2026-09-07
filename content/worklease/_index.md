@@ -6,6 +6,7 @@ description:
     Time-limited local ownership for people and agents sharing a machine
 comments: false
 card_image: demo.gif
+hide_image: true
 resources:
     - src: demo.gif
       params:

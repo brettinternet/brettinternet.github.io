@@ -5,6 +5,7 @@ publishDate: 2026-09-07
 description: Stop pasting stdout into your prompt like a meat proxy
 comments: false
 card_image: demo.gif
+hide_image: true
 resources:
     - src: demo.gif
       params:
@@ -24,5 +25,5 @@ processes.
 
 {{< card
 title="brettinternet/hum"
-description="Keep local project processes running."
+description="Share stdout with local processes"
 href="https://github.com/brettinternet/hum" >}}

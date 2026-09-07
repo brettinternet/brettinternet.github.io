@@ -2,7 +2,7 @@
 type: post
 title: hum
 publishDate: 2026-09-07
-description: Stop pasting stdout into your prompt like a meat proxy.
+description: Stop pasting stdout into your prompt like a meat proxy
 comments: false
 card_image: demo.gif
 resources:

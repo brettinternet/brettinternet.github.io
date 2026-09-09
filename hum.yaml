@@ -1,0 +1,4 @@
+version: 1
+processes:
+  web:
+    argv: [task, start]

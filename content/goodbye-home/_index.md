@@ -64,11 +64,16 @@ variable-derived deletion, protected paths, malformed Bash, and some attempts to
 escape the project root. A second fail-closed check provides defense in depth
 along with interactive Trash checks.
 
-These protections block the original configured Pi path. Real sandboxing,
-restricted mounts, process-group termination, and backups still matter are good
-containment options, but not quite the right fit for what I work on.
+These protections block the original configured Pi path.
+[Real sandboxing](https://github.com/brettinternet/pi-extensions/tree/92aef9e848ee2ed98acdb9351cfb7cc949ab3515/extensions/colima-sandbox),
+restricted mounts, and process-group termination are better containment options,
+but not quite the right fit for what I work on.
 
-Being willing to say goodbye to `$HOME` is also useful. 🫡
+Clearly none of this is Pi's fault. I love how configurable it is and I've had a
+blast [making it my own](https://github.com/brettinternet/pi-extensions). But
+this experience has been a good wake up call for security.
+
+Maybe being willing to say goodbye to `$HOME` is also useful. 🫡
 
 <!-- https://x.com/brettinternet/status/2095711086704222280 -->
 

@@ -4,8 +4,9 @@
 {{ end }}
 {{ $absolute_url := eq $href (relURL $href) }}
 {{ $image := .Resources.GetMatch .Params.card_image }}
+{{ $video := .Resources.GetMatch .Params.card_video }}
 {{ $hideCardImage := .Params.hide_card_image }}
-{{ if and (not $image) (not $hideCardImage) }}
+{{ if and (not $image) (not $video) (not $hideCardImage) }}
   {{ $image = index (.Resources.ByType "image") 0 }}
 {{ end }}
 {{ $backgroundGradients := slice
@@ -32,7 +33,7 @@
 }}
 {{ $backgroundGradient := "from-slate-950 to-amber-950" }}
 {{ $gradientDirection := "bg-gradient-to-br" }}
-{{ if not $image }}
+{{ if not (or $image $video) }}
   {{ $gradientHash := hash.FNV32a .RelPermalink }}
   {{ $backgroundGradient = index $backgroundGradients (mod $gradientHash (len $backgroundGradients)) }}
   {{ $gradientDirection = index $gradientDirections (mod (div $gradientHash (len $backgroundGradients)) (len $gradientDirections)) }}
@@ -47,8 +48,13 @@
   {{ end }}
   class="h-60 w-full max-w-[422px] group transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-900 {{ $gradientDirection }} {{ $backgroundGradient }}"
 >
-  {{ if $image }}
+  {{ if or $image $video }}
     <div class="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center rounded-md -z-10 brightness-50">
+    {{ with $video }}
+      <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" class="object-cover object-center w-full h-full transition-all duration-200 group-hover:scale-101 group-hover:blur-[2px]">
+        <source src="{{ .RelPermalink }}" type="video/{{ path.Ext .RelPermalink | strings.TrimPrefix "." }}">
+      </video>
+    {{ else }}
     {{ $isGif := eq (path.Ext $image.RelPermalink) ".gif" }}
     {{ if not $isGif }}
       {{ $image = $image.Resize "x300 Lanczos" }}
@@ -66,6 +72,7 @@
       "figure_class" "w-full h-full"
     }}
     {{ partial "image.html" $params }}
+    {{ end }}
     </div>
   {{ end }}
   <div class="flex flex-col min-h-full p-8">

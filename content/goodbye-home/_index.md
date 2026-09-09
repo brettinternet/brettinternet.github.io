@@ -18,9 +18,6 @@ This was my first time using subagents with Pi. What I did not know was that, at
 the time, pi-subagents did not inherit global context and instructions the way
 parent agents did.
 
-I had also become too comfortable giving coding agents unsandboxed autonomy.
-That was reckless.
-
 A subagent executed this Bash as my user:
 
 ```sh
@@ -57,8 +54,8 @@ up.
 
 ## What changed
 
-First, I configured subagents to inherit the parent context. I narrowed their
-roles and tool access. My Pi configuration now has policies to
+First, I configured subagents to inherit the global instructions. I narrowed
+their roles and tool access. My Pi configuration now has policies to
 [block](https://github.com/Dicklesworthstone/destructive_command_guard) `rm`,
 variable-derived deletion, protected paths, malformed Bash, and some attempts to
 escape the project root. A second fail-closed check provides defense in depth

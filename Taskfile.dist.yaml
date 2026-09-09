@@ -28,6 +28,7 @@ tasks:
 
   start:
     desc: Run development server
+    aliases: [dev]
     cmds:
       - hugo server --navigateToChanged --gc
 

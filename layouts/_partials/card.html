@@ -49,7 +49,7 @@
   class="h-60 w-full max-w-[422px] group transition-all duration-200 translate-y-0 hover:-translate-y-[2px] group block overflow-hidden relative shadow-md hover:shadow-xl rounded-md border-solid border border-gray-900 {{ $gradientDirection }} {{ $backgroundGradient }}"
 >
   {{ if or $image $video }}
-    <div class="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center rounded-md -z-10 brightness-50">
+    <div class="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center rounded-md -z-10 brightness-50 bg-black">
     {{ with $video }}
       <video autoplay loop muted playsinline preload="metadata" aria-hidden="true" class="object-cover object-center w-full h-full transition-all duration-200 group-hover:scale-101 group-hover:blur-[2px]">
         <source src="{{ .RelPermalink }}" type="video/{{ path.Ext .RelPermalink | strings.TrimPrefix "." }}">

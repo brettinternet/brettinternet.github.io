@@ -10,6 +10,7 @@
   - .image: Hugo image resource
   - .alt: Alt text for the image
   - .class: CSS classes for the img element
+  - .object_position: Optional CSS object-position value for the img element
   - .wrapper_class: CSS classes for the <picture> element. The overlay is sized
     against the <picture>, so an img given an explicit box (w-full/h-full plus
     object-fit) must give the wrapper the same box.
@@ -21,6 +22,7 @@
 {{ $image := .image }}
 {{ $alt := .alt }}
 {{ $image_class := .class | default "" }}
+{{ $object_position := .object_position | default "" }}
 {{ $wrapper_class := .wrapper_class | default "" }}
 {{ $figure := .figure | default false }}
 {{ $figure_class := .figure_class }}
@@ -63,6 +65,7 @@
 {{ $placeholderDataURI := printf "data:image/webp;base64,%s" ($placeholderWebP.Content | base64Encode) }}
 
 {{ $pictureClass := printf "blur-up%s" (cond (eq $wrapper_class "") "" (printf " %s" $wrapper_class)) }}
+{{ $objectPositionAttr := cond (eq $object_position "") "" (printf ` style="object-position: %s"` (htmlEscape $object_position)) }}
 
 {{/* Reveal by fading the LQIP overlay out. Inline so a failed or blocked
      bundle can never leave an image stuck behind its placeholder; `error`
@@ -76,7 +79,7 @@
 {{ printf `<picture class="%s" style="--lqip:url('%s')">
   %s
   <img
-    class="%s"
+    class="%s"%s
     alt="%s"
     src="%s"
     srcset="%s"
@@ -93,6 +96,7 @@
   $placeholderDataURI
   $source
   $image_class
+  $objectPositionAttr
   (htmlEscape $alt)
   $image.RelPermalink
   (delimit $srcset ", ")

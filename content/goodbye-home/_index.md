@@ -10,6 +10,7 @@ resources:
       params:
           alt:
               Pi reporting that a subagent recursively deleted my home directory
+          card_position: 50% 30%
 ---
 
 ## I deleted my home directory

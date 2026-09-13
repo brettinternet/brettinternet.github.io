@@ -14,68 +14,49 @@ resources:
 ---
 
 [Worklease](https://github.com/brettinternet/worklease) keeps two people or
-agents from doing the same local work at once. It gives one contender a
-short-lived lease for one exact resource. Everyone else waits, picks something
-else, or tries again after the lease expires.
+agents from doing the same local work at once. It coordinates short-lived
+ownership for one exact resource on the same host. Others can wait, choose
+different work, or retry after the lease expires.
 
-{{< video autoplay="true" src="demo.webm" >}}
-
-It is local coordination, not distributed locking, but resources can be remote
-such as an issue tracker or backlog. The provider still decides what work exists
-and whether it is complete.
+![Two workers coordinating ownership of the same task with Worklease](demo.gif)
 
 ```mermaid
-flowchart TD
-    A[Agent A: TASK-42] --> C[Atomic lease]
-    B[Agent B: TASK-42] --> C
-    C -->|acquired| W[One owner works]
-    C -->|already claimed| N[Other agent waits or picks another task]
-    W --> P[Verify provider state]
-    P --> R[Release]
+sequenceDiagram
+    participant A as Worker A
+    participant W as Worklease
+    participant B as Worker B
+    A->>W: acquire task:demo
+    W-->>A: claim granted
+    B->>W: acquire task:demo
+    W-->>B: already claimed
+    A->>W: release
+    B->>W: acquire task:demo
+    W-->>B: claim granted
 ```
+
+Worklease provides local coordination, not distributed locking. Resources may
+represent remote work such as an issue or backlog item, but the provider remains
+authoritative about what exists and whether it is complete.
 
 ## Where I use it
 
-- Shared work queues: Two agents may see the same ready issue. A lease makes the
-  local decision atomic before either creates a worktree or edits files.
-- One expensive local resource: Serialize access to a GPU, a development port, a
-  browser profile, a formatter, or anything else that should have one active
-  owner.
-- One destructive operation: Guard a migration, a release command, or any
-  command that should not run twice on the same host.
-- One source file: Claim a Markdown source such as a
-  [backlog.md](https://backlog.md/) task and replace it only when its expected
-  SHA-256 still matches.
-- Several resources together: Lease an ordered bundle when one operation needs,
-  for example, both a work item and a local port.
+- Shared work queues: Claim an exact issue before creating a worktree or editing
+  files.
+- Expensive local resources: Serialize access to a GPU, development port,
+  browser profile, formatter, or other host resource.
+- Destructive commands: Guard migrations, releases, and recovery commands that
+  must not run twice.
+- Source-file updates: Claim a Markdown task and replace it only when its
+  expected SHA-256 still matches.
+- Coordinated operations: Claim 1–32 exact resources together when one operation
+  needs a work item and a local port.
 
-The CLI has explicit acquire, heartbeat, checkpoint, inspect, reconcile, and
-release steps. Commands run through it receive receipts and bounded output. If
-an operation has an unknown outcome, the caller stops and checks the
-authoritative system instead of automatically repeating it.
-
-It also keeps retention-bounded local history for each resource:
-
-```console
-$ worklease history --resource local:formatter
-OK history
-RESOURCE    "local:formatter"
-EPOCHS      2
-EPOCH
-SOURCE      "epoch"
-COMPLETENESS    "complete"
-...
-TERMINATION
-REASON      "released"
-CHECKPOINT_PRESENT  true
-```
-
-The token-free view shows ownership epochs, operations, reconciliations, and how
-each lease ended or remains open. It is local diagnostic history, not an audit
-trail or provider record. JSON output is available for export before garbage
-collection.
+Claims have TTLs and support waiting, status, history, guarded commands, and
+recovery. Ownership is backed by owner-private local SQLite authority. The
+provider remains authoritative for remote work; local history is diagnostic, not
+an audit trail.
 
 {{< card
 title="brettinternet/worklease"
-description="CLI, Python API, and portable agent workflow"
+description="Go CLI and portable agent workflow"
 href="https://github.com/brettinternet/worklease" >}}

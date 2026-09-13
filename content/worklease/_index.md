@@ -37,8 +37,7 @@ sequenceDiagram
 ```
 
 A lockfile protects a critical section for one process or file. Worklease
-coordinates work across agents and supports ownership over time. Neither
-prevents arbitrary external work that does not cooperate.
+coordinates work across agents and supports ownership safely over time.
 
 {{< card
 title="brettinternet/worklease"

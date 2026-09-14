@@ -1,3 +1,15 @@
+function showCopyFeedback(
+  button: HTMLButtonElement,
+  status: 'Copied' | 'Failed',
+  resetText = button.textContent ?? 'Copy',
+) {
+  button.textContent = status
+
+  setTimeout(() => {
+    button.textContent = resetText
+  }, 2000)
+}
+
 export function setup() {
   document.addEventListener('DOMContentLoaded', () => {
     const codeBlocks = document.querySelectorAll('.group\\/codeblock')
@@ -88,13 +100,7 @@ export function setup() {
 
         try {
           await navigator.clipboard.writeText(code)
-
-          const originalText = copyBtn.textContent
-          copyBtn.textContent = 'Copied'
-
-          setTimeout(() => {
-            copyBtn.textContent = originalText
-          }, 2000)
+          showCopyFeedback(copyBtn, 'Copied')
         } catch (_err) {
           // Fallback for older browsers
           const textArea = document.createElement('textarea')
@@ -104,17 +110,9 @@ export function setup() {
 
           try {
             document.execCommand('copy')
-            const originalText = copyBtn.textContent
-            copyBtn.textContent = 'Copied'
-
-            setTimeout(() => {
-              copyBtn.textContent = originalText
-            }, 2000)
+            showCopyFeedback(copyBtn, 'Copied')
           } catch (_fallbackErr) {
-            copyBtn.textContent = 'Failed'
-            setTimeout(() => {
-              copyBtn.textContent = 'Copy'
-            }, 2000)
+            showCopyFeedback(copyBtn, 'Failed', 'Copy')
           }
 
           document.body.removeChild(textArea)

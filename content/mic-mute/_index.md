@@ -30,6 +30,7 @@ It's inspired by
 for Windows.
 
 Mute with the shortcut {{< raw >}} <kbd>Cmd</kbd> <kbd>Shift</kbd> <kbd>A</kbd>
+
 {{< /raw >}} or from the menu bar.
 
 {{< image src="screenshot.png" alt="popup window screenshot indicating the microphone is off" caption="Mute window follows the cursor across desktops and monitors" >}}

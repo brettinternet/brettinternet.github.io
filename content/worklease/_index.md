@@ -2,23 +2,25 @@
 type: post
 title: Worklease
 publishDate: 2026-07-13
-description:
-    Time-limited local ownership for people and agents sharing a machine
+description: Time-limited ownership for people and agents across machines
 comments: false
 card_image: demo.gif
 hide_image: true
 resources:
     - src: demo.gif
       params:
-          alt: Worklease coordinating a local resource lease
+          alt: Worklease coordinating a resource lease
+    - src: remote-demo.gif
+      params:
+          alt: Worklease coordinating workers across machines
 ---
 
 [Worklease](https://github.com/brettinternet/worklease) coordinates cooperating
-coding agents working in separate local worktrees.
+coding agents across separate worktrees and distributed environments.
 
-The backlog or provider remains authoritative. Worklease prevents local agent
-loops from duplicating work by assigning temporary ownership with leases,
-expiry, waiting, status, history, guarded commands, and recovery.
+The backlog or provider remains authoritative. Worklease prevents agent loops
+from duplicating work by assigning temporary ownership with leases, expiry,
+waiting, status, history, guarded commands, and recovery.
 
 ![Two workers coordinating ownership of the same task with Worklease](demo.gif)
 
@@ -37,7 +39,10 @@ sequenceDiagram
 ```
 
 A lockfile protects a critical section for one process or file. Worklease
-coordinates work across agents and supports ownership safely over time.
+coordinates work across agents and supports ownership safely over time. Its
+server coordinates workers across machines.
+
+![Two workers coordinating remotely with Worklease](remote-demo.gif)
 
 {{< card
 title="brettinternet/worklease"

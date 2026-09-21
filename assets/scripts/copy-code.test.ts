@@ -72,6 +72,63 @@ test('copies table code without line numbers or a trailing newline', async () =>
   expect(writeText).toHaveBeenCalledWith('alpha\nbeta')
 })
 
+const codeMarkupCases = [
+  {
+    name: 'flex lines with line numbers',
+    markup:
+      '<pre><span style="display:flex"><span style="user-select:none">1</span><span>alpha</span>\n</span><span style="display:flex"><span style="user-select:none">2</span><span>beta</span>\n</span></pre>',
+    expected: 'alpha\nbeta',
+  },
+  {
+    name: 'data-line elements',
+    markup:
+      '<pre><span data-line>alpha</span><span data-line>beta</span></pre>',
+    expected: 'alpha\nbeta',
+  },
+  {
+    name: 'ln elements',
+    markup:
+      '<pre><span class="ln">1</span>alpha\n<span class="ln">2</span>beta\n</pre>',
+    expected: 'alpha\nbeta',
+  },
+  {
+    name: 'plain preformatted text',
+    markup: '<pre>alpha\nbeta\n</pre>',
+    expected: 'alpha\nbeta',
+  },
+  {
+    name: 'table cell without a pre element',
+    markup:
+      '<table><tbody><tr><td><pre>1\n2\n</pre></td><td>alpha\nbeta\n</td></tr></tbody></table>',
+    expected: 'alpha\nbeta',
+  },
+]
+
+for (const { name, markup, expected } of codeMarkupCases) {
+  test(`copies code from ${name}`, async () => {
+    document.body.innerHTML = `
+      <div class="group/codeblock">
+        <button class="copy-btn hidden">Copy</button>
+        ${markup}
+      </div>
+    `
+    const writeText = mock(() => Promise.resolve())
+    Object.defineProperty(navigator, 'clipboard', {
+      configurable: true,
+      value: { writeText },
+    })
+    jest.useFakeTimers()
+
+    document.dispatchEvent(new Event('DOMContentLoaded'))
+    const copyBtn = document.querySelector('.copy-btn') as HTMLButtonElement
+
+    copyBtn.click()
+    await Promise.resolve()
+
+    expect(writeText).toHaveBeenCalledWith(expected)
+  })
+}
+
 test('falls back to execCommand and removes the temporary textarea', async () => {
   document.body.innerHTML = `
     <div class="group/codeblock">

@@ -10,6 +10,76 @@ function showCopyFeedback(
   }, 2000)
 }
 
+function stripTrailingNewline(text: string) {
+  return text.replace(/\n$/, '')
+}
+
+function getCodeFromLineSpans(lineSpans: Element[]) {
+  return lineSpans
+    .map((lineSpan) => {
+      const childSpans = Array.from(lineSpan.querySelectorAll('span'))
+      const lineNumberSpans = childSpans.filter(
+        (span) =>
+          span.style.webkitUserSelect?.includes('none') ||
+          span.style.userSelect?.includes('none'),
+      )
+
+      if (lineNumberSpans.length > 0) {
+        const codeSpans = childSpans.filter(
+          (span) =>
+            !span.style.webkitUserSelect?.includes('none') &&
+            !span.style.userSelect?.includes('none'),
+        )
+        return codeSpans
+          .map((span) => stripTrailingNewline(span.textContent || ''))
+          .join('')
+      }
+
+      return stripTrailingNewline(lineSpan.textContent || '')
+    })
+    .join('\n')
+}
+
+function getCodeFromPre(pre: HTMLPreElement) {
+  const lineSpans = pre.querySelectorAll('span[style*="display:flex"]')
+  if (lineSpans.length > 0) {
+    return getCodeFromLineSpans(Array.from(lineSpans))
+  }
+
+  const codeElements = pre.querySelectorAll('[data-line]')
+  if (codeElements.length > 0) {
+    return Array.from(codeElements)
+      .map((element) => element.textContent || '')
+      .join('\n')
+  }
+
+  const lineNumberElements = pre.querySelectorAll('.ln')
+  if (lineNumberElements.length > 0) {
+    const preClone = pre.cloneNode(true) as HTMLPreElement
+    preClone.querySelectorAll('.ln').forEach((lineNumber) => {
+      lineNumber.remove()
+    })
+    return preClone.textContent || ''
+  }
+
+  return pre.textContent || ''
+}
+
+function getCodeFromBlock(blockGroup: Element, pre: HTMLPreElement) {
+  const table = blockGroup.querySelector('table')
+  if (table) {
+    const codeTd = table.querySelector('td:nth-child(2) pre')
+    if (codeTd) {
+      return stripTrailingNewline(codeTd.textContent || '')
+    }
+
+    const secondTd = table.querySelector('td:nth-child(2)')
+    return secondTd ? stripTrailingNewline(secondTd.textContent || '') : ''
+  }
+
+  return stripTrailingNewline(getCodeFromPre(pre))
+}
+
 export function setup() {
   document.addEventListener('DOMContentLoaded', () => {
     const codeBlocks = document.querySelectorAll('.group\\/codeblock')
@@ -22,81 +92,7 @@ export function setup() {
       copyBtn.classList.remove('hidden')
 
       copyBtn.addEventListener('click', async () => {
-        let code = ''
-
-        // Check if this is a table-based line number structure (Hugo's default)
-        const table = blockGroup.querySelector('table')
-        if (table) {
-          // Hugo uses a table structure with line numbers in first td, code in second td
-          const codeTd = table.querySelector('td:nth-child(2) pre')
-          if (codeTd) {
-            code = codeTd.textContent || ''
-          } else {
-            // Fallback to second td if no pre inside
-            const secondTd = table.querySelector('td:nth-child(2)')
-            code = secondTd ? secondTd.textContent || '' : ''
-          }
-        } else {
-          // Check for flex-based line structure (both with and without line numbers)
-          const lineSpans = pre.querySelectorAll('span[style*="display:flex"]')
-          if (lineSpans.length > 0) {
-            // Each line is in a flex span
-            code = Array.from(lineSpans)
-              .map((lineSpan) => {
-                // Check if there are child spans with user-select:none (line numbers)
-                const lineNumberSpans = Array.from(
-                  lineSpan.querySelectorAll('span'),
-                ).filter(
-                  (span) =>
-                    span.style.webkitUserSelect?.includes('none') ||
-                    span.style.userSelect?.includes('none'),
-                )
-
-                if (lineNumberSpans.length > 0) {
-                  // Has line numbers, get only the code spans (non-user-select:none)
-                  const codeSpans = Array.from(
-                    lineSpan.querySelectorAll('span'),
-                  ).filter(
-                    (span) =>
-                      !span.style.webkitUserSelect?.includes('none') &&
-                      !span.style.userSelect?.includes('none'),
-                  )
-                  return codeSpans
-                    .map((span) => (span.textContent || '').replace(/\n$/, ''))
-                    .join('')
-                }
-                // No line numbers, get content from the line span directly
-                // Remove any trailing newline since we'll add our own when joining
-                return (lineSpan.textContent || '').replace(/\n$/, '')
-              })
-              .join('\n')
-          } else {
-            // No inline line numbers, check for other line number patterns
-            const codeElements = pre.querySelectorAll('[data-line]')
-            if (codeElements.length > 0) {
-              // If line numbers exist, get text from code elements only
-              code = Array.from(codeElements)
-                .map((el) => el.textContent || '')
-                .join('\n')
-            } else {
-              // Fallback: look for .ln class (Hugo's line number class)
-              const lineNumberElements = pre.querySelectorAll('.ln')
-              if (lineNumberElements.length > 0) {
-                // Clone the pre element and remove line number elements
-                const preClone = pre.cloneNode(true) as HTMLPreElement
-                preClone.querySelectorAll('.ln').forEach((ln) => {
-                  ln.remove()
-                })
-                code = preClone.textContent || ''
-              } else {
-                // No line numbers detected, use full text content
-                code = pre.textContent || ''
-              }
-            }
-          }
-        }
-
-        code = code.replace(/\n$/, '')
+        const code = getCodeFromBlock(blockGroup, pre)
 
         try {
           await navigator.clipboard.writeText(code)

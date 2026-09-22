@@ -3,12 +3,6 @@ type: post
 title: Elixir
 publishDate: 2023-10-14
 description: The Elixir programming language
-card_image: pdq.webp
-hide_image: true
-resources:
-    - src: pdq.webp
-      params:
-          alt: two people standing in front of construction of a business office
 comments: true
 ---
 

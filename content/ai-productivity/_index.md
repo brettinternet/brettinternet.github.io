@@ -42,8 +42,8 @@ href="https://github.com/brettinternet/ai" >}}
 
 ## Usage
 
-In my currently evolving workflows, AI fulfills a few very specific pair
-programming roles to augment my work with discovery and agentic iteration.
+In my currently evolving workflows, AI fulfills a burgeoning role to augment my
+work with discovery and agentic iteration.
 
 ### Discovery
 

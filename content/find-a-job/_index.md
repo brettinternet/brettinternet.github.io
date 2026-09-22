@@ -2,7 +2,7 @@
 type: post
 title: Find a Job
 publishDate: 2026-01-05
-description: Findings from a Software Engineer job search
+description: Discoveries from a software engineer job search
 draft: true
 hide_image: true
 resources:

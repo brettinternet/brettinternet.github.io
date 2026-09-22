@@ -16,8 +16,8 @@ scaling experiences that could benefit other companies. I've also adapted well
 to the changing development landscape with AI. I don't have delusions that I'm
 highly desirable or extremely competitive in a big, remote world. I'm proud of
 the work I've done with my current employer. However, every couple years I
-revisit the job market and casually interview to get a sense of the job market.
-Here's what I've found.
+revisit the job market and casually interview to get a sense of the health of
+the industry. Here's what I've found.
 
 ## The Process
 

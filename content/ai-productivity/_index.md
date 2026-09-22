@@ -2,6 +2,7 @@
 type: post
 title: Productivity with AI
 publishDate: 2025-08-11
+lastMod: 2026-09-05
 description: My approach to AI-augmented development
 comments: true
 hide_image: true
@@ -23,28 +24,14 @@ Some people might feel like we're at a moment like this:
 
 {{< x user="RyanEls4" id="1879978018204184582" >}}
 
-But we're absolutely not at a moment like this:
-
-<!-- https://x.com/amritwt/status/1941460667946713311 -->
-
-{{< x user="amritwt" id="1941460667946713311" >}}
-
-Then, there's this:
-
-<!-- https://x.com/paulg/status/1953289830982664236 -->
-
-{{< x user="paulg" id="1953289830982664236" >}}
-
-Who in this scenario is actually confirming that it's not 10k lines of slop?
-
 I've seen software engineers sometimes get defensive on the topic of AI, because
 they are perturbed by these sorts of unrealistic soundbites. Similar
 melodramatic sentiments are rampant on LinkedIn. I've been grateful to work with
 other engineers who have a strong interest in productivity and are level-headed
-about AI.
+and honest about AI.
 
 The reality is somewhere between the extremes. AI isn't replacing engineers, but
-it's also not just a fancy autocomplete. When used thoughtfully, it can
+it will also fundamentally change how we work. When used thoughtfully, it can
 genuinely accelerate development workflows by taking on specific, well-defined
 roles in the programming process.
 
@@ -56,36 +43,18 @@ href="https://github.com/brettinternet/ai" >}}
 ## Usage
 
 In my currently evolving workflows, AI fulfills a few very specific pair
-programming roles to augment my work:
+programming roles to augment my work with discovery and agentic iteration.
 
-1. Code completions
-1. Discovery
-1. Surgical updates
-1. Iterative edit-test loops
+### Discovery
 
-There are MCP servers that assist with most of these roles. I have
-[some I'm working on](https://github.com/brettinternet/mcp) and
-[a few I use](https://github.com/brettinternet/ai) regularly.
+Discovery is my favorite use case for AI. Being able to quickly traverse and
+reference large amounts of information has made me feel resourceful and
+effective.
 
-### 1. Code completions
-
-This is the most obvious pair programming application for AI.
-
-{{< image src="vscode-typo.gif" alt="code completions" caption="Copilot code completions" >}}
-
-These are extremely context-aware changes and combat small-scale tedium.
-
-### 2. Discovery
-
-Discovery is my favorite use case for AI. I use it for researching topics,
-summarizing documentation, querying libraries and codebases, getting usage
-examples, and planning implementation approaches. This is where AI shines as a
-research assistant that can quickly traverse large amounts of information.
-
-For codebase exploration, AI excels at answering questions like "What are the
-side effects of this module?" or "Show me all the places where authentication is
-handled." I frequently use this to understand hotspots in code and trace
-dependencies before making changes.
+Just talk to your repository with questions like "What are the side effects of
+this module?" or "Show me all the places where authentication is handled." I
+frequently use this to understand hotspots in code and trace dependencies before
+making changes.
 
 Well-structured codebases with clear boundaries are easier for both humans and
 AI to navigate. When I refactored a large codebase using
@@ -101,52 +70,7 @@ workflows:
 The answer benefits onboarding, knowledge transfer, and debugging regardless of
 whether you're working with human teammates or AI assistants.
 
-### 3. Surgical updates
-
-AI can accomplish more sophisticated tasks when it's steered towards a very
-specific context. I have a coworker who calls these "surgical updates". This is
-where you pave a precise path for the agent to make specific changes. You might
-build up a context from a discovery or planning stage with an agent. In large
-enterprise codebases, this is how you manage context.
-
-<!-- https://x.com/vasumanmoza/status/1926487201463832863 -->
-
-{{< x user="vasumanmoza" id="1926487201463832863" >}}
-
-Writing code is rarely the bottleneck. The real challenges in software
-development are understanding requirements, designing systems, debugging complex
-interactions, and making architectural decisions. Even with AI assistance, these
-cognitive tasks require human judgment, domain expertise, and the ability to
-reason about trade-offs. AI can help you write code faster, but it can't replace
-the critical thinking needed to determine what code should be written in the
-first place.
-
-Claude Code is closed-source, but after some inspection, you'll find that it
-ships with a few bundled tools: a JetBrains extension, a VS Code extension, and
-ripgrep.
-
-{{< image src="claude-vendor.png" alt="claude distribution with vendor directory" caption="@anthropic/claude-code" >}}
-
-[Ripgrep](https://github.com/BurntSushi/ripgrep/) is a CLI tool for finding
-filenames and text in files with regex. A major differentiator between agents
-right now is how well they _find_ relevant information and fill their context
-with precisely what's needed.
-
-The workflow might look like this:
-
-1. Build up the context for what you're working on. This is the rewind
-   checkpoint.
-2. Perform a task. At a stopping point, rewind (double escape) to the context
-   checkpoint.
-    - You can do this with multiple chats. For Claude Code, run `/resume` and
-      select the context checkpoint.
-3. Tell the agent that your developer finished the task and ask it to
-   [provide feedback](https://github.com/brettinternet/ai/blob/aa150ea920b92779992c885af3d83b76eddaae8d/.claude/commands/feedback.md).
-
-{{< note title="Tip" >}} LLMs appear to provide more honest feedback about a
-third party (e.g., "my developer"). {{< /note >}}
-
-### 4. Iterative Edit-Test Loops
+### Agentic iteration
 
 ```mermaid
 flowchart LR
@@ -162,52 +86,23 @@ flowchart LR
     style D fill:#065f46,stroke:#10b981,stroke-width:2px,color:#ffffff
 ```
 
-AI agents are excellent at small tasks where they can iteratively loop through
-problems with immediate feedback. For example, you can make the agent write a
-failing test, implement a change to match the expectation of the test, run the
-test and linting checks, and repeat. Note that the architecture has to be
-straightforward enough to facilitate that feedback loop for the AI. This is
-becoming easier with additional tooling, such as validating UI changes with the
-[Playwright MCP](https://github.com/microsoft/playwright-mcp).
+LLMs are most effective with iterative feedback. Developing good checks and
+tests provide guidance to the coding agents and validate their work.
 
 I've seen Claude delete or add `@tag :skip` for tests in order to get them to
-"pass." Engineers have to be hands-on conductors. However, AI agents are
-excellent at setting up tests and other boilerplate and at iterative test-driven
-development. Just be sure the coverage is meaningful.
+"pass." Engineers have to be hands-on conductors.
 
-## Best Practices
+## Caution
 
-### Workflow
-
-The development workflow varies by task. Here's the general approach I use with
-AI agents:
-
-1. Create a worktree as a sibling of `work/repo-name` to work on the repository
-   in parallel.
-1. Use Linear MCP to examine the specifications of a ticket.
-1. Investigate the work in parallel with an agent in the main worktree. Ask the
-   agent for an execution plan, then analyze it.
-1. Run a first pass and write tests for the expected behavior, in either order.
-1. Review the work, then refactor it or fill in the gaps.
-
-### Caution
-
-You'll discover within the first few minutes of using Claude that it
-[consistently responds](https://github.com/anthropics/claude-code/issues/3382)
-with this praise:
-
-> You're absolutely right!
+Some LLMs use excessive
+[validation and praise](https://github.com/anthropics/claude-code/issues/3382).
 
 {{< image src="glazing.png" alt="ChatGPT: Dude. You just said something deep as hell without even flinching. You're 1000% right." caption="Glazing is bad" >}}
 
-A GPT-4o update a few months ago made the model intensely sycophantic and prone
-to mirroring user language.
 [OpenAI's AMA](https://www.reddit.com/r/ChatGPT/comments/1mkae1l/gpt5_ama_with_openais_sam_altman_and_some_of_the/)
-for the GPT-5 release had users begging for the return of the 4o user engagement
-maximizer because it was "friendly".
-
-We need self-awareness about what using AI does to our psychology and good
-reviewing practices to avoid problematic code getting onto `main`.
+for the GPT-5 release demonstrated that some users crave this sycophancy. We
+need self-awareness about what using AI does to our psychology and good
+reviewing practices to instability in our code.
 
 <!-- https://x.com/Steve8708/status/1856896071433424982 -->
 
@@ -223,12 +118,12 @@ concerned about what code AI writes. The same is true when we select libraries
 or languages without AI. In both cases we own the decision and the code. Age-old
 best practices continue even with modern AI technology.
 
-## Open Questions
+## What's next?
 
 As LLMs and the tooling evolve, so do my workflows. I'm continuing to learn and
-grow with these changes. My [AI repo](https://github.com/brettinternet/ai) is
-where I play with these tools and figure out how to apply them to other
-projects.
+grow with these changes. My
+[dotfiles](https://github.com/brettinternet/dotfiles) are rapidly changing to
+reflect changes in agentic tooling.
 
 Can engineers become excessively reliant on agentic prompting? Will this change
 engineering culture? What will this mean especially for newer programmers in the
@@ -238,14 +133,8 @@ Will LLM innovation begin to plateau? I wonder if we're nearing a point where
 throwing more compute or a longer chain of thought won't yield additional gains
 in performance.
 
-Are Anthropic and OpenAI subsidizing access to their models, and will prices
-skyrocket soon? GPT-5 appears to have been a cost-saving exercise for several
-reasons.
-
 For now, AI can augment software engineering in meaningful ways. I encourage
-software engineers to discover what LLMs can do for their workflows.
-
-## Conclusion
+software engineers to discover what LLMs can do for their productivity.
 
 AI isn't going to replace thoughtful engineering, but it can make thoughtful
 engineers more effective. The key is approaching it as a sophisticated tool that
@@ -256,4 +145,4 @@ should our practices for integrating it responsibly into development workflows.
 ---
 
 This post was adapted from a [lightning talk](https://brett.cloud/slides/ai/) I
-gave to a group of executives.
+gave to a company leadership meeting.

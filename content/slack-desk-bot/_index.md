@@ -18,6 +18,10 @@ I built a sandboxed desktop agent that consults local agents, work repositories,
 and read-only MCPs to respond to Slack comments with my preferred agent harness,
 Pi.
 
+Unlike my [slackbot](/slackbot/) which is more of an ambient tool to watch the
+Slack workspace, you can start/stop this bot on demand or bring it in and out
+channels to respond to questions.
+
 {{< card
 title="brettinternet/slack-desk-bot"
 description="Get your laptop to show the git blame receipts!"

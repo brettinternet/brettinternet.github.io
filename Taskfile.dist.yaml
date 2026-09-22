@@ -41,6 +41,14 @@ tasks:
     cmds:
       - hugo
 
+  clean:
+    desc: Clean generated site files
+    cmds:
+      - test ! -e public || trash public
+      - test ! -e resources/_gen || trash resources/_gen
+      - test ! -e hugo_stats.json || trash hugo_stats.json
+      - test ! -e .hugo_build.lock || trash .hugo_build.lock
+
   test:
     desc: Run tests
     cmds:

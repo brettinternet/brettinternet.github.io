@@ -3,7 +3,7 @@ type: post
 title: Find a Job
 publishDate: 2026-01-05
 description: Discoveries from a software engineer job search
-draft: true
+comments: true
 hide_image: true
 resources:
     - src: pdq.webp

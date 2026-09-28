@@ -13,6 +13,9 @@ resources:
     - src: remote-demo.gif
       params:
           alt: Worklease coordinating workers across machines
+    - src: tui-demo.gif
+      params:
+          alt: Worklease TUI managing a local claim
 ---
 
 [Worklease](https://github.com/brettinternet/worklease) coordinates cooperating
@@ -43,6 +46,20 @@ coordinates work across agents and supports ownership safely over time. Its
 server coordinates workers across machines.
 
 ![Two workers coordinating remotely with Worklease](remote-demo.gif)
+
+Run bare `worklease` to open the TUI and inspect, renew, or release claims.
+
+![Inspecting, renewing, and releasing a local claim in the Worklease TUI](tui-demo.gif)
+
+## Features
+
+- Claims with TTLs, heartbeats, waiting, and release reasons
+- Guarded commands that run only while a claim is held
+- Status, history, and recovery for expired or abandoned claims
+- Local SQLite authority, or a remote authority with TLS and invites
+- Work queue over GitHub Issues, Backlog.md, Beads, Linear, or a custom adapter
+- TUI for browsing work and managing claims
+- JSON output and an MCP server for agents
 
 {{< card
 title="brettinternet/worklease"

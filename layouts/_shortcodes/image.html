@@ -24,17 +24,21 @@
   ) }}
 {{ else }}
   {{/* Fallback for images that cannot be processed */}}
-  <figure class="flex flex-col justify-center items-center">
+  {{ if $figure }}
+  <figure {{with $figure_class}}class="{{.}}"{{end}}>
+  {{ end }}
     <img
       src="{{ $src | relURL }}"
       alt="{{ $alt }}"
       {{with $class}}class="{{.}}"{{end}}
       loading="lazy"
     />
-    {{with $caption}}
+    {{if and $figure $caption}}
     <figcaption class="text-center">
-      {{ . }}
+      {{ $caption }}
     </figcaption>
     {{end}}
+  {{ if $figure }}
   </figure>
+  {{ end }}
 {{ end }}

@@ -46,6 +46,39 @@ test('copies plain highlighted code and resets the button label', async () => {
   expect(copyBtn.textContent).toBe('Copy')
 })
 
+test('copies titled code when its disclosure is collapsed', async () => {
+  document.body.innerHTML = `
+    <div class="group/codeblock">
+      <details>
+        <summary>Example</summary>
+        <pre><span style="display:flex"><span>collapsed code</span>\n</span></pre>
+      </details>
+      <button class="copy-btn hidden">Copy</button>
+    </div>
+  `
+  const blockGroup = document.querySelector(
+    '.group\\/codeblock',
+  ) as HTMLDivElement
+  const details = blockGroup.querySelector('details') as HTMLDetailsElement
+  const copyBtn = blockGroup.querySelector('.copy-btn') as HTMLButtonElement
+  const writeText = mock(() => Promise.resolve())
+  Object.defineProperty(navigator, 'clipboard', {
+    configurable: true,
+    value: { writeText },
+  })
+
+  expect(details.open).toBe(false)
+  expect(copyBtn.parentElement).toBe(blockGroup)
+
+  document.dispatchEvent(new Event('DOMContentLoaded'))
+  expect(copyBtn.classList.contains('hidden')).toBe(false)
+
+  copyBtn.click()
+  await Promise.resolve()
+
+  expect(writeText).toHaveBeenCalledWith('collapsed code')
+})
+
 test('copies table code without line numbers or a trailing newline', async () => {
   document.body.innerHTML = `
     <div class="group/codeblock">

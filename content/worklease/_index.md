@@ -21,7 +21,7 @@ resources:
 [Worklease](https://github.com/brettinternet/worklease) coordinates cooperating
 coding agents across separate worktrees and distributed environments.
 
-The backlog or provider remains authoritative. Worklease prevents agent loops
+Claim a resource, do the work, then release it. Worklease prevents agent loops
 from duplicating work by assigning temporary ownership with leases, expiry,
 waiting, status, history, guarded commands, and recovery.
 

@@ -2,9 +2,8 @@
 type: post
 title: DisplayPanel
 publishDate: 2026-07-24
-description: An experiment in controlling OLED monitors on macOS
-aliases:
-    - /panelctl/
+description: Control macOS displays from an app, CLI and automations
+aliases: [/panelctl/]
 hide_title: true
 hide_date: true
 hide_image: true
@@ -27,12 +26,9 @@ resources:
 
 [DisplayPanel](https://github.com/brettinternet/DisplayPanel) started as an
 experiment to learn what macOS could safely detect and control on external
-monitors.
-
-The result is a pure-black window on selected displays. An idle timeout shows it
-when I step away from my workspace or am on a call and don't need every screen.
-This helps protect OLED monitors when a long video call would otherwise leave
-static content on a side display.
+monitors. Now it's become a tool I use daily to hide/show displays to switch
+inputs, idle blackout for OLED protection, display sleep automation and other
+experimental monitor controls.
 
 ```sh
 # Black out one display after five idle minutes, then keep watching.
@@ -42,15 +38,7 @@ dp blackout --display DISPLAY_UUID --idle-after 5m --watch
 dp blackout --all --idle-after 5m --sleep-after 30m --keep-displays-awake
 ```
 
-It grew into a macOS CLI and menu-bar app for per-display Hide/Show, idle
-blackout, click-through dimming, display sleep and experimental monitor
-controls.
-
 {{< image src="displaypanel-settings.png" alt="DisplayPanel settings" class="border-0" >}}
-
-A blackout minimizes OLED pixel emission. However, it does not power down
-display electronics or guarantee a panel compensation cycle. For a long
-unattended stretch, all-display sleep is still the better option.
 
 {{< card
 title="brettinternet/DisplayPanel"

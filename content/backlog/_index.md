@@ -2,7 +2,7 @@
 type: post
 title: Backlog
 publishDate: 2026-10-26
-description: Keyboard-first terminal backlog for people and coding agents
+description: Terminal backlog for people & agents for multiple backends
 hide_title: true
 hide_date: true
 hide_image: true
@@ -27,25 +27,26 @@ resources:
 {{< /raw >}}
 
 [`bl`](https://github.com/brettinternet/backlog) is a keyboard-first terminal
-backlog for people and coding agents. Tasks are Markdown files in Git, and every
-worktree shares one live queue.
+backlog for people and coding agents. Tasks are markdown files in git or bring
+your own backlog, and every worktree shares one live queue.
 
 ![Backlog TUI demo](demo.gif)
 
 ## Features
 
-- TUI with filtering, keymap help, and quick task creation
+- TUI with filtering, full keyboard navigation, mouse support, and quick task
+  creation
 - `--json` on every command, plus an MCP server for agents
 - Query language with readiness and ranking via `bl next`
 - Hooks, actions, and an event stream
 - Optional claims through [Worklease](/worklease/) so agents never pick up the
   same item
 
-## Backends
+### Backends
 
 - Native Markdown files
 - [Backlog.md](https://github.com/MrLesk/Backlog.md)
-- [Beads](https://github.com/steveyegge/beads)
+- [Beads](https://github.com/gastownhall/beads)
 - GitHub Issues and Projects v2
 - Linear
 - Jira Cloud

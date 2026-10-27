@@ -1,8 +1,9 @@
 ---
-type: gist
+type: post
 title: Arch Linux + Btrfs + dm-crypt
-description: Setup guide
-comments: true
+description: An example setup guide
+publishDate: 2022-12-07
+comments: false
 ---
 
 ## Features

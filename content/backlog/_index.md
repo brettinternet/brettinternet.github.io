@@ -39,7 +39,7 @@ your own backlog, and every worktree shares one live queue.
 - `--json` on every command, plus an MCP server for agents
 - Query language with readiness and ranking via `bl next`
 - Linked branches and pull requests with diffs, checks, reviews, and
-  agent-written tours
+  agent-written tours for changes
 - Hooks, actions, and an event stream
 - Optional claims through [Worklease](/worklease/) so agents never pick up the
   same item

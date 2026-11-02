@@ -10,14 +10,14 @@ comments: false
 main_class: flex justify-center items-center
 article_class: flex-1 flex flex-col min-h-full
 resources:
-  - src: desk.png
-    params:
-      alt: boy sitting at desk with computer
+- src: desk.png
+params:
+alt: boy sitting at desk with computer
 ---
 
 <div class="not-prose flex flex-col items-center justify-center container mb-6 sm:mb-12 mx-auto">
   <a href="/">
-    {{< profile "profile.png" >}}
+    {{< profile "profile.png">}}
   </a>
 </div>
 
@@ -28,7 +28,7 @@ resources:
   <li class="text-center">
     <a href="/recruit" class="underline">recruit me</a>
   </li>
-<!--
+  <!--
   <li class="text-center xs:text-right">
     <a href="https://linkedin.com/in/brettinternet" class="underline">work with me</a>
   </li>
@@ -36,19 +36,17 @@ resources:
 </ul>
 
 <p>
-  Brett Gardiner is passionate at writing enterprise software fit for solving problems at different scales and velocities.
+  Brett Gardiner is passionate at writing enterprise software fit for solving problems at different scales and
+  velocities.
 </p>
 
-<ul class="not-prose list-none mt-3 sm:mt-6 mb-6 sm:mb-12 p-0 mx-0 font-article flex flex-row items-center justify-center space-x-9">
+<ul
+  class="not-prose list-none mt-3 sm:mt-6 mb-6 sm:mb-12 p-0 mx-0 font-article flex flex-row items-center justify-center space-x-9">
   <li class="text-center xs:text-left">
-    {{< icon
-        svg="github" href="https://github.com/brettinternet"
-        text="GitHub"
-        new_window=true
-        text_class="underline"
-    >}}
+    {{< icon svg="github" href="https://github.com/brettinternet" text="GitHub" new_window=true text_class="underline">
+      }}
   </li>
-<!--
+  <!--
   <li class="text-center xs:text-right">
     {{< icon
         svg="linkedin" href="https://linkedin.com/in/brettinternet"
@@ -64,18 +62,21 @@ resources:
   <div class="grid sm:grid-cols-2 gap-4">
     <details open>
       <summary class="font-serif">What do I like?</summary>
-      <p>I like my family, pizza, Linux, reading, spinach but not arugula, early morning hikes in the Rocky Mountains, custom keyboards, movies, and tinkering with IoT devices.</p>
+      <p>I like my family, pizza, Linux, reading, spinach but not arugula, early morning hikes in the Rocky Mountains,
+        custom keyboards, movies, and tinkering with IoT devices.</p>
     </details>
     <details open>
       <summary class="font-serif">What are my hobbies?</summary>
-      <p>I play pickleball, hike and camp. I also have numerous ongoing projects such as a self-hosted kubernetes homelab and moonlighting programming projects.</p>
+      <p>I play pickleball, hike and camp. I also have numerous ongoing projects such as a self-hosted homelab and
+        moonlighting programming projects.</p>
     </details>
     <details open>
       <summary class="font-serif">How do we get in touch?</summary>
       <p>
         <a rel="nofollow, noindex" href="#" data-href="/email" class="href-conversion">
-          &#x68;&#x69;&#x40;&#x62;&#x72;&#x65;&#x74;&#x74;<span class="hidden">Don't spam me :)</span>&#x2e;&#x63;&#x6c;&#x6f;&#x75;&#x64;
+          &#x68;&#x69;&#x40;&#x62;&#x72;&#x65;&#x74;&#x74;<span class="hidden">Don't spam me
+            :)</span>&#x2e;&#x63;&#x6c;&#x6f;&#x75;&#x64;
         </a>
       </p>
     </details>
-</div>
+  </div>

@@ -131,7 +131,7 @@
   height: 1em;
   vertical-align: -0.15em;
   @apply bg-amber-600;
-  animation: prompt-blink 1.2s steps(1) 4;
+  animation: prompt-blink 1.2s steps(1) 3;
 }
 
 @keyframes prompt-blink {

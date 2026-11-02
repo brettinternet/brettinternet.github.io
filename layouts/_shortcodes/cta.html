@@ -11,7 +11,7 @@
         {{ printf "%s=%q" $k $v | safeHTMLAttr }}
       {{ end }}
     {{ end }}
-    class='group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full inline-flex no-underline{{if not (.Get "notice")}} pl-4{{end}}{{with .Get "class"}} {{.}}{{end}}' role="alert">
+    class='group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full inline-flex no-underline{{if not (.Get "notice")}} pl-4{{end}}{{with .Get "class"}} {{.}}{{end}}'>
     {{ $icon_class := .Get "icon_class" | default "" }}
     {{ with .Get "icon" }}
     {{ $svg := printf "%s%s" (.) ".svg" }}

@@ -4,6 +4,7 @@ description: Download my macOS apps and CLIs
 hide_image: true
 article_class: max-w-prose
 comments: false
+hide_title: true
 ---
 
 {{< raw >}}

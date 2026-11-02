@@ -44,7 +44,7 @@ brew trust brettinternet/tap
 
 {{< raw >}}
 
-<ul class="not-prose list-none p-0 mx-0 divide-y divide-slate-300">
+<ul class="not-prose list-none p-0 mx-0 divide-y divide-stone-300">
   <li class="py-3 grid grid-cols-[1fr_auto] sm:grid-cols-[6rem_1fr_auto] items-baseline gap-x-4 gap-y-1">
     <a href="/backlog/" class="font-bold hover:underline">bl</a>
     <div class="col-span-2 sm:col-span-1 order-last sm:order-none flex flex-col font-mono text-sm">

@@ -107,8 +107,8 @@ Muted and unmuted indicators:
 {{< raw >}}
 
 <div class="flex flex-row items-center">
-<img width="600" height="200" loading="lazy" decoding="async" src="./alert-on.png" alt="popup window screenshot indicating the microphone is on" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
-<img width="645" height="200" loading="lazy" decoding="async" src="./alert-off.png" alt="popup window screenshot indicating the microphone is off" class="border-1 border-slate-300 rounded-lg mx-auto max-w-56" />
+<img width="600" height="200" loading="lazy" decoding="async" src="./alert-on.png" alt="popup window screenshot indicating the microphone is on" class="border-1 border-stone-300 rounded-lg mx-auto max-w-56" />
+<img width="645" height="200" loading="lazy" decoding="async" src="./alert-off.png" alt="popup window screenshot indicating the microphone is off" class="border-1 border-stone-300 rounded-lg mx-auto max-w-56" />
 </div>
 {{< /raw >}}
 

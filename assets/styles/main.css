@@ -16,11 +16,17 @@
   --font-serif: "Patua One", serif;
   --font-mono: "Fira Code", monospace;
   --text-xxs: 0.625rem;
+
+  --color-paper: #f7f3ea;
+  --color-card: #fffdf8;
 }
 
 @layer base {
   body {
-    @apply font-normal font-sans;
+    @apply font-normal font-sans bg-paper;
+    /* Engineer's notebook dot grid. */
+    background-image: radial-gradient(#e2dccf 1px, transparent 1px);
+    background-size: 18px 18px;
   }
 
   h1,
@@ -44,8 +50,13 @@
     cursor: pointer;
   }
 
+  ::selection {
+    @apply bg-amber-200;
+  }
+
+  /* Keycap: paper face, ink edge, thicker bottom lip. */
   kbd {
-    @apply bg-gray-50 border border-gray-200 rounded-md shadow font-mono;
+    @apply bg-card border border-b-2 border-stone-400 rounded font-mono;
     display: inline-block;
     padding: 3px 5px;
     line-height: 10px;
@@ -53,7 +64,7 @@
   }
 
   article figure img {
-    @apply rounded-lg border-1 border-slate-300;
+    @apply rounded-lg border-1 border-stone-300;
   }
   article video {
     @apply rounded-lg;
@@ -102,6 +113,53 @@
   src: local("Fira Code-Regular");
   src: url("./files/fira-code-latin-400-normal.woff2") format("woff2");
   src: url("./files/fira-code-latin-400-normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url("./files/fira-code-latin-700-normal.woff2") format("woff2");
+}
+
+/* Spans ascender to just below the baseline, like the "$" beside it, then
+   blinks a few times and rests solid. */
+.prompt-cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  vertical-align: -0.15em;
+  @apply bg-amber-600;
+  animation: prompt-blink 1.2s steps(1) 4;
+}
+
+@keyframes prompt-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prompt-cursor {
+    animation: none;
+  }
+}
+
+/* Bullets a step darker than prose-stone's default, which fade into the paper. */
+.prose {
+  --tw-prose-bullets: var(--color-stone-400);
+}
+
+/* man(1) page layout for /about. */
+.man section {
+  @apply mt-6;
+}
+.man h2 {
+  @apply font-mono font-bold text-sm;
+}
+.man section > :not(h2) {
+  @apply pl-4 sm:pl-8;
 }
 
 .twitter-tweet {

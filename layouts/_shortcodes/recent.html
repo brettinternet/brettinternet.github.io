@@ -1,0 +1,13 @@
+{{/* Latest dated posts, same selection as the home page grid. Usage: {{< recent 5 >}} */}}
+{{ $limit := .Get 0 | default 5 }}
+{{ $pages := where (where site.Home.Pages "Type" "in" site.Params.postTypes) "Params.hide_home" "!=" true }}
+<ul class="grid grid-cols-[minmax(0,1fr)_auto] gap-x-6">
+  {{ range first $limit $pages.ByPublishDate.Reverse }}
+  {{ $external := eq .Type "link" }}
+  <li class="contents">
+    <a href="{{ cond $external .Params.href .RelPermalink }}" class="underline truncate"
+      {{ if $external }}target="_blank" rel="noopener noreferrer"{{ end }}>{{ .Title }}</a>
+    <time datetime="{{ .PublishDate.Format "2006-01-02" }}" class="text-stone-500">{{ .PublishDate.Format "2006-01-02" }}</time>
+  </li>
+  {{ end }}
+</ul>

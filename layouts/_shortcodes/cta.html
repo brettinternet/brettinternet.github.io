@@ -11,7 +11,7 @@
         {{ printf "%s=%q" $k $v | safeHTMLAttr }}
       {{ end }}
     {{ end }}
-    class='group p-2 space-x-2 border-slate-400 border border-solid items-center leading-none rounded-full inline-flex no-underline{{if not (.Get "notice")}} pl-4{{end}}{{with .Get "class"}} {{.}}{{end}}'>
+    class='group transition-colors hover:bg-white p-2 pr-3 gap-2 border border-stone-800 rounded-sm bg-card items-center leading-none inline-flex no-underline{{if not (.Get "notice")}} pl-4{{end}}{{with .Get "class"}} {{.}}{{end}}'>
     {{ $icon_class := .Get "icon_class" | default "" }}
     {{ with .Get "icon" }}
     {{ $svg := printf "%s%s" (.) ".svg" }}
@@ -19,9 +19,9 @@
     {{ partial $path (dict "class" $icon_class) }}
     {{ end }}
     {{ with .Get "notice" }}
-    <span class="flex rounded-full bg-slate-700 text-green-300 uppercase px-2 py-1 text-xs font-bold">{{ . }}</span>
+    <span class="flex rounded-sm bg-stone-800 text-amber-300 uppercase px-2 py-1 text-xs font-mono font-bold">{{ . }}</span>
     {{ end }}
-    <span class="text-slate-700 font-serif font-semibold text-left flex-auto">{{ .Get "message" }}</span>
+    <span class="text-stone-800 font-mono font-bold text-left flex-auto">{{ .Get "message" }}</span>
     <span class="group-hover:translate-x-0.5 transition-transform">
       {{ partial "icons/chevron-right.svg" (dict "class" "opacity-75 h-4 w-4") }}
     </span>

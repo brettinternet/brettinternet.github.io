@@ -29,8 +29,11 @@ params:
     - link
 
 cascade:
-  layout: single
-  comments: false
+  - comments: false
+  # The 404 page keeps its own template.
+  - layout: single
+    target:
+      kind: '{home,page,section}'
 
 mediaTypes:
   application/atom+xml:

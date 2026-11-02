@@ -1,14 +1,10 @@
-<header class="w-full flex flex-col items-center justify-center px-4 py-8 text-center">
-  {{ if not .Params.hide_logo }}
-  <div class="flex justify-center">
-    <a href="{{ .Site.BaseURL }}">
-      <span role="img" class="flex justify-center">{{ partial "icons/logo.svg" (dict "class" "w-12") }}</span>
-    </a>
-  </div>
-  {{ end }}
-  <p class="font-serif font-bold text-xl">
-    <a href="{{ if .Params.hide_logo }}{{ .Site.BaseURL }}{{else}}{{ "about" | relURL }}{{end}}" class="hover:underline">
-      {{ with .Params.HeaderTitle }}{{ . }}{{ else }}brett{{ end }}
-    </a>
-  </p>
+{{/* Shell-prompt breadcrumb: "brett ~/hum $ █". The user is whoami (/about), ~ is home. */}}
+{{ $path := strings.TrimSuffix ".html" (strings.Trim .RelPermalink "/") }}
+<header class="w-full flex justify-center px-4 py-8 font-mono text-lg [font-variant-ligatures:none]">
+  <nav aria-label="Breadcrumb">
+    <a href="{{ "about" | relURL }}" class="font-bold hover:underline">brett</a>
+    <a href="{{ "/" | relURL }}" class="text-stone-500 hover:underline" aria-label="home">~</a>{{ with $path }}<span class="text-stone-500">/</span><span aria-current="page">{{ . }}</span>{{ end }}
+    <span class="text-amber-700" aria-hidden="true">$</span>
+    <span class="prompt-cursor" aria-hidden="true"></span>
+  </nav>
 </header>

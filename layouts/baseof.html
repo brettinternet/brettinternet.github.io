@@ -7,10 +7,10 @@
   {{ partial "head.html" . }}
 </head>
 <body
-  class="min-h-screen flex flex-col text-slate-800 bg-orange-50"
+  class="min-h-screen flex flex-col text-stone-800"
 >
   {{ if or (not .Params.redirect_url) (.Params.show_main_on_redirect) }}
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-2 focus:rounded focus:bg-orange-50 focus:px-3 focus:py-2 focus:font-bold focus:underline">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-2 focus:rounded focus:bg-paper focus:px-3 focus:py-2 focus:font-bold focus:underline">
       Skip to main content
     </a>
     {{ if not .Params.hide_header }}

@@ -105,8 +105,8 @@ export function setup() {
           textArea.select()
 
           try {
-            document.execCommand('copy')
-            showCopyFeedback(copyBtn, 'Copied')
+            const copied = document.execCommand('copy')
+            showCopyFeedback(copyBtn, copied ? 'Copied' : 'Failed', 'Copy')
           } catch (_fallbackErr) {
             showCopyFeedback(copyBtn, 'Failed', 'Copy')
           }

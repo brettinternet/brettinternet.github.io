@@ -200,3 +200,33 @@ test('falls back to execCommand and removes the temporary textarea', async () =>
   jest.advanceTimersByTime(2000)
   expect(copyBtn.textContent).toBe('Copy')
 })
+
+test('reports failure when execCommand returns false', async () => {
+  document.body.innerHTML = `
+    <div class="group/codeblock">
+      <button class="copy-btn hidden">Copy</button>
+      <pre><span style="display:flex"><span>fallback code</span>\n</span></pre>
+    </div>
+  `
+  const writeText = mock(() => Promise.reject(new Error('Clipboard denied')))
+  const execCommand = mock(() => false)
+  Object.defineProperty(navigator, 'clipboard', {
+    configurable: true,
+    value: { writeText },
+  })
+  Object.defineProperty(document, 'execCommand', {
+    configurable: true,
+    value: execCommand,
+  })
+  jest.useFakeTimers()
+
+  document.dispatchEvent(new Event('DOMContentLoaded'))
+  const copyBtn = document.querySelector('.copy-btn') as HTMLButtonElement
+
+  copyBtn.click()
+  await Promise.resolve()
+
+  expect(execCommand).toHaveBeenCalledWith('copy')
+  expect(document.querySelector('textarea')).toBeNull()
+  expect(copyBtn.textContent).toBe('Failed')
+})

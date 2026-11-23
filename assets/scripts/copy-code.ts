@@ -14,22 +14,21 @@ function stripTrailingNewline(text: string) {
   return text.replace(/\n$/, '')
 }
 
+function isLineNumberSpan(span: HTMLSpanElement) {
+  return (
+    span.style.webkitUserSelect?.includes('none') ||
+    span.style.userSelect?.includes('none')
+  )
+}
+
 function getCodeFromLineSpans(lineSpans: Element[]) {
   return lineSpans
     .map((lineSpan) => {
       const childSpans = Array.from(lineSpan.querySelectorAll('span'))
-      const lineNumberSpans = childSpans.filter(
-        (span) =>
-          span.style.webkitUserSelect?.includes('none') ||
-          span.style.userSelect?.includes('none'),
-      )
+      const lineNumberSpans = childSpans.filter(isLineNumberSpan)
 
       if (lineNumberSpans.length > 0) {
-        const codeSpans = childSpans.filter(
-          (span) =>
-            !span.style.webkitUserSelect?.includes('none') &&
-            !span.style.userSelect?.includes('none'),
-        )
+        const codeSpans = childSpans.filter((span) => !isLineNumberSpan(span))
         return codeSpans
           .map((span) => stripTrailingNewline(span.textContent || ''))
           .join('')
